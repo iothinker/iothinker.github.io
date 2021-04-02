@@ -4,25 +4,6 @@
   
     
     <entry>
-      <title>Micro:bit初体验</title>
-      <link href="2020/07/07/microbit/"/>
-      <url>2020/07/07/microbit/</url>
-      
-        <content type="html"><![CDATA[<h3 id="0-Micro-bit了解"><a href="#0-Micro-bit了解" class="headerlink" title="0.Micro:bit了解"></a>0.Micro:bit了解</h3><blockquote><p>micro:bit  是一款由英国广播电视公司（BBC）推出的专为青少年编程教育设计的微型电脑开发板。2016年3月-6月，micro:bit在英国全线铺开，BBC在线上线下配套了大量的项目教程资源和活动。BBC希望通过micro:bit驱动青少年参与到创造性的硬件制作和软件编程中去，而不是每天沉浸在各式的娱乐和消费中。 </p></blockquote><p>具体信息可以去 <a href="https://www.microbit.org/">micro:bit官网</a> 上了解，你可以使用Makecode，Python和Scratch来控制它。你可以从 <a href="https://makecode.microbit.org/">这里</a> 先去尝试一下Micro:Bit，有模拟器给你尝试哦。</p><h3 id="1-MakeCode下载"><a href="#1-MakeCode下载" class="headerlink" title="1.MakeCode下载"></a>1.MakeCode下载</h3>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> micro:bit </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>少儿编程之Scratch</title>
       <link href="2020/07/06/scratch/"/>
       <url>2020/07/06/scratch/</url>
