@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>HA南京水费插件</title>
+      <link href="2021/04/02/njwater/"/>
+      <url>2021/04/02/njwater/</url>
+      
+        <content type="html"><![CDATA[<h3 id="0-插件准备"><a href="#0-插件准备" class="headerlink" title="0.插件准备"></a>0.插件准备</h3><p>a) 登录<a href="http://www.jlwater.com/login.html">南京水务</a>的官网</p><p>b) 按住F12进入开发者模式</p><p>c) 拿到cookie和客户号</p><p>结果如图：</p><p><img src="/img/njwater/njwater01.png" alt="结果截图"></p><h3 id="1-配置HA"><a href="#1-配置HA" class="headerlink" title="1.配置HA"></a>1.配置HA</h3><p>将自定义插件上传到对应的目录下</p><p>custom_components<br>└─nanjing_water<br>        sensor.py<br>        __init__.py</p><p>接着在 configuration.yaml 中添加</p><p><strong>sensor:</strong></p><p>  <strong>- platform: nanjing_water</strong><br>     <strong>name: ‘水费’</strong><br>     <strong>custno: ‘XXXXX’</strong><br>     <strong>cookies: ‘XXXXXXXXXXXXXX’</strong></p><h3 id="2-重启HA"><a href="#2-重启HA" class="headerlink" title="2.重启HA"></a>2.重启HA</h3><h3 id="3-结果展示"><a href="#3-结果展示" class="headerlink" title="3.结果展示"></a>3.结果展示</h3><p><img src="/img/njwater/njwater02.png" alt="结果截图"></p><h3 id="4-代码展示"><a href="#4-代码展示" class="headerlink" title="4.代码展示"></a>4.代码展示</h3><pre class="line-numbers language-none"><code class="language-none">"""Support for nanjing waterAuthor:    freefitterCreated:    2019-08-21"""import loggingfrom homeassistant.const import (    CONF_API_KEY, CONF_NAME, ATTR_ATTRIBUTION, CONF_ID    )from homeassistant.helpers.entity import Entityimport homeassistant.helpers.config_validation as cvimport voluptuous as volfrom homeassistant.components.sensor import PLATFORM_SCHEMAimport requestsfrom bs4 import BeautifulSoup_Log=logging.getLogger(name)DEFAULT_NAME = 'nanjing_water'COOKIES = 'cookies'CUSTNO = 'custno'PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({    vol.Required(COOKIES): cv.string,    vol.Required(CUSTNO): cv.string,    vol.Optional(CONF_NAME, default= DEFAULT_NAME): cv.string,})HEADERS = {    'Connection': 'keep-alive',    'Upgrade-Insecure-Requests': '1',    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8',    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/zh_CN',    'Referer': 'http://www.jlwater.com/waterFee/waterWx',    'Accept-Language': 'zh-cn',    'Accept-Encoding': 'gzip, deflate'}API_URL = "http://www.jlwater.com/waterFee/detail"def setup_platform(hass, config, add_devices, discovery_info=None):    cookies = config.get(COOKIES)    custno = config.get(CUSTNO)    sensor_name = config.get(CONF_NAME)    query_dict = {        'consNo': custno,    }    HEADERS["Cookie"] = cookies    add_devices([NanjingWater(sensor_name,query_dict,cookies)])class NanjingWater(Entity):    """Representation of a Nanjing water """    def init(self,sensor_name,query_dict,cookies):        self.attributes = {}        self.state = None        self.query_dict = query_dict        self.name = sensor_name        self.cookies = cookies<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="5-附件下载"><a href="#5-附件下载" class="headerlink" title="5. 附件下载"></a>5. 附件下载</h3><p>附件可以去论坛上下载 <a href="https://bbs.hassbian.com/thread-11955-1-1.html">南京水费插件</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> HA </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>少儿编程之Scratch</title>
       <link href="2020/07/06/scratch/"/>
       <url>2020/07/06/scratch/</url>
