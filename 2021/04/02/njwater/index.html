@@ -205,7 +205,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.pexels.com/photos/45229/pexels-photo-45229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=425&w=640')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://images.pexels.com/photos/45229/drop-of-water-inject-water-drip-45229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -339,6 +339,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
+                                智能家居
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -360,14 +369,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    327
+                    542
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -402,19 +411,10 @@
 <p>  <strong>- platform: nanjing_water</strong><br>     <strong>name: ‘水费’</strong><br>     <strong>custno: ‘XXXXX’</strong><br>     <strong>cookies: ‘XXXXXXXXXXXXXX’</strong></p>
 <h3 id="2-重启HA"><a href="#2-重启HA" class="headerlink" title="2.重启HA"></a>2.重启HA</h3><h3 id="3-结果展示"><a href="#3-结果展示" class="headerlink" title="3.结果展示"></a>3.结果展示</h3><p><img src="/img/njwater/njwater02.png" alt="结果截图"></p>
 <h3 id="4-代码展示"><a href="#4-代码展示" class="headerlink" title="4.代码展示"></a>4.代码展示</h3><pre class="line-numbers language-none"><code class="language-none">
-
 """
-
 Support for nanjing water
-
-Author:
-
-    freefitter
-
-Created:
-
-    2019-08-21
-
+# Author: freefitter
+# Created: 2019-08-21
 """
 import logging
 from homeassistant.const import (
@@ -427,7 +427,8 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 import requests
 from bs4 import BeautifulSoup
 
-_Log=logging.getLogger(name)
+
+_Log=logging.getLogger(__name__)
 
 DEFAULT_NAME = 'nanjing_water'
 COOKIES = 'cookies'
@@ -441,7 +442,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 HEADERS = {
     'Connection': 'keep-alive',
     'Upgrade-Insecure-Requests': '1',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/zh_CN',
     'Referer': 'http://www.jlwater.com/waterFee/waterWx',
     'Accept-Language': 'zh-cn',
@@ -460,12 +461,54 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
 class NanjingWater(Entity):
     """Representation of a Nanjing water """
-    def init(self,sensor_name,query_dict,cookies):
+    def __init__(self,sensor_name,query_dict,cookies):
         self.attributes = {}
-        self.state = None
-        self.query_dict = query_dict
-        self.name = sensor_name
-        self.cookies = cookies<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        self._state = None
+        self._query_dict = query_dict
+        self._name = sensor_name
+        self._cookies = cookies
+    @property
+    def name(self):
+        """Return the name of the sensor."""
+        return self._name
+    @property
+    def state(self):
+        """Return the state of the sensor."""
+        return self._state
+    @property
+    def icon(self):
+        """返回mdi图标."""
+        return 'mdi:cup-water'
+    @property
+    def device_state_attributes(self):
+        """Return the state attributes."""
+        return self.attributes
+    @property
+    def unit_of_measurement(self):
+        """Return the unit this state is expressed in."""
+        return "元"
+    def update(self):
+        try:
+            response = requests.get(API_URL,params=self._query_dict,headers = HEADERS)
+        except ReadTimeout:
+            _Log.error("Connection timeout....")
+        except ConnectionError:
+            _Log.error("Connection Error....")
+        except RequestException:
+            _Log.error("Unknown Error")
+        # res = response.content.decode('utf-8')
+        soup = BeautifulSoup(response.text,'html.parser')
+        waterFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(1)").get_text().split('￥')[1]
+        lajiFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)").get_text().split('￥')[1]
+        weiyueFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(3)").get_text().split('￥')[1]
+        shangqijieyuFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(4)").get_text().split('￥')[1]
+        qianfeiFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)").get_text().split('￥')[1]
+        #_Log.info("waterFee=" + waterFee)
+        self._state = waterFee
+        self.attributes['lajiFee'] = lajiFee
+        self.attributes['weiyueFee'] = weiyueFee
+        self.attributes['shangqijieyuFee'] = shangqijieyuFee
+        self.attributes['qianfeiFee'] = qianfeiFee<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="5-附件下载"><a href="#5-附件下载" class="headerlink" title="5. 附件下载"></a>5. 附件下载</h3><p>附件可以去论坛上下载 <a target="_blank" rel="noopener" href="https://bbs.hassbian.com/thread-11955-1-1.html">南京水费插件</a></p>
 
@@ -717,7 +760,7 @@ class NanjingWater(Entity):
                 <a href="/2021/04/02/njwater/">
                     <div class="card-image">
                         
-                        <img src="https://images.pexels.com/photos/45229/pexels-photo-45229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=425&w=640" class="responsive-img" alt="HA南京水费插件">
+                        <img src="https://images.pexels.com/photos/45229/drop-of-water-inject-water-drip-45229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="responsive-img" alt="HA南京水费插件">
                         
                         <span class="card-title">HA南京水费插件</span>
                     </div>
@@ -734,8 +777,12 @@ class NanjingWater(Entity):
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            freefitter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
+                                    智能家居
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -783,8 +830,12 @@ class NanjingWater(Entity):
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            freefitter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
+                                    教程
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1000,7 +1051,7 @@ class NanjingWater(Entity):
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.1k</span>&nbsp;字
+                class="white-color">1.3k</span>&nbsp;字
             
             
             
