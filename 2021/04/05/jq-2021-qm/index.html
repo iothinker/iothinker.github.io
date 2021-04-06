@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HA南京水费插件, 宁静致远">
+    <meta name="keywords" content="小长假游记, 宁静致远">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HA南京水费插件 | 宁静致远</title>
+    <title>小长假游记 | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/njwater/drop-of-water.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HA南京水费插件</h1>
+                    <h1 class="description center-align post-title">小长假游记</h1>
                 </div>
             </div>
         </div>
@@ -326,12 +326,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HA/">
-                                <span class="chip bg-color">HA</span>
+                            <a href="/tags/%E6%B8%B8%E7%8E%A9/">
+                                <span class="chip bg-color">游玩</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/%E9%81%9B%E5%A8%83/">
+                                <span class="chip bg-color">遛娃</span>
                             </a>
                         
                     </div>
@@ -342,8 +342,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
-                                智能家居
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                生活
                             </a>
                         
                     </div>
@@ -355,7 +355,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-02
+                    2021-04-05
                 </div>
                 
 
@@ -369,14 +369,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    542
+                    478
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -399,118 +399,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="0-插件准备"><a href="#0-插件准备" class="headerlink" title="0.插件准备"></a>0.插件准备</h3><p>a) 登录<a target="_blank" rel="noopener" href="http://www.jlwater.com/login.html">南京水务</a>的官网</p>
-<p>b) 按住F12进入开发者模式</p>
-<p>c) 拿到cookie和客户号</p>
-<p>结果如图：</p>
-<p><img src="/img/njwater/njwater01.png" alt="结果截图"></p>
-<h3 id="1-配置HA"><a href="#1-配置HA" class="headerlink" title="1.配置HA"></a>1.配置HA</h3><p>将自定义插件上传到对应的目录下</p>
-<p>custom_components<br>└─nanjing_water<br>        sensor.py<br>        __init__.py</p>
-<p>接着在 configuration.yaml 中添加</p>
-<p><strong>sensor:</strong></p>
-<p>  <strong>- platform: nanjing_water</strong><br>     <strong>name: ‘水费’</strong><br>     <strong>custno: ‘XXXXX’</strong><br>     <strong>cookies: ‘XXXXXXXXXXXXXX’</strong></p>
-<h3 id="2-重启HA"><a href="#2-重启HA" class="headerlink" title="2.重启HA"></a>2.重启HA</h3><h3 id="3-结果展示"><a href="#3-结果展示" class="headerlink" title="3.结果展示"></a>3.结果展示</h3><p><img src="/img/njwater/njwater02.png" alt="结果截图"></p>
-<h3 id="4-代码展示"><a href="#4-代码展示" class="headerlink" title="4.代码展示"></a>4.代码展示</h3><pre class="line-numbers language-none"><code class="language-none">
-"""
-Support for nanjing water
-# Author: freefitter
-# Created: 2019-08-21
-"""
-import logging
-from homeassistant.const import (
-    CONF_API_KEY, CONF_NAME, ATTR_ATTRIBUTION, CONF_ID
-    )
-from homeassistant.helpers.entity import Entity
-import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
-from homeassistant.components.sensor import PLATFORM_SCHEMA
-import requests
-from bs4 import BeautifulSoup
-
-
-_Log=logging.getLogger(__name__)
-
-DEFAULT_NAME = 'nanjing_water'
-COOKIES = 'cookies'
-CUSTNO = 'custno'
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(COOKIES): cv.string,
-    vol.Required(CUSTNO): cv.string,
-    vol.Optional(CONF_NAME, default= DEFAULT_NAME): cv.string,
-})
-
-HEADERS = {
-    'Connection': 'keep-alive',
-    'Upgrade-Insecure-Requests': '1',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/zh_CN',
-    'Referer': 'http://www.jlwater.com/waterFee/waterWx',
-    'Accept-Language': 'zh-cn',
-    'Accept-Encoding': 'gzip, deflate'
-}
-API_URL = "http://www.jlwater.com/waterFee/detail"
-def setup_platform(hass, config, add_devices, discovery_info=None):
-    cookies = config.get(COOKIES)
-    custno = config.get(CUSTNO)
-    sensor_name = config.get(CONF_NAME)
-    query_dict = {
-        'consNo': custno,
-    }
-    HEADERS["Cookie"] = cookies
-    add_devices([NanjingWater(sensor_name,query_dict,cookies)])
-
-class NanjingWater(Entity):
-    """Representation of a Nanjing water """
-    def __init__(self,sensor_name,query_dict,cookies):
-        self.attributes = {}
-        self._state = None
-        self._query_dict = query_dict
-        self._name = sensor_name
-        self._cookies = cookies
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-    @property
-    def icon(self):
-        """返回mdi图标."""
-        return 'mdi:cup-water'
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return self.attributes
-    @property
-    def unit_of_measurement(self):
-        """Return the unit this state is expressed in."""
-        return "元"
-    def update(self):
-        try:
-            response = requests.get(API_URL,params=self._query_dict,headers = HEADERS)
-        except ReadTimeout:
-            _Log.error("Connection timeout....")
-        except ConnectionError:
-            _Log.error("Connection Error....")
-        except RequestException:
-            _Log.error("Unknown Error")
-        # res = response.content.decode('utf-8')
-        soup = BeautifulSoup(response.text,'html.parser')
-        waterFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(1)").get_text().split('￥')[1]
-        lajiFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)").get_text().split('￥')[1]
-        weiyueFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(3)").get_text().split('￥')[1]
-        shangqijieyuFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(4)").get_text().split('￥')[1]
-        qianfeiFee = soup.select_one("#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)").get_text().split('￥')[1]
-        #_Log.info("waterFee=" + waterFee)
-        self._state = waterFee
-        self.attributes['lajiFee'] = lajiFee
-        self.attributes['weiyueFee'] = weiyueFee
-        self.attributes['shangqijieyuFee'] = shangqijieyuFee
-        self.attributes['qianfeiFee'] = qianfeiFee<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="5-附件下载"><a href="#5-附件下载" class="headerlink" title="5. 附件下载"></a>5. 附件下载</h3><p>附件可以去论坛上下载 <a target="_blank" rel="noopener" href="https://bbs.hassbian.com/thread-11955-1-1.html">南京水费插件</a></p>
+                <h3 id="0-假期安排"><a href="#0-假期安排" class="headerlink" title="0.假期安排"></a>0.假期安排</h3><p>​    三天的小长假，回家祭祖顺便带小孩玩玩。</p>
+<h3 id="1-第一天"><a href="#1-第一天" class="headerlink" title="1.第一天"></a>1.第一天</h3><p>​     早上早早起床，想着早点走路上不会堵车，奈何走的还是不够早，9:00了才出门。在出城的路上还是堵了一会的，上了高速后就好了很多了。回去之后已经中午了，去喝了个鸭汤就回去休息了。鸭汤没有之前的好喝了，门面也变小了。[ 图片网上找的，还是之前的店面 ]</p>
+<p><img src="/img/20210405/jangmuya0.jpg" alt="老鸭汤的店"></p>
+<p>下午彤妈约了闺蜜出去玩，我就和彤宝一起睡觉休息了。这一睡就到4点多了。起来弄弄之后，去接彤妈之后，顺便带彤彤见见她的阿姨们。接着晚上又是一个小饭局。</p>
+<h3 id="2-第二天"><a href="#2-第二天" class="headerlink" title="2.第二天"></a>2.第二天</h3><p>​    今天是清明，怕路上堵，早点起床回老家祭祖。回家的路上还好，不是特别的堵。早早就到家了。到了老家小家伙就开始挖挖土了。</p>
+<p><img src="/img/20210405/IMG_1567.jpg" alt="爱挖土宝宝0"><img src="/img/20210405/IMG_1568.jpg" alt="爱挖土宝宝1"></p>
+<p>​    祭祖后休息了一下，约了小伙伴一起遛娃。去了一个之前一直想去但是没去的地方，天气和风景都不错。彤宝到了之后还是先挖土<span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>。</p>
+<p><img src="/img/20210405/IMG_1572.jpg" alt="爱挖土宝宝2"></p>
+<p>之前小伙伴的宝宝在睡觉，没能一起参与，好在一会他就醒了，然后捡了个风筝，就一起玩了起来了。</p>
+<p><img src="/img/20210405/yiqi.jpg" alt="一起放风筝"></p>
+<h3 id="3-最后一天"><a href="#3-最后一天" class="headerlink" title="3.最后一天"></a>3.最后一天</h3><p>​    很快就要和小长假说拜拜了。最后一天要早点回南京，回去给他做点面包和饺子，这样平时可以吃吃。本来想着中午早点走回不堵的，事与愿违，依然堵。走的早些时间也充裕些。回家就开始干活了，一下是牛角包的成果图，还是可以的。饺子的图没拍。下次争取都图。</p>
+<p><img src="/img/20210405/njb.jpg" alt="一起放风筝"></p>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><p>   三天的小长假还算快乐，期待下次的游记。<span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 
                 
             </div>
@@ -537,7 +438,7 @@ class NanjingWater(Entity):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://iothinker.github.io/2021/04/02/njwater/">https://iothinker.github.io/2021/04/02/njwater/</a>
+                    <a href="https://iothinker.github.io/2021/04/05/jq-2021-qm/">https://iothinker.github.io/2021/04/05/jq-2021-qm/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,12 +476,12 @@ class NanjingWater(Entity):
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HA/">
-                                    <span class="chip bg-color">HA</span>
+                                <a href="/tags/%E6%B8%B8%E7%8E%A9/">
+                                    <span class="chip bg-color">游玩</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/%E9%81%9B%E5%A8%83/">
+                                    <span class="chip bg-color">遛娃</span>
                                 </a>
                             
                         </div>
@@ -752,9 +653,10 @@ class NanjingWater(Entity):
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/05/jq-2021-qm/">
                     <div class="card-image">
@@ -772,9 +674,9 @@ class NanjingWater(Entity):
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -787,6 +689,7 @@ class NanjingWater(Entity):
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -809,12 +712,12 @@ class NanjingWater(Entity):
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/06/scratch/">
+                <a href="/2021/04/02/njwater/">
                     <div class="card-image">
                         
-                        <img src="/img/logo_sm.png" class="responsive-img" alt="少儿编程之Scratch">
+                        <img src="/img/njwater/drop-of-water.jpg" class="responsive-img" alt="HA南京水费插件">
                         
-                        <span class="card-title">少儿编程之Scratch</span>
+                        <span class="card-title">HA南京水费插件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -825,14 +728,14 @@ class NanjingWater(Entity):
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                    教程
+                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
+                                    智能家居
                                 </a>
                             
                             
@@ -842,12 +745,12 @@ class NanjingWater(Entity):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Scratch/">
-                        <span class="chip bg-color">Scratch</span>
+                    <a href="/tags/HA/">
+                        <span class="chip bg-color">HA</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">编程</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
