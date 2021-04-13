@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo博客搭建, 宁静致远">
+    <meta name="keywords" content="HA中燃插件, 宁静致远">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo博客搭建 | 宁静致远</title>
+    <title>HA中燃插件 | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/hello.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210413/cover.webp')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo博客搭建</h1>
+                    <h1 class="description center-align post-title">HA中燃插件</h1>
                 </div>
             </div>
         </div>
@@ -326,8 +326,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">学习</span>
+                            <a href="/tags/HA/">
+                                <span class="chip bg-color">HA</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8F%92%E4%BB%B6/">
+                                <span class="chip bg-color">插件</span>
                             </a>
                         
                     </div>
@@ -338,8 +346,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                教程
+                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
+                                智能家居
                             </a>
                         
                     </div>
@@ -351,28 +359,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-08
+                    2021-04-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-02
+                    2021-04-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    95
+                    631
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -395,9 +403,132 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="搭建Hexo"><a href="#搭建Hexo" class="headerlink" title="搭建Hexo"></a>搭建Hexo</h2><p>之前自己搭建<a target="_blank" rel="noopener" href="http://freefitter.com:1200/">wordpress</a>的博客，网上搜索下，还有人推荐Hexo的，然后就尝试着自己搞了个玩玩，发现并不复杂<br>参照了<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4818be9093f5">这个教程</a>还有<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">官方的文档</a>。三下五除二干了起来。</p>
-<h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><p>   搭建完成就是这样啦! <img src="/img/pre.png" alt="成果展示"> 赶脚还行。</p>
-<h2 id="说在最后"><a href="#说在最后" class="headerlink" title="说在最后"></a>说在最后</h2><p>   自己瞎折腾，没事整点事</p>
+                <blockquote>
+<p>这是中燃的燃气插件，抓包后的api还是比较友好的</p>
+</blockquote>
+<h3 id="0-抓包"><a href="#0-抓包" class="headerlink" title="0.抓包"></a>0.抓包</h3><hr>
+<p>按照国际惯例，首先抓包。从小程序入手，微信搜索 <strong>中燃慧生活</strong> 。然后打开抓包工具，开始抓包即可</p>
+<h3 id="1-分析抓包数据"><a href="#1-分析抓包数据" class="headerlink" title="1.分析抓包数据"></a>1.分析抓包数据</h3><hr>
+<p>中燃的接口还是挺友好的，都是json格式的。查看抓包的数据，找到这么一个地址 <strong><a target="_blank" rel="noopener" href="https://zrds.zrhsh.com/controller/payfee/getcustomerMoneyListForMp.do">https://zrds.zrhsh.com/controller/payfee/getcustomerMoneyListForMp.do</a></strong> ，这个地址里面有咱想要的数据。数据咱就不贴了，都是看的到的。</p>
+<h3 id="2-开发插件"><a href="#2-开发插件" class="headerlink" title="2.开发插件"></a>2.开发插件</h3><hr>
+<p>分析数据，插件代码如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">"""
+Support for zhongran gas
+# Author:
+    freefitter
+# Created:
+    2020/9/2
+"""</span>
+<span class="token keyword">import</span> logging
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> datetime
+<span class="token keyword">from</span> dateutil<span class="token punctuation">.</span>relativedelta <span class="token keyword">import</span> relativedelta 
+<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>const <span class="token keyword">import</span> <span class="token punctuation">(</span>
+    CONF_API_KEY<span class="token punctuation">,</span> CONF_NAME<span class="token punctuation">,</span> ATTR_ATTRIBUTION<span class="token punctuation">,</span> CONF_ID
+    <span class="token punctuation">)</span>
+<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>entity <span class="token keyword">import</span> Entity
+<span class="token keyword">import</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>config_validation <span class="token keyword">as</span> cv
+<span class="token keyword">import</span> voluptuous <span class="token keyword">as</span> vol
+<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>components<span class="token punctuation">.</span>sensor <span class="token keyword">import</span> PLATFORM_SCHEMA
+<span class="token keyword">import</span> requests
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+_Log<span class="token operator">=</span>logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+DEFAULT_NAME <span class="token operator">=</span> <span class="token string">'zrgas'</span>
+CUSTCODE <span class="token operator">=</span> <span class="token string">'custCode'</span>
+PLATFORM_SCHEMA <span class="token operator">=</span> PLATFORM_SCHEMA<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>CUSTCODE<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+    vol<span class="token punctuation">.</span>Optional<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">,</span> default<span class="token operator">=</span> DEFAULT_NAME<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'Connection'</span><span class="token punctuation">:</span> <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
+    <span class="token string">'Upgrade-Insecure-Requests'</span><span class="token punctuation">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
+    <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
+    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (iPhone; CPU iPhone OS 12_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/zh_CN'</span>
+<span class="token punctuation">}</span>
+API_URL <span class="token operator">=</span> <span class="token string">"https://zrds.zrhsh.com/controller/payfee/getcustomerMoneyListForMp.do"</span>
+<span class="token keyword">def</span> <span class="token function">setup_platform</span><span class="token punctuation">(</span>hass<span class="token punctuation">,</span> config<span class="token punctuation">,</span> add_devices<span class="token punctuation">,</span> discovery_info<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    custCode <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>CUSTCODE<span class="token punctuation">)</span>
+    sensor_name <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">)</span>
+    today <span class="token operator">=</span> datetime<span class="token punctuation">.</span>date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    current_month <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>today<span class="token punctuation">,</span> <span class="token string">"%Y%m"</span><span class="token punctuation">)</span>
+    
+    
+    last_2_month <span class="token operator">=</span> today <span class="token operator">+</span> relativedelta<span class="token punctuation">(</span>months<span class="token operator">=</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+    last_two_month <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>last_2_month<span class="token punctuation">,</span> <span class="token string">"%Y%m"</span><span class="token punctuation">)</span>
+    
+    data_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'custCode'</span><span class="token punctuation">:</span> custCode<span class="token punctuation">,</span>
+        <span class="token string">'envir'</span><span class="token punctuation">:</span><span class="token string">'2'</span><span class="token punctuation">,</span>
+        <span class="token string">'startTime'</span><span class="token punctuation">:</span>last_two_month<span class="token punctuation">,</span>
+        <span class="token string">'endTime'</span><span class="token punctuation">:</span>current_month<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    add_devices<span class="token punctuation">(</span><span class="token punctuation">[</span>ZRGas<span class="token punctuation">(</span>sensor_name<span class="token punctuation">,</span>data_dict<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ZRGas</span><span class="token punctuation">(</span>Entity<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Representation of a Nanjing water """</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>sensor_name<span class="token punctuation">,</span>data_dict<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>attributes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        self<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>_data_dict <span class="token operator">=</span> data_dict
+        self<span class="token punctuation">.</span>_name <span class="token operator">=</span> sensor_name
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">name</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Return the name of the sensor."""</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_name
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">state</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Return the state of the sensor."""</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_state
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">icon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""返回mdi图标."""</span>
+        <span class="token keyword">return</span> <span class="token string">'mdi:fire'</span>
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">device_state_attributes</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Return the state attributes."""</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>attributes
+
+    <span class="token decorator annotation punctuation">@property</span>
+    <span class="token keyword">def</span> <span class="token function">unit_of_measurement</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Return the unit this state is expressed in."""</span>
+        <span class="token keyword">return</span> <span class="token string">"元"</span>
+
+    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>API_URL<span class="token punctuation">,</span>params<span class="token operator">=</span>self<span class="token punctuation">.</span>_data_dict<span class="token punctuation">,</span>headers <span class="token operator">=</span> HEADERS<span class="token punctuation">)</span>
+        <span class="token keyword">except</span> ReadTimeout<span class="token punctuation">:</span>
+            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection timeout...."</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> ConnectionError<span class="token punctuation">:</span>
+            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection Error...."</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> RequestException<span class="token punctuation">:</span>
+            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Unknown Error"</span><span class="token punctuation">)</span>
+        res <span class="token operator">=</span> response<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        ret <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_state <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"receivable"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'recordMonth'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"recordMonth"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'curRecord'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"curRecord"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'curQty'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"curQty"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'balance'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"balance"</span><span class="token punctuation">]</span> 
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'received'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"received"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'laterFee'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"laterFee"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'lastRecord'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"lastRecord"</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'timeCurRecord'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"payGasCheckList"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"timeCurRecord"</span><span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-配置HA"><a href="#4-配置HA" class="headerlink" title="4.配置HA"></a>4.配置HA</h3><hr>
+<p>插件需要客户号，上面抓包的请求就有，拿就完事了。接着照着下面配置就行。配置完成后，重启HA就行了</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">platform</span><span class="token punctuation">:</span> zrgas
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'燃气费'</span>
+    <span class="token key atrule">custCode</span><span class="token punctuation">:</span> <span class="token string">'XXXXXXX'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-成果展示"><a href="#5-成果展示" class="headerlink" title="5.成果展示"></a>5.成果展示</h3><p><img src="/img/20210413/gas.jpg" alt="插件展示"></p>
+<p>至此，家里的水电燃气已经接入完毕，后面再把其他的整理整理，分享出来。</p>
 
                 
             </div>
@@ -424,7 +555,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://iothinker.github.io/2020/06/08/startPage/">https://iothinker.github.io/2020/06/08/startPage/</a>
+                    <a href="https://iothinker.github.io/2021/04/13/gas/">https://iothinker.github.io/2021/04/13/gas/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -462,8 +593,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">学习</span>
+                                <a href="/tags/HA/">
+                                    <span class="chip bg-color">HA</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8F%92%E4%BB%B6/">
+                                    <span class="chip bg-color">插件</span>
                                 </a>
                             
                         </div>
@@ -635,16 +774,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/06/17/smartHome/">
+                <a href="/2021/04/13/gas/">
                     <div class="card-image">
                         
-                        <img src="/img/logo.svg" class="responsive-img" alt="智能家居体验与感受">
+                        <img src="/img/20210413/cover.webp" class="responsive-img" alt="HA中燃插件">
                         
-                        <span class="card-title">智能家居体验与感受</span>
+                        <span class="card-title">HA中燃插件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,9 +794,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -669,11 +809,20 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/">
-                        <span class="chip bg-color">智能家居</span>
+                    <a href="/tags/HA/">
+                        <span class="chip bg-color">HA</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8F%92%E4%BB%B6/">
+                        <span class="chip bg-color">插件</span>
                     </a>
                     
                 </div>
@@ -684,15 +833,15 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/08/startPage/">
+                <a href="/2021/04/12/dayshare21412/">
                     <div class="card-image">
                         
-                        <img src="/img/hello.jpg" class="responsive-img" alt="Hexo博客搭建">
+                        <img src="/img/20210412/cover.jpg" class="responsive-img" alt="周末记事">
                         
-                        <span class="card-title">Hexo博客搭建</span>
+                        <span class="card-title">周末记事</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -703,26 +852,33 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                    教程
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">学习</span>
+                    <a href="/tags/%E5%AE%9D%E5%AE%9D/">
+                        <span class="chip bg-color">宝宝</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%97%A9%E6%95%99/">
+                        <span class="chip bg-color">早教</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%91%A8%E6%9C%AB/">
+                        <span class="chip bg-color">周末</span>
                     </a>
                     
                 </div>
