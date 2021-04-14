@@ -20,13 +20,11 @@
       
         <tags>
             
-            <tag> HA </tag>
-            
-            <tag> 闲置利用 </tag>
-            
             <tag> 摄像头 </tag>
             
-            <tag> HB </tag>
+            <tag> homeassistant </tag>
+            
+            <tag> homebridge </tag>
             
         </tags>
       
@@ -51,11 +49,13 @@
       
         <tags>
             
-            <tag> HA </tag>
-            
             <tag> python </tag>
             
             <tag> 插件 </tag>
+            
+            <tag> homeassistant </tag>
+            
+            <tag> 燃气 </tag>
             
         </tags>
       
@@ -134,11 +134,11 @@
       
         <tags>
             
-            <tag> HA </tag>
-            
             <tag> mqtt </tag>
             
             <tag> Node-red </tag>
+            
+            <tag> homeassistant </tag>
             
         </tags>
       
@@ -166,6 +166,10 @@
             <tag> Scratch </tag>
             
             <tag> 编程 </tag>
+            
+            <tag> 飞花令 </tag>
+            
+            <tag> 少儿 </tag>
             
         </tags>
       
@@ -246,11 +250,13 @@
       
         <tags>
             
-            <tag> HA </tag>
-            
             <tag> python </tag>
             
             <tag> 插件 </tag>
+            
+            <tag> homeassistant </tag>
+            
+            <tag> 电费 </tag>
             
         </tags>
       
@@ -302,11 +308,13 @@
       
         <tags>
             
-            <tag> HA </tag>
-            
             <tag> python </tag>
             
             <tag> 插件 </tag>
+            
+            <tag> homeassistant </tag>
+            
+            <tag> 水费 </tag>
             
         </tags>
       
@@ -334,6 +342,8 @@
             <tag> Scratch </tag>
             
             <tag> 编程 </tag>
+            
+            <tag> 少儿 </tag>
             
         </tags>
       
@@ -383,7 +393,9 @@
       
         <tags>
             
-            <tag> 学习 </tag>
+            <tag> hexo </tag>
+            
+            <tag> 博客 </tag>
             
         </tags>
       
