@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ESP32-Camera初探</title>
+      <link href="2021/04/16/esp32cam/"/>
+      <url>2021/04/16/esp32cam/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>接触智能家居时间也不少了，写的东西都是偏软件的。所以想突破下尝试玩玩硬件。但是一直不知道搞什么，一次偶然的机会，发现了人家制作的ESP32-Camera，来了兴趣，就开始找资料，准备开始干。</p></blockquote><h3 id="0-材料准备"><a href="#0-材料准备" class="headerlink" title="0.材料准备"></a>0.材料准备</h3><hr><p>折腾硬件首先得有硬件，这是得找万能的某宝了。买了个板子和USB-TTL加起来三十块钱左右，性价比还是刚刚的。</p><blockquote><ol><li><p>ESP32-Cam开发板</p></li><li><p>USB转TTL</p></li><li><p>杜邦线若干</p></li></ol></blockquote><p> 我买的第一家的ESP32-Cam但是收到后引脚没有焊好，导致后面刷固件死活刷不进去。后面重新买了这家的<a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.36.3d91b3514xTMwM&amp;id=616162319808&amp;ns=1&amp;abbucket=4&amp;skuId=4604638375622">ESP32-Cam</a>，然后就Okay了</p><p><img src="/img/20210416/jietu0.jpg" alt="买到的ESP32-Cam"></p><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><hr><p>a) <strong>驱动安装</strong></p><p>刷固件首先都要装上驱动，我用的CP2102的，网上找了驱动，进入 <a href="https://cn.silabs.com/">MAC驱动下载地址</a> 进去搜索即可，装上就行。windows会自动安装，不用操心。</p><p>接着下载</p><p>b) <strong>Arduino环境配置</strong></p><p>去<a href="https://www.arduino.cc/en/software">官网</a>下载Arduino，选择合适的平台下载</p><p><img src="/img/20210416/jietu0.png" alt="Arduino网站截图"></p><p>接下来照着这个<a href="https://blog.csdn.net/weixin_45825635/article/details/106081995">教程</a>配置一下Arduino</p><h3 id="2-接线烧录"><a href="#2-接线烧录" class="headerlink" title="2.接线烧录"></a>2.接线烧录</h3><hr><p>按照之前教程上的图接线，下面这是我连好后的，烧录的时候一定要记得<strong>IO0和GND短接</strong></p><p><img src="/img/20210416/jietu1.jpg" alt="实际接线图"></p><p>烧录完成运行的时候发现它贼烫手，所以找了个散热片给它贴上了。</p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>上面的教程已经很详细了，我就不多多赘述了，后面想用它做点别的东西，到时候再分享给大家哈。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 智能家居 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 硬件 </tag>
+            
+            <tag> esp32cam </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>南京儿童医保缴费发票打印</title>
       <link href="2021/04/15/etax/"/>
       <url>2021/04/15/etax/</url>

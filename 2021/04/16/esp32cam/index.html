@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Scratch">
+    <meta name="keywords" content="ESP32-Camera初探, 宁静致远">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Scratch飞花令 | 宁静致远</title>
+    <title>ESP32-Camera初探 | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210407/cover1.webp')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210416/cover.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Scratch飞花令</h1>
+                    <h1 class="description center-align post-title">ESP32-Camera初探</h1>
                 </div>
             </div>
         </div>
@@ -326,20 +326,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Scratch/">
-                                <span class="chip bg-color">Scratch</span>
+                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">
+                                <span class="chip bg-color">硬件</span>
                             </a>
                         
-                            <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                                <span class="chip bg-color">编程</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%A3%9E%E8%8A%B1%E4%BB%A4/">
-                                <span class="chip bg-color">飞花令</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%B0%91%E5%84%BF/">
-                                <span class="chip bg-color">少儿</span>
+                            <a href="/tags/esp32cam/">
+                                <span class="chip bg-color">esp32cam</span>
                             </a>
                         
                     </div>
@@ -350,8 +342,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                教程
+                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
+                                智能家居
                             </a>
                         
                     </div>
@@ -363,21 +355,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-07
+                    2021-04-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-14
+                    2021-04-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    256
+                    397
                 </div>
                 
 
@@ -408,29 +400,36 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>这是一个Scratch的飞花令教程</p>
+<p>接触智能家居时间也不少了，写的东西都是偏软件的。所以想突破下尝试玩玩硬件。但是一直不知道搞什么，一次偶然的机会，发现了人家制作的ESP32-Camera，来了兴趣，就开始找资料，准备开始干。</p>
 </blockquote>
-<h3 id="0-背景"><a href="#0-背景" class="headerlink" title="0.背景"></a>0.背景</h3><hr>
-<p>老婆的学校有个教学短视频制作的比赛，她不知道做什么，我就提议将编程和教学联合起来。小学生现在都流行图形化编程，Scratch就是其中一个，所以我就想把这两个结合起来，做个东西。</p>
-<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><hr>
-<p>下面是飞花令和Scratch的简介</p>
+<h3 id="0-材料准备"><a href="#0-材料准备" class="headerlink" title="0.材料准备"></a>0.材料准备</h3><hr>
+<p>折腾硬件首先得有硬件，这是得找万能的某宝了。买了个板子和USB-TTL加起来三十块钱左右，性价比还是刚刚的。</p>
 <blockquote>
-<p>飞花令，原本是古人行酒令时的一个文字游戏，源自古人的诗词之趣，得名于唐代诗人韩翃《寒食》中的名句“春城无处不飞花”。行飞花令时可选用诗词曲中的句子，但选择的句子一般不超过七个字。</p>
+<ol>
+<li><p>ESP32-Cam开发板</p>
+</li>
+<li><p>USB转TTL</p>
+</li>
+<li><p>杜邦线若干</p>
+</li>
+</ol>
 </blockquote>
-<blockquote>
-<p>Scratch是麻省理工学院的“终身幼儿园团队”开发的图形化编程工具，主要面对青少年开放。</p>
-</blockquote>
-<h3 id="2-制作过程"><a href="#2-制作过程" class="headerlink" title="2.制作过程"></a>2.制作过程</h3><hr>
-<p><img src="/img/20210407/fhl0.jpg" alt="飞花令"></p>
-<p><img src="/img/20210407/fhl1.jpg" alt="飞花令"></p>
-<p><img src="/img/20210407/fhl2.jpg" alt="飞花令"></p>
-<p><img src="/img/20210407/fhl3.jpg" alt="飞花令"></p>
-<h3 id="3-成果展示"><a href="#3-成果展示" class="headerlink" title="3.成果展示"></a>3.成果展示</h3><hr>
-<p><video src="/img/20210407/fhl.mp4" width="100%" controls="controls"></video></p>
-<h3 id="4-比赛结果"><a href="#4-比赛结果" class="headerlink" title="4.比赛结果"></a>4.比赛结果</h3><hr>
-<p>这次比赛获得了精品作品奖</p>
-<p><img src="/img/20210407/zs.png" alt="荣誉证书"></p>
-<p>还是不错的，以后继续加油吧!</p>
+<p> 我买的第一家的ESP32-Cam但是收到后引脚没有焊好，导致后面刷固件死活刷不进去。后面重新买了这家的<a target="_blank" rel="noopener" href="https://detail.tmall.com/item.htm?spm=a230r.1.14.36.3d91b3514xTMwM&amp;id=616162319808&amp;ns=1&amp;abbucket=4&amp;skuId=4604638375622">ESP32-Cam</a>，然后就Okay了</p>
+<p><img src="/img/20210416/jietu0.jpg" alt="买到的ESP32-Cam"></p>
+<h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><hr>
+<p>a) <strong>驱动安装</strong></p>
+<p>刷固件首先都要装上驱动，我用的CP2102的，网上找了驱动，进入 <a target="_blank" rel="noopener" href="https://cn.silabs.com/">MAC驱动下载地址</a> 进去搜索即可，装上就行。windows会自动安装，不用操心。</p>
+<p>接着下载</p>
+<p>b) <strong>Arduino环境配置</strong></p>
+<p>去<a target="_blank" rel="noopener" href="https://www.arduino.cc/en/software">官网</a>下载Arduino，选择合适的平台下载</p>
+<p><img src="/img/20210416/jietu0.png" alt="Arduino网站截图"></p>
+<p>接下来照着这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45825635/article/details/106081995">教程</a>配置一下Arduino</p>
+<h3 id="2-接线烧录"><a href="#2-接线烧录" class="headerlink" title="2.接线烧录"></a>2.接线烧录</h3><hr>
+<p>按照之前教程上的图接线，下面这是我连好后的，烧录的时候一定要记得<strong>IO0和GND短接</strong></p>
+<p><img src="/img/20210416/jietu1.jpg" alt="实际接线图"></p>
+<p>烧录完成运行的时候发现它贼烫手，所以找了个散热片给它贴上了。</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr>
+<p>上面的教程已经很详细了，我就不多多赘述了，后面想用它做点别的东西，到时候再分享给大家哈。</p>
 
                 
             </div>
@@ -457,7 +456,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://iothinker.github.io/2021/04/07/fhl/">https://iothinker.github.io/2021/04/07/fhl/</a>
+                    <a href="https://iothinker.github.io/2021/04/16/esp32cam/">https://iothinker.github.io/2021/04/16/esp32cam/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -495,20 +494,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Scratch/">
-                                    <span class="chip bg-color">Scratch</span>
+                                <a href="/tags/%E7%A1%AC%E4%BB%B6/">
+                                    <span class="chip bg-color">硬件</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                                    <span class="chip bg-color">编程</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%A3%9E%E8%8A%B1%E4%BB%A4/">
-                                    <span class="chip bg-color">飞花令</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%B0%91%E5%84%BF/">
-                                    <span class="chip bg-color">少儿</span>
+                                <a href="/tags/esp32cam/">
+                                    <span class="chip bg-color">esp32cam</span>
                                 </a>
                             
                         </div>
@@ -680,16 +671,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/04/08/mqttsensor/">
+                <a href="/2021/04/16/esp32cam/">
                     <div class="card-image">
                         
-                        <img src="/img/20210408/cover.jpg" class="responsive-img" alt="MQTT,Node-RED初探">
+                        <img src="/img/20210416/cover.jpg" class="responsive-img" alt="ESP32-Camera初探">
                         
-                        <span class="card-title">MQTT,Node-RED初探</span>
+                        <span class="card-title">ESP32-Camera初探</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -699,9 +691,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -714,19 +706,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mqtt/">
-                        <span class="chip bg-color">mqtt</span>
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6/">
+                        <span class="chip bg-color">硬件</span>
                     </a>
                     
-                    <a href="/tags/Node-red/">
-                        <span class="chip bg-color">Node-red</span>
-                    </a>
-                    
-                    <a href="/tags/homeassistant/">
-                        <span class="chip bg-color">homeassistant</span>
+                    <a href="/tags/esp32cam/">
+                        <span class="chip bg-color">esp32cam</span>
                     </a>
                     
                 </div>
@@ -740,12 +729,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/07/life-20210407/">
+                <a href="/2021/04/15/etax/">
                     <div class="card-image">
                         
-                        <img src="/img/20210407/cover0.webp" class="responsive-img" alt="生活记事">
+                        <img src="/img/20210415/cover.jpg" class="responsive-img" alt="南京儿童医保缴费发票打印">
                         
-                        <span class="card-title">生活记事</span>
+                        <span class="card-title">南京儿童医保缴费发票打印</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,7 +745,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
                             </span>
                         <span class="publish-author">
                             
@@ -773,12 +762,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%9D%E5%AE%9D/">
-                        <span class="chip bg-color">宝宝</span>
+                    <a href="/tags/%E5%8F%91%E7%A5%A8%E6%89%93%E5%8D%B0/">
+                        <span class="chip bg-color">发票打印</span>
                     </a>
                     
-                    <a href="/tags/%E7%85%A7%E7%89%87/">
-                        <span class="chip bg-color">照片</span>
+                    <a href="/tags/%E5%8C%BB%E4%BF%9D/">
+                        <span class="chip bg-color">医保</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%84%BF%E7%AB%A5/">
+                        <span class="chip bg-color">儿童</span>
                     </a>
                     
                 </div>
