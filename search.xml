@@ -107,11 +107,11 @@
       
         <tags>
             
-            <tag> 摄像头 </tag>
-            
             <tag> homeassistant </tag>
             
             <tag> homebridge </tag>
+            
+            <tag> 摄像头 </tag>
             
         </tags>
       
@@ -136,11 +136,11 @@
       
         <tags>
             
+            <tag> homeassistant </tag>
+            
             <tag> python </tag>
             
             <tag> 插件 </tag>
-            
-            <tag> homeassistant </tag>
             
             <tag> 燃气 </tag>
             
@@ -221,11 +221,11 @@
       
         <tags>
             
+            <tag> homeassistant </tag>
+            
             <tag> mqtt </tag>
             
             <tag> Node-red </tag>
-            
-            <tag> homeassistant </tag>
             
         </tags>
       
@@ -337,11 +337,11 @@
       
         <tags>
             
+            <tag> homeassistant </tag>
+            
             <tag> python </tag>
             
             <tag> 插件 </tag>
-            
-            <tag> homeassistant </tag>
             
             <tag> 电费 </tag>
             
@@ -395,11 +395,11 @@
       
         <tags>
             
+            <tag> homeassistant </tag>
+            
             <tag> python </tag>
             
             <tag> 插件 </tag>
-            
-            <tag> homeassistant </tag>
             
             <tag> 水费 </tag>
             
