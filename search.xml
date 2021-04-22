@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>InfluxDB 时序数据库</title>
+      <title>InfluxDB时序数据库</title>
       <link href="2021/04/22/influxdb/"/>
       <url>2021/04/22/influxdb/</url>
       
@@ -25,6 +25,35 @@
             <tag> 时序数据库 </tag>
             
             <tag> telegraf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ESB流控分析</title>
+      <link href="2021/04/21/esbflow/"/>
+      <url>2021/04/21/esbflow/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近有被问到现在产品的流控实现机制，之前知道得并不详细，这次准备翻翻代码，看看到底是如何实现的。下面就一探它的庐山正面目。</p></blockquote><h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0.简介"></a>0.简介</h3><hr><p>流控是可以一起部署或者分机器部署的，故可分为本地流控和流控服务器，可以通过开关决定使用哪个。在交易进来后，会去申请流控，如果超过设置的流控阈值就会报错，拒绝交易，达到流量控制的目的。</p><h3 id="1-实现逻辑"><a href="#1-实现逻辑" class="headerlink" title="1.实现逻辑"></a>1.实现逻辑</h3><hr><p>在适配流程中配置了流控的基础服务，当交易进来后。先检查是否是使用的本地流控，如果不是检查流控服务器是否正常，如果不正常这走本地流控，如果正常则去申请流控，如果申请出现异常也从本地流控走。</p><p>流控配置在数据库中存储，在重启时加载。可根据多个维度设置，目前常用的是调用方，交易码。当然也有按照年月日等等维度设置的。根据设置的流控阈值创建相应个数的token放入list的中。</p><p>去取流控时根据如下规则取出令牌</p><blockquote><ol><li>精确查询是否存在 <strong><code>调用方</code></strong> <strong><code>交易码</code></strong> 配置</li><li>查询 <strong><code>ALL</code></strong>  <strong><code>交易码</code></strong> 配置是否存在</li><li>查询 <strong><code>调用方</code></strong> <strong><code>ALL</code></strong> 配置是否存在</li><li>查询 <strong><code>ALL</code></strong> <strong><code>ALL</code></strong> 配置是否存在</li></ol></blockquote><p>如果拿不到就表示超出流量控制了。</p><h3 id="3-调用脑图"><a href="#3-调用脑图" class="headerlink" title="3.调用脑图"></a>3.调用脑图</h3><hr><p><img src="/img/20210421/esbflow.png" alt="esb脑图"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ESB </tag>
+            
+            <tag> 流控 </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
