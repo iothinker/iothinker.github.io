@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>InfluxDB 时序数据库</title>
+      <link href="2021/04/22/influxdb/"/>
+      <url>2021/04/22/influxdb/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>InfluxDB使开发人员能够构建物联网，分析和监控软件。它专门用于处理传感器，应用程序和基础架构所产生的大量和无数个带有时间戳的数据源。之前看到论坛上有使用这个数据库接入HA的，所以想试试。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>我是时在群晖docker上安装的 InfluxDB ，直接拉取，配置下启动即可。按照如下步骤操作即可</p><p><img src="/img/20210422/jietu0.png" alt="下载镜像"></p><p><img src="/img/20210422/jietu1.png" alt="启动配置"></p><p><img src="/img/20210422/jietu2.jpg" alt="启动配置"></p><p><img src="/img/20210422/jietu3.png" alt="启动配置"></p><p>启动完成后输入群晖的地址加上8086端口就能看到了，根据提示设置用户名密码等信息。</p><p><img src="/img/20210422/jietu4.png" alt="起始页"></p><h3 id="1-注入灵魂"><a href="#1-注入灵魂" class="headerlink" title="1.注入灵魂"></a>1.注入灵魂</h3><hr><p>数据库装好了，但是没数据，别担心，这就安排。将使用 Telegraf 监控系统状态</p><blockquote><p>Telegraf 是收集和报告指标和数据的代理，是TICK Stack的一部分，是一个插件驱动的服务器代理，用于收集和报告指标。</p><p>Telegraf 集成了直接从其运行的容器和系统中提取各种指标，事件和日志，从第三方API提取指标，甚至通过StatsD和Kafka消费者服务监听指标。</p></blockquote><p>我还是在docker里安装的 <strong>telegraf</strong> ，按照前面的步骤操作就行。就是配置 卷的时候注意下 ，换成  <strong>docker/telegraf/telegraf.conf</strong>  |   <strong>/etc/telegraf/telegraf.conf</strong> 然后启动即可。</p><p>点击Load Data -&gt; Telegraf  -&gt; Create Configuration</p><p><img src="/img/20210422/jietu5.png" alt="Telegraf配置"></p><p>选择System</p><p><img src="/img/20210422/jietu6.png" alt="选择System"></p><p>填写相关信息</p><p><img src="/img/20210422/jietu7.png" alt="填写相关信息"></p><p>配置完成</p><p><img src="/img/20210422/jietu8.png" alt="配置完成"></p><p>接着点击 <strong>新建的标题</strong> 就能查看到相关的配置信息了</p><p><img src="/img/20210422/jietu9.png" alt="Telegraf配置信息"></p><p>直接把里面的内容贴到 <strong>docker/telegraf/telegraf.conf</strong> 中，重启 telegraf  即可</p><h3 id="2-结果查看"><a href="#2-结果查看" class="headerlink" title="2.结果查看"></a>2.结果查看</h3><hr><p>到此配置结束了，去 <strong>Dashboards</strong> 页签就能看到采集到的数据图表信息了。</p><p><img src="/img/20210422/cover.jpg" alt="系统状态"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>后面准备把HA的数据也推送过来，看看效果。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> InfluxDB </tag>
+            
+            <tag> 时序数据库 </tag>
+            
+            <tag> telegraf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周末记事</title>
       <link href="2021/04/18/dayshare210418/"/>
       <url>2021/04/18/dayshare210418/</url>

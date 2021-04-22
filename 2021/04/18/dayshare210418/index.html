@@ -202,6 +202,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -703,17 +716,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/18/dayshare210418/">
+                <a href="/2021/04/22/influxdb/">
                     <div class="card-image">
                         
-                        <img src="/img/20210418/cover.jpg" class="responsive-img" alt="周末记事">
+                        <img src="/img/20210422/cover.jpg" class="responsive-img" alt="InfluxDB 时序数据库">
                         
-                        <span class="card-title">周末记事</span>
+                        <span class="card-title">InfluxDB 时序数据库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -723,39 +735,34 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%9D%E5%AE%9D/">
-                        <span class="chip bg-color">宝宝</span>
+                    <a href="/tags/InfluxDB/">
+                        <span class="chip bg-color">InfluxDB</span>
                     </a>
                     
-                    <a href="/tags/%E6%97%A9%E6%95%99/">
-                        <span class="chip bg-color">早教</span>
+                    <a href="/tags/%E6%97%B6%E5%BA%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">时序数据库</span>
                     </a>
                     
-                    <a href="/tags/%E5%91%A8%E6%9C%AB/">
-                        <span class="chip bg-color">周末</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%8B%E5%8F%8B/">
-                        <span class="chip bg-color">朋友</span>
+                    <a href="/tags/telegraf/">
+                        <span class="chip bg-color">telegraf</span>
                     </a>
                     
                 </div>
@@ -1047,7 +1054,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.6k</span>&nbsp;字
+                class="white-color">15k</span>&nbsp;字
             
             
             
