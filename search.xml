@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>通过Grafana展示HA数据</title>
+      <link href="grafana.html"/>
+      <url>grafana.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>上次搞了下influxdb，能够成功采集到NAS的系统状态信息，在结尾说要将HA接入到其中，所以今天这篇博客咱们就来弄这个东西。</p></blockquote><h3 id="0-准备活动"><a href="#0-准备活动" class="headerlink" title="0.准备活动"></a>0.准备活动</h3><hr><p>之前安装的<code>influxdb</code>是最新的，网上的教程基本都是1.X版的，所以只能自己尝试。因为HA的版本也低了，不能是用2.0的，所以HA也得升级。HA升级就比较坑了，很多之前的插件都用不了了，还得一个个修复，不过升级后很多设备都可以通过集成来配置了，很方便。</p><p><img src="/img/20210507/jietu0.png" alt="更新后的HA"></p><h3 id="1-安装Grafana"><a href="#1-安装Grafana" class="headerlink" title="1.安装Grafana"></a>1.安装Grafana</h3><hr><p>这步就很简单，搜索grafana下载，并运行就行，没什么特殊的配置。</p><p><img src="/img/20210507/jietu1.png" alt="下载Grafana镜像"></p><h3 id="2-配置HA"><a href="#2-配置HA" class="headerlink" title="2.配置HA"></a>2.配置HA</h3><hr><p>在<code>configuration.yaml</code>中添加相关的配置</p><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">influxdb</span><span class="token punctuation">:</span>    <span class="token key atrule">api_version</span><span class="token punctuation">:</span> <span class="token number">2</span>    <span class="token key atrule">ssl</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>    <span class="token key atrule">host</span><span class="token punctuation">:</span> 192.168.xxx.xxx    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8086</span>    <span class="token key atrule">token</span><span class="token punctuation">:</span> XXXXXXX    <span class="token key atrule">organization</span><span class="token punctuation">:</span> freefitter.com    <span class="token key atrule">bucket</span><span class="token punctuation">:</span> home_assistant    <span class="token key atrule">tags</span><span class="token punctuation">:</span>        <span class="token key atrule">source</span><span class="token punctuation">:</span> HA    <span class="token key atrule">tags_attributes</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> HA    <span class="token key atrule">default_measurement</span><span class="token punctuation">:</span> units<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>token</code>从<code>influxdb</code>中获取，从Data -&gt; Tokens中获取</p><p><img src="/img/20210507/jietu2.png" alt="获取Token"></p><p>配置完成重启HA就能够把数据注入到influxdb了，使用前不要忘记创建bucket</p><p><img src="/img/20210507/jietu3.png" alt="创建Buckets"></p><p>配置完成之后就能够看到数据了，下面是挑了一个搞的图表。</p><p><img src="/img/20210507/jietu4.png" alt="网络速率图"></p><p>其实influxdb2是自带图表的，不过功能没有Grafana强大。</p><h3 id="3-配置Grafana"><a href="#3-配置Grafana" class="headerlink" title="3.配置Grafana"></a>3.配置Grafana</h3><hr><p>配置数据源，将相关信息填写进去即可，注意 <code>Query Language</code> 要选择 <code>Flux</code> 然后把Token啥的填填就Okay了。</p><p><img src="/img/20210507/jietu5.png" alt="配置数据源"></p><p><img src="/img/20210507/jietu6.png" alt="填写相关信息"></p><p>然后创建一个面板把数据展现出来就行了。搞了几个示例，后面慢慢弄吧</p><p><img src="/img/20210507/jietu7.png" alt="成果展示"></p><h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><hr><p>总的来说搞起来并不是很难，现在的工具做的越来越简单。花点时间去理解就行。很多细节还是得自己去了解的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> homeassistant </tag>
+            
+            <tag> grafana </tag>
+            
+            <tag> influxdb2.0 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>五一小长假</title>
+      <link href="tourist.html"/>
+      <url>tourist.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>这次五一放5天，是个小长假，想着带宝宝出去逛逛。这不昨晚买了个旅游年卡，带小孩出去逛逛去。年卡是在 <strong><code>我的南京</code></strong> 上买的。带宝宝出去逛逛，年卡是一个不错的选择。</p></blockquote><h3 id="0-排计划"><a href="#0-排计划" class="headerlink" title="0.排计划"></a>0.排计划</h3><hr><p>刚刚买的年卡肯定得用起来，考虑到回家路线，所以选择了三个景点游玩，分别是 <strong>金牛湖</strong> <strong>雨发生态园</strong> <strong>红山森林动物园</strong> 这几个都是带小孩去玩的不错选择。</p><table><thead><tr><th align="left">日期</th><th>安排</th><th>天气</th><th>备注</th></tr></thead><tbody><tr><td align="left">五月一日</td><td>南京 -&gt; 老家</td><td>⛅️/☀️</td><td>中午老家休整，晚上吃饭</td></tr><tr><td align="left">五月二日</td><td>老家 -&gt; 金牛湖 -&gt; 南京</td><td>⛅️</td><td>吃个早午饭出发</td></tr><tr><td align="left">五月三日</td><td>雨发生态园</td><td>☀️/⛈</td><td>和福宝一起去，可晚上约饭</td></tr><tr><td align="left">五月四日</td><td>新冠疫苗接种 / 长江峰景 / 龙湖天街</td><td>⛈/⛅️</td><td>和小哥哥一起玩耍</td></tr><tr><td align="left">五月五日</td><td>红山森林动物园</td><td>☀️</td><td>休整收心</td></tr></tbody></table><h3 id="1-旅游照欣赏"><a href="#1-旅游照欣赏" class="headerlink" title="1.旅游照欣赏"></a>1.旅游照欣赏</h3><hr><p>照片后面贴，还在整理中……</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>出去玩还是得提前准备，夏天最好带足水和补给。</p><h3 id="3-年卡景点列表"><a href="#3-年卡景点列表" class="headerlink" title="3.年卡景点列表"></a>3.年卡景点列表</h3><hr><table><thead><tr><th>景点名称</th><th>不分年份 所有年卡可用</th><th>服务热线（025）</th></tr></thead><tbody><tr><td>明孝陵景区（含梅花山、梅花谷、孙权纪念馆等）<code>HOT</code></td><td>√</td><td>84446111</td></tr><tr><td>灵谷景区</td><td>√</td><td>84446111</td></tr><tr><td>音乐台</td><td>√</td><td>84446111</td></tr><tr><td>美龄宫</td><td>√</td><td>84431600</td></tr><tr><td>中山植物园(含南园)</td><td>周一闭馆</td><td>84347062</td></tr><tr><td>红山森林动物园<code>HOT</code></td><td>√</td><td>85620178</td></tr><tr><td>白马石刻公园</td><td>√</td><td>85408062</td></tr><tr><td>紫金山天文台</td><td>√</td><td>84347503</td></tr><tr><td>总统府（南京中国近代史遗址博物馆）<code>HOT</code></td><td>周一闭馆，不包括夜游</td><td>84578888</td></tr><tr><td>六朝博物馆</td><td>周一闭馆</td><td>52326032</td></tr><tr><td>毗卢寺景区</td><td>√</td><td>84405431</td></tr><tr><td>莫愁湖公园</td><td>√</td><td>86613724</td></tr><tr><td>瞻园（太平天国历史博物馆）<code>HOT</code></td><td>周一闭馆，不包括夜游</td><td>52201849</td></tr><tr><td>南京城墙景区（东水关至集庆门段 含中华门瓮城）<code>HOT</code></td><td>不包括夜游</td><td>83608359</td></tr><tr><td>南京城墙景区（中山门至光华东街段）</td><td>√</td><td>83217776</td></tr><tr><td>南京城墙景区（神策门至太平门段 含明城垣史博物馆）</td><td>不包括夜游</td><td>83608359</td></tr><tr><td>甘熙宅第（南京市民俗博物馆）<code>HOT</code></td><td>周一闭馆</td><td>52217104</td></tr><tr><td>阅江楼景区</td><td>√</td><td>58590298</td></tr><tr><td>珍珠泉风景区（含狮虎园）<code>HOT</code></td><td>√</td><td>58601545</td></tr><tr><td>珍珠泉名石艺术馆</td><td>√</td><td>58302699</td></tr><tr><td>明文化村（阳山碑材）（江宁区）</td><td>√</td><td>84111108</td></tr><tr><td>汤山古猿人洞（江宁区）</td><td>闭园升级改造中</td><td>84101828</td></tr><tr><td>江宁方山国家地质公园（江宁区）</td><td>周一闭馆</td><td>68720777</td></tr><tr><td>长江观音景区</td><td>√</td><td>83576343</td></tr><tr><td>燕子矶公园</td><td>√</td><td>85311337</td></tr><tr><td>达摩古洞景区（五马渡附近）</td><td>√</td><td>83576343</td></tr><tr><td>天生桥风景区（溧水区）</td><td>√</td><td>57225656</td></tr><tr><td>老山国家森林公园（浦口区）</td><td>√</td><td>58112708</td></tr><tr><td>金牛湖风景区（六合区）<code>HOT</code></td><td>√</td><td>57552888</td></tr><tr><td>大金山风景区（溧水区）</td><td>√</td><td>57493099</td></tr><tr><td>南京市博物馆（朝天宫）</td><td>周一闭馆</td><td>84466460</td></tr><tr><td>雨发生态园（浦口区）</td><td>√</td><td>52899999</td></tr><tr><td>万成生态园（浦口区）</td><td>√</td><td>58185888</td></tr><tr><td>国防教育馆（南京国防园内）</td><td>√</td><td>83313180</td></tr><tr><td>李剑晨艺术馆（清凉山公园内）</td><td>√</td><td>83728013</td></tr><tr><td>魏紫熙艺术馆（清凉山公园内）</td><td>√</td><td>83728013</td></tr><tr><td>龚贤纪念馆（清凉山公园内）</td><td>闭馆中，开放时间另行通知</td><td>83728013</td></tr><tr><td>大报恩寺遗址公园<code>HOT</code></td><td>(持卡参观时间：9:00-17:00,不包括夜游)(每月最后一周的周三闭园）</td><td>52009999</td></tr><tr><td>李香君故居（夫子庙景区内）</td><td>√</td><td>52249600</td></tr><tr><td>王导谢安纪念馆（夫子庙景区内）</td><td>√</td><td>86620852</td></tr><tr><td>宝船厂遗址公园</td><td>√</td><td>86227011</td></tr><tr><td>固城湖水慢城（高淳区）</td><td>√</td><td>68765015</td></tr><tr><td>江宁织造博物馆</td><td>周一闭馆</td><td>83416802</td></tr><tr><td>秦大士故居</td><td>√</td><td>86620852</td></tr><tr><td>芥子园（芥子园+惜抱轩）</td><td>周一闭馆</td><td>86227011</td></tr><tr><td>四方当代美术馆（浦口区）</td><td>周一闭馆</td><td>68765015</td></tr><tr><td>郭兴庄园2021</td><td>√</td><td>56210203</td></tr><tr><td>无想山景区2021</td><td>√</td><td>56205199</td></tr><tr><td>南京医用耗材国际博览馆2021</td><td>预计2021年5月初正式开馆</td><td>58262693、86275063</td></tr></tbody></table><h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游玩 </tag>
+            
+            <tag> 假期 </tag>
+            
+            <tag> 计划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客更新记录</title>
       <link href="blogupdate.html"/>
       <url>blogupdate.html</url>
