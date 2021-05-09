@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HA南京水费插件, hexo,智能家居,生活记录,技术">
+    <meta name="keywords" content="Grafana接入HA, hexo,智能家居,生活记录,技术">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HA南京水费插件 | 宁静致远</title>
+    <title>Grafana接入HA | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -218,12 +218,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/njwater/drop-of-water.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210509/jietu0.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HA南京水费插件</h1>
+                    <h1 class="description center-align post-title">Grafana接入HA</h1>
                 </div>
             </div>
         </div>
@@ -339,20 +339,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/homeassistant/">
-                                <span class="chip bg-color">homeassistant</span>
+                            <a href="/tags/grafana-image-renderer/">
+                                <span class="chip bg-color">grafana-image-renderer</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                <span class="chip bg-color">插件</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%B0%B4%E8%B4%B9/">
-                                <span class="chip bg-color">水费</span>
+                            <a href="/tags/HA/">
+                                <span class="chip bg-color">HA</span>
                             </a>
                         
                     </div>
@@ -363,8 +355,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
-                                智能家居
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
                             </a>
                         
                     </div>
@@ -376,28 +368,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-02
+                    2021-05-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-14
+                    2021-05-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    542
+                    376
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -415,118 +407,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="0-插件准备"><a href="#0-插件准备" class="headerlink" title="0.插件准备"></a>0.插件准备</h3><p>a) 登录<a target="_blank" rel="noopener" href="http://www.jlwater.com/login.html">南京水务</a>的官网</p>
-<p>b) 按住F12进入开发者模式</p>
-<p>c) 拿到cookie和客户号</p>
-<p>结果如图：</p>
-<p><img src="/img/njwater/njwater01.png" alt="结果截图"></p>
-<h3 id="1-配置HA"><a href="#1-配置HA" class="headerlink" title="1.配置HA"></a>1.配置HA</h3><p>将自定义插件上传到对应的目录下</p>
-<p>custom_components<br>└─nanjing_water<br>        sensor.py<br>        __init__.py</p>
-<p>接着在 configuration.yaml 中添加</p>
-<p><strong>sensor:</strong></p>
-<p>  <strong>- platform: nanjing_water</strong><br>     <strong>name: ‘水费’</strong><br>     <strong>custno: ‘XXXXX’</strong><br>     <strong>cookies: ‘XXXXXXXXXXXXXX’</strong></p>
-<h3 id="2-重启HA"><a href="#2-重启HA" class="headerlink" title="2.重启HA"></a>2.重启HA</h3><h3 id="3-结果展示"><a href="#3-结果展示" class="headerlink" title="3.结果展示"></a>3.结果展示</h3><p><img src="/img/njwater/njwater02.png" alt="结果截图"></p>
-<h3 id="4-代码展示"><a href="#4-代码展示" class="headerlink" title="4.代码展示"></a>4.代码展示</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">
-<span class="token triple-quoted-string string">"""
-Support for nanjing water
-# Author: freefitter
-# Created: 2019-08-21
-"""</span>
-<span class="token keyword">import</span> logging
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>const <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    CONF_API_KEY<span class="token punctuation">,</span> CONF_NAME<span class="token punctuation">,</span> ATTR_ATTRIBUTION<span class="token punctuation">,</span> CONF_ID
-    <span class="token punctuation">)</span>
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>entity <span class="token keyword">import</span> Entity
-<span class="token keyword">import</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>config_validation <span class="token keyword">as</span> cv
-<span class="token keyword">import</span> voluptuous <span class="token keyword">as</span> vol
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>components<span class="token punctuation">.</span>sensor <span class="token keyword">import</span> PLATFORM_SCHEMA
-<span class="token keyword">import</span> requests
-<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+                <blockquote>
+<p>Grafana已经搭好了，想把他的图表接入到HA里，下面就看看如何接入的吧</p>
+</blockquote>
+<h3 id="0-尝试"><a href="#0-尝试" class="headerlink" title="0.尝试"></a>0.尝试</h3><hr>
+<p>在论坛里逛逛逛，发现讲接入的不多，找到一篇 <a target="_blank" rel="noopener" href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=4185&amp;highlight=Grafana">HA历史记录和图表太慢,太丑?试试grafana吧</a> 这边他使用的都是老版的，所以之前的都参考不了，但是后面接入HA的思想还是可以考虑下的，用了camera，还是很巧妙的。按照他的图上，我始终找不到 <strong><code>Direct link rendered image</code></strong> 这个按钮。想试试直接贴URL地址看看是否可行，发现并不行。然后就开始多方查找了。</p>
+<h3 id="1-实施"><a href="#1-实施" class="headerlink" title="1.实施"></a>1.实施</h3><hr>
+<p>官网网上找了找，找到了 <a target="_blank" rel="noopener" href="https://grafana.com/docs/grafana/latest/administration/image_rendering/">这个</a> 发现了这个东西就是帮助渲染图标成图片形式的。</p>
+<p><img src="/img/20210509/jietu0.png" alt="网站截图"></p>
+<p>这就是我要找的东西啊，于是开始干起来。</p>
+<ol>
+<li><p>下载 grafana-image-renderer 镜像，相关的环境变量介绍和配置在<a target="_blank" rel="noopener" href="https://github.com/grafana/grafana-image-renderer/blob/master/docs/remote_rendering_using_docker.md">这里</a> </p>
+</li>
+<li><p>按照介绍配置一下环境变量</p>
+</li>
+<li><p>因为之前我们已经装好了 <code>Grafana</code> 所以还要改下它的变量，加上如下的配置</p>
+<blockquote>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini">GF_RENDERING_SERVER_URL: http://renderer:8081/render
+GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+GF_LOG_FILTERS: rendering:debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></blockquote>
+</li>
+<li><p>重启<code>Grafana</code>之后就能看到那个按钮了</p>
+</li>
+</ol>
+<p><img src="/img/20210509/jietu1.png" alt="网站截图"></p>
+<p>接着配置一下HA就行了，配置如下：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">camera</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">platform</span><span class="token punctuation">:</span> generic
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> 名称
+    <span class="token key atrule">still_image_url</span><span class="token punctuation">:</span> <span class="token string">'链接地址'</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> 用户名
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> 密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-_Log<span class="token operator">=</span>logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
-
-DEFAULT_NAME <span class="token operator">=</span> <span class="token string">'nanjing_water'</span>
-COOKIES <span class="token operator">=</span> <span class="token string">'cookies'</span>
-CUSTNO <span class="token operator">=</span> <span class="token string">'custno'</span>
-PLATFORM_SCHEMA <span class="token operator">=</span> PLATFORM_SCHEMA<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">{</span>
-    vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>COOKIES<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-    vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>CUSTNO<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-    vol<span class="token punctuation">.</span>Optional<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">,</span> default<span class="token operator">=</span> DEFAULT_NAME<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'Connection'</span><span class="token punctuation">:</span> <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
-    <span class="token string">'Upgrade-Insecure-Requests'</span><span class="token punctuation">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
-    <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
-    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (iPhone; CPU iPhone OS 12_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/zh_CN'</span><span class="token punctuation">,</span>
-    <span class="token string">'Referer'</span><span class="token punctuation">:</span> <span class="token string">'http://www.jlwater.com/waterFee/waterWx'</span><span class="token punctuation">,</span>
-    <span class="token string">'Accept-Language'</span><span class="token punctuation">:</span> <span class="token string">'zh-cn'</span><span class="token punctuation">,</span>
-    <span class="token string">'Accept-Encoding'</span><span class="token punctuation">:</span> <span class="token string">'gzip, deflate'</span>
-<span class="token punctuation">}</span>
-API_URL <span class="token operator">=</span> <span class="token string">"http://www.jlwater.com/waterFee/detail"</span>
-<span class="token keyword">def</span> <span class="token function">setup_platform</span><span class="token punctuation">(</span>hass<span class="token punctuation">,</span> config<span class="token punctuation">,</span> add_devices<span class="token punctuation">,</span> discovery_info<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    cookies <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>COOKIES<span class="token punctuation">)</span>
-    custno <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>CUSTNO<span class="token punctuation">)</span>
-    sensor_name <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">)</span>
-    query_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
-        <span class="token string">'consNo'</span><span class="token punctuation">:</span> custno<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-    HEADERS<span class="token punctuation">[</span><span class="token string">"Cookie"</span><span class="token punctuation">]</span> <span class="token operator">=</span> cookies
-    add_devices<span class="token punctuation">(</span><span class="token punctuation">[</span>NanjingWater<span class="token punctuation">(</span>sensor_name<span class="token punctuation">,</span>query_dict<span class="token punctuation">,</span>cookies<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token keyword">class</span> <span class="token class-name">NanjingWater</span><span class="token punctuation">(</span>Entity<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""Representation of a Nanjing water """</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>sensor_name<span class="token punctuation">,</span>query_dict<span class="token punctuation">,</span>cookies<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>attributes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        self<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token boolean">None</span>
-        self<span class="token punctuation">.</span>_query_dict <span class="token operator">=</span> query_dict
-        self<span class="token punctuation">.</span>_name <span class="token operator">=</span> sensor_name
-        self<span class="token punctuation">.</span>_cookies <span class="token operator">=</span> cookies
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">name</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the name of the sensor."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_name
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">state</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the state of the sensor."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_state
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">icon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""返回mdi图标."""</span>
-        <span class="token keyword">return</span> <span class="token string">'mdi:cup-water'</span>
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">device_state_attributes</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the state attributes."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>attributes
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">unit_of_measurement</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the unit this state is expressed in."""</span>
-        <span class="token keyword">return</span> <span class="token string">"元"</span>
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">try</span><span class="token punctuation">:</span>
-            response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>API_URL<span class="token punctuation">,</span>params<span class="token operator">=</span>self<span class="token punctuation">.</span>_query_dict<span class="token punctuation">,</span>headers <span class="token operator">=</span> HEADERS<span class="token punctuation">)</span>
-        <span class="token keyword">except</span> ReadTimeout<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection timeout...."</span><span class="token punctuation">)</span>
-        <span class="token keyword">except</span> ConnectionError<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection Error...."</span><span class="token punctuation">)</span>
-        <span class="token keyword">except</span> RequestException<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Unknown Error"</span><span class="token punctuation">)</span>
-        <span class="token comment"># res = response.content.decode('utf-8')</span>
-        soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">,</span><span class="token string">'html.parser'</span><span class="token punctuation">)</span>
-        waterFee <span class="token operator">=</span> soup<span class="token punctuation">.</span>select_one<span class="token punctuation">(</span><span class="token string">"#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(1)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'￥'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        lajiFee <span class="token operator">=</span> soup<span class="token punctuation">.</span>select_one<span class="token punctuation">(</span><span class="token string">"#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'￥'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        weiyueFee <span class="token operator">=</span> soup<span class="token punctuation">.</span>select_one<span class="token punctuation">(</span><span class="token string">"#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(3)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'￥'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        shangqijieyuFee <span class="token operator">=</span> soup<span class="token punctuation">.</span>select_one<span class="token punctuation">(</span><span class="token string">"#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(4)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'￥'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        qianfeiFee <span class="token operator">=</span> soup<span class="token punctuation">.</span>select_one<span class="token punctuation">(</span><span class="token string">"#searchFrom &gt; div:nth-child(2) &gt; div:nth-child(2)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_text<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'￥'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        <span class="token comment">#_Log.info("waterFee=" + waterFee)</span>
-        self<span class="token punctuation">.</span>_state <span class="token operator">=</span> waterFee
-        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'lajiFee'</span><span class="token punctuation">]</span> <span class="token operator">=</span> lajiFee
-        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'weiyueFee'</span><span class="token punctuation">]</span> <span class="token operator">=</span> weiyueFee
-        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'shangqijieyuFee'</span><span class="token punctuation">]</span> <span class="token operator">=</span> shangqijieyuFee
-        self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'qianfeiFee'</span><span class="token punctuation">]</span> <span class="token operator">=</span> qianfeiFee<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="5-附件下载"><a href="#5-附件下载" class="headerlink" title="5. 附件下载"></a>5. 附件下载</h3><p>附件可以去论坛上下载 <a target="_blank" rel="noopener" href="https://bbs.hassbian.com/thread-11955-1-1.html">南京水费插件</a></p>
+<p>接着在界面加一个图片实体就行了</p>
+<p><img src="/img/20210509/jietu2.png" alt="网站截图"></p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr>
+<p>凡事不要放弃，努力的去找，去学习，总会有收获的。</p>
 
                 
             </div>
@@ -553,7 +469,7 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.wangxingyang.com/njwater.html">https://www.wangxingyang.com/njwater.html</a>
+                    <a href="https://www.wangxingyang.com/grafana-image-renderer.html">https://www.wangxingyang.com/grafana-image-renderer.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,20 +507,12 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/homeassistant/">
-                                    <span class="chip bg-color">homeassistant</span>
+                                <a href="/tags/grafana-image-renderer/">
+                                    <span class="chip bg-color">grafana-image-renderer</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                    <span class="chip bg-color">插件</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%B0%B4%E8%B4%B9/">
-                                    <span class="chip bg-color">水费</span>
+                                <a href="/tags/HA/">
+                                    <span class="chip bg-color">HA</span>
                                 </a>
                             
                         </div>
@@ -1050,17 +958,17 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/jq-2021-qm.html">
+                <a href="/grafana-image-renderer.html">
                     <div class="card-image">
                         
+                        <img src="/img/20210509/jietu0.png" class="responsive-img" alt="Grafana接入HA">
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="小长假游记">
-                        
-                        <span class="card-title">小长假游记</span>
+                        <span class="card-title">Grafana接入HA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1070,30 +978,31 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B8%B8%E7%8E%A9/">
-                        <span class="chip bg-color">游玩</span>
+                    <a href="/tags/grafana-image-renderer/">
+                        <span class="chip bg-color">grafana-image-renderer</span>
                     </a>
                     
-                    <a href="/tags/%E9%81%9B%E5%A8%83/">
-                        <span class="chip bg-color">遛娃</span>
+                    <a href="/tags/HA/">
+                        <span class="chip bg-color">HA</span>
                     </a>
                     
                 </div>
@@ -1107,12 +1016,12 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/scratch.html">
+                <a href="/grafana.html">
                     <div class="card-image">
                         
-                        <img src="/img/20200706/logo_sm.png" class="responsive-img" alt="少儿编程之Scratch">
+                        <img src="/img/20210507/cover.jpg" class="responsive-img" alt="通过Grafana展示HA数据">
                         
-                        <span class="card-title">少儿编程之Scratch</span>
+                        <span class="card-title">通过Grafana展示HA数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1123,14 +1032,14 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                    教程
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
@@ -1140,16 +1049,16 @@ API_URL <span class="token operator">=</span> <span class="token string">"http:/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Scratch/">
-                        <span class="chip bg-color">Scratch</span>
+                    <a href="/tags/homeassistant/">
+                        <span class="chip bg-color">homeassistant</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">编程</span>
+                    <a href="/tags/grafana/">
+                        <span class="chip bg-color">grafana</span>
                     </a>
                     
-                    <a href="/tags/%E5%B0%91%E5%84%BF/">
-                        <span class="chip bg-color">少儿</span>
+                    <a href="/tags/influxdb2-0/">
+                        <span class="chip bg-color">influxdb2.0</span>
                     </a>
                     
                 </div>

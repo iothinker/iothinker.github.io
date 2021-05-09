@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Grafana接入HA</title>
+      <link href="grafana-image-renderer.html"/>
+      <url>grafana-image-renderer.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Grafana已经搭好了，想把他的图表接入到HA里，下面就看看如何接入的吧</p></blockquote><h3 id="0-尝试"><a href="#0-尝试" class="headerlink" title="0.尝试"></a>0.尝试</h3><hr><p>在论坛里逛逛逛，发现讲接入的不多，找到一篇 <a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=4185&amp;highlight=Grafana">HA历史记录和图表太慢,太丑?试试grafana吧</a> 这边他使用的都是老版的，所以之前的都参考不了，但是后面接入HA的思想还是可以考虑下的，用了camera，还是很巧妙的。按照他的图上，我始终找不到 <strong><code>Direct link rendered image</code></strong> 这个按钮。想试试直接贴URL地址看看是否可行，发现并不行。然后就开始多方查找了。</p><h3 id="1-实施"><a href="#1-实施" class="headerlink" title="1.实施"></a>1.实施</h3><hr><p>官网网上找了找，找到了 <a href="https://grafana.com/docs/grafana/latest/administration/image_rendering/">这个</a> 发现了这个东西就是帮助渲染图标成图片形式的。</p><p><img src="/img/20210509/jietu0.png" alt="网站截图"></p><p>这就是我要找的东西啊，于是开始干起来。</p><ol><li><p>下载 grafana-image-renderer 镜像，相关的环境变量介绍和配置在<a href="https://github.com/grafana/grafana-image-renderer/blob/master/docs/remote_rendering_using_docker.md">这里</a> </p></li><li><p>按照介绍配置一下环境变量</p></li><li><p>因为之前我们已经装好了 <code>Grafana</code> 所以还要改下它的变量，加上如下的配置</p><blockquote><pre class="line-numbers language-ini" data-language="ini"><code class="language-ini">GF_RENDERING_SERVER_URL: http://renderer:8081/renderGF_RENDERING_CALLBACK_URL: http://grafana:3000/GF_LOG_FILTERS: rendering:debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></blockquote></li><li><p>重启<code>Grafana</code>之后就能看到那个按钮了</p></li></ol><p><img src="/img/20210509/jietu1.png" alt="网站截图"></p><p>接着配置一下HA就行了，配置如下：</p><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">camera</span><span class="token punctuation">:</span>  <span class="token punctuation">-</span> <span class="token key atrule">platform</span><span class="token punctuation">:</span> generic    <span class="token key atrule">name</span><span class="token punctuation">:</span> 名称    <span class="token key atrule">still_image_url</span><span class="token punctuation">:</span> <span class="token string">'链接地址'</span>    <span class="token key atrule">username</span><span class="token punctuation">:</span> 用户名    <span class="token key atrule">password</span><span class="token punctuation">:</span> 密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>接着在界面加一个图片实体就行了</p><p><img src="/img/20210509/jietu2.png" alt="网站截图"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>凡事不要放弃，努力的去找，去学习，总会有收获的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> grafana-image-renderer </tag>
+            
+            <tag> HA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>通过Grafana展示HA数据</title>
       <link href="grafana.html"/>
       <url>grafana.html</url>
