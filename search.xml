@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>教师分数登记助手</title>
+      <link href="jszs.html"/>
+      <url>jszs.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="0-背景介绍"><a href="#0-背景介绍" class="headerlink" title="0.背景介绍"></a>0.背景介绍</h3><hr><p>这个是之前给老婆写的小工具，用来登记分数的，功能比较简单</p><h3 id="1-实现介绍"><a href="#1-实现介绍" class="headerlink" title="1.实现介绍"></a>1.实现介绍</h3><hr><p>在Excel中绘制一个按钮，然后把按钮绑定到指定的函数上就行。<code>记得启用宏</code></p><h3 id="2-代码展示"><a href="#2-代码展示" class="headerlink" title="2.代码展示"></a>2.代码展示</h3><hr><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">Sub recordScore()    stuscore = ""    danyuan = InputBox("请输需要录入的单元[请填写阿拉伯数字]", "提示")    danyan = 2 + danyuan    Do While stuscore &lt;&gt; "q"        stuscore = InputBox("请输入学号和成绩[以英文逗号分割],退出输入q", "提示")        If LCase(stuscore) = "q" Then            Exit Do        End If        If InStr(stuscore, ",") = 0 Then            MsgBox "输入的格式有误！", vbOKOnly, "提示"            Exit Sub        Else            arr = Split(stuscore, ",")            xh = arr(0)            cj = arr(1)            For j = 1 To Sheet1.[A65536].End(xlUp).Row                If CStr(Sheet1.Cells(j, 1).Value) = CStr(xh) Then                    Sheet1.Cells(j, danyan).Value = cj                    Exit For                End If            Next                End If    LoopEnd Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>代码简单的，一看就明白</p><h3 id="3-使用截图"><a href="#3-使用截图" class="headerlink" title="3.使用截图"></a>3.使用截图</h3><hr><p><img src="/img/20210519/jietu.png" alt="截图"></p><h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><hr><p>其实生活中有很多的地方可以使用编程的，只是很多时候自己已经适应了这些劳动，不想去改变，觉得就这样就挺好的。所以写工具偷懒也是一种进步的方式。之前是，现在是，以后也会是。</p><h3 id="5-下载Excel"><a href="#5-下载Excel" class="headerlink" title="5.下载Excel"></a>5.下载Excel</h3><hr><p><a href="/download/%E6%95%99%E5%B8%88%E5%88%86%E6%95%B0%E7%99%BB%E8%AE%B0%E5%8A%A9%E6%89%8B.xlsm">点击下载</a> Excel</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教师 </tag>
+            
+            <tag> Excel </tag>
+            
+            <tag> VBScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Grafana接入HA</title>
       <link href="grafana-image-renderer.html"/>
       <url>grafana-image-renderer.html</url>
