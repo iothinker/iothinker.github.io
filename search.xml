@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Markdown工具</title>
+      <link href="joplin.html"/>
+      <url>joplin.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近想在手机上谢谢东西，想用MD记录下生活。目前在用的<code>Typora</code>没有移动端，所以想找找有没有别的可以使用的工具</p></blockquote><h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0.简介"></a>0.简介</h3><hr><p>网络上有很多Markdown编辑器，各种评测都有，但是工具这种东西没有绝对的事情，所以很多还是要自己去感受。看了些评测之后决定下载<code>Joplin</code>试试水。<a href="https://joplinapp.org/">官网地址</a></p><h3 id="1-使用感受"><a href="#1-使用感受" class="headerlink" title="1.使用感受"></a>1.使用感受</h3><hr><p><code>Typora</code>是所见即所得，敲的东西能够立马帮你显现出来。而<code>Joplin</code>是采用预览的方式。都能马上看到成果，只是实现方式不同，看个人喜好了。<code>Joplin</code>貌似不能打开本地目录，在写博客的时候可能就比较麻烦。但是记录下生活的需要的东西还是很棒的，而且它还有同步功能，折腾了一下，还是挺好的。</p><h3 id="2-同步配置"><a href="#2-同步配置" class="headerlink" title="2.同步配置"></a>2.同步配置</h3><hr><ol start="0"><li>下载<code>WebDAV Server</code>套件，然后启动下，可以参看<a href="https://www.myxzy.com/sort/71.html">这个教程</a></li><li>创建相应的共享文件夹，目录名称为 <code>webdav/Joplin</code><br><img src="/img/20210524/0.png" alt="共享文件夹"></li><li>进行端口映射，把端口暴露到公网<br><img src="/img/20210524/1.png" alt="端口映射"></li><li>打开Joplin中的同步，配置相关参数<br><img src="/img/20210524/2.png" alt="同步配置"></li><li>大功告成，可以愉快的同步了<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3></li></ol><hr><p>很多东西还是得尝试才行，试过才知道好不好，适不适合。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+            <tag> Joplin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>园博园游记</title>
       <link href="dayshare210522.html"/>
       <url>dayshare210522.html</url>
