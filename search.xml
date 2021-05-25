@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>SpringBlade初探</title>
+      <link href="SpringBlade.html"/>
+      <url>SpringBlade.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>SpringBlade 是一个由商业级项目升级优化而来的 SpringCloud 分布式微服务架构、SpringBoot单体式微服务架构并存的综合型项目，采用Java8 API重构了业务代码，完全遵循阿里巴巴编码规范。采用Spring Boot 2.4 、Spring Cloud 2020 、Mybatis 等核心技术，同时提供基于React和Vue的两个前端框架用于快速搭建企业级的SaaS多租户微服务平台。</p></blockquote><h3 id="0-环境搭建"><a href="#0-环境搭建" class="headerlink" title="0.环境搭建"></a>0.环境搭建</h3><hr><p>首先得有基础环境，这边就不讨论了，应该都能搞定。接着需要安装Nacos和Sentinel，可以参看它的开发手册。<a href="https://www.kancloud.cn/smallchill/blade/1482369">SpringBlade开发手册</a> <a href="https://www.kancloud.cn/smallchill/saber/1302049">Saber开发手册</a> 环境搭建的免费阅读，可以看看</p><p>这边使用的docker安装的，安装完成之后的界面如下：</p><p><img src="/img/20210525/0.png" alt="docker"></p><p><img src="/img/20210525/2.png" alt="Nacos"></p><p><img src="/img/20210525/1.png" alt="Sentinel"></p><h3 id="1-导入运行"><a href="#1-导入运行" class="headerlink" title="1.导入运行"></a>1.导入运行</h3><hr><p>将后端项目导入到<code>IntelliJ IDEA</code>，前端项目使用<code>Visual Studio Code</code> 打开。项目是从Nacos上取配置的，相关配置在<code>doc/nacos/blade.yaml</code>中，在Nacos上新建配置并发布，最后的结果如上图所示了。别忘记将自己的相关信息修改正确哈。接着开始启动应用了。</p><p><img src="/img/20210525/3.png" alt="后端应用启动"></p><p>使用<code>npm run serve</code>启动前端应用</p><p><img src="/img/20210525/4.png" alt="前端应用启动"></p><h3 id="2-相关信息展示"><a href="#2-相关信息展示" class="headerlink" title="2.相关信息展示"></a>2.相关信息展示</h3><hr><p>登录页面地址 <a href="http://localhost:1888/">http://localhost:1888/</a></p><p><img src="/img/20210525/cover.png" alt="登陆页面"></p><p>Sentinel页面地址 <a href="http://localhost:8858/#/dashboard/home">http://localhost:8858/#/dashboard/home</a> Nacos页面地址 <a href="http://localhost:8848/nacos">http://localhost:8848/nacos</a></p><p>接口文档地址 <a href="http://127.0.0.1:18000/doc.html">http://127.0.0.1:18000/doc.html</a></p><p><img src="/img/20210525/5.png" alt="接口文档页面"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>环境搭建已经完毕，下面开始研究这个框架</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBlade </tag>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown工具</title>
       <link href="joplin.html"/>
       <url>joplin.html</url>
