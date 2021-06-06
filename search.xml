@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>替换工具</title>
+      <link href="replaceTool.html"/>
+      <url>replaceTool.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近有个需求，需要替换配置文件中的一个字段，因为配置文件较多，所以想着写工具来做。</p></blockquote><p>一开始准备用批处理的，奈何需要替换的内容中有特殊字符，如果没有还是挺方便的。既然批处理不行就转战vba了。代码不复杂，就是记录下，以后可能有用</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">rootPath="NCBS/"resulePath="Result/"logPath="Run.log"oldStr= ""newStr=""Set logfso = CreateObject("Scripting.FileSystemObject")Set logfile = logfso.CreateTextFile(logpath,True)Set fso = CreateObject("Scripting.FileSystemObject")Set folders = fso.GetFlolder(rootPath) Set files = folders.filesnum=0startDate=Now()For Each file In filesIf instr(file.name,"_system_") &gt; 0 Thenlogfile.WriteLine("开始处理文件[" &amp; file.name &amp; "]")Set stream = fso.opentextfile(rootPath &amp; file.name,1)content =  stream.readall()stream.close()content= Replace(content,oldStr,newStr)Set stream = fso.CreateTextFile(resulePath &amp; file.name,True)stream.write(content)stream.close()num = num +1End IfNextendDate = Now()timeDiff=DateDiff("s",startDate,endDate)logfile.WriteLine("共处理[" &amp; num &amp; "]个文件，耗时[" &amp; timeDiff &amp;"]s")Set fso = NothingSet logfso = Nothing<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>打完收工</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VBA </tag>
+            
+            <tag> 批量替换 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>久违的感统课</title>
       <link href="dayshare210530.html"/>
       <url>dayshare210530.html</url>
