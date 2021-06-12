@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>周末记事</title>
+      <link href="dayshare210612.html"/>
+      <url>dayshare210612.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>这次端午小长假，唯一遗憾的是周六得加班一天。但是我不在，妈妈会给宝贝拍很多的照片</p></blockquote><h3 id="0-早教＋游玩"><a href="#0-早教＋游玩" class="headerlink" title="0.早教＋游玩"></a>0.早教＋游玩</h3><hr><p>今天的课是妈妈陪宝宝去的，我只能通过照片来了解情况了，下面和我一起欣赏吧</p><p><video src="/img/20210612/0.mp4" controls="controls" width="100%" muted="" autoplay="true" loop="loop"></video></p><p><video src="/img/20210612/1.mp4" controls="controls" width="100%" muted="" autoplay="true" loop="loop"></video></p><p><video src="/img/20210612/2.mp4" controls="controls" width="100%" muted="" autoplay="true" loop="loop"></video></p><p><img src="/img/20210612/3.jpeg" alt="专心玩"></p><p><img src="/img/20210612/5.jpeg" alt="看轮滑"></p><h3 id="1-结语"><a href="#1-结语" class="headerlink" title="1.结语"></a>1.结语</h3><hr><p>最近彤彤鼻子堵了，睡觉的时候会因为它咳嗽。还好精神状态不错，希望她快快好起来。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 早教 </tag>
+            
+            <tag> 遛娃 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>替换工具</title>
       <link href="replaceTool.html"/>
       <url>replaceTool.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>最近有个需求，需要替换配置文件中的一个字段，因为配置文件较多，所以想着写工具来做。</p></blockquote><p>一开始准备用批处理的，奈何需要替换的内容中有特殊字符，如果没有还是挺方便的。既然批处理不行就转战vba了。代码不复杂，就是记录下，以后可能有用</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">rootPath="NCBS/"resulePath="Result/"logPath="Run.log"oldStr= ""newStr=""Set logfso = CreateObject("Scripting.FileSystemObject")Set logfile = logfso.CreateTextFile(logpath,True)Set fso = CreateObject("Scripting.FileSystemObject")Set folders = fso.GetFlolder(rootPath) Set files = folders.filesnum=0startDate=Now()For Each file In filesIf instr(file.name,"_system_") &gt; 0 Thenlogfile.WriteLine("开始处理文件[" &amp; file.name &amp; "]")Set stream = fso.opentextfile(rootPath &amp; file.name,1)content =  stream.readall()stream.close()content= Replace(content,oldStr,newStr)Set stream = fso.CreateTextFile(resulePath &amp; file.name,True)stream.write(content)stream.close()num = num +1End IfNextendDate = Now()timeDiff=DateDiff("s",startDate,endDate)logfile.WriteLine("共处理[" &amp; num &amp; "]个文件，耗时[" &amp; timeDiff &amp;"]s")Set fso = NothingSet logfso = Nothing<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>打完收工</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>最近有个需求，需要替换配置文件中的一个字段，因为配置文件较多，所以想着写工具来做。</p></blockquote><p>一开始准备用批处理的，奈何需要替换的内容中有特殊字符，如果没有还是挺方便的。既然批处理不行就转战vba了。代码不复杂，就是记录下，以后可能有用</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">rootPath="NCBS/"resulePath="Result/"logPath="Run.log"oldStr= ""newStr=""Set logfso = CreateObject("Scripting.FileSystemObject")Set logfile = logfso.CreateTextFile(logpath,True)Set fso = CreateObject("Scripting.FileSystemObject")Set folders = fso.GetFlolder(rootPath) Set files = folders.filesnum=0startDate=Now()For Each file In filesIf instr(file.name,"_system_") &gt; 0 Thenlogfile.WriteLine("开始处理文件[" &amp; file.name &amp; "]")Set stream = fso.opentextfile(rootPath &amp; file.name,1)content =  stream.readall()stream.close()content= Replace(content,oldStr,newStr)Set stream = fso.CreateTextFile(resulePath &amp; file.name,True)stream.write(content)stream.close()num = num +1End IfNextendDate = Now()timeDiff=DateDiff("s",startDate,endDate)logfile.WriteLine("共处理[" &amp; num &amp; "]个文件，耗时[" &amp; timeDiff &amp;"]s")Set fso = NothingSet logfso = Nothing<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>到这里就结束了</p>]]></content>
       
       
       <categories>
