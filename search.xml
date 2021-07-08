@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>Server酱推送</title>
+      <link href="wecomchan.html"/>
+      <url>wecomchan.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>之前HA有企业微信的插件，试了试，还是挺好用的。但是最近群晖抽风了，所以想找个别的地方部署下能推送的东西。</p></blockquote><h3 id="0-发现"><a href="#0-发现" class="headerlink" title="0.发现"></a>0.发现</h3><hr><p>之前刷的华硕官改路由，增加了软件中心。看到了推送的<code>Server酱</code>，用的线上版的，可以直接用，但是需要绑定微信，当时就是觉得他要和微信绑定，才没用的。现在出来了企业微信版的<a href="https://sct.ftqq.com/">Server酱</a> ,这样就可以愉快的玩耍了。</p><h3 id="1-搭建"><a href="#1-搭建" class="headerlink" title="1.搭建"></a>1.搭建</h3><hr><blockquote><p>本项目是对 <a href="https://github.com/easychen/wecomchan">Wecom酱</a> 进行的扩展，可以通过企业微信 OpenAPI 向微信推送消息，实现微信消息提醒。</p><p>利用 <a href="https://cloud.tencent.com/product/scf">腾讯云云函数</a> ServerLess 的能力，以极低的费用（按量付费，且有大量免费额度）来完成部署</p><p>优点：</p><ul><li>便宜：说是免费也不过分</li><li>简单：不需要购买vps, 也不需要备案, 腾讯云速度有保障.</li><li>易搭建：一个可执行二进制文件加一个配置文件，直接上传至腾讯云函数控制面板即可，虽然使用 Golang 编写，但是搭建无需 Golang 环境</li><li>Serverless：无服务器，函数调用完资源会释放</li></ul></blockquote><p>之前博客用的<code>Twikoo</code>的时候用了腾讯云函数，所以就跟着教程搭了起来，还是很友好的。作者已经写的很详细了，搭建教程在<a href="https://github.com/easychen/wecomchan/tree/main/go-scf">这里</a>。</p><h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><hr><p>直接上链接 <a href="https://xxxxx.tencentcs.com/release/wecomchan?sendkey=uuuuuuu&amp;msg_type=text&amp;msg=hello">https://xxxxx.tencentcs.com/release/wecomchan?sendkey=uuuuuuu&amp;msg_type=text&amp;msg=hello</a> 就能推送到手机了。<br><img src="/img/20210707/888.png" alt="手机截屏"></p><h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h3><hr><p>有了这个，剩下的就看自己发挥了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Server酱 </tag>
+            
+            <tag> 云函数 </tag>
+            
+            <tag> 推送 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>周末时光</title>
+      <link href="dayshare210703.html"/>
+      <url>dayshare210703.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>星期天彤妈培训，所以可能我需要一个人带娃</p></blockquote><h3 id="0-亲子课"><a href="#0-亲子课" class="headerlink" title="0. 亲子课"></a>0. 亲子课</h3><hr><p>彤彤的头发比较长了，没有理发，妈妈给她买了夹子夹起来了。还是很不错的。</p><p><img src="/img/20210703/IMG_2257.jpg" alt="夹上夹子的漂亮宝宝"></p><p>今天的亲子课表现的一般，玩具玩一遍就不想再玩了，就想着和老师交换玩具。不过最后的大运动还是完成的挺好的。自己跨越障碍物。</p><p><img src="/img/20210703/IMG_2263.jpg" alt="认真的宝"></p><h3 id="1-周天单独带娃"><a href="#1-周天单独带娃" class="headerlink" title="1.周天单独带娃"></a>1.周天单独带娃</h3><hr><p>今天彤妈培训，就我一人带娃，不过彤宝还是很乖的。基本没操啥心。她奶奶过来的早，所以还算轻松。晚上好兄弟约我去吃小龙虾🦞。四点多的时候去接她妈妈，然后一起过去。好久没聚了，正好一起玩玩很开心。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 早教 </tag>
+            
+            <tag> 遛娃 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周日记事</title>
       <link href="dayshare210627.html"/>
       <url>dayshare210627.html</url>
