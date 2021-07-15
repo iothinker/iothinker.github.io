@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ESP32-Camera初探, hexo,智能家居,生活记录,技术">
+    <meta name="keywords" content="Vbs解析word生成表格和文档, hexo,智能家居,生活记录,技术">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ESP32-Camera初探 | 宁静致远</title>
+    <title>Vbs解析word生成表格和文档 | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -218,12 +218,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210416/cover.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210715/cover.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ESP32-Camera初探</h1>
+                    <h1 class="description center-align post-title">Vbs解析word生成表格和文档</h1>
                 </div>
             </div>
         </div>
@@ -339,12 +339,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%A1%AC%E4%BB%B6/">
-                                <span class="chip bg-color">硬件</span>
+                            <a href="/tags/vbs/">
+                                <span class="chip bg-color">vbs</span>
                             </a>
                         
-                            <a href="/tags/esp32cam/">
-                                <span class="chip bg-color">esp32cam</span>
+                            <a href="/tags/word/">
+                                <span class="chip bg-color">word</span>
+                            </a>
+                        
+                            <a href="/tags/excel/">
+                                <span class="chip bg-color">excel</span>
                             </a>
                         
                     </div>
@@ -355,8 +359,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
-                                智能家居
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -368,28 +372,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-16
+                    2021-07-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-16
+                    2021-07-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    397
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    21 分
                 </div>
                 
 
@@ -408,36 +412,701 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>接触智能家居时间也不少了，写的东西都是偏软件的。所以想突破下尝试玩玩硬件。但是一直不知道搞什么，一次偶然的机会，发现了人家制作的ESP32-Camera，来了兴趣，就开始找资料，准备开始干。</p>
+<p>最近写了个VBS的工具，记录一下，以便以后查找。工具这种东西，还是需要需求驱动的，主要的还是要有一颗偷懒的心。</p>
 </blockquote>
-<h3 id="0-材料准备"><a href="#0-材料准备" class="headerlink" title="0.材料准备"></a>0.材料准备</h3><hr>
-<p>折腾硬件首先得有硬件，这是得找万能的某宝了。买了个板子和USB-TTL加起来三十块钱左右，性价比还是刚刚的。</p>
-<blockquote>
-<ol>
-<li><p>ESP32-Cam开发板</p>
-</li>
-<li><p>USB转TTL</p>
-</li>
-<li><p>杜邦线若干</p>
-</li>
-</ol>
-</blockquote>
-<p> 我买的第一家的ESP32-Cam但是收到后引脚没有焊好，导致后面刷固件死活刷不进去。后面重新买了这家的<a target="_blank" rel="noopener" href="https://detail.tmall.com/item.htm?spm=a230r.1.14.36.3d91b3514xTMwM&amp;id=616162319808&amp;ns=1&amp;abbucket=4&amp;skuId=4604638375622">ESP32-Cam</a>，然后就Okay了</p>
-<p><img src="/img/20210416/jietu0.jpg" alt="买到的ESP32-Cam"></p>
-<h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><hr>
-<p>a) <strong>驱动安装</strong></p>
-<p>刷固件首先都要装上驱动，我用的CP2102的，网上找了驱动，进入 <a target="_blank" rel="noopener" href="https://cn.silabs.com/">MAC驱动下载地址</a> 进去搜索即可，装上就行。windows会自动安装，不用操心。</p>
-<p>接着下载</p>
-<p>b) <strong>Arduino环境配置</strong></p>
-<p>去<a target="_blank" rel="noopener" href="https://www.arduino.cc/en/software">官网</a>下载Arduino，选择合适的平台下载</p>
-<p><img src="/img/20210416/jietu0.png" alt="Arduino网站截图"></p>
-<p>接下来照着这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45825635/article/details/106081995">教程</a>配置一下Arduino</p>
-<h3 id="2-接线烧录"><a href="#2-接线烧录" class="headerlink" title="2.接线烧录"></a>2.接线烧录</h3><hr>
-<p>按照之前教程上的图接线，下面这是我连好后的，烧录的时候一定要记得<strong>IO0和GND短接</strong></p>
-<p><img src="/img/20210416/jietu1.jpg" alt="实际接线图"></p>
-<p>烧录完成运行的时候发现它贼烫手，所以找了个散热片给它贴上了。</p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr>
-<p>上面的教程已经很详细了，我就不多多赘述了，后面想用它做点别的东西，到时候再分享给大家哈。</p>
+<h3 id="0-脚本简介"><a href="#0-脚本简介" class="headerlink" title="0.脚本简介"></a>0.脚本简介</h3><hr>
+<p>这个脚本是读取word文档，提取word中的表格数据，并按照一定格式输出出来。然后根据这个结果生成word文档。其实读取数据啥的比较简单，主要是格式游要求。还有就是需要操作word中的表格比较麻烦。</p>
+<h3 id="1-代码展示"><a href="#1-代码展示" class="headerlink" title="1.代码展示"></a>1.代码展示</h3><hr>
+<pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">Sub main()
+    Set dirFSO = CreateObject("Scripting.FileSystemObject")
+    Set wdapp = CreateObject("Word.Application")
+    Set tjDict = CreateObject("Scripting.Dictionary")
+    
+    Set regEx = CreateObject("vbscript.regexp")
+    regEx.Pattern = "\d+"
+    regEx.IgnoreCase = True '设置是否区分大小写
+    regEx.Global = True '设置全程匹配
+    wdapp.Visible = False   
+    fileNum = Sheet1.Range("A65535").End(-4162).Row
+    ' 获得目录下所有的word文件
+    filePath = Sheet1.Cells(1, 11).Value
+    Set dirFiles = dirFSO.GetFolder(filePath)
+    
+    '员工总人数
+    ygzrs = 0
+    '厂房面积总数
+    cfmjzs = 0
+    '仓库面积
+    ckmjzs = 0
+     '产值
+    czzs = 0
+    For Each file In dirFiles.Files
+        If dirFSO.getExtensionName(file.Path) = "doc" Or dirFSO.getExtensionName(file.Path) = "docx" Then
+            ' 打开word 获取内容
+            On Error GoTo Err_Handle
+            Set wordDoc = wdapp.Documents.Open(file.Path)
+            Set objTable = wordDoc.Tables(1)
+            rowNum = fileNum + 1
+            ' 序号
+            Sheet1.Cells(rowNum, 1).Value = fileNum - 1
+            ' 名称
+            Sheet1.Cells(rowNum, 2).Value = Replace(objTable.Cell(1, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            ' 主要负责人
+            Sheet1.Cells(rowNum, 3).Value = Replace(objTable.Cell(2, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            ' 联系电话
+            Sheet1.Cells(rowNum, 4).Value = Replace(objTable.Cell(2, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            ' 现场联系人
+            Sheet1.Cells(rowNum, 5).Value = Replace(objTable.Cell(3, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            ' 联系电话
+            Sheet1.Cells(rowNum, 6).Value = Replace(objTable.Cell(3, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            ' 地  址
+            Sheet1.Cells(rowNum, 7).Value = Replace(objTable.Cell(4, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            '检查时间
+            checkTime = Replace(objTable.Cell(1, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            Set matches = regEx.Execute(checkTime)
+            checkStr = ""
+            For Each match1 In matches
+                checkStr = checkStr + match1 + "."
+            Next
+            Sheet1.Columns("C").AutoFit
+            Sheet1.Columns("G").AutoFit
+            Sheet1.Cells(rowNum, 8).Value = Left(checkStr, Len(checkStr) - 1)
+            ' 做报告人员
+            Sheet1.Cells(rowNum, 9).Value = "XXXX"
+            ' 检查人员
+            Sheet1.Cells(rowNum, 10).Value = "XXXX"
+            
+            '****************保存word所需要的数据 start
+             ' 所属行业
+            sshy = Replace(objTable.Cell(5, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            Sheet3.Cells(rowNum, 1).Value = sshy
+            If tjDict.Exists(sshy) Then
+                tmp = tjDict.Item(sshy)
+                tjDict.Item(sshy) = tmp + 1
+            Else
+                tjDict.Item(sshy) = 1
+            End If
+            
+            aa = tjDict.Items()
+            bb = tjDict.Keys()
+            
+            ' 员工人数
+            ygrs = Replace(objTable.Cell(6, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            tmpNum = Replace(ygrs, "人", "")
+            Sheet3.Cells(rowNum, 2).Value = tmpNum
+            ygzrs = ygzrs + tmpNum
+            
+            If tmpNum &lt; 10 Then
+                If tjDict.Exists("10") Then
+                    tmp = tjDict.Item("10")
+                    tjDict.Item("10") = tmp + 1
+                Else
+                    tjDict.Item("10") = 1
+                End If
+            ElseIf tmpNum &lt;= 30 Then
+                If tjDict.Exists("30") Then
+                    tmp = tjDict.Item("30")
+                    tjDict.Item("30") = tmp + 1
+                Else
+                    tjDict.Item("30") = 1
+                End If
+            
+            ElseIf tmpNum &lt;= 100 Then
+                If tjDict.Exists("100") Then
+                    tmp = tjDict.Item("100")
+                    tjDict.Item("100") = tmp + 1
+                Else
+                    tjDict.Item("100") = 1
+                End If
+            Else
+                If tjDict.Exists("100+") Then
+                    tmp = tjDict.Item("100+")
+                    tjDict.Item("100+") = tmp + 1
+                Else
+                    tjDict.Item("100+") = 1
+                End If
+            End If
+
+            ' 厂房面积（┫）
+            cfmj = Replace(objTable.Cell(7, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            If InStr(cfmj, "/") &gt; 0 And InStr(cfmj, "┫") &gt; 0 Then
+                tmpNum = Replace(Split(cfmj, "/")(0), "┫", "")
+                Sheet3.Cells(rowNum, 3).Value = Replace(Split(cfmj, "/")(0), "┫", "")
+            Else
+                Sheet3.Cells(rowNum, 3).Value = "/"
+                tmpNum = 0
+            End If
+            
+            cfmjzs = cfmjzs + tmpNum
+            
+            
+            ' 仓库面积（┫）
+            ckmj = Replace(objTable.Cell(7, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            If InStr(ckmj, "/") &gt; 0 And InStr(ckmj, "┫") &gt; 0 Then
+                Sheet3.Cells(rowNum, 4).Value = Replace(Split(ckmj, "/")(0), "┫", "")
+                tmpNum = Replace(Split(ckmj, "/")(0), "┫", "")
+            Else
+                 Sheet3.Cells(rowNum, 4).Value = "/"
+                 tmpNum = 0
+            End If
+            
+            ckmjzs = ckmjzs + tmpNum
+            
+            ' 产值（万元）
+            cz = Replace(objTable.Cell(8, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+            
+            If InStr(cz, "万") &gt; 0 Then
+                 Sheet3.Cells(rowNum, 5).Value = Replace(cz, "万", "")
+                 tmpNum = Replace(cz, "万", "")
+            Else
+                 Sheet3.Cells(rowNum, 5).Value = "/"
+                 tmpNum = 0
+            End If
+             czzs = czzs + tmpNum
+             
+             If tmpNum &lt; 100 Then
+                If tjDict.Exists("100-") Then
+                    tmp = tjDict.Item("100-")
+                    tjDict.Item("100-") = tmp + 1
+                Else
+                    tjDict.Item("100-") = 1
+                End If
+            ElseIf tmpNum &lt;= 500 Then
+                If tjDict.Exists("500") Then
+                    tmp = tjDict.Item("500")
+                    tjDict.Item("500") = tmp + 1
+                Else
+                    tjDict.Item("500") = 1
+                End If
+            
+            ElseIf tmpNum &lt;= 2000 Then
+                If tjDict.Exists("2000") Then
+                    tmp = tjDict.Item("2000")
+                    tjDict.Item("2000") = tmp + 1
+                Else
+                    tjDict.Item("2000") = 1
+                End If
+            Else
+                If tjDict.Exists("2000+") Then
+                    tmp = tjDict.Item("2000+")
+                    tjDict.Item("2000+") = tmp + 1
+                Else
+                    tjDict.Item("2000+") = 1
+                End If
+            End If  
+            '****************保存word所需要的数据 end
+            ' 拆分内容
+            Set objTable2 = wordDoc.Tables(2)
+            allContent = Split(objTable2.Cell(21, 1).Range.Text, Chr(13))
+            startNum = Sheet2.Range("D65535").End(-4162).Row
+            isNeed = False
+            num = 1
+            Sheet2.Columns("A").ColumnWidth = 5.13
+            Sheet2.Columns("B").ColumnWidth = 12.5
+            For Each line1 In allContent
+            
+                If InStr(line1, "检查人员") &gt; 0 Then
+                    isNeed = False
+                End If
+                
+                If isNeed And Trim(line1) &lt;&gt; "" Then
+                
+                    Sheet2.Cells(startNum + 1, 4).HorizontalAlignment = 2 '设置水平对齐，1常规，2靠左，3居中，4靠右 5填充，6两端对齐，7跨列居中，8分散对齐
+                    Sheet2.Cells(startNum + 1, 4).VerticalAlignment = 2 '设置垂直对齐，1靠上，2居中，3靠下  4两端对齐，5分散对齐
+                    Sheet2.Cells(startNum + 1, 4).Font.Size = 10.5
+                    Sheet2.Cells(startNum + 1, 4).RowHeight = 29
+                    Sheet2.Cells(startNum + 1, 4).WrapText = True
+                    
+                    If InStr(line1, num) &gt; 0 Then
+                        tmpStr = Split(line1, "、")(1)
+                        Sheet2.Cells(startNum + 1, 4).Value = num &amp; "." &amp; tmpStr
+                    Else
+                        Sheet2.Cells(startNum + 1, 4).Value = num &amp; "." &amp; line1
+                    End If
+                    
+                    
+                    Sheet2.Cells(startNum + 1, 1).Value = fileNum - 1
+                    Sheet2.Cells(startNum + 1, 1).HorizontalAlignment = 3
+                    Sheet2.Cells(startNum + 1, 1).VerticalAlignment = 2
+                    
+                    
+                    Sheet2.Cells(startNum + 1, 2).Value = Replace(Left(checkStr, Len(checkStr) - 1), ".", "/")
+                    Sheet2.Cells(startNum + 1, 2).HorizontalAlignment = 3
+                    Sheet2.Cells(startNum + 1, 2).VerticalAlignment = 2
+                    
+                    
+                    
+                    Sheet2.Cells(startNum + 1, 5).WrapText = True
+                    Sheet2.Cells(startNum + 1, 5).Value = "以上问题立即整改。"
+                    Sheet2.Cells(startNum + 1, 3).Value = Replace(objTable.Cell(1, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+                    
+                    
+                    Sheet2.Cells(startNum + 1, 6).HorizontalAlignment = 3
+                    Sheet2.Cells(startNum + 1, 6).VerticalAlignment = 2
+                    Sheet2.Cells(startNum + 1, 6).Font.Size = 12
+                    Sheet2.Cells(startNum + 1, 6).Value = Replace(objTable.Cell(2, 2).Range.Text, Chr$(13) &amp; Chr$(7), "")
+                    
+                    
+                    Sheet2.Cells(startNum + 1, 7).HorizontalAlignment = 3
+                    Sheet2.Cells(startNum + 1, 7).VerticalAlignment = 2
+                    Sheet2.Cells(startNum + 1, 7).Font.Size = 12
+                    Sheet2.Cells(startNum + 1, 7).Value = Replace(objTable.Cell(2, 4).Range.Text, Chr$(13) &amp; Chr$(7), "")
+                    startNum = startNum + 1
+                    num = num + 1
+                End If
+                
+                If InStr(line1, "主要问题") &gt; 0 Then
+                    isNeed = True
+                End If
+                
+            Next
+            beginNum = startNum - num + 2
+            Application.DisplayAlerts = False
+            Sheet2.Range(Sheet2.Cells(beginNum, 1), Sheet2.Cells(startNum, 1)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 2), Sheet2.Cells(startNum, 2)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 3), Sheet2.Cells(startNum, 3)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 5), Sheet2.Cells(startNum, 5)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 6), Sheet2.Cells(startNum, 6)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 7), Sheet2.Cells(startNum, 7)).Merge
+            Sheet2.Range(Sheet2.Cells(beginNum, 9), Sheet2.Cells(startNum, 9)).Merge
+            Application.DisplayAlerts = True
+            fileNum = fileNum + 1
+            Sheet2.Range("A:C").Font.Name = "宋体"
+            Sheet2.Range("A:C").Font.Size = 12
+            Sheet2.Range("A:C").Font.Bold = True
+            
+            ' 所有边实线
+            Sheet2.Range("A:I").Borders(1).LineStyle = 1
+            Sheet2.Range("A:I").Borders(2).LineStyle = 1
+            Sheet2.Range("A:I").Borders(3).LineStyle = 1
+            Sheet2.Range("A:I").Borders(4).LineStyle = 1
+            
+             
+            Sheet3.Cells(1, 1).Value = ygzrs
+            Sheet3.Cells(1, 2).Value = cfmjzs
+            Sheet3.Cells(1, 3).Value = ckmjzs
+            Sheet3.Cells(1, 4).Value = czzs
+            
+            Sheet3.Cells(2, 1).Value = fileNum - 2
+            
+            
+        End If
+    Next
+Err_Handle:
+    Sheet3.Cells(1, 5).Value = tjDict.Item("100-")
+    Sheet3.Cells(1, 6).Value = tjDict.Item("500")
+    Sheet3.Cells(1, 7).Value = tjDict.Item("2000")
+    Sheet3.Cells(1, 8).Value = tjDict.Item("2000+")
+            
+    Sheet3.Cells(1, 9).Value = tjDict.Item("10")
+    Sheet3.Cells(1, 10).Value = tjDict.Item("30")
+    Sheet3.Cells(1, 11).Value = tjDict.Item("100")
+    Sheet3.Cells(1, 12).Value = tjDict.Item("100+")
+            
+    Sheet3.Cells(1, 13).Value = tjDict.Item("轻工")
+    Sheet3.Cells(1, 14).Value = tjDict.Item("建材")
+    Sheet3.Cells(1, 15).Value = tjDict.Item("机械")
+    Sheet3.Cells(1, 16).Value = tjDict.Item("物流")
+    Sheet3.Cells(1, 17).Value = tjDict.Item("危化")
+    wordDoc.Close False
+    wdapp.Quit
+End Sub
+
+
+Sub genWord()
+    On Error GoTo Err_Handle1
+    Dim ObjWD, ObjDOC
+    Set ObjWD = CreateObject("Word.application")
+    Set ObjDOC = ObjWD.Documents.Add
+    
+    Set objSelection = ObjWD.Selection
+    
+    ' 检查企业个数
+    jcqygs = Sheet3.Cells(2, 1).Value
+    
+    
+    ' 标题
+    objSelection.Font.Size = 24
+    objSelection.Font.Bold = False
+    objSelection.Font.Name = "黑体"
+    objSelection.ParagraphFormat.Alignment = 1
+    objSelection.TypeText ("xxxxxxxxxxxx6月底企业" &amp; Chr(13) &amp; Chr(10) &amp; "安全检查小结")
+    objSelection.TypeParagraph
+    
+    '
+    objSelection.Font.Size = 14
+    objSelection.Font.Bold = True
+    objSelection.Font.Name = "宋体"
+    objSelection.ParagraphFormat.Alignment = 3
+    objSelection.TypeText ("xxxxxx：")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("xxxxx成工业企业" &amp; jcqygs &amp; "xxxxxx小结如下：")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = True
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("一、xx重视，各项工展顺利")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("xxxxxxxxxxxxxxxxxxxxxx")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = True
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("二、工作开xx要情况：")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("xxxxxxxxxxxx")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.EndKey 6
+    
+    ObjWD.Selection.InsertBreak 2
+
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.Font.Bold = True
+    objSelection.TypeText ("xxxxxxxxxx工业企业" &amp; jcqygs &amp; "家基本信息表：")
+    objSelection.TypeParagraph
+    
+    rowNum = Sheet1.Range("A65535").End(-4162).Row
+    
+    objSelection.ParagraphFormat.Alignment = 1
+    objSelection.Font.Size = 10
+    
+    Dim objTable
+    ObjDOC.Tables.Add objSelection.Range, rowNum, 18
+    Set objTable = ObjDOC.Tables(1) '文档中的第一个表格
+    
+    objTable.AutoFitBehavior 2
+    
+    '*************表格样式
+    objTable.Range.Style = "网格型"
+    For i = 1 To 2
+        For j = 1 To 18
+            objTable.Cell(i, j).Range.Cells.VerticalAlignment = 1    '实现水平居中
+        Next
+    Next
+
+    objSelection.MoveDown 5, 1, 1
+    objSelection.Cells.Merge
+    
+    For i = 0 To 7
+        objSelection.MoveRight 1, 1
+        objSelection.MoveDown 5, 1, 1
+        objSelection.Cells.Merge
+    Next
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 7, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 2, 1
+    objSelection.Cells.Merge
+    
+    objTable.Cell(1, 1).Range.Text = "序号"
+    objTable.Cell(1, 2).Range.Text = "名称"
+    objTable.Cell(1, 3).Range.Text = "所属行业"
+    objTable.Cell(1, 4).Range.Text = "联系人"
+    objTable.Cell(1, 5).Range.Text = "联系电话"
+    objTable.Cell(1, 6).Range.Text = "员工人数"
+    objTable.Cell(1, 7).Range.Text = "厂房面积（┫）"
+    objTable.Cell(1, 8).Range.Text = "仓库面积（┫）"
+    objTable.Cell(1, 9).Range.Text = " 产值（万元）"
+    objTable.Cell(1, 10).Range.Text = "一般安全隐患"
+    objTable.Cell(1, 11).Range.Text = "重大安全隐患"
+    objTable.Cell(2, 10).Range.Text = "设备"
+    objTable.Cell(2, 11).Range.Text = "消防"
+    objTable.Cell(2, 12).Range.Text = "电气"
+    objTable.Cell(2, 13).Range.Text = "气瓶"
+    objTable.Cell(2, 14).Range.Text = "危化"
+    objTable.Cell(2, 15).Range.Text = "其他"
+    objTable.Cell(2, 16).Range.Text = "小计"
+    objTable.Cell(2, 17).Range.Text = "类型"
+    objTable.Cell(2, 18).Range.Text = "数量"
+    
+    '**********填充数据
+    For i = 3 To rowNum
+        For j = 1 To 18
+            objTable.Cell(i, j).Range.Font.Size = 8
+            objTable.Cell(i, j).Range.Font.Bold = False
+            objTable.Cell(i, j).Range.Cells.VerticalAlignment = 1    '实现水平居中
+        Next
+        objTable.Cell(i, 1).Range.Text = Sheet1.Cells(i, 1).Value
+        objTable.Cell(i, 2).Range.Text = Sheet1.Cells(i, 2).Value
+        objTable.Cell(i, 3).Range.Text = Sheet3.Cells(i, 1).Value
+        objTable.Cell(i, 4).Range.Text = Sheet1.Cells(i, 3).Value
+        objTable.Cell(i, 5).Range.Text = Sheet1.Cells(i, 4).Value
+        objTable.Cell(i, 6).Range.Text = Sheet3.Cells(i, 2).Value
+        objTable.Cell(i, 7).Range.Text = Sheet3.Cells(i, 3).Value
+        objTable.Cell(i, 8).Range.Text = Sheet3.Cells(i, 4).Value
+        objTable.Cell(i, 9).Range.Text = Sheet3.Cells(i, 5).Value
+    Next
+    
+    objTable.Rows.Add
+    For j = 1 To 18
+        objTable.Cell(rowNum + 1, j).Shading.BackgroundPatternColor = RGB(153, 136, 255)
+    Next
+    
+    ' 表尾
+    objTable.Cell(rowNum + 1, 1).Range.Text = rowNum - 1
+    objTable.Cell(rowNum + 1, 2).Range.Text = "合计"
+    objTable.Cell(rowNum + 1, 3).Range.Text = ""
+    objTable.Cell(rowNum + 1, 4).Range.Text = ""
+    objTable.Cell(rowNum + 1, 5).Range.Text = ""
+    objTable.Cell(rowNum + 1, 6).Range.Text = Sheet3.Cells(1, 1).Value
+    objTable.Cell(rowNum + 1, 7).Range.Text = Sheet3.Cells(1, 2).Value
+    objTable.Cell(rowNum + 1, 8).Range.Text = Sheet3.Cells(1, 3).Value
+    objTable.Cell(rowNum + 1, 9).Range.Text = Sheet3.Cells(1, 4).Value
+    objTable.Cell(rowNum + 1, 10).Range.Text = 0
+    objTable.Cell(rowNum + 1, 11).Range.Text = 0
+
+    objSelection.EndKey 6
+
+    objSelection.ParagraphFormat.Alignment = 3
+    objSelection.Font.Size = 14
+    objSelection.Font.Bold = True
+    
+    objSelection.TypeParagraph
+    objSelection.TypeText ("xxxxx底" &amp; jcqygs &amp; "家工业xxxxx情况x表：")
+    objSelection.TypeParagraph
+    
+    objSelection.ParagraphFormat.Alignment = 1
+    objSelection.Font.Size = 10.5
+    
+    Dim objTable1
+    ObjDOC.Tables.Add objSelection.Range, 4, 25
+    Set objTable1 = ObjDOC.Tables(2) '文档中的第二个表格
+    
+    objTable1.AutoFitBehavior 2
+    objTable1.Range.Style = "网格型"
+    For i = 1 To 4
+        For j = 1 To 25
+            objTable1.Cell(i, j).Range.Cells.VerticalAlignment = 1    '实现水平居中
+        Next
+    Next
+    ' 合并单元格
+    objSelection.MoveDown 5, 1
+    objSelection.MoveDown 5, 1, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveUp 5, 1
+
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 6, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveDown 5, 1, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveDown 5, 1, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 5, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 5, 1
+    objSelection.Cells.Merge
+    
+    objSelection.MoveRight 1, 1
+    objSelection.MoveRight 1, 6, 1
+    objSelection.Cells.Merge
+    
+    
+    objTable1.Cell(1, 1).Range.Text = "名称"
+    objTable1.Cell(1, 2).Range.Text = "现场一般安全隐患"
+    objTable1.Cell(1, 3).Range.Text = "重大生产安全隐患"
+    objTable1.Cell(1, 4).Range.Text = "小计"
+    objTable1.Cell(1, 5).Range.Text = "产值(万元）"
+    objTable1.Cell(1, 6).Range.Text = "员工人数"
+    objTable1.Cell(1, 7).Range.Text = "行业"
+    
+    
+    objTable1.Cell(2, 1).Range.Text = "工业企业"
+    objTable1.Cell(4, 1).Range.Text = "比例（%）"
+    
+    
+    
+    objTable1.Cell(2, 2).Range.Text = "设备"
+    objTable1.Cell(2, 3).Range.Text = "消防"
+    objTable1.Cell(2, 4).Range.Text = "电路"
+    objTable1.Cell(2, 5).Range.Text = "气瓶"
+    objTable1.Cell(2, 6).Range.Text = "危化"
+    objTable1.Cell(2, 7).Range.Text = "其他"
+    
+    objTable1.Cell(2, 10).Range.Text = "100以下"
+    objTable1.Cell(2, 11).Range.Text = "100-500"
+    objTable1.Cell(2, 12).Range.Text = "500-2000"
+    objTable1.Cell(2, 13).Range.Text = "2000以上"
+    objTable1.Cell(2, 14).Range.Text = "小计"
+    
+    objTable1.Cell(2, 15).Range.Text = "10人以下"
+    objTable1.Cell(2, 16).Range.Text = "10-30人"
+    objTable1.Cell(2, 17).Range.Text = "30-100人"
+    objTable1.Cell(2, 18).Range.Text = "100人以上"
+    objTable1.Cell(2, 19).Range.Text = "小计"
+    
+    objTable1.Cell(2, 20).Range.Text = "轻工"
+    objTable1.Cell(2, 21).Range.Text = "建材"
+    objTable1.Cell(2, 22).Range.Text = "机械"
+    objTable1.Cell(2, 23).Range.Text = "物流"
+    objTable1.Cell(2, 24).Range.Text = "危化"
+    objTable1.Cell(2, 25).Range.Text = "小计"
+
+    objTable1.Cell(3, 10).Range.Text = Sheet3.Cells(1, 5).Value
+    objTable1.Cell(3, 11).Range.Text = Sheet3.Cells(1, 6).Value
+    objTable1.Cell(3, 12).Range.Text = Sheet3.Cells(1, 7).Value
+    objTable1.Cell(3, 13).Range.Text = Sheet3.Cells(1, 8).Value
+    objTable1.Cell(3, 14).Range.Text = Sheet3.Cells(2, 1).Value
+    
+    objTable1.Cell(4, 10).Range.Text = Round((Sheet3.Cells(1, 5).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 11).Range.Text = Round((Sheet3.Cells(1, 6).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 12).Range.Text = Round((Sheet3.Cells(1, 7).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 13).Range.Text = Round((Sheet3.Cells(1, 8).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 14).Range.Text = "100"
+    
+    objTable1.Cell(3, 15).Range.Text = Sheet3.Cells(1, 9).Value
+    objTable1.Cell(3, 16).Range.Text = Sheet3.Cells(1, 10).Value
+    objTable1.Cell(3, 17).Range.Text = Sheet3.Cells(1, 11).Value
+    objTable1.Cell(3, 18).Range.Text = Sheet3.Cells(1, 12).Value
+    objTable1.Cell(3, 19).Range.Text = Sheet3.Cells(2, 1).Value
+    
+    objTable1.Cell(4, 15).Range.Text = Round((Sheet3.Cells(1, 9).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 16).Range.Text = Round((Sheet3.Cells(1, 10).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 17).Range.Text = Round((Sheet3.Cells(1, 11).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 18).Range.Text = Round((Sheet3.Cells(1, 12).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 19).Range.Text = "100"
+    
+    
+    objTable1.Cell(3, 20).Range.Text = Sheet3.Cells(1, 13).Value
+    objTable1.Cell(3, 21).Range.Text = Sheet3.Cells(1, 14).Value
+    objTable1.Cell(3, 22).Range.Text = Sheet3.Cells(1, 15).Value
+    objTable1.Cell(3, 23).Range.Text = Sheet3.Cells(1, 16).Value
+    objTable1.Cell(3, 24).Range.Text = Sheet3.Cells(1, 17).Value
+    objTable1.Cell(3, 25).Range.Text = Sheet3.Cells(2, 1).Value
+    
+    objTable1.Cell(4, 20).Range.Text = Round((Sheet3.Cells(1, 13).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 21).Range.Text = Round((Sheet3.Cells(1, 14).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 22).Range.Text = Round((Sheet3.Cells(1, 15).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 23).Range.Text = Round((Sheet3.Cells(1, 16).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 24).Range.Text = Round((Sheet3.Cells(1, 17).Value / Sheet3.Cells(2, 1).Value) * 100, 1)
+    objTable1.Cell(4, 25).Range.Text = "100"
+    
+    
+    objSelection.TypeParagraph
+    objSelection.EndKey 6
+    
+    '继续插入一个分节符
+    objSelection.InsertBreak 2
+    '定位到中间的页面
+    objSelection.Move 8, -1
+    objSelection.PageSetup.Orientation = 1
+    
+    
+    objSelection.EndKey 6
+    objSelection.Font.Size = 14
+    objSelection.ParagraphFormat.Alignment = 3
+    
+    objSelection.TypeText (jcqygs &amp; "kkkkkkkkkkkkk")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText (jcqygs &amp; "家企业中，有3xxxxxx。")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("xx问题x条：占全部xxxx点的11.8%，主要表现为：xxxxxxxx等。")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("xxxxx隐患")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = True
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("三、工作中xxxx的问题：")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("1、部分企业xxxxx安全生产意识薄弱；")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("2、在实xxxx不充分。")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = True
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("四、下一步xxxxx工作计划：")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("xxx检查企xxx点如下：")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("1、xx管构成重大xxxx整改；")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("5、现场xxxx重大xxxx隐患")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("6、现场xxxx按照xxxxx岗位的性质，合理xxxx相关xxxxx用品。")
+    objSelection.TypeParagraph
+    
+    
+    objSelection.Font.Bold = True
+    objSelection.ParagraphFormat.FirstLineIndent = 0
+    objSelection.TypeText ("五、下步工作计划：")
+    objSelection.TypeParagraph
+    
+    objSelection.Font.Bold = False
+    objSelection.ParagraphFormat.FirstLineIndent = 28
+    objSelection.TypeText ("1、对于企xxxx帮助；")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("2、及时xx后输出的xxxx、监管xxx早xxx、xxxx预防”；")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("3、拟对xxx的xxxxx管控；")
+    objSelection.TypeParagraph
+    objSelection.TypeText ("4、建立或xxx作群。")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    objSelection.TypeText ("后期我xxxxxxx更好。")
+    objSelection.TypeParagraph
+    objSelection.TypeParagraph
+    
+    objSelection.ParagraphFormat.FirstLineIndent = 210
+    objSelection.TypeText ("xxxxx事务所")
+    
+    
+    currPath = Application.ActiveWorkbook.Path
+    ObjDOC.SaveAs (currPath &amp; "/企业安全检查小结.doc")
+
+Err_Handle1:
+    ObjDOC.Close False
+    ObjWD.Quit
+MsgBox "处理完成", vbOKOnly, "提醒"
+End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-结语"><a href="#2-结语" class="headerlink" title="2.结语"></a>2.结语</h3><hr>
+<p>脚本中不支持枚举值，需要找到对应的数值，可以参看<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/office/vba/api/overview/word">微软的文档</a>。脚本写的比较乱，但是基本实现功能，后续可以优化一下。</p>
 
                 
             </div>
@@ -464,7 +1133,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.wangxingyang.com/esp32cam.html">https://www.wangxingyang.com/esp32cam.html</a>
+                    <a href="https://www.wangxingyang.com/genWord.html">https://www.wangxingyang.com/genWord.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,12 +1171,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%A1%AC%E4%BB%B6/">
-                                    <span class="chip bg-color">硬件</span>
+                                <a href="/tags/vbs/">
+                                    <span class="chip bg-color">vbs</span>
                                 </a>
                             
-                                <a href="/tags/esp32cam/">
-                                    <span class="chip bg-color">esp32cam</span>
+                                <a href="/tags/word/">
+                                    <span class="chip bg-color">word</span>
+                                </a>
+                            
+                                <a href="/tags/excel/">
+                                    <span class="chip bg-color">excel</span>
                                 </a>
                             
                         </div>
@@ -953,16 +1626,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/dayshare210418.html">
+                <a href="/genWord.html">
                     <div class="card-image">
                         
-                        <img src="/img/20210418/cover.jpg" class="responsive-img" alt="周末记事">
+                        <img src="/img/20210715/cover.png" class="responsive-img" alt="Vbs解析word生成表格和文档">
                         
-                        <span class="card-title">周末记事</span>
+                        <span class="card-title">Vbs解析word生成表格和文档</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -972,38 +1646,35 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%9D%E5%AE%9D/">
-                        <span class="chip bg-color">宝宝</span>
+                    <a href="/tags/vbs/">
+                        <span class="chip bg-color">vbs</span>
                     </a>
                     
-                    <a href="/tags/%E6%97%A9%E6%95%99/">
-                        <span class="chip bg-color">早教</span>
+                    <a href="/tags/word/">
+                        <span class="chip bg-color">word</span>
                     </a>
                     
-                    <a href="/tags/%E5%91%A8%E6%9C%AB/">
-                        <span class="chip bg-color">周末</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%8B%E5%8F%8B/">
-                        <span class="chip bg-color">朋友</span>
+                    <a href="/tags/excel/">
+                        <span class="chip bg-color">excel</span>
                     </a>
                     
                 </div>
@@ -1017,12 +1688,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/etax.html">
+                <a href="/dayshare210710.html">
                     <div class="card-image">
                         
-                        <img src="/img/20210415/cover.jpg" class="responsive-img" alt="南京儿童医保缴费发票打印">
+                        <img src="/img/20210710/1.jpg" class="responsive-img" alt="周末记事">
                         
-                        <span class="card-title">南京儿童医保缴费发票打印</span>
+                        <span class="card-title">周末记事</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1033,7 +1704,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
                             </span>
                         <span class="publish-author">
                             
@@ -1050,16 +1721,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8F%91%E7%A5%A8%E6%89%93%E5%8D%B0/">
-                        <span class="chip bg-color">发票打印</span>
+                    <a href="/tags/%E6%9C%8B%E5%8F%8B/">
+                        <span class="chip bg-color">朋友</span>
                     </a>
                     
-                    <a href="/tags/%E5%8C%BB%E4%BF%9D/">
-                        <span class="chip bg-color">医保</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%84%BF%E7%AB%A5/">
-                        <span class="chip bg-color">儿童</span>
+                    <a href="/tags/%E5%B8%A6%E5%A8%83/">
+                        <span class="chip bg-color">带娃</span>
                     </a>
                     
                 </div>
