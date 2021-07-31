@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>树莓派上webDev的搭建</title>
+      <link href="smpwebDAV.html"/>
+      <url>smpwebDAV.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>树莓派落灰很久了，最近群晖又总是抽风，所以准备重新捡起来用。把之前群晖上的小东西移到这上面来</p></blockquote><h3 id="0-镜像烧录"><a href="#0-镜像烧录" class="headerlink" title="0.镜像烧录"></a>0.镜像烧录</h3><hr><p>这边有参照的教程，<a href="https://www.pianshen.com/article/47451804883/">点击这里</a><br>工具的链接在<a href="https://www.balena.io/etcher/">这里</a><br>树莓派的<a href="https://www.raspberrypi.org/software/operating-systems/">镜像地址</a></p><h3 id="1-连上树莓派"><a href="#1-连上树莓派" class="headerlink" title="1.连上树莓派"></a>1.连上树莓派</h3><hr><p>烧录成功后，给树莓派通电之后使用<code>ssh</code>连接到树莓派上。我烧录的是ubuntu server ，默认的用户名密码都是<strong>ubuntu</strong><br>树莓派的地址可以从你的路由器中查看到。<br><img src="/img/20210731/0.png" alt="路由器截图"><br>接着就能够通过这个IP连接到树莓派了。登上了之后就需要修改密码，修改完成就行。<br><img src="/img/20210731/1.png" alt="命令行截图"><br>下面就可以开始操作了</p><h3 id="2-换源"><a href="#2-换源" class="headerlink" title="2.换源"></a>2.换源</h3><hr><p>这是网上找的清华的源</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse# 预发布软件源，不建议启用# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-proposed main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-proposed main restricted universe multiverse<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="3-安装webDAV"><a href="#3-安装webDAV" class="headerlink" title="3.安装webDAV"></a>3.安装webDAV</h3><hr><ol><li>安装apache2服务:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install apache2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>启用相关模块<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo a2enmod dav_fssudo a2enmod davsudo a2enmod dav_lock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li>创建虚拟主机目录:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mkdir /var/www/syncchown www-data:www-data /var/www/sync# 创建 Joplin 文件夹用作笔记同步mkdir /var/www/sync/Joplin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li><li>创建用户:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo htpasswd -c /var/www/me.dav freefittersudo chown root:www-data /var/www/me.davsudo chmod 640 /var/www/me.dav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li>配置虚拟主机:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim /etc/apache2/sites-available/webdav.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>在文件加入如下内容<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">*:</span>5005</span><span class="token punctuation">&gt;</span></span>        ServerAdmin webmaster@localhost        DocumentRoot /var/www/sync/        &lt;Directory /var/www/sync/&gt;                Options Indexes MultiViews                AllowOverride None                Require all granted        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>         Alias /webdav /var/www/sync         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Location</span> <span class="token punctuation">/&gt;</span></span>           DAV On           AuthType Basic           AuthName "xxxx"           AuthUserFile /var/www/me.dav           Require valid-user       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Location</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li>链接配置文件<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd /etc/apache2/sites-enabled/sudo ln -s ../sites-available/webdav.conf webdav.confsudo rm 000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li>重启<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo service apache2 restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>验证</li></ol><p>  浏览器中输入地址 <a href="http://192.168.50.234:5005/webdav/Joplin/">http://192.168.50.234:5005/webdav/Joplin/</a>就行了。</p><h3 id="4-Joplin的使用"><a href="#4-Joplin的使用" class="headerlink" title="4.Joplin的使用"></a>4.Joplin的使用</h3><hr><p>都是按照之前的配置去安装的，所以这一部分可以参看先前的文章操作即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Joplin </tag>
+            
+            <tag> webDev </tag>
+            
+            <tag> 树莓派 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周末分享</title>
       <link href="dayshare210725.html"/>
       <url>dayshare210725.html</url>
