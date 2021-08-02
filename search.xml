@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Pi-dashboard的使用</title>
+      <link href="pi-dashboard.html"/>
+      <url>pi-dashboard.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>想监控树莓派的运行状态，网上找了一个项目叫<code>pi-dashboard</code>的项目 </p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>教程写的很详细，不需要在多写啥了，链接在下方<br>参考地址 <a href="https://make.quwj.com/project/10">https://make.quwj.com/project/10</a></p><h3 id="1-修改访问慢的问题"><a href="#1-修改访问慢的问题" class="headerlink" title="1.修改访问慢的问题"></a>1.修改访问慢的问题</h3><hr><p>1.进去首页很面，发现<strong>bootstrap.min.css</strong>里面引用了这个 <a href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700</a> 这个东西得等他超时后，页面才渲染出来，我直接给注释了，现在页面秒开。</p><h3 id="2-后续想法"><a href="#2-后续想法" class="headerlink" title="2.后续想法"></a>2.后续想法</h3><hr><p>看了一下这个这个项目，是通过<code>GET</code> <strong><a href="http://192.168.50.XXX:Port/pi-dashboard/?ajax=true">http://192.168.50.XXX:Port/pi-dashboard/?ajax=true</a></strong> 这个地址来获得信息的。所以后面可以结合server酱来做一些系统运行状态的通知。<br>如内存和空间的预警等等。<br>返回的信息如下：<br><img src="/img/20210802/0.png" alt="返回截图"><br>基本的系统信息都包括了，还是挺好的。</p><h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h3><hr><p>后面准备在树莓派上多搞搞东西，多用用这个小东西。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 树莓派 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树莓派 </tag>
+            
+            <tag> pi-dashboard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>树莓派上webDAV的搭建</title>
       <link href="smpwebDAV.html"/>
       <url>smpwebDAV.html</url>
@@ -13,7 +40,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 树莓派 </category>
           
       </categories>
       
