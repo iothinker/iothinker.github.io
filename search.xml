@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>iPad Pro&amp;Apple Pencil 2</title>
+      <link href="apple.html"/>
+      <url>apple.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近缠着老婆要了苹果的iPad Pro和Apple pencil ，有了它们之后，就去找了找看看什么软件搭配这个笔比较好，所以就有了下面的文章。一起来看看吧！</p></blockquote><h3 id="0-购买过程"><a href="#0-购买过程" class="headerlink" title="0.购买过程"></a>0.购买过程</h3><hr><p>这两个东西，心心念念了很久，但是太贵了，一直没舍得下手。最近苹果的<strong>教育优惠</strong>也开始了，所以我就想着来一波。购买的理由是陪老婆玩游戏的，终于在前不久把这个事情给落实了。平板和笔是分开买的，因为老婆觉得笔没必要，所以不答应我买，不过最后我决定自费买一支😄，找了老婆同事的朋友，<strong>9折</strong>拿下了笔。<br><img src="/img/20210814/pen.png" alt="笔"></p><p><img src="/img/20210814/2.jpeg" alt="平板"></p><p><img src="/img/20210814/0.png" alt="送的耳机"></p><h3 id="1-使用历程"><a href="#1-使用历程" class="headerlink" title="1.使用历程"></a>1.使用历程</h3><hr><p>笔没到之前，单独使用了iPad感觉就是快了，进游戏的速度比老婆那个老Pad快了不少，然后就是能耗也还好，最喜欢的还是随航功能，最近在家办公，所以这个功能着实好用啊。等笔拿到手，发现自己竟然一无是处😂，字嘛写的不好看，画画嘛也丑到不行，感觉笔买的没啥用。其实一开始的想法只是想用它来记录下自己的想法的，有时候电脑上不能够直观的表达出来，写在纸上吧，迟早是要丢的，所以还是想用它来做这些。</p><h3 id="2-意外收获"><a href="#2-意外收获" class="headerlink" title="2.意外收获"></a>2.意外收获</h3><hr><p>网上找到了合适的笔记软件，奈何都比较贵。但是苹果有限免，所以就想找个可以查找限免的接口，看看啥时候它在内。找了一圈没有现成的接口，后来看到知乎上的这个<a href="https://www.zhihu.com/question/380173718/answer/1600608423">文章</a>意外的发现了<strong>Scriptable</strong>这个软件，虽然它和捷径差不多，但是感觉它更自由，可玩性更高。之前看到过它，但是一直没有下载，刚刚下载试了试，还是不错的。<br><img src="/img/20210814/1.png" alt="Scriptable的截图"><br>能用上小组件感觉就很好。</p><h3 id="3-准备折腾"><a href="#3-准备折腾" class="headerlink" title="3.准备折腾"></a>3.准备折腾</h3><hr><p>有了树莓派，再加上写一些整合的接口，就可以组合搞一些好玩的东西了。可以用来显示树莓派的状态和追踪某个特定app的价格是否变动，也可以显示别的一些东西。再通过之前的server酱来通知，感觉会很好玩。后面有整出来在写个东西给你们看看。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> iPad </tag>
+            
+            <tag> Apple Pencil 2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Pi-dashboard的使用</title>
       <link href="pi-dashboard.html"/>
       <url>pi-dashboard.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>想监控树莓派的运行状态，网上找了一个项目叫<code>pi-dashboard</code>的项目 </p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>教程写的很详细，不需要在多写啥了，链接在下方<br>参考地址 <a href="https://make.quwj.com/project/10">https://make.quwj.com/project/10</a></p><h3 id="1-修改访问慢的问题"><a href="#1-修改访问慢的问题" class="headerlink" title="1.修改访问慢的问题"></a>1.修改访问慢的问题</h3><hr><p>1.进去首页很面，发现<strong>bootstrap.min.css</strong>里面引用了这个 <a href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700</a> 这个东西得等他超时后，页面才渲染出来，我直接给注释了，现在页面秒开。</p><h3 id="2-后续想法"><a href="#2-后续想法" class="headerlink" title="2.后续想法"></a>2.后续想法</h3><hr><p>看了一下这个这个项目，是通过<code>GET</code> <strong><a href="http://192.168.50.XXX:Port/pi-dashboard/?ajax=true">http://192.168.50.XXX:Port/pi-dashboard/?ajax=true</a></strong> 这个地址来获得信息的。所以后面可以结合server酱来做一些系统运行状态的通知。<br>如内存和空间的预警等等。<br>返回的信息如下：<br><img src="/img/20210802/0.png" alt="返回截图"><br>基本的系统信息都包括了，还是挺好的。</p><h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h3><hr><p>后面准备在树莓派上多搞搞东西，多用用这个小东西。</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>想监控树莓派的运行状态，网上找了一个项目叫<code>pi-dashboard</code>的项目 </p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>教程写的很详细，不需要在多写啥了，链接在下方<br>参考地址 <a href="https://make.quwj.com/project/10">https://make.quwj.com/project/10</a></p><h3 id="1-修改访问慢的问题"><a href="#1-修改访问慢的问题" class="headerlink" title="1.修改访问慢的问题"></a>1.修改访问慢的问题</h3><hr><p>1.进去首页很面，发现<strong>bootstrap.min.css</strong>里面引用了这个 <a href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700</a> 这个东西得等他超时后，页面才渲染出来，我直接给注释了，现在页面秒开。</p><p><img src="/img/20210802/cover.png" alt="页面截图"></p><h3 id="2-后续想法"><a href="#2-后续想法" class="headerlink" title="2.后续想法"></a>2.后续想法</h3><hr><p>看了一下这个这个项目，是通过<code>GET</code> <strong><a href="http://192.168.50.XXX:Port/pi-dashboard/?ajax=true">http://192.168.50.XXX:Port/pi-dashboard/?ajax=true</a></strong> 这个地址来获得信息的。所以后面可以结合server酱来做一些系统运行状态的通知。<br>如内存和空间的预警等等。<br>返回的信息如下：<br><img src="/img/20210802/0.png" alt="返回截图"><br>基本的系统信息都包括了，还是挺好的。</p><h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h3><hr><p>后面准备在树莓派上多搞搞东西，多用用这个小东西。</p>]]></content>
       
       
       <categories>
