@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Scriptable的使用</title>
+      <link href="scriptable.html"/>
+      <url>scriptable.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>上次说要整<code>Scriptable</code>的，这不他来了</p></blockquote><h3 id="0-开始"><a href="#0-开始" class="headerlink" title="0.开始"></a>0.开始</h3><hr><p>从他的插件中心下载了<code>iTermWidget</code>这个插件，为啥下载这个呢，因为我觉得他的排版和样式我很喜欢。下下来之后基本是不能用的状态，因为你得注册获拿到调用API的许可才行，这个是国外的，验证码刷不出来，注册半天也没搞出来，所以我准备不用原来的，自己搞起！</p><h3 id="1-过程"><a href="#1-过程" class="headerlink" title="1.过程"></a>1.过程</h3><hr><p>先看看成果吧<br><img src="/img/20210817/WechatIMG120.jpeg" alt="成果图"><br>之前的东西只有手机的电量和手机亮度是保留的，其他的都改掉了。<br>每行分别的意思是：</p><ol><li>网站的PV，总访问量和新旧访客的访问量</li><li>Notability的价格监控</li><li>天气</li><li>树莓派的温度，负载，和磁盘空间</li><li>公司打卡情况</li><li>手机的电量和亮度</li></ol><p>网站的PV是百度统计的，得自己去搞一下，这个是<a href="https://tongji.baidu.com/sc-web/10000222464/home/dataapi">百度统计的说明</a><br>价格监控是网上找的弄歪一个插件的，我只用了它的API，这边就不贴出来了<br>天气这个东西是好久之前找的一个API<br>树莓派的情况是上次和大家说的那个接口<br>公司打卡是自己抓的包，也不方便贴</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>本来想封装一个全的接口的，但是现在每个接口的数据都是json的，很好处理，所有就没有多此一举了。代码就不贴了都是js的。网上有很多的，比较通用的，这个属于个人定制了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Scriptable </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Word中表格操作</title>
       <link href="wordChange.html"/>
       <url>wordChange.html</url>
