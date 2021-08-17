@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="生活记事, hexo,智能家居,生活记录,技术">
+    <meta name="keywords" content="Word中表格操作, hexo,智能家居,生活记录,技术">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>生活记事 | 宁静致远</title>
+    <title>Word中表格操作 | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -218,12 +218,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210407/cover0.webp')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210817/cover.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">生活记事</h1>
+                    <h1 class="description center-align post-title">Word中表格操作</h1>
                 </div>
             </div>
         </div>
@@ -339,12 +339,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%9D%E5%AE%9D/">
-                                <span class="chip bg-color">宝宝</span>
+                            <a href="/tags/vbs/">
+                                <span class="chip bg-color">vbs</span>
                             </a>
                         
-                            <a href="/tags/%E7%85%A7%E7%89%87/">
-                                <span class="chip bg-color">照片</span>
+                            <a href="/tags/word/">
+                                <span class="chip bg-color">word</span>
                             </a>
                         
                     </div>
@@ -355,8 +355,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                生活
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -368,28 +368,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-07
+                    2021-08-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-07
+                    2021-08-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    102
+                    874
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -407,13 +407,179 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr>
-<p>下班后彤彤就到小区门口接我们，接着去拿了个快递。以下是彤妈拍的漂亮彤</p>
-<p><img src="/img/20210407/0.jpg" alt="漂亮可爱的宝宝"></p>
-<p><img src="/img/20210407/1.jpg" alt="漂亮可爱的宝宝"></p>
-<p><img src="/img/20210407/2.jpg" alt="漂亮可爱的宝宝"></p>
-<h3 id="1-说在最后"><a href="#1-说在最后" class="headerlink" title="1.说在最后"></a>1.说在最后</h3><hr>
-<p>小孩的魔力真的很大，很能感染你。家人可能会为了宝宝的成长有些许分歧，但是目标总是希望她健康快乐成长。生活就是这样，好好享受这个过程。</p>
+                <blockquote>
+<p>功能简介：将当前的Word表格换个格式保存</p>
+</blockquote>
+<h3 id="0-代码如下"><a href="#0-代码如下" class="headerlink" title="0.代码如下"></a>0.代码如下</h3><hr>
+<pre class="line-numbers language-none"><code class="language-none">' 复制文件，给Excel新增列
+On Error Resume Next
+Function changeStyle(folderspec)
+	Dim fso, f, file, fc, s ,s1 ,s2 ,s3,ObjWD,ObjDOC
+	Set fso = CreateObject("scripting.FileSystemObject")
+	Set ObjWD=CreateObject("Word.application")
+	Set f = fso.GetFolder(folderspec)
+	Set fc = f.Files
+	For Each file in fc
+		If ( fso.getExtensionName(file.Path) = "doc" Or fso.getExtensionName(file.Path) = "docx" ) and instr(file.Path,"~") = 0 Then
+			Set objDoc=ObjWD.Documents.Open(file.Path)
+			Set objSelection = ObjWD.Selection
+			
+			
+			' 选中最后一个表格
+			set objTable=objDoc.Tables(objDoc.tables.Count)
+			rowNum = objTable.Rows.Count 
+			
+			' 先新增再删除
+			objSelection.EndKey 6
+			ObjSelection.TypeParagraph
+			
+			ObjDOC.Tables.Add objSelection.Range, rowNum, 10
+			
+			
+			Set objTable1 = ObjDOC.Tables(objDoc.tables.Count) 
+			
+			objTable1.AutoFitBehavior 2
+			
+			'*************表格样式
+			objTable1.Range.Style = "网格型"
+			
+			
+			
+			' 合并单元格
+			' 一、软件资料问题
+			objSelection.MoveRight 1, 10, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveDown 5, 1
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objTable1.Cell(3, 1).Range.Select
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objSelection.MoveRight 1, 1
+			objSelection.MoveRight 1, 2, 1
+			objSelection.Cells.Merge
+			
+			objTable1.Cell(2, 1).Range.Select
+			
+			objSelection.MoveDown 5, 2
+			objSelection.MoveRight 1, 10, 1
+			objSelection.Cells.Merge
+			
+			'-------------------------
+			objTable1.Cell(1, 1).Range.Font.Size = 12
+			objTable1.Cell(1, 1).Range.Font.Bold = True
+			
+			objTable1.Cell(1, 1).Range.Text = "一、软件资料问题"
+			objTable1.Cell(2, 1).Range.Text = "序号"
+			objTable1.Cell(2, 2).Range.Text = "软件资料问题点"
+			objTable1.Cell(2, 3).Range.Text = "整改建议"
+			objTable1.Cell(2, 4).Range.Text = "整改期限"
+			objTable1.Cell(2, 5).Range.Text = "整改依据"
+			objTable1.Cell(2, 6).Range.Text = "备注"
+			
+			objTable1.Cell(4, 1).Range.Font.Size = 12
+			objTable1.Cell(4, 1).Range.Font.Bold = True
+			For i = 1 to 10
+				objTable1.Cell(5, i).Range.Font.Size = 12
+				objTable1.Cell(5, i).Range.Font.Bold = True
+				if i &lt;= 6 then
+					objTable1.Cell(2, i).Range.Font.Size = 12
+					objTable1.Cell(2, i).Range.Font.Bold = True
+				end if
+			Next
+			
+			objTable1.Cell(4, 1).Range.Text = "二、现场问题"
+			objTable1.Cell(5, 1).Range.Text = "序号"
+			objTable1.Cell(5, 2).Range.Text = "现场照片"
+			objTable1.Cell(5, 3).Range.Text = "现场安全隐患"
+			objTable1.Cell(5, 4).Range.Text = "整改意见"
+			objTable1.Cell(5, 5).Range.Text = "整改期限"
+			objTable1.Cell(5, 6).Range.Text = "整改依据"
+			objTable1.Cell(5, 7).Range.Text = "依据原文"
+			objTable1.Cell(5, 8).Range.Text = "隐患等级"
+			objTable1.Cell(5, 9).Range.Text = "备注"
+			objTable1.Cell(5, 10).Range.Text = "类别"
+
+			
+			ObjSelection.font.Size=10
+			ObjSelection.font.Bold=False
+			ObjSelection.font.name = "宋体"
+			rowFlag = 0
+			for i=1 to rowNum
+				if instr(objTable.Cell(i, 1).Range.Text,"现场问题") &gt; 0 then
+					rowFlag = i
+					exit for
+				end if
+			Next
+			endNum = rowFlag - 1
+			for i=3 to endNum
+				for j = 1 to 6
+					objTable1.Cell(i, j).Range.Font.Size = 10
+					objTable1.Cell(i, j).Range.Font.Bold = False
+					objTable1.Cell(i, j).Range.Cells.VerticalAlignment = 1 
+				Next
+				objTable1.Cell(i, 1).Range.Text = (i-2)
+				objTable1.Cell(i, 2).Range.Text = objTable.Cell(i, 2).Range.Text 
+				objTable1.Cell(i, 3).Range.Text = objTable.Cell(i, 3).Range.Text 
+				objTable1.Cell(i, 4).Range.Text = "立即整改"
+				objTable1.Cell(i, 5).Range.Text = objTable.Cell(i, 4).Range.Text 
+				objTable1.Cell(i, 6).Range.Text = ""
+			Next
+			
+			For i = 6 To rowNum
+				For j = 1 To 10
+					objTable1.Cell(i, j).Range.Font.Size = 10
+					objTable1.Cell(i, j).Range.Font.Bold = False
+					objTable1.Cell(i, j).Range.Cells.VerticalAlignment = 1 
+					'objWorksheet.Range("K13").Select
+					objTable1.Cell(i, 1).Range.Text = (i - 5) &amp; "."
+					objTable.Cell(i, 2).Range.Select
+					objSelection.Copy 
+					objTable1.Cell(i, 2).Range.Select
+					objSelection.Paste 
+					objTable1.Cell(i, 3).Range.Text = objTable.Cell(i, 3).Range.Text 
+					objTable1.Cell(i, 4).Range.Text = replace(objTable.Cell(i, 4).Range.Text,"立即整改","") 
+					objTable1.Cell(i, 5).Range.Text = "立即整改"
+					objTable1.Cell(i, 6).Range.Text = objTable.Cell(i, 5).Range.Text 
+					'objTable1.Cell(i, 1).Range.Value = objTable.Cell(i, 1).Range.Cells.Value
+				Next
+			Next
+			objTable.Delete
+		end if
+		ObjDOC.SaveAs folderspec &amp; "\Result\" &amp; file.name
+	Next
+	objDoc.Close False
+	ObjWD.Quit
+End Function
+
+path = InputBox("请输入要处理的目录","提醒","C:\Users\freefitter\Desktop\xej\格式修改\Input")
+changeStyle(path)
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -440,7 +606,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.wangxingyang.com/life-20210407.html">https://www.wangxingyang.com/life-20210407.html</a>
+                    <a href="https://www.wangxingyang.com/wordChange.html">https://www.wangxingyang.com/wordChange.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,12 +644,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%9D%E5%AE%9D/">
-                                    <span class="chip bg-color">宝宝</span>
+                                <a href="/tags/vbs/">
+                                    <span class="chip bg-color">vbs</span>
                                 </a>
                             
-                                <a href="/tags/%E7%85%A7%E7%89%87/">
-                                    <span class="chip bg-color">照片</span>
+                                <a href="/tags/word/">
+                                    <span class="chip bg-color">word</span>
                                 </a>
                             
                         </div>
@@ -929,76 +1095,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/fhl.html">
-                    <div class="card-image">
-                        
-                        <img src="/img/20210407/cover1.webp" class="responsive-img" alt="Scratch飞花令">
-                        
-                        <span class="card-title">Scratch飞花令</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%99%E7%A8%8B/" class="post-category">
-                                    教程
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Scratch/">
-                        <span class="chip bg-color">Scratch</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">编程</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%A3%9E%E8%8A%B1%E4%BB%A4/">
-                        <span class="chip bg-color">飞花令</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B0%91%E5%84%BF/">
-                        <span class="chip bg-color">少儿</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/maketranstool.html">
+                <a href="/wordChange.html">
                     <div class="card-image">
                         
-                        <img src="/img/20210407/tools.jpg" class="responsive-img" alt="交易制作工具">
+                        <img src="/img/20210817/cover.jpg" class="responsive-img" alt="Word中表格操作">
                         
-                        <span class="card-title">交易制作工具</span>
+                        <span class="card-title">Word中表格操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1009,7 +1116,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-17
                             </span>
                         <span class="publish-author">
                             
@@ -1023,19 +1130,68 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
                     
                     <a href="/tags/vbs/">
                         <span class="chip bg-color">vbs</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%88%E7%8E%87/">
-                        <span class="chip bg-color">效率</span>
+                    <a href="/tags/word/">
+                        <span class="chip bg-color">word</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/apple.html">
+                    <div class="card-image">
+                        
+                        <img src="/img/20210814/cover.jpeg" class="responsive-img" alt="iPad Pro&amp;Apple Pencil 2">
+                        
+                        <span class="card-title">iPad Pro&amp;Apple Pencil 2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/iPad/">
+                        <span class="chip bg-color">iPad</span>
+                    </a>
+                    
+                    <a href="/tags/Apple-Pencil-2/">
+                        <span class="chip bg-color">Apple Pencil 2</span>
                     </a>
                     
                 </div>
