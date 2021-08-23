@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>玩具分享</title>
+      <link href="toys.html"/>
+      <url>toys.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近买了个野蛮娃娃的赛车，满足一下童年的愿望</p></blockquote><p>玩了下，还行。就是跑起来不走直线，虽然有微调，但是调了也不起什么作用。晒了图结束。谢谢老婆同意买这个小玩具😄。</p><p><img src="/img/20210822/1.jpeg" alt="图图图"></p><p><img src="/img/20210822/2.jpeg" alt="图图图"></p><p>后面再发点玩的视频或者图片。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 玩具 </tag>
+            
+            <tag> 遥控赛车 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Scriptable的使用</title>
       <link href="scriptable.html"/>
       <url>scriptable.html</url>
