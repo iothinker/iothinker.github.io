@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wangxingyang.com/opencv.html</loc>
+    
+    <lastmod>2021-08-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wangxingyang.com/genReport.html</loc>
     
     <lastmod>2021-08-26</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://www.wangxingyang.com/dayshare210725.html</loc>
     
     <lastmod>2021-07-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.wangxingyang.com/opencv.html</loc>
-    
-    <lastmod>2021-07-20</lastmod>
     
   </url>
   
