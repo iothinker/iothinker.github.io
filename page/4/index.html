@@ -263,6 +263,60 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/grafana-image-renderer.html">
+                        <div class="card-image">
+                            
+                            <img src="/img/20210509/jietu0.png" class="responsive-img" alt="Grafana接入HA">
+                            
+                            <span class="card-title">Grafana接入HA</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+Grafana已经搭好了，想把他的图表接入到HA里，下面就看看如何接入的吧
+
+0.尝试
+在论坛里逛逛逛，发现讲接入的不多，找到一篇 HA历史记录和图表太慢,太丑?试试grafana吧 这边他使用的都是老版的，所以之前的都参考不了，但是后面
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/grafana-image-renderer/">
+                            <span class="chip bg-color">grafana-image-renderer</span>
+                        </a>
+                        
+                        <a href="/tags/HA/">
+                            <span class="chip bg-color">HA</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/grafana.html">
                         <div class="card-image">
                             
@@ -759,60 +813,6 @@ InfluxDB使开发人员能够构建物联网，分析和监控软件。它专门
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/esp32cam.html">
-                        <div class="card-image">
-                            
-                            <img src="/img/20210416/cover.jpg" class="responsive-img" alt="ESP32-Camera初探">
-                            
-                            <span class="card-title">ESP32-Camera初探</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-接触智能家居时间也不少了，写的东西都是偏软件的。所以想突破下尝试玩玩硬件。但是一直不知道搞什么，一次偶然的机会，发现了人家制作的ESP32-Camera，来了兴趣，就开始找资料，准备开始干。
-
-0.材料准备
-折腾硬件首先得有硬件，这是得找
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
-                                    智能家居
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%A1%AC%E4%BB%B6/">
-                            <span class="chip bg-color">硬件</span>
-                        </a>
-                        
-                        <a href="/tags/esp32cam/">
-                            <span class="chip bg-color">esp32cam</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -861,7 +861,7 @@ InfluxDB使开发人员能够构建物联网，分析和监控软件。它专门
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.3k</span>&nbsp;字
+                class="white-color">35k</span>&nbsp;字
             
             
             
@@ -1131,6 +1131,26 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+    <!-- 一言API -->
+    <!-- 现代写法，推荐 -->
+    <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+    fetch('https://v1.hitokoto.cn')
+        .then(function (res){
+        return res.json();
+        })
+        .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+        })
+        .catch(function (err) {
+        console.error(err);
+        })
+    </script>
 
 </body>
 

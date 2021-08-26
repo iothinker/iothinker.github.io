@@ -281,11 +281,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 8">
+                <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #D5F5E3;">工具
-                        <span class="tag-length">8</span>
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -354,6 +354,59 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/genReport.html">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/img/20210826/cover.jpeg" class="responsive-img" alt="利用Word生成报告">
+                            
+                            <span class="card-title">利用Word生成报告</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+前段时间，有人问我能不能自动生成Word报告。需求是这样的，简述一下。要求根据提供的基础信息来生成所要的word报告。
+
+0.思路
+之前想直接用vbscript整篇生成的，但是整个报告的篇幅还是很长的，所以手写还是很费时很费力的。所以想转
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
+                        </a>
+                        
+                        <a href="/tags/vbscript/">
+                            <span class="chip bg-color">vbscript</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -825,7 +878,7 @@ Sub recordScore()
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.3k</span>&nbsp;字
+                class="white-color">35k</span>&nbsp;字
             
             
             
@@ -1095,6 +1148,26 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+    <!-- 一言API -->
+    <!-- 现代写法，推荐 -->
+    <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+    fetch('https://v1.hitokoto.cn')
+        .then(function (res){
+        return res.json();
+        })
+        .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+        })
+        .catch(function (err) {
+        console.error(err);
+        })
+    </script>
 
 </body>
 

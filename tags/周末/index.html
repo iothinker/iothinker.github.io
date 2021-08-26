@@ -775,11 +775,11 @@
                 </a>
                 
                 
-                <a href="/tags/word/" title="word: 2">
+                <a href="/tags/word/" title="word: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="word" style="background-color: #E8F8F5;">word
-                        <span class="tag-length">2</span>
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -972,6 +972,15 @@
                     </span>
                 </a>
                 
+                
+                <a href="/tags/vbscript/" title="vbscript: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="vbscript" style="background-color: #FFF;">vbscript
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
@@ -1097,7 +1106,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.3k</span>&nbsp;字
+                class="white-color">35k</span>&nbsp;字
             
             
             
@@ -1367,6 +1376,26 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+    <!-- 一言API -->
+    <!-- 现代写法，推荐 -->
+    <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+    fetch('https://v1.hitokoto.cn')
+        .then(function (res){
+        return res.json();
+        })
+        .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+        })
+        .catch(function (err) {
+        console.error(err);
+        })
+    </script>
 
 </body>
 
