@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wangxingyang.com/toolshare211018.html</loc>
+    
+    <lastmod>2021-10-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wangxingyang.com/dayshare211016.html</loc>
     
     <lastmod>2021-10-18</lastmod>
@@ -1013,6 +1020,20 @@
   
   <url>
     <loc>https://www.wangxingyang.com/tags/%E5%B0%8F%E5%9C%B0%E7%90%83/</loc>
+    <lastmod>2021-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/%E9%A1%B5%E9%9D%A2%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2021-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/%E7%BC%A9%E7%95%A5%E5%9B%BE/</loc>
     <lastmod>2021-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
