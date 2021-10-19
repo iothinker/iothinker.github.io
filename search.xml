@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>免费的梯子</title>
+      <link href="toolshare211019.html"/>
+      <url>toolshare211019.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>程序员都有需要<code>梯子</code>的时候，所以这次就出一个自己现在用的<code>梯子</code>，可以留着备用。</p></blockquote><h3 id="0-历程"><a href="#0-历程" class="headerlink" title="0.历程"></a>0.历程</h3><hr><p>在此之前用的是<code>小手电</code> [现在应该也还可以用的]。这个工具就是有时候呢不是很稳定，有时候死活连不上，服务器你还不能选，后面继续逛<code>Github</code>的时候，发现了现在的这个<a href="https://github.com/freefq/free">freefq</a>，页面上有简介和使用方式，就不啰嗦了。下面是<code>Github</code>的截图。可以看到<code>Star</code>还是很多的。</p><p><img src="/img/20211019/freefq.png" alt="Github截图"></p><h3 id="1-优化"><a href="#1-优化" class="headerlink" title="1.优化"></a>1.优化</h3><hr><p>上面有各个平台使用的工具，如果是<code>Windows</code>的话，他推荐的软件就不错。但是Mac的话，那个软件使用起来就不是很友好，不能订阅，服务器得自己一个一个加。后面找找发现了现在用的这个<a href="https://github.com/yanue/v2rayu">V2rayU</a>，这个使用起来就比较的友好了，怎么用大家上手就知道了。可以看到<code>Star</code>数也不少啊。</p><p><img src="/img/20211019/v2rayu.png" alt="Github截图"></p><p>但是有个问题是，换了这个工具后，<code>Chrome</code>居然不能访问墙外的，这就很蛋疼，因为用<code>Chrome</code>用习惯了，后面发现<code>Safari</code>是可以。网上查了很久，最后是通过<a href="https://github.com/FelisCatus/SwitchyOmega">SwitchyOmega</a>这个插件来解决的，曲线救国，先<code>Safari</code>下载这个插件，然后再装到<code>Chrome</code>上，最后终于可以愉快的上网了。可以看到<code>Star</code>数也不在少数，可能有同样问题的人也不少吧。</p><p><img src="/img/20211019/so.png" alt="Github截图"></p><h3 id="2-结语"><a href="#2-结语" class="headerlink" title="2.结语"></a>2.结语</h3><hr><p>工具这种东西，还是看个人的，如果大家有更好更方便的工具欢迎交流。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 梯子 </tag>
+            
+            <tag> vpn </tag>
+            
+            <tag> 免费 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo微信分享链接添加缩略图</title>
       <link href="toolshare211018.html"/>
       <url>toolshare211018.html</url>
