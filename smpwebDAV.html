@@ -379,14 +379,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-02
+                    2021-11-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    652
+                    733
                 </div>
                 
 
@@ -449,15 +449,16 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restr
 <li>启用相关模块<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo a2enmod dav_fs
 sudo a2enmod dav
 sudo a2enmod dav_lock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-<li>创建虚拟主机目录:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mkdir /var/www/sync
-chown www-data:www-data /var/www/sync
+<li>创建虚拟主机目录:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo mkdir /var/www/sync
+sudo chown www-data:www-data /var/www/sync
 # 创建 Joplin 文件夹用作笔记同步
-mkdir /var/www/sync/Joplin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+sudo mkdir /var/www/sync/Joplin
+sudo chown www-data:www-data /var/www/sync/Joplin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li>创建用户:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo htpasswd -c /var/www/me.dav freefitter
 sudo chown root:www-data /var/www/me.dav
 sudo chmod 640 /var/www/me.dav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li>配置虚拟主机:<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim /etc/apache2/sites-available/webdav.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-在文件加入如下内容<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">*:</span>5005</span><span class="token punctuation">&gt;</span></span>
+在文件加入如下内容<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">*:</span>50xx</span><span class="token punctuation">&gt;</span></span>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/sync/
         &lt;Directory /var/www/sync/&gt;
@@ -476,9 +477,30 @@ sudo chmod 640 /var/www/me.dav<span aria-hidden="true" class="line-numbers-rows"
            Require valid-user
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Location</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>链接配置文件<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd /etc/apache2/sites-enabled/
+</ol>
+<p><strong>注意⚠️：</strong></p>
+<p>更换端口的话，需要在<code>/etc/apache2/ports.conf </code>中修改</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"># If you just change the port or add more ports here, you will likely also
+# have to change the VirtualHost statement in
+# /etc/apache2/sites-enabled/000-default.conf
+
+Listen 50xx
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>IfModule</span> <span class="token attr-name">ssl_module</span><span class="token punctuation">&gt;</span></span>
+	Listen 50xx
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>IfModule</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>IfModule</span> <span class="token attr-name">mod_gnutls.c</span><span class="token punctuation">&gt;</span></span>
+	Listen 443
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>IfModule</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="6">
+<li>链接配置文件</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd /etc/apache2/sites-enabled/
 sudo ln -s ../sites-available/webdav.conf webdav.conf
-sudo rm 000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+sudo rm 000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
 <li>重启<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo service apache2 restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li>验证</li>
 </ol>
@@ -1303,7 +1325,7 @@ sudo rm 000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39k</span>&nbsp;字
+                class="white-color">39.1k</span>&nbsp;字
             
             
             
