@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wangxingyang.com/m5stack.html</loc>
+    
+    <lastmod>2021-11-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wangxingyang.com/dayshare211108.html</loc>
     
     <lastmod>2021-11-08</lastmod>
@@ -1088,6 +1095,27 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://www.wangxingyang.com/tags/M5Stack/</loc>
+    <lastmod>2021-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/MQTT/</loc>
+    <lastmod>2021-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/Pi-hole/</loc>
+    <lastmod>2021-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -1155,6 +1183,13 @@
   
   <url>
     <loc>https://www.wangxingyang.com/categories/%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2021-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/categories/M5Stack/</loc>
     <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
