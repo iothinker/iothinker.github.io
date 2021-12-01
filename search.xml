@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>华硕路由折腾记录</title>
+      <link href="router.html"/>
+      <url>router.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>树莓派已经第二次死机了，SSH连不上，没有找到相应的解决方案，准备换个TF卡，换个系统试试。顺便买了个U盘，准备折腾一下路由器。</p></blockquote><h3 id="0-背景"><a href="#0-背景" class="headerlink" title="0.背景"></a>0.背景</h3><hr><p>树莓派已经连续两次死机了，这样的感觉很不好。这让我有了折腾路由器的想法。所以准备折腾下路由器。之前找了个金士顿的旧的U盘，说读写速度不够，不给我折腾。然后路由器的固件版本也不够，所以都得升级下。<a href="https://www.koolcenter.com/posts/12">这边</a>是路由器的固件地址。升级完成之后，开始安装相关软件。发现U盘读写速度不够是唬人的。</p><blockquote><p>Entware<br>This is a software repository for network attached storages, routers and other embedded devices.<br>Browse through 2500+ packages for different platforms.<br>See how to use it.<br>Feel free to ask for new packages or report any bugs you’ve found.</p></blockquote><p>开始安装<code>Entware</code> ，<a href="https://entware.net/">链接在这</a>，刷了官改后，里面有相关的插件可以直接拿来用，省去了自己安装的痛苦。安装完成之后，安装<a href="https://mosquitto.org/">MQTT</a>，接着安装<strong>Python</strong>，安装完成之后，把代码移植过来就Okay了。</p><h3 id="1-实战"><a href="#1-实战" class="headerlink" title="1.实战"></a>1.实战</h3><hr><h4 id="a-安装MQTT"><a href="#a-安装MQTT" class="headerlink" title="a.安装MQTT"></a>a.安装MQTT</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">opkg install mosquitto mosquitto-client libmosquittomosquitto -c /tmp/mnt/sda/entware/etc/mosquitto/mosquitto.conf -d <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>修改<strong>mosquitto.conf</strong>，不加<strong>IP</strong>地址的话会导致连不上的</p><pre class="line-numbers language-none"><code class="language-none">allow_anonymous falselistener 1883 192.168.xxx.xpassword_file /tmp/mnt/sda/entware/etc/mosquitto/pwfile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="b-安装Pyhton以及相关模块"><a href="#b-安装Pyhton以及相关模块" class="headerlink" title="b.安装Pyhton以及相关模块"></a>b.安装Pyhton以及相关模块</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">opkg install python3opkg install python3-requestsopkg install python3-lxml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>软件包中没有<strong>mqtt</strong>相关的模块，所以后面准备通过命令行进行推送。</p><h4 id="c-编写推送脚本"><a href="#c-编写推送脚本" class="headerlink" title="c.编写推送脚本"></a>c.编写推送脚本</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd /opt/home# get push infoecho "gen push data"data=$(python info.py)echo $dataecho "start to push data"# start push data to bafamosquitto_pub -d -h bemfa.com -p 9xx1 -t "pushbafa" -i "XXXXXXXXXXX"  -m "$data"echo "push success"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="d-添加定时任务"><a href="#d-添加定时任务" class="headerlink" title="d.添加定时任务"></a>d.添加定时任务</h4><p>发现路由器里没有<strong>crontab</strong>这个命令，翻看了一下其他插件的定时做法，发现<code>cru</code>这个命令。所以就用这个来个定时，还是每分钟执行，命令格式和<strong>crontab</strong>很像</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cru a push_info "* * * * * /opt/home/push.sh &gt; push.log"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>到这，上面的就部署好了。<br>观察了一下系统资源使用情况，以前风平浪静，现在终于泛起了波澜。<br><img src="https://ae04.alicdn.com/kf/H92594d65dc7e458488d793211e5ca0a7g.png" alt="系统状态"></p><h4 id="e-安装Node-Red"><a href="#e-安装Node-Red" class="headerlink" title="e.安装Node-Red"></a>e.安装<code>Node-Red</code></h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">opkg install nodeopkg install node-npmopkg install makenpm install -g --unsafe-perm node-red<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装过程有报错，但是Node-Red居然可以用，看了报错这个应该是可选的，后续如果用到了估计就会报错了。记录一下错误日志。<br><img src="https://ae02.alicdn.com/kf/Hc271aeb0163f4ee6bdd65286db526828i.png" alt="安装报错日志"><br>这个后续看看是啥原因。<br>安装完成把之前的通知啥的都安排上了。希望这次能持久的运行下去哈。</p><h3 id="2-结语"><a href="#2-结语" class="headerlink" title="2.结语"></a>2.结语</h3><hr><p>这次搞这个还是踩了一些坑的，但是好在最后都搞定了。世上无难事，只怕有心人。坚持下去就会成功的。哎呀，又鸡汤了。后面看看有没有别的可以折腾的。写着写着，发现<strong>Typora</strong>提示更新的时候，在Beta版之后就要开始收费了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 路由器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 路由器 </tag>
+            
+            <tag> 华硕 </tag>
+            
+            <tag> GT-AC5300 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周末记录</title>
       <link href="happybirthday2021.html"/>
       <url>happybirthday2021.html</url>
