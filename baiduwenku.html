@@ -3,8 +3,8 @@
 
 <head>
     
-    <div style="display:none;"><img src="https://www.wangxingyang.com/img/20211228/share.svg" alt=""></div>
-    <meta property="og:image" content="https://www.wangxingyang.com/img/20211228/share.svg">
+    <div style="display:none;"><img src="https://www.wangxingyang.com/img/20211228/share.jpg" alt=""></div>
+    <meta property="og:image" content="https://www.wangxingyang.com/img/20211228/share.jpg">
     <meta charset="utf-8">
     <meta name="keywords" content="百度文库复制破解, hexo,智能家居,生活记录,技术">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
@@ -422,7 +422,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>最近老婆告诉我，她的百度文库突然不能复制了，我记得之前都是好好的啊，除非它改版了，这不看了一下，还真的是改版了。使命必达，下面就和我一起找找破解之法吧。</p>
+<p>最近老婆告诉我，百度文库突然不能复制了，我记得之前都是好好的啊，除非它改版了，这不看了一下，还真的是改版了。使命必达，下面就和我一起找找破解之法吧。</p>
 </blockquote>
 <h3 id="0-思路与过程"><a href="#0-思路与过程" class="headerlink" title="0.思路与过程"></a>0.思路与过程</h3><hr>
 <p>从下图可以看到，现在的文章是写在<strong>canvas</strong>里的，感觉他应该是在前端渲染的，所以肯定有相关文章数据，接下来就开始找渲染的数据。<br><img src="/img/20211228/261b2163dddab25dc3606bf5823d741a.jpg" alt="文章节点定位"><br>看了一下下图请求的数据，发现下面这几个请求比较符合。里面是数据也能匹配上文章内容。<br><img src="/img/20211228/ad0da574d3e44ee693e4bedf95978059.jpg" alt="有用的数据"><br>但是这些请求链接有点过分的长，参数也很多，想要把参数弄齐不是件简单的事情，所以想想是不是有别的地方有这个数据。这不看了一下页面数据，找到了一个<code>pageData</code>这个变量，看名字是<strong>页面数据</strong>，拿出来看看数据是啥样的。下图是格式化后的数据。<br><img src="/img/20211228/df726260f5b2e3886e4c6d27d3ac968a.jpg" alt="页面数据"><br>发现这个变量里面是有相关数据的，这不就可以开始撸代码了。</p>
@@ -431,7 +431,7 @@
 <blockquote>
 <p>Tampermonkey 是一款免费的浏览器扩展和最为流行的用户脚本管理器，它适用于 Chrome, Microsoft Edge, Safari, Opera Next, 和 Firefox。<br>虽然有些受支持的浏览器拥有原生的用户脚本支持，但 Tampermonkey 将在您的用户脚本管理方面提供更多的便利。 它提供了诸如便捷脚本安装、自动更新检查、标签中的脚本运行状况速览、内置的编辑器等众多功能， 同时Tampermonkey还有可能正常运行原本并不兼容的脚本。</p>
 </blockquote>
-<p>有了前面的铺垫，编码其实很简单了，就不着重介绍了，代码贴出来，可以自己试试，写的仓促，但是可以使用。后面在慢慢优化。油猴的安装方法和相关的API大家可以自行查找，还是很多的。</p>
+<p>有了前面的铺垫，编码其实很简单了，就不着重介绍了，代码贴出来，可以自己试试，写的仓促，弹窗和按钮用的别人脚本里的，有功夫的话可以自己画画写写。功能可以使用，后面在慢慢优化。油猴的安装方法和相关的API大家可以自行查找，还是很多的。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// ==UserScript==</span>
 <span class="token comment">// @name         百度文库拷贝</span>
 <span class="token comment">// @namespace    http://tampermonkey.net/</span>
