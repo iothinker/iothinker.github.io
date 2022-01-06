@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>米家养生壶定时烹饪</title>
+      <link href="health-pot.html"/>
+      <url>health-pot.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>冬天来了，老妈也不想早起烧水了，让我用手机预约，但是米家里没有定时烹饪，我自己又总会忘记。让她自己预约，她说不会，这不就想搞的简单点，让他能够自己操作，或者不用操作，所以就有了现在这个。</p></blockquote><h3 id="0-基本信息"><a href="#0-基本信息" class="headerlink" title="0.基本信息"></a>0.基本信息</h3><hr><p><code>token</code>的获取，网上有很多的方法，我用的是从<code>SQLite</code>里面查的。拿到令牌后就可以执行一下命令，得到养生壶的基本信息了。<br><strong>获得米家养生壶基本信息</strong></p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">miiocli device --ip 192.168.xxx.xxx --token ff11axxxxxxxxxxx2ff info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>IP</code>:  <strong>192.168.xxx.xxx</strong><br><code>token</code> : <strong>ff11axxxxxxxxxxx2ff</strong><br><code>Model</code>: <strong>chunmi.health_pot.a1</strong><br><code>Hardware version</code>: <strong>esp32</strong><br><code>Firmware version</code>: <strong>2.1.8_0006</strong></p><p>总体架构图：</p><p>🏠  &lt;—–&gt;  ☁️  &lt;—–📱</p><ol><li>手机发送指令给巴法云，控制定时器的开关</li><li>家中的Node-Red和应用程序分别订阅相关主题</li><li>如果定时任务打开，到指定时间会想巴法云推送开始烹饪的指令</li><li>程序收到相关指令就开始操作养生壶烹饪</li></ol><p>其实这个比较绕了，可以直接crontab定时调用程序就行了，但是想小程序控制就绕了一圈。</p><h3 id="1-miio获取相关信息"><a href="#1-miio获取相关信息" class="headerlink" title="1.miio获取相关信息"></a>1.miio获取相关信息</h3><hr><p>下面是一些miio获取的命令，可以参照一下。集体的属性要看它的文档，相关链接在文章的末尾，可以参看。</p><p> <strong>获得当前状态</strong></p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">miiocli -d device --ip 192.168.xxx.xxx --token ff11axxxxxxxxxxx2ff raw_command get_properties "[{'did': 'status', 'piid': 1, 'siid': 2} ]"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>  <strong>获得错误码</strong><br> </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">miiocli -d device --ip 192.168.xxx.xxx --token ff11axxxxxxxxxxx2ff raw_command get_properties "[{'did': 'fault', 'piid': 2, 'siid': 2} ]"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br> <img src="/img/20220106/e5513d8426c38a84778fc3cda6579785.jpg" alt="属性截图"><br> 动作的参数经过多方查找和尝试，最后在<strong>python-miio</strong>的<strong>issues</strong>里面找到了正确的写法。<br> <img src="/img/20220106/28ab48f35bc638e649ca27584aa71a51.jpg" alt="命令写法"><br> 经过尝试，总结出了如下的命令：<br>   <strong>开始烧水</strong><p></p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">miiocli -d device --ip 192.168.xxx.xxx --token ff11axxxxxxxxxxx2ff raw_command action "[{'did': 'start-cook', 'aiid': 1, 'siid': 2, 'in': [{'piid': 3, 'value': 4}]} ]"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>   <strong>取消烹饪</strong></p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">miiocli -d device --ip 192.168.xxx.xxx --token ff11axxxxxxxxxxx2ff raw_command action "[{'did': 'cancel-cooking', 'aiid': 2, 'siid': 2}]"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p> <img src="/img/20220106/37df2befafca69c8cd3f650480eade6d.jpg" alt="动作截图"></p><h3 id="2-路由器上安装-python-miio"><a href="#2-路由器上安装-python-miio" class="headerlink" title="2.路由器上安装 python-miio"></a>2.路由器上安装 python-miio</h3><hr> <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 安装相关包opkg install python3-pip opkg install python3-devopkg install gcc# 安装 python-miiopip install python-miio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="3-代码编写"><a href="#3-代码编写" class="headerlink" title="3.代码编写"></a>3.代码编写</h3><hr><p>打算在路由上起一个服务，订阅巴法云上的主题来操作养生壶动作。代码就不贴了，没啥特别的。然后把定时放到<strong>Node-Red</strong>上，也可以用<strong>crontab</strong>定时，这个看自己实现方式了。但是在控制的时候运行报错，报<strong>No module named ‘_cffi_backend‘</strong>，截图如下：</p><p> <img src="/img/20220106/7707ebe64e8513b30b2dc4a8e5986d9b.jpg" alt="报错截图"></p><p> 网上多半说是因为没有安装 <code>cffi</code> ，但是实际情况是已经安装好了的，最后看<a href="https/img/20220106//stackoverflow.editcode.net/thread-39527-1-1.html">找不到32位Python的_cffi_backend。如何检查共享对象的预期后缀？</a>看了这个文章，是不是因为文件名的问题，我尝试了一下，把之前的拷贝了一份，发现可以成功运行了。<br> </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd /tmp/mnt/sda/entware/lib/python3.9/site-packagescp ./_cffi_backend.cpython-39-aarch64-linux-gnu.so _cffi_backend.sofind . -name "*_cffi_backend*"|./_cffi_backend.so|./_cffi_backend.cpython-39-aarch64-linux-gnu.so<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p><p> 在<strong>Node-Red</strong>中添加<strong>node-red-contrib-chronos</strong>节点，实现定时功能。小程序上实现定时器的开关。<br> <img src="/img/20220106/17b02a69037a7358721b018fbf3489b7.jpg" alt="Node-Red截图"><br> 实战了下，在早上5:30成功的烧水了，加了server酱的通知。<br> <img src="/img/20220106/ca03fe462eef2cc7df970d7d76a7ebdc.jpg" alt="通知截图"></p><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><hr><p><a href="https/img/20220106//github.com/fineemb/Xiaomi-Smart-Multipurpose-Kettle/blob/master/custom_components/xiaomi_miio_health_pot/__init__.py">小米养生壶接入</a><br><a href="https/img/20220106//post.smzdm.com/p/az5g23x0/">米家miot设备接入HA</a><br><a href="http/img/20220106//miot-spec.org/miot-spec-v2/instances?status=all">MIOTALL</a><br><a href="https/img/20220106//miot-spec.org/miot-spec-v2/instance?type=urn:miot-spec-v2:device:health-pot:0000A051:chunmi-a1:3">chunmi.health_pot.a1</a><br><a href="https/img/20220106//github.com/al-one/hass-xiaomi-miot/blob/master/README_zh.md">Xiaomi Miot For HomeAssistant</a><br><a href="https/img/20220106//github.com/rytilahti/python-miio/issues/543">python-miio issues</a><br><a href="https/img/20220106//stackoverflow.editcode.net/thread-39527-1-1.html">找不到32位Python的_cffi_backend。如何检查共享对象的预期后缀？</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 智能家居 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Node-Red </tag>
+            
+            <tag> miio </tag>
+            
+            <tag> 米家 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>百度文库复制破解</title>
       <link href="baiduwenku.html"/>
       <url>baiduwenku.html</url>
