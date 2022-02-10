@@ -436,9 +436,9 @@
 <p>到此就大功告成了。但是我想做成一个插件的形式，这个只能够指定一张图片，图片也不能变，所以接下来就开始改造了。</p>
 <h3 id="1-实操"><a href="#1-实操" class="headerlink" title="1.实操"></a>1.实操</h3><hr>
 <p>在<code>themes/hexo-theme-matery/_config.yml</code>中添加开关</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># 分享图标设置
-shareIcon:
-  enable: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token comment"># 分享图标设置</span>
+<span class="token key atrule">shareIcon</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>接着修改<code>themes/hexo-theme-matery/layout/_partial/head.ejs</code> </p>
 <pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs"> <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> 
@@ -1282,7 +1282,7 @@ shareIcon:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">44.6k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             

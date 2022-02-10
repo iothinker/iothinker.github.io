@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.wangxingyang.com/health-pot.html</loc>
-    <lastmod>2022-01-06</lastmod>
+    <loc>https://www.wangxingyang.com/baiduwenku.html</loc>
+    <lastmod>2022-02-10</lastmod>
   </url>
   <url>
-    <loc>https://www.wangxingyang.com/baiduwenku.html</loc>
-    <lastmod>2021-12-31</lastmod>
+    <loc>https://www.wangxingyang.com/health-pot.html</loc>
+    <lastmod>2022-01-12</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/dayshare211205.html</loc>
+    <lastmod>2021-12-13</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/dayshare211016.html</loc>
     <lastmod>2021-12-07</lastmod>
   </url>
   <url>
@@ -18,11 +22,7 @@
   </url>
   <url>
     <loc>https://www.wangxingyang.com/happybirthday2021.html</loc>
-    <lastmod>2021-11-23</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wangxingyang.com/dayshare211016.html</loc>
-    <lastmod>2021-11-22</lastmod>
+    <lastmod>2021-11-25</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/iotdashboard.html</loc>
@@ -30,6 +30,10 @@
   </url>
   <url>
     <loc>https://www.wangxingyang.com/m5stack.html</loc>
+    <lastmod>2021-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/dayshare210412.html</loc>
     <lastmod>2021-11-08</lastmod>
   </url>
   <url>
@@ -59,6 +63,10 @@
   <url>
     <loc>https://www.wangxingyang.com/toolshare211018.html</loc>
     <lastmod>2021-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/blogupdate.html</loc>
+    <lastmod>2021-10-11</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/dayshare211001.html</loc>
@@ -141,10 +149,6 @@
     <lastmod>2021-06-26</lastmod>
   </url>
   <url>
-    <loc>https://www.wangxingyang.com/dayshare210412.html</loc>
-    <lastmod>2021-06-12</lastmod>
-  </url>
-  <url>
     <loc>https://www.wangxingyang.com/replaceTool.html</loc>
     <lastmod>2021-06-06</lastmod>
   </url>
@@ -183,10 +187,6 @@
   <url>
     <loc>https://www.wangxingyang.com/tourist.html</loc>
     <lastmod>2021-05-07</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wangxingyang.com/blogupdate.html</loc>
-    <lastmod>2021-04-28</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/ideal210425.html</loc>

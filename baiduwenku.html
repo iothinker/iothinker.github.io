@@ -379,21 +379,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-31
+                    2022-02-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -433,13 +433,12 @@
 </blockquote>
 <p>有了前面的铺垫，编码其实很简单了，就不着重介绍了，代码贴出来，可以自己试试，写的仓促，弹窗和按钮用的别人脚本里的，有功夫的话可以自己画画写写。功能可以使用，后面在慢慢优化。油猴的安装方法和相关的API大家可以自行查找，还是很多的。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// ==UserScript==</span>
-<span class="token comment">// @name         百度文库拷贝破解</span>
+<span class="token comment">// @name         百度文库拷贝</span>
 <span class="token comment">// @namespace    http://tampermonkey.net/</span>
+<span class="token comment">// @homepage     https://www.wangxingyang.com/baiduwenku.html</span>
 <span class="token comment">// @version      0.2</span>
 <span class="token comment">// @description  破解百度文库复制限制</span>
 <span class="token comment">// @author       freefitter</span>
-<span class="token comment">// @homepage     https://www.wangxingyang.com/baiduwenku.html</span>
-<span class="token comment">// @match        http://*/*</span>
 <span class="token comment">// @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAABpElEQVR4nO3Vv2uUQRDG8c/ebSMWqay0trATAxrUSi1S2AiWFoJYpNCgoBjURsHWJKeNRfAvsDgFixQqKdPZ2ViEiCJYBOQu8f1hEXO59713j7MUfLZ6d2a/O8vMO0OzDnin9Ku2Mjvuaw07xgSAYEVXe2indMhj92zpKJLnBhF8MDeye9hn6zbN70eRiqCw02Bra3up8BBLu1FEBxsBucXqW4csz0ULe4jorSCMuPU89boRELDMHiI6Y8V65bbCUTccc70RkaOwKLOg0IkyXa9qTjOu2LAs6NZuD86hrdTyxRNTkUqqdhXlHrngGRVEZsMpJwex9DxIZSHYclesIb65LCoHgIs66UJq6btDBZHZrPh8V6YBOX66LbOkTGckBYimBW2FVTNeuOZNyrFJ236Yl4NSy5SbVm1PDvhodqgyMledTdRlAtDzqfL9tfkwUtyaRkv9LwFj9B/w7wPycXOhqlJ0yZHKPChMi5MCiM47XhsopbVJAUHfrYbmN/EToN+02eLPfz9OYyZhFJzW1Jn3lTsxaKQjCkp52jy45r1ZvSbTb9M0d4PBozGZAAAAAElFTkSuQmCC</span>
 <span class="token comment">// @include      *://wenku.baidu.com/*</span>
 <span class="token comment">// @run-at       document-end</span>
@@ -453,9 +452,16 @@
 <span class="token comment">// ==/UserScript==</span>
 <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> url <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> host <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>host<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"wenku.baidu.com/view"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> url<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"wenku.baidu.com/link"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">||</span> host<span class="token operator">!=</span><span class="token string">"wenku.baidu.com"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
     <span class="token keyword">var</span> allContent <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> $ <span class="token operator">=</span> $ <span class="token operator">||</span> window<span class="token punctuation">.</span>$<span class="token punctuation">;</span> 
+    <span class="token keyword">var</span> $ <span class="token operator">=</span> $ <span class="token operator">||</span> window<span class="token punctuation">.</span>$<span class="token punctuation">;</span> <span class="token comment">//获得jquery的$标识符</span>
     <span class="token keyword">var</span> pageNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>loadPageNum <span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">,</span>docid <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token comment">// 添加相关按钮</span>
     <span class="token keyword">var</span> copyBtn <span class="token operator">=</span> <span class="token string">"&lt;div style='position:fixed;z-index:999;background-color:#ccc;cursor:pointer;top:120px;left:0px;'&gt;"</span><span class="token operator">+</span>
         <span class="token string">"&lt;div id='copyBtn' style='font-size:12px;padding:8px 2px;color:#FFF;background-color:#FE8A23;'&gt;复制&lt;/div&gt;"</span><span class="token operator">+</span>
         <span class="token string">"&lt;/div&gt;"</span><span class="token punctuation">;</span>
@@ -484,8 +490,10 @@
                 <span class="token comment">//console.log(GM_listValues())</span>
                 <span class="token keyword">var</span> pageinfos <span class="token operator">=</span> htmlUrls<span class="token punctuation">.</span>json<span class="token punctuation">;</span>
                 <span class="token keyword">var</span> pnginfos <span class="token operator">=</span> htmlUrls<span class="token punctuation">.</span>png<span class="token punctuation">;</span>
+                <span class="token comment">// 总页数</span>
                 pageNum <span class="token operator">=</span> indexpagedata<span class="token punctuation">.</span>readerInfo<span class="token punctuation">.</span>page<span class="token punctuation">;</span>
                 docid <span class="token operator">=</span> indexpagedata<span class="token punctuation">.</span>readerInfo<span class="token punctuation">.</span>docId<span class="token punctuation">;</span>
+                <span class="token comment">// 返回的数据页数</span>
                 loadPageNum <span class="token operator">=</span> pageinfos<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
                 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> ii <span class="token keyword">in</span> pageinfos<span class="token punctuation">)</span><span class="token punctuation">{</span>
                     <span class="token keyword">let</span> pageLoadUrl <span class="token operator">=</span> pageinfos<span class="token punctuation">[</span>ii<span class="token punctuation">]</span><span class="token punctuation">.</span>pageLoadUrl<span class="token punctuation">;</span>
@@ -494,20 +502,48 @@
                         method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
                         <span class="token function-variable function">onload</span><span class="token operator">:</span> <span class="token parameter">obj</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
                             <span class="token keyword">let</span> data<span class="token operator">=</span>obj<span class="token punctuation">.</span>response<span class="token punctuation">;</span>
+                            <span class="token comment">//console.log(data)</span>
+                            <span class="token comment">// 1、将数据拆分成key和value</span>
                             <span class="token keyword">let</span> key <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>data<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                             <span class="token keyword">let</span> val <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>data<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token operator">-</span>data<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token comment">// 2、解析文章数据</span>
                             <span class="token keyword">let</span> retJson <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
                             <span class="token keyword">let</span> articleInfos <span class="token operator">=</span> retJson<span class="token punctuation">.</span>body<span class="token punctuation">;</span>
                             <span class="token keyword">let</span> content <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+                            <span class="token comment">//console.log(articleInfos);</span>
+                            <span class="token comment">// 组成完整的章节文章</span>
+                            <span class="token keyword">var</span> lineY <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
                             <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> articleInfos<span class="token punctuation">)</span><span class="token punctuation">{</span>
                                 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"word"</span> <span class="token operator">==</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>t<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                                    content <span class="token operator">+=</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c
+                                    <span class="token comment">// 增加换行</span>
+                                    <span class="token keyword">let</span> y <span class="token operator">=</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>p<span class="token punctuation">.</span>y
+                                    <span class="token keyword">if</span><span class="token punctuation">(</span>lineY <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                        content <span class="token operator">+=</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c
+                                        lineY <span class="token operator">=</span> y<span class="token punctuation">;</span>
+                                    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>y <span class="token operator">==</span> lineY<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                        content <span class="token operator">+=</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c
+                                    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                                        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">!=</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                            content <span class="token operator">+=</span> <span class="token string">"&lt;br/&gt;"</span> <span class="token operator">+</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c<span class="token punctuation">;</span>
+                                        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                                            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">" "</span> <span class="token operator">==</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                                content <span class="token operator">+=</span> <span class="token string">"&lt;br/&gt;"</span> <span class="token operator">+</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c<span class="token punctuation">;</span>
+                                            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                                                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"未处理的字符:["</span><span class="token operator">+</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>c <span class="token operator">+</span><span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                            <span class="token punctuation">}</span>
+                                        <span class="token punctuation">}</span>
+                                        lineY <span class="token operator">=</span> y<span class="token punctuation">;</span>
+                                    <span class="token punctuation">}</span>
                                 <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"pic"</span> <span class="token operator">==</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>t<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                    <span class="token comment">//style="position: absolute;clip: rect(0px,250px,200px,50px);width: 300px;height: 200px"&gt;</span>
                                     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token operator">==</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s <span class="token operator">||</span> <span class="token string">""</span> <span class="token operator">==</span> articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s <span class="token operator">||</span> <span class="token keyword">undefined</span> <span class="token operator">==</span>articleInfos<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                        <span class="token comment">//content += "=****pic"+ i +"*****=";</span>
+                                        <span class="token comment">// 文章中包含图片，不处理</span>
                                         content <span class="token operator">+=</span> <span class="token string">""</span><span class="token punctuation">;</span>
                                     <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
                                         content <span class="token operator">=</span> <span class="token string">"PIC"</span>
                                     <span class="token punctuation">}</span>
+                                    <span class="token comment">//content += '&lt;img src="' + pnginfos[0].pageLoadUrl + '" style="position: absolute;clip: rect('+ articleInfos[i].c.ix +'px,'+ articleInfos[i].c.iy +'px,'+ articleInfos[i].c.iw +'px,'+ articleInfos[i].c.ih +'px);"/&gt;'</span>
                                 <span class="token punctuation">}</span>
                             <span class="token punctuation">}</span>
                             <span class="token function">GM_setValue</span><span class="token punctuation">(</span>docid<span class="token operator">+</span>key<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -517,18 +553,24 @@
                     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/**/</span>
 
                 <span class="token punctuation">}</span>
+                <span class="token comment">// 按序输出结果</span>
                 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">&lt;=</span> loadPageNum <span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token function">GM_getValue</span><span class="token punctuation">(</span>docid<span class="token operator">+</span><span class="token string">"wenku_"</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">let</span> tmp <span class="token operator">=</span> <span class="token function">GM_getValue</span><span class="token punctuation">(</span>docid<span class="token operator">+</span><span class="token string">"wenku_"</span><span class="token operator">+</span>j<span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                     <span class="token keyword">if</span><span class="token punctuation">(</span>tmp <span class="token operator">==</span> <span class="token string">"PIC"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        <span class="token comment">//allContent = allContent.replace("=****pic"+ (j - 1 )+"*****=","&lt;img src='" + pnginfos[j-1].pageLoadUrl + "'/&gt;");</span>
                         allContent <span class="token operator">+=</span> <span class="token string">"&lt;img src='"</span> <span class="token operator">+</span> pnginfos<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pageLoadUrl <span class="token operator">+</span> <span class="token string">"'/&gt;"</span><span class="token punctuation">;</span>
                     <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
                         allContent <span class="token operator">+=</span> tmp<span class="token punctuation">;</span>
                     <span class="token punctuation">}</span>
+                    <span class="token comment">// 移除相关Key</span>
                     <span class="token function">GM_deleteValue</span><span class="token punctuation">(</span>docid<span class="token operator">+</span><span class="token string">"wenku_"</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
                 <span class="token punctuation">}</span>
+                <span class="token comment">//console.log(GM_listValues())</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
+
+    <span class="token comment">// 点击拷贝</span>
     <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span><span class="token string">"#copyBtn"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">let</span> indexpagedata <span class="token operator">=</span> unsafeWindow<span class="token punctuation">.</span>pageData<span class="token punctuation">;</span>
         <span class="token function">getCopyData</span><span class="token punctuation">(</span>indexpagedata<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -548,6 +590,9 @@
             <span class="token string">'&lt;pre id="copy_text_content" style="padding:20px;border:1px solid #CCC;border-radius:4px;width:60%;font-size:16px;line-height:22px;z-index:10000;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;word-break:break-all;max-height:70%;overflow:auto;"&gt;&lt;/pre&gt;'</span><span class="token operator">+</span>
             <span class="token string">'&lt;/div&gt;"'</span><span class="token punctuation">;</span>
         <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#copy_text_box'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">==</span> allContent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            allContent <span class="token operator">=</span> <span class="token string">"未获取成功，请再次点击复制按钮！"</span>
+        <span class="token punctuation">}</span>
         <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>copyTextBox<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#copy_text_content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>allContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#copy_box_close'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -556,12 +601,18 @@
 
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-成果展示"><a href="#2-成果展示" class="headerlink" title="2.成果展示"></a>2.成果展示</h3><hr>
 <p>点击旁边的复制就可以愉快的复制相关内容啦。<br><img src="/img/20211228/c259e929a9529eb7273327981072d881.jpg" alt="原始文档"></p>
 <p><img src="/img/20211228/306d1bd415f33f6caf22e4f31db27be1.jpg" alt="可复制的"></p>
 <h3 id="3-说在最后"><a href="#3-说在最后" class="headerlink" title="3.说在最后"></a>3.说在最后</h3><hr>
 <p>到此功能完成了，后续可以优化一下，加上图片啥的。这个数据都是有的，就是花时间弄就完事了。这个仅做学习交流使用哈。</p>
+<h3 id="20220210-更新"><a href="#20220210-更新" class="headerlink" title="20220210 更新:"></a>20220210 更新:</h3><hr>
+<ol>
+<li>美化显示格式</li>
+<li>增加第一获取失败提示</li>
+<li>图片可以显示</li>
+</ol>
 
                 
             </div>
@@ -1118,16 +1169,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Node-Red/">
-                        <span class="chip bg-color">Node-Red</span>
-                    </a>
-                    
                     <a href="/tags/miio/">
                         <span class="chip bg-color">miio</span>
                     </a>
                     
                     <a href="/tags/%E7%B1%B3%E5%AE%B6/">
                         <span class="chip bg-color">米家</span>
+                    </a>
+                    
+                    <a href="/tags/Node-Red/">
+                        <span class="chip bg-color">Node-Red</span>
                     </a>
                     
                 </div>
@@ -1384,7 +1435,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">44.6k</span>&nbsp;字
+                class="white-color">44.9k</span>&nbsp;字
             
             
             
