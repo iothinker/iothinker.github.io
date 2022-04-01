@@ -550,20 +550,6 @@
   </url>
   
   <url>
-    <loc>https://www.wangxingyang.com/tags/iPad/</loc>
-    <lastmod>2022-04-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wangxingyang.com/tags/Apple-Pencil-2/</loc>
-    <lastmod>2022-04-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.wangxingyang.com/tags/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E5%A4%8D%E5%88%B6/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
@@ -579,6 +565,20 @@
   
   <url>
     <loc>https://www.wangxingyang.com/tags/%E6%B2%B9%E7%8C%B4/</loc>
+    <lastmod>2022-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/iPad/</loc>
+    <lastmod>2022-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/Apple-Pencil-2/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -879,20 +879,6 @@
   </url>
   
   <url>
-    <loc>https://www.wangxingyang.com/tags/grafana-image-renderer/</loc>
-    <lastmod>2022-04-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wangxingyang.com/tags/HA/</loc>
-    <lastmod>2022-04-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.wangxingyang.com/tags/grafana/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
@@ -901,6 +887,20 @@
   
   <url>
     <loc>https://www.wangxingyang.com/tags/influxdb2-0/</loc>
+    <lastmod>2022-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/grafana-image-renderer/</loc>
+    <lastmod>2022-04-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/HA/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1329,14 +1329,14 @@
   </url>
   
   <url>
-    <loc>https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://www.wangxingyang.com/categories/%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.wangxingyang.com/categories/%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2022-04-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
