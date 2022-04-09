@@ -407,11 +407,11 @@
                 </a>
                 
                 
-                <a href="/tags/%E9%81%9B%E5%A8%83/" title="遛娃: 15">
+                <a href="/tags/%E9%81%9B%E5%A8%83/" title="遛娃: 16">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="遛娃" style="background-color: #F9EBEA;">遛娃
-                        <span class="tag-length">15</span>
+                        <span class="tag-length">16</span>
                     </span>
                 </a>
                 
@@ -1306,6 +1306,15 @@
                     </span>
                 </a>
                 
+                
+                <a href="/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/" title="佛手湖: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="佛手湖" style="background-color: #D5F5E3;">佛手湖
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
@@ -1369,7 +1378,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48.6k</span>&nbsp;字
+                class="white-color">48.9k</span>&nbsp;字
             
             
             
@@ -1619,6 +1628,67 @@ $(function () {
 
     
     <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 一言API -->
+    <!-- 现代写法，推荐 -->
+    <!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <!--End-->
+    <script>
+    fetch('https://v1.hitokoto.cn')
+        .then(function (res){
+        return res.json();
+        })
+        .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+        })
+        .catch(function (err) {
+        console.error(err);
+        })
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/61638d3e86aee40a5735e3ae/1fhmdvftg';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+
+</body>
+
+</html>
+" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
