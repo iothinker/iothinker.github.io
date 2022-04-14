@@ -387,7 +387,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    214
+                    361
                 </div>
                 
 
@@ -426,8 +426,37 @@
 <p>疫情反复，进入各类场所都需要查验两码，每次都需要搞半天才能打开，今天给大家分享一下。</p>
 </blockquote>
 <h3 id="0-苏康码和行程码"><a href="#0-苏康码和行程码" class="headerlink" title="0.苏康码和行程码"></a>0.苏康码和行程码</h3><hr>
-<p>捷径中是有<code>苏康码</code>的指令的，但是，这个指令不能跳转到苏康码的那个页面，所以就很尬，需要自己再点一下才行。我所攻破的就是不需要点击直接进入。</p>
-<p>打开苏康码的URL地址： </p>
+<p>捷径中是有<code>苏康码</code>的指令的，但是，这个指令不能跳转到苏康码的那个页面，所以就很尬，需要自己再点一下才行。我所攻破的就是不需要点击直接进入。下面是抓包的南京的数据，可以看看:</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+      <span class="token property">"backupUrl"</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token property">"offlineUrl"</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token property">"cityName"</span> <span class="token operator">:</span> <span class="token string">"江苏-南京"</span><span class="token punctuation">,</span>
+      <span class="token property">"hideGuobanTab"</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"offlineDetailUrl"</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token property">"url"</span> <span class="token operator">:</span> <span class="token string">"alipays:\/\/platformapi\/startapp?appId=2018062060350751&amp;page=%2Fpages%2Fweb%2Fweb%3Furl%3Dhttps%3A%2F%2Fjsstm.jszwfw.gov.cn%2FjkmIndex.html"</span><span class="token punctuation">,</span>
+      <span class="token property">"canVisit"</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"desc"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"title"</span> <span class="token operator">:</span> <span class="token string">"苏康码"</span><span class="token punctuation">,</span>
+        <span class="token property">"content"</span> <span class="token operator">:</span> <span class="token string">"由“江苏省疾控中心”提供，可在以下场所使用"</span><span class="token punctuation">,</span>
+        <span class="token property">"subContent"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"title"</span> <span class="token operator">:</span> <span class="token string">"交通出行"</span><span class="token punctuation">,</span>
+            <span class="token property">"content"</span> <span class="token operator">:</span> <span class="token string">"机场、火车站、公交、地铁  、出租车等"</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"title"</span> <span class="token operator">:</span> <span class="token string">"公共场所"</span><span class="token punctuation">,</span>
+            <span class="token property">"content"</span> <span class="token operator">:</span> <span class="token string">"社区、商场、写字楼、公园等"</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"cityCode"</span> <span class="token operator">:</span> <span class="token string">"320100"</span><span class="token punctuation">,</span>
+      <span class="token property">"detailUrl"</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token property">"isGreen"</span> <span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"showError"</span> <span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所有的数据我发在这，大家可以<a href="/download/%E5%9F%8E%E5%B8%82%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE.json">点击下载</a> 自行查阅。</p>
+<p>从抓取的数据中就能看到苏康码的链接地址了： </p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html">alipays://platformapi/startapp?appId=2018062060350751&amp;page=%2Fpages%2Fweb%2Fweb%3Furl%3Dhttps%3A%2F%2Fjsstm.jszwfw.gov.cn%2FjkmIndex.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -1265,7 +1294,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.1k</span>&nbsp;字
+                class="white-color">49.3k</span>&nbsp;字
             
             
             
