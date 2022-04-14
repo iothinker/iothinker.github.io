@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-04-14T02:40:11.132Z</updated>
+  <updated>2022-04-14T02:50:18.676Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -23,9 +23,9 @@
     
     <id>https://www.wangxingyang.com/sharecuts-twocode.html</id>
     <published>2022-04-14T01:58:06.000Z</published>
-    <updated>2022-04-14T02:40:11.132Z</updated>
+    <updated>2022-04-14T02:50:18.676Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>疫情反复，进入各类场所都需要查验两码，每次都需要搞半天才能打开，今天给大家分享一下。</p></blockquote><h3 id="0-苏康码和行程码"><a href="#0-苏康码和行程码" class="headerlink" title="0.苏康码和行程码"></a>0.苏康码和行程码</h3><hr><p>捷径中是有<code>苏康码</code>的指令的，但是，这个指令不能跳转到苏康码的那个页面，所以就很尬，需要自己再点一下才行。我所攻破的就是不需要点击直接进入。</p><p>打开苏康码的URL地址：<strong>alipays://platformapi/startapp?appId=2018062060350751&amp;page=%2Fpages%2Fweb%2Fweb%3Furl%3Dhttps%3A%2F%2Fjsstm.jszwfw.gov.cn%2FjkmIndex.html</strong> </p><p><img src="https://pic.rmb.bdstatic.com/bjh/fbe8d71175a44380c2e7def85080a9a5.jpeg" alt="捷径截图"></p><p><a href="https://www.icloud.com/shortcuts/116d9468d49b4943bcffc99586075c9c">点击获得</a>捷径命令。</p><h3 id="1-敲击执行"><a href="#1-敲击执行" class="headerlink" title="1.敲击执行"></a>1.敲击执行</h3><hr><p><strong>设置-&gt;辅助功能-&gt; 触控-&gt; 轻点配置</strong> 进行设置，这边选择敲击背面3下打开。</p><p><img src="https://pic.rmb.bdstatic.com/bjh/21a1f7e120006ad941b0f749ae8ab59a.jpeg" alt="image.png"></p><h3 id="2-写在最后"><a href="#2-写在最后" class="headerlink" title="2.写在最后"></a>2.写在最后</h3><hr><p>这边只是抛砖引玉，大家可以自由发挥，实现截屏发送上传等等功能。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>疫情反复，进入各类场所都需要查验两码，每次都需要搞半天才能打开，今天给大家分享一下。</p></blockquote><h3 id="0-苏康码和行程码"><a href="#0-苏康码和行程码" class="headerlink" title="0.苏康码和行程码"></a>0.苏康码和行程码</h3><hr><p>捷径中是有<code>苏康码</code>的指令的，但是，这个指令不能跳转到苏康码的那个页面，所以就很尬，需要自己再点一下才行。我所攻破的就是不需要点击直接进入。</p><p>打开苏康码的URL地址：<strong>alipays://platformapi/startapp?appId=2018062060350751&amp;page=%2Fpages%2Fweb%2Fweb%3Furl%3Dhttps%3A%2F%2Fjsstm.jszwfw.gov.cn%2FjkmIndex.html</strong> </p><p><img src="https://pic.rmb.bdstatic.com/bjh/fbe8d71175a44380c2e7def85080a9a5.jpeg" alt="捷径截图"></p><p><a href="https://www.icloud.com/shortcuts/116d9468d49b4943bcffc99586075c9c">点击获得</a>捷径命令。</p><h3 id="1-敲击执行"><a href="#1-敲击执行" class="headerlink" title="1.敲击执行"></a>1.敲击执行</h3><hr><p><strong>设置-&gt;辅助功能-&gt; 触控-&gt; 轻点配置</strong> 进行设置，这边选择敲击背面3下打开。</p><p><img src="https://pic.rmb.bdstatic.com/bjh/21a1f7e120006ad941b0f749ae8ab59a.jpeg" alt="设置截图"></p><h3 id="2-写在最后"><a href="#2-写在最后" class="headerlink" title="2.写在最后"></a>2.写在最后</h3><hr><p>这边只是抛砖引玉，大家可以自由发挥，实现截屏发送上传等等功能。</p>]]></content>
     
     
       
