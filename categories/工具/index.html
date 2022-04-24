@@ -37,8 +37,75 @@
 
 
 
+<style>
+    /* 深色模式按钮设置 */
+    #sma {
+        background: rgb(0, 0, 0);
+        width: 48px;
+        height: 48px;
+        display: block;
+        position: fixed;
+        border-radius: 50%;
+        right: 15px;
+        bottom: 140px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+        cursor: pointer;
+    }
+
+    #sma .fa-moon-o {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.48rem!important;
+    }
+    #sma .fa-sun-o  {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.5rem!important;
+    }
+
+    .fa-moon-o:before {
+        content: "\f186";
+    }
+
+    .fa-sun-o:before {
+        content: "\f185";
+        color: rgb( 242,141,0)!important;
+    }
+
+    .fa-comments:before {
+        content: "\f086";
+    }
+</style>
 
 <body>
+    <script>
+        if (localStorage.getItem('dark') === '1') {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        $(function(){
+	if (navigator.userAgent.match(/mobile/i)) {
+            //alert("移动端");
+            $("#sma").css({ 'bottom': '76px'});
+        }
+    })
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -264,19 +331,10 @@
                 
                 
                 
-                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">插件
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">学习
+                            style="background-color: #F9EBEA;">学习
                         <span class="tag-length">7</span>
                     </span>
                 </a>
@@ -285,8 +343,17 @@
                 <a href="/categories/%E7%94%9F%E6%B4%BB/" title="生活: 35">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">生活
+                            style="background-color: #F5EEF8;">生活
                         <span class="tag-length">35</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">插件
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -603,12 +670,12 @@ hexo搭建的静态站，分享时光秃秃的一片，想给它加个图片，�
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/vbscript/">
-                            <span class="chip bg-color">vbscript</span>
-                        </a>
-                        
                         <a href="/tags/word/">
                             <span class="chip bg-color">word</span>
+                        </a>
+                        
+                        <a href="/tags/vbscript/">
+                            <span class="chip bg-color">vbscript</span>
                         </a>
                         
                     </div>
@@ -659,12 +726,12 @@ Function changeStyle(folderspec)
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/word/">
-                            <span class="chip bg-color">word</span>
-                        </a>
-                        
                         <a href="/tags/vbs/">
                             <span class="chip bg-color">vbs</span>
+                        </a>
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
                         </a>
                         
                     </div>
@@ -712,12 +779,12 @@ Function changeStyle(folderspec)
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/word/">
-                            <span class="chip bg-color">word</span>
-                        </a>
-                        
                         <a href="/tags/vbs/">
                             <span class="chip bg-color">vbs</span>
+                        </a>
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
                         </a>
                         
                         <a href="/tags/excel/">
@@ -1220,29 +1287,39 @@ $(function () {
     <!-- Baidu Analytics -->
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    var url = window.location.href;
+    //console.log("analytics url=" + url);
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("analytics url=" + url);
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
 </script>
 
     <!-- Baidu Push -->
 
 <script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
+    var url = window.location.href;
+    //
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("push url=" + url);
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    }
 </script>
 
     

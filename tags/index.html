@@ -37,8 +37,75 @@
 
 
 
+<style>
+    /* 深色模式按钮设置 */
+    #sma {
+        background: rgb(0, 0, 0);
+        width: 48px;
+        height: 48px;
+        display: block;
+        position: fixed;
+        border-radius: 50%;
+        right: 15px;
+        bottom: 140px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+        cursor: pointer;
+    }
+
+    #sma .fa-moon-o {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.48rem!important;
+    }
+    #sma .fa-sun-o  {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.5rem!important;
+    }
+
+    .fa-moon-o:before {
+        content: "\f186";
+    }
+
+    .fa-sun-o:before {
+        content: "\f185";
+        color: rgb( 242,141,0)!important;
+    }
+
+    .fa-comments:before {
+        content: "\f086";
+    }
+</style>
 
 <body>
+    <script>
+        if (localStorage.getItem('dark') === '1') {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        $(function(){
+	if (navigator.userAgent.match(/mobile/i)) {
+            //alert("移动端");
+            $("#sma").css({ 'bottom': '76px'});
+        }
+    })
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -263,37 +330,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E5%A4%8D%E5%88%B6/" title="百度文库复制: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="百度文库复制" style="background-color: #F9EBEA;">百度文库复制
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Tampermonkey/" title="Tampermonkey: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Tampermonkey" style="background-color: #F5EEF8;">Tampermonkey
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%B2%B9%E7%8C%B4/" title="油猴: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="油猴" style="background-color: #D5F5E3;">油猴
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/SpringBlade/" title="SpringBlade: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="SpringBlade" style="background-color: #E8F8F5;">SpringBlade
+                            data-tagname="SpringBlade" style="background-color: #F9EBEA;">SpringBlade
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -302,7 +342,7 @@
                 <a href="/tags/Java/" title="Java: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Java" style="background-color: #FEF9E7;">Java
+                            data-tagname="Java" style="background-color: #F5EEF8;">Java
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -311,7 +351,7 @@
                 <a href="/tags/iPad/" title="iPad: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="iPad" style="background-color: #F8F9F9;">iPad
+                            data-tagname="iPad" style="background-color: #D5F5E3;">iPad
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -320,7 +360,34 @@
                 <a href="/tags/Apple-Pencil-2/" title="Apple Pencil 2: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Apple Pencil 2" style="background-color: #82E0AA;">Apple Pencil 2
+                            data-tagname="Apple Pencil 2" style="background-color: #E8F8F5;">Apple Pencil 2
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E5%A4%8D%E5%88%B6/" title="百度文库复制: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="百度文库复制" style="background-color: #FEF9E7;">百度文库复制
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Tampermonkey/" title="Tampermonkey: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Tampermonkey" style="background-color: #F8F9F9;">Tampermonkey
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%B2%B9%E7%8C%B4/" title="油猴: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="油猴" style="background-color: #82E0AA;">油猴
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -344,10 +411,37 @@
                 </a>
                 
                 
+                <a href="/tags/%E5%AE%9D%E5%AE%9D/" title="宝宝: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="宝宝" style="background-color: #85C1E9;">宝宝
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%97%A9%E6%95%99/" title="早教: 13">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="早教" style="background-color: #F8C471;">早教
+                        <span class="tag-length">13</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%91%A8%E6%9C%AB/" title="周末: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="周末" style="background-color: #F9E79F;">周末
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/%E5%B7%A5%E5%85%B7/" title="工具: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="工具" style="background-color: #85C1E9;">工具
+                            data-tagname="工具" style="background-color: #E8F8F5;">工具
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -358,33 +452,6 @@
                              chip-default "
                             data-tagname="VBA" style="background-color: #F8C471;">VBA
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%AE%9D%E5%AE%9D/" title="宝宝: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="宝宝" style="background-color: #F9E79F;">宝宝
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%97%A9%E6%95%99/" title="早教: 13">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="早教" style="background-color: #F9EBEA;">早教
-                        <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%91%A8%E6%9C%AB/" title="周末: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="周末" style="background-color: #F8F9F9;">周末
-                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -416,20 +483,20 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%84%9F%E7%BB%9F/" title="感统: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="感统" style="background-color: #F5EEF8;">感统
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E5%8A%A8%E7%89%A9%E5%9B%AD/" title="动物园: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="动物园" style="background-color: #F5EEF8;">动物园
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%84%9F%E7%BB%9F/" title="感统: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="感统" style="background-color: #F5EEF8;">感统
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -515,6 +582,15 @@
                 </a>
                 
                 
+                <a href="/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/" title="佛手湖: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="佛手湖" style="background-color: #D5F5E3;">佛手湖
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/%E7%BA%B8%E6%9D%AF%E8%9B%8B%E7%B3%95/" title="纸杯蛋糕: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -528,15 +604,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="披萨" style="background-color: #82E0AA;">披萨
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/" title="佛手湖: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="佛手湖" style="background-color: #D5F5E3;">佛手湖
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -623,6 +690,33 @@
                 </a>
                 
                 
+                <a href="/tags/%E5%8F%91%E7%A5%A8%E6%89%93%E5%8D%B0/" title="发票打印: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="发票打印" style="background-color: #F8C471;">发票打印
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%8C%BB%E4%BF%9D/" title="医保: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="医保" style="background-color: #85C1E9;">医保
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%84%BF%E7%AB%A5/" title="儿童: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="儿童" style="background-color: #85C1E9;">儿童
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/Scratch/" title="Scratch: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -654,33 +748,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="少儿" style="background-color: #FFF;">少儿
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8F%91%E7%A5%A8%E6%89%93%E5%8D%B0/" title="发票打印: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="发票打印" style="background-color: #F8C471;">发票打印
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8C%BB%E4%BF%9D/" title="医保: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="医保" style="background-color: #85C1E9;">医保
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%84%BF%E7%AB%A5/" title="儿童: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="儿童" style="background-color: #85C1E9;">儿童
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -722,11 +789,11 @@
                 </a>
                 
                 
-                <a href="/tags/vbscript/" title="vbscript: 1">
+                <a href="/tags/vbs/" title="vbs: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="vbscript" style="background-color: #FFF;">vbscript
-                        <span class="tag-length">1</span>
+                            data-tagname="vbs" style="background-color: #82E0AA;">vbs
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -740,19 +807,19 @@
                 </a>
                 
                 
-                <a href="/tags/vbs/" title="vbs: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="vbs" style="background-color: #82E0AA;">vbs
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/excel/" title="excel: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="excel" style="background-color: #D5F5E3;">excel
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/vbscript/" title="vbscript: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="vbscript" style="background-color: #FFF;">vbscript
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -771,6 +838,24 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="HA" style="background-color: #85C1E9;">HA
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/grafana/" title="grafana: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="grafana" style="background-color: #E8F8F5;">grafana
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/influxdb2-0/" title="influxdb2.0: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="influxdb2.0" style="background-color: #D7BDE2;">influxdb2.0
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -821,24 +906,6 @@
                 </a>
                 
                 
-                <a href="/tags/grafana/" title="grafana: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="grafana" style="background-color: #E8F8F5;">grafana
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/influxdb2-0/" title="influxdb2.0: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="influxdb2.0" style="background-color: #D7BDE2;">influxdb2.0
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E6%83%B3%E6%B3%95/" title="想法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -884,6 +951,24 @@
                 </a>
                 
                 
+                <a href="/tags/mqtt/" title="mqtt: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="mqtt" style="background-color: #FFF;">mqtt
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="小程序" style="background-color: #F8C471;">小程序
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/Markdown/" title="Markdown: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -902,20 +987,11 @@
                 </a>
                 
                 
-                <a href="/tags/mqtt/" title="mqtt: 2">
+                <a href="/tags/%E6%B8%B8%E7%8E%A9/" title="游玩: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="mqtt" style="background-color: #FFF;">mqtt
+                            data-tagname="游玩" style="background-color: #FFF;">游玩
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="小程序" style="background-color: #F8C471;">小程序
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -965,15 +1041,6 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%B8%B8%E7%8E%A9/" title="游玩: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="游玩" style="background-color: #FFF;">游玩
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/M5Stack/" title="M5Stack: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1019,15 +1086,6 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%B0%B4%E8%B4%B9/" title="水费: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="水费" style="background-color: #F9E79F;">水费
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E6%95%88%E7%8E%87/" title="效率: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1041,6 +1099,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="Node-red" style="background-color: #F5EEF8;">Node-red
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%B0%B4%E8%B4%B9/" title="水费: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="水费" style="background-color: #F9E79F;">水费
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1402,7 +1469,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"百度文库复制","weight":1,"link":"/tags/百度文库复制/"},{"text":"Tampermonkey","weight":1,"link":"/tags/Tampermonkey/"},{"text":"油猴","weight":1,"link":"/tags/油猴/"},{"text":"SpringBlade","weight":1,"link":"/tags/SpringBlade/"},{"text":"Java","weight":1,"link":"/tags/Java/"},{"text":"iPad","weight":1,"link":"/tags/iPad/"},{"text":"Apple Pencil 2","weight":1,"link":"/tags/Apple-Pencil-2/"},{"text":"blog","weight":1,"link":"/tags/blog/"},{"text":"hexo","weight":3,"link":"/tags/hexo/"},{"text":"工具","weight":2,"link":"/tags/工具/"},{"text":"VBA","weight":2,"link":"/tags/VBA/"},{"text":"宝宝","weight":4,"link":"/tags/宝宝/"},{"text":"早教","weight":13,"link":"/tags/早教/"},{"text":"周末","weight":4,"link":"/tags/周末/"},{"text":"朋友","weight":4,"link":"/tags/朋友/"},{"text":"园博园","weight":1,"link":"/tags/园博园/"},{"text":"遛娃","weight":18,"link":"/tags/遛娃/"},{"text":"感统","weight":1,"link":"/tags/感统/"},{"text":"动物园","weight":2,"link":"/tags/动物园/"},{"text":"带娃","weight":5,"link":"/tags/带娃/"},{"text":"鱼缸","weight":1,"link":"/tags/鱼缸/"},{"text":"防疫","weight":1,"link":"/tags/防疫/"},{"text":"作业","weight":1,"link":"/tags/作业/"},{"text":"节假日","weight":1,"link":"/tags/节假日/"},{"text":"国庆","weight":1,"link":"/tags/国庆/"},{"text":"生日会","weight":1,"link":"/tags/生日会/"},{"text":"梅花山","weight":1,"link":"/tags/梅花山/"},{"text":"美食","weight":1,"link":"/tags/美食/"},{"text":"纸杯蛋糕","weight":1,"link":"/tags/纸杯蛋糕/"},{"text":"披萨","weight":1,"link":"/tags/披萨/"},{"text":"佛手湖","weight":1,"link":"/tags/佛手湖/"},{"text":"挖沙子","weight":1,"link":"/tags/挖沙子/"},{"text":"小龙虾","weight":1,"link":"/tags/小龙虾/"},{"text":"平衡车","weight":2,"link":"/tags/平衡车/"},{"text":"STRIDER","weight":1,"link":"/tags/STRIDER/"},{"text":"ESB","weight":1,"link":"/tags/ESB/"},{"text":"流控","weight":1,"link":"/tags/流控/"},{"text":"学习","weight":1,"link":"/tags/学习/"},{"text":"硬件","weight":1,"link":"/tags/硬件/"},{"text":"esp32cam","weight":1,"link":"/tags/esp32cam/"},{"text":"Scratch","weight":2,"link":"/tags/Scratch/"},{"text":"编程","weight":3,"link":"/tags/编程/"},{"text":"飞花令","weight":1,"link":"/tags/飞花令/"},{"text":"少儿","weight":2,"link":"/tags/少儿/"},{"text":"发票打印","weight":1,"link":"/tags/发票打印/"},{"text":"医保","weight":1,"link":"/tags/医保/"},{"text":"儿童","weight":2,"link":"/tags/儿童/"},{"text":"homeassistant","weight":6,"link":"/tags/homeassistant/"},{"text":"python","weight":4,"link":"/tags/python/"},{"text":"插件","weight":3,"link":"/tags/插件/"},{"text":"燃气","weight":1,"link":"/tags/燃气/"},{"text":"vbscript","weight":1,"link":"/tags/vbscript/"},{"text":"word","weight":3,"link":"/tags/word/"},{"text":"vbs","weight":3,"link":"/tags/vbs/"},{"text":"excel","weight":1,"link":"/tags/excel/"},{"text":"grafana-image-renderer","weight":1,"link":"/tags/grafana-image-renderer/"},{"text":"HA","weight":1,"link":"/tags/HA/"},{"text":"生日","weight":1,"link":"/tags/生日/"},{"text":"体检","weight":1,"link":"/tags/体检/"},{"text":"miio","weight":1,"link":"/tags/miio/"},{"text":"米家","weight":1,"link":"/tags/米家/"},{"text":"Node-Red","weight":2,"link":"/tags/Node-Red/"},{"text":"grafana","weight":1,"link":"/tags/grafana/"},{"text":"influxdb2.0","weight":1,"link":"/tags/influxdb2-0/"},{"text":"想法","weight":1,"link":"/tags/想法/"},{"text":"scratch","weight":1,"link":"/tags/scratch/"},{"text":"InfluxDB","weight":1,"link":"/tags/InfluxDB/"},{"text":"时序数据库","weight":1,"link":"/tags/时序数据库/"},{"text":"telegraf","weight":1,"link":"/tags/telegraf/"},{"text":"Markdown","weight":1,"link":"/tags/Markdown/"},{"text":"Joplin","weight":2,"link":"/tags/Joplin/"},{"text":"mqtt","weight":2,"link":"/tags/mqtt/"},{"text":"小程序","weight":1,"link":"/tags/小程序/"},{"text":"电费","weight":1,"link":"/tags/电费/"},{"text":"教师","weight":1,"link":"/tags/教师/"},{"text":"Excel","weight":1,"link":"/tags/Excel/"},{"text":"VBScript","weight":1,"link":"/tags/VBScript/"},{"text":"照片","weight":1,"link":"/tags/照片/"},{"text":"游玩","weight":2,"link":"/tags/游玩/"},{"text":"M5Stack","weight":1,"link":"/tags/M5Stack/"},{"text":"MQTT","weight":1,"link":"/tags/MQTT/"},{"text":"Pi-hole","weight":1,"link":"/tags/Pi-hole/"},{"text":"homebridge","weight":1,"link":"/tags/homebridge/"},{"text":"摄像头","weight":1,"link":"/tags/摄像头/"},{"text":"水费","weight":1,"link":"/tags/水费/"},{"text":"效率","weight":1,"link":"/tags/效率/"},{"text":"Node-red","weight":1,"link":"/tags/Node-red/"},{"text":"Node-RED","weight":2,"link":"/tags/Node-RED/"},{"text":"HomeBridge","weight":1,"link":"/tags/HomeBridge/"},{"text":"树莓派","weight":3,"link":"/tags/树莓派/"},{"text":"pi-dashboard","weight":1,"link":"/tags/pi-dashboard/"},{"text":"opencv","weight":1,"link":"/tags/opencv/"},{"text":"企业微信通知","weight":1,"link":"/tags/企业微信通知/"},{"text":"RSS","weight":1,"link":"/tags/RSS/"},{"text":"Node_RED","weight":1,"link":"/tags/Node-RED/"},{"text":"批量替换","weight":1,"link":"/tags/批量替换/"},{"text":"路由器","weight":1,"link":"/tags/路由器/"},{"text":"华硕","weight":1,"link":"/tags/华硕/"},{"text":"GT-AC5300","weight":1,"link":"/tags/GT-AC5300/"},{"text":"Scriptable","weight":1,"link":"/tags/Scriptable/"},{"text":"JavaScript","weight":1,"link":"/tags/JavaScript/"},{"text":"捷径","weight":1,"link":"/tags/捷径/"},{"text":"苏康码","weight":1,"link":"/tags/苏康码/"},{"text":"行程码","weight":1,"link":"/tags/行程码/"},{"text":"智能家居","weight":1,"link":"/tags/智能家居/"},{"text":"webDAV","weight":1,"link":"/tags/webDAV/"},{"text":"博客","weight":1,"link":"/tags/博客/"},{"text":"在线聊天","weight":1,"link":"/tags/在线聊天/"},{"text":"小地球","weight":1,"link":"/tags/小地球/"},{"text":"页面分享","weight":1,"link":"/tags/页面分享/"},{"text":"缩略图","weight":1,"link":"/tags/缩略图/"},{"text":"梯子","weight":1,"link":"/tags/梯子/"},{"text":"vpn","weight":1,"link":"/tags/vpn/"},{"text":"免费","weight":1,"link":"/tags/免费/"},{"text":"假期","weight":1,"link":"/tags/假期/"},{"text":"计划","weight":1,"link":"/tags/计划/"},{"text":"玩具","weight":1,"link":"/tags/玩具/"},{"text":"遥控赛车","weight":1,"link":"/tags/遥控赛车/"},{"text":"Twikoo","weight":1,"link":"/tags/Twikoo/"},{"text":"评论","weight":1,"link":"/tags/评论/"},{"text":"网址","weight":1,"link":"/tags/网址/"},{"text":"Server酱","weight":1,"link":"/tags/Server酱/"},{"text":"云函数","weight":1,"link":"/tags/云函数/"},{"text":"推送","weight":1,"link":"/tags/推送/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"SpringBlade","weight":1,"link":"/tags/SpringBlade/"},{"text":"Java","weight":1,"link":"/tags/Java/"},{"text":"iPad","weight":1,"link":"/tags/iPad/"},{"text":"Apple Pencil 2","weight":1,"link":"/tags/Apple-Pencil-2/"},{"text":"百度文库复制","weight":1,"link":"/tags/百度文库复制/"},{"text":"Tampermonkey","weight":1,"link":"/tags/Tampermonkey/"},{"text":"油猴","weight":1,"link":"/tags/油猴/"},{"text":"blog","weight":1,"link":"/tags/blog/"},{"text":"hexo","weight":3,"link":"/tags/hexo/"},{"text":"宝宝","weight":4,"link":"/tags/宝宝/"},{"text":"早教","weight":13,"link":"/tags/早教/"},{"text":"周末","weight":4,"link":"/tags/周末/"},{"text":"工具","weight":2,"link":"/tags/工具/"},{"text":"VBA","weight":2,"link":"/tags/VBA/"},{"text":"朋友","weight":4,"link":"/tags/朋友/"},{"text":"园博园","weight":1,"link":"/tags/园博园/"},{"text":"遛娃","weight":18,"link":"/tags/遛娃/"},{"text":"动物园","weight":2,"link":"/tags/动物园/"},{"text":"感统","weight":1,"link":"/tags/感统/"},{"text":"带娃","weight":5,"link":"/tags/带娃/"},{"text":"鱼缸","weight":1,"link":"/tags/鱼缸/"},{"text":"防疫","weight":1,"link":"/tags/防疫/"},{"text":"作业","weight":1,"link":"/tags/作业/"},{"text":"节假日","weight":1,"link":"/tags/节假日/"},{"text":"国庆","weight":1,"link":"/tags/国庆/"},{"text":"生日会","weight":1,"link":"/tags/生日会/"},{"text":"梅花山","weight":1,"link":"/tags/梅花山/"},{"text":"美食","weight":1,"link":"/tags/美食/"},{"text":"佛手湖","weight":1,"link":"/tags/佛手湖/"},{"text":"纸杯蛋糕","weight":1,"link":"/tags/纸杯蛋糕/"},{"text":"披萨","weight":1,"link":"/tags/披萨/"},{"text":"挖沙子","weight":1,"link":"/tags/挖沙子/"},{"text":"小龙虾","weight":1,"link":"/tags/小龙虾/"},{"text":"平衡车","weight":2,"link":"/tags/平衡车/"},{"text":"STRIDER","weight":1,"link":"/tags/STRIDER/"},{"text":"ESB","weight":1,"link":"/tags/ESB/"},{"text":"流控","weight":1,"link":"/tags/流控/"},{"text":"学习","weight":1,"link":"/tags/学习/"},{"text":"硬件","weight":1,"link":"/tags/硬件/"},{"text":"esp32cam","weight":1,"link":"/tags/esp32cam/"},{"text":"发票打印","weight":1,"link":"/tags/发票打印/"},{"text":"医保","weight":1,"link":"/tags/医保/"},{"text":"儿童","weight":2,"link":"/tags/儿童/"},{"text":"Scratch","weight":2,"link":"/tags/Scratch/"},{"text":"编程","weight":3,"link":"/tags/编程/"},{"text":"飞花令","weight":1,"link":"/tags/飞花令/"},{"text":"少儿","weight":2,"link":"/tags/少儿/"},{"text":"homeassistant","weight":6,"link":"/tags/homeassistant/"},{"text":"python","weight":4,"link":"/tags/python/"},{"text":"插件","weight":3,"link":"/tags/插件/"},{"text":"燃气","weight":1,"link":"/tags/燃气/"},{"text":"vbs","weight":3,"link":"/tags/vbs/"},{"text":"word","weight":3,"link":"/tags/word/"},{"text":"excel","weight":1,"link":"/tags/excel/"},{"text":"vbscript","weight":1,"link":"/tags/vbscript/"},{"text":"grafana-image-renderer","weight":1,"link":"/tags/grafana-image-renderer/"},{"text":"HA","weight":1,"link":"/tags/HA/"},{"text":"grafana","weight":1,"link":"/tags/grafana/"},{"text":"influxdb2.0","weight":1,"link":"/tags/influxdb2-0/"},{"text":"生日","weight":1,"link":"/tags/生日/"},{"text":"体检","weight":1,"link":"/tags/体检/"},{"text":"miio","weight":1,"link":"/tags/miio/"},{"text":"米家","weight":1,"link":"/tags/米家/"},{"text":"Node-Red","weight":2,"link":"/tags/Node-Red/"},{"text":"想法","weight":1,"link":"/tags/想法/"},{"text":"scratch","weight":1,"link":"/tags/scratch/"},{"text":"InfluxDB","weight":1,"link":"/tags/InfluxDB/"},{"text":"时序数据库","weight":1,"link":"/tags/时序数据库/"},{"text":"telegraf","weight":1,"link":"/tags/telegraf/"},{"text":"mqtt","weight":2,"link":"/tags/mqtt/"},{"text":"小程序","weight":1,"link":"/tags/小程序/"},{"text":"Markdown","weight":1,"link":"/tags/Markdown/"},{"text":"Joplin","weight":2,"link":"/tags/Joplin/"},{"text":"游玩","weight":2,"link":"/tags/游玩/"},{"text":"电费","weight":1,"link":"/tags/电费/"},{"text":"教师","weight":1,"link":"/tags/教师/"},{"text":"Excel","weight":1,"link":"/tags/Excel/"},{"text":"VBScript","weight":1,"link":"/tags/VBScript/"},{"text":"照片","weight":1,"link":"/tags/照片/"},{"text":"M5Stack","weight":1,"link":"/tags/M5Stack/"},{"text":"MQTT","weight":1,"link":"/tags/MQTT/"},{"text":"Pi-hole","weight":1,"link":"/tags/Pi-hole/"},{"text":"homebridge","weight":1,"link":"/tags/homebridge/"},{"text":"摄像头","weight":1,"link":"/tags/摄像头/"},{"text":"效率","weight":1,"link":"/tags/效率/"},{"text":"Node-red","weight":1,"link":"/tags/Node-red/"},{"text":"水费","weight":1,"link":"/tags/水费/"},{"text":"Node-RED","weight":2,"link":"/tags/Node-RED/"},{"text":"HomeBridge","weight":1,"link":"/tags/HomeBridge/"},{"text":"树莓派","weight":3,"link":"/tags/树莓派/"},{"text":"pi-dashboard","weight":1,"link":"/tags/pi-dashboard/"},{"text":"opencv","weight":1,"link":"/tags/opencv/"},{"text":"企业微信通知","weight":1,"link":"/tags/企业微信通知/"},{"text":"RSS","weight":1,"link":"/tags/RSS/"},{"text":"Node_RED","weight":1,"link":"/tags/Node-RED/"},{"text":"批量替换","weight":1,"link":"/tags/批量替换/"},{"text":"路由器","weight":1,"link":"/tags/路由器/"},{"text":"华硕","weight":1,"link":"/tags/华硕/"},{"text":"GT-AC5300","weight":1,"link":"/tags/GT-AC5300/"},{"text":"Scriptable","weight":1,"link":"/tags/Scriptable/"},{"text":"JavaScript","weight":1,"link":"/tags/JavaScript/"},{"text":"捷径","weight":1,"link":"/tags/捷径/"},{"text":"苏康码","weight":1,"link":"/tags/苏康码/"},{"text":"行程码","weight":1,"link":"/tags/行程码/"},{"text":"智能家居","weight":1,"link":"/tags/智能家居/"},{"text":"webDAV","weight":1,"link":"/tags/webDAV/"},{"text":"博客","weight":1,"link":"/tags/博客/"},{"text":"在线聊天","weight":1,"link":"/tags/在线聊天/"},{"text":"小地球","weight":1,"link":"/tags/小地球/"},{"text":"页面分享","weight":1,"link":"/tags/页面分享/"},{"text":"缩略图","weight":1,"link":"/tags/缩略图/"},{"text":"梯子","weight":1,"link":"/tags/梯子/"},{"text":"vpn","weight":1,"link":"/tags/vpn/"},{"text":"免费","weight":1,"link":"/tags/免费/"},{"text":"假期","weight":1,"link":"/tags/假期/"},{"text":"计划","weight":1,"link":"/tags/计划/"},{"text":"玩具","weight":1,"link":"/tags/玩具/"},{"text":"遥控赛车","weight":1,"link":"/tags/遥控赛车/"},{"text":"Twikoo","weight":1,"link":"/tags/Twikoo/"},{"text":"评论","weight":1,"link":"/tags/评论/"},{"text":"网址","weight":1,"link":"/tags/网址/"},{"text":"Server酱","weight":1,"link":"/tags/Server酱/"},{"text":"云函数","weight":1,"link":"/tags/云函数/"},{"text":"推送","weight":1,"link":"/tags/推送/"}], {
         autoResize: true
     });
 </script>
@@ -1650,29 +1717,39 @@ $(function () {
     <!-- Baidu Analytics -->
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    var url = window.location.href;
+    //console.log("analytics url=" + url);
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("analytics url=" + url);
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
 </script>
 
     <!-- Baidu Push -->
 
 <script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
+    var url = window.location.href;
+    //
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("push url=" + url);
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    }
 </script>
 
     

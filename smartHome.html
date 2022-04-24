@@ -37,8 +37,75 @@
 
 
 
+<style>
+    /* 深色模式按钮设置 */
+    #sma {
+        background: rgb(0, 0, 0);
+        width: 48px;
+        height: 48px;
+        display: block;
+        position: fixed;
+        border-radius: 50%;
+        right: 15px;
+        bottom: 140px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+        cursor: pointer;
+    }
+
+    #sma .fa-moon-o {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.48rem!important;
+    }
+    #sma .fa-sun-o  {
+        position: absolute;
+        right: 12px;
+        bottom: 14px;
+        font-size: 1.5rem!important;
+    }
+
+    .fa-moon-o:before {
+        content: "\f186";
+    }
+
+    .fa-sun-o:before {
+        content: "\f185";
+        color: rgb( 242,141,0)!important;
+    }
+
+    .fa-comments:before {
+        content: "\f086";
+    }
+</style>
 
 <body>
+    <script>
+        if (localStorage.getItem('dark') === '1') {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+            $("#toc-aside").addClass("dark");
+        }
+        $(function(){
+	if (navigator.userAgent.match(/mobile/i)) {
+            //alert("移动端");
+            $("#sma").css({ 'bottom': '76px'});
+        }
+    })
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -1114,7 +1181,7 @@
 <!--End of Tawk.to Script-->
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
+        <div class="toc-widget card">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
             <div class="toc-title" style="border-bottom: 1px solid black; padding: 0;">🌍小地球</div>
@@ -1457,29 +1524,39 @@ $(function () {
     <!-- Baidu Analytics -->
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    var url = window.location.href;
+    //console.log("analytics url=" + url);
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("analytics url=" + url);
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?431b832769cb793e8c72a6a28cd875a0";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
 </script>
 
     <!-- Baidu Push -->
 
 <script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
+    var url = window.location.href;
+    //
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        console.log("push url=" + url);
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    }
 </script>
 
     
