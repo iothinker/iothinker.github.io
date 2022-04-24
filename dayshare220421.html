@@ -85,22 +85,18 @@
     <script>
         if (localStorage.getItem('dark') === '1') {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         } 
         else if (matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         $(function(){
-	if (navigator.userAgent.match(/mobile/i)) {
-            //alert("移动端");
-            $("#sma").css({ 'bottom': '76px'});
-        }
-    })
+            if (navigator.userAgent.match(/mobile/i)) {
+                $("#sma").css({ 'bottom': '76px'});
+            }
+        })
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
@@ -443,7 +439,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-22
+                    2022-04-24
                 </div>
                 
 
@@ -486,7 +482,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后久过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p>
+<p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p>
 </blockquote>
 <h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr>
 <p><img src="/img/20220421/0.jpg" alt="比✌️"></p>
@@ -1013,17 +1009,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/dayshare220421.html">
+                <a href="/toolshare220424.html">
                     <div class="card-image">
                         
-                        <img src="/img/20220421/cover.jpeg" class="responsive-img" alt="骑车分享">
+                        <img src="https://pic.rmb.bdstatic.com/bjh/0cde1cd4876050e4d012d0fc78636355.jpeg" class="responsive-img" alt="给博客增点功能">
                         
-                        <span class="card-title">骑车分享</span>
+                        <span class="card-title">给博客增点功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1033,31 +1028,34 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%81%9B%E5%A8%83/">
-                        <span class="chip bg-color">遛娃</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
-                    <a href="/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/">
-                        <span class="chip bg-color">平衡车</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">黑夜模式</span>
                     </a>
                     
                 </div>
@@ -1314,7 +1312,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.9k</span>&nbsp;字
+                class="white-color">50.2k</span>&nbsp;字
             
             
             

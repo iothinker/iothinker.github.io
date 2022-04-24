@@ -85,22 +85,18 @@
     <script>
         if (localStorage.getItem('dark') === '1') {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         } 
         else if (matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         $(function(){
-	if (navigator.userAgent.match(/mobile/i)) {
-            //alert("移动端");
-            $("#sma").css({ 'bottom': '76px'});
-        }
-    })
+            if (navigator.userAgent.match(/mobile/i)) {
+                $("#sma").css({ 'bottom': '76px'});
+            }
+        })
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
@@ -331,29 +327,29 @@
                 
                 
                 
-                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">学习
-                        <span class="tag-length">7</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">插件
+                            style="background-color: #F9EBEA;">插件
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 12">
+                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">学习
+                        <span class="tag-length">7</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #D5F5E3;">工具
-                        <span class="tag-length">12</span>
+                        <span class="tag-length">13</span>
                     </span>
                 </a>
                 
@@ -367,20 +363,20 @@
                 </a>
                 
                 
-                <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" title="智能家居: 9">
+                <a href="/categories/%E5%B7%A5%E4%BD%9C/" title="工作: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">智能家居
-                        <span class="tag-length">9</span>
+                            style="background-color: #FEF9E7;">工作
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E5%B7%A5%E4%BD%9C/" title="工作: 1">
+                <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" title="智能家居: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">工作
-                        <span class="tag-length">1</span>
+                            style="background-color: #F8F9F9;">智能家居
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -458,6 +454,63 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/toolshare220424.html">
+                        <div class="card-image tag-image">
+                            
+                            <img src="https://pic.rmb.bdstatic.com/bjh/0cde1cd4876050e4d012d0fc78636355.jpeg" class="responsive-img" alt="给博客增点功能">
+                            
+                            <span class="card-title">给博客增点功能</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+今天整了整博客，之前一直想给博客整个黑夜模式，今天终于安排上了。
+
+0.黑夜模式
+没重复造轮子，网上找了一个代码，然后自己改了改，这个是文章链接 关于给hexo博客适配全局暗夜深色模式 打击可以去看看。因为用的主题不太一样，所以自己改了些
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/hexo/">
+                            <span class="chip bg-color">hexo</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                            <span class="chip bg-color">博客</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F/">
+                            <span class="chip bg-color">黑夜模式</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -670,12 +723,12 @@ hexo搭建的静态站，分享时光秃秃的一片，想给它加个图片，�
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/vbscript/">
-                            <span class="chip bg-color">vbscript</span>
-                        </a>
-                        
                         <a href="/tags/word/">
                             <span class="chip bg-color">word</span>
+                        </a>
+                        
+                        <a href="/tags/vbscript/">
+                            <span class="chip bg-color">vbscript</span>
                         </a>
                         
                     </div>
@@ -726,12 +779,12 @@ Function changeStyle(folderspec)
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/word/">
-                            <span class="chip bg-color">word</span>
-                        </a>
-                        
                         <a href="/tags/vbs/">
                             <span class="chip bg-color">vbs</span>
+                        </a>
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
                         </a>
                         
                     </div>
@@ -779,12 +832,12 @@ Function changeStyle(folderspec)
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/word/">
-                            <span class="chip bg-color">word</span>
-                        </a>
-                        
                         <a href="/tags/vbs/">
                             <span class="chip bg-color">vbs</span>
+                        </a>
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
                         </a>
                         
                         <a href="/tags/excel/">
@@ -965,59 +1018,6 @@ root
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/joplin.html">
-                        <div class="card-image tag-image">
-                            
-                            <img src="/img/20210524/cover.jpg" class="responsive-img" alt="Markdown工具">
-                            
-                            <span class="card-title">Markdown工具</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-最近想在手机上写写东西，想用MD记录下生活。目前在用的Typora没有移动端，所以想找找有没有别的可以使用的工具
-
-0.简介
-网络上有很多Markdown编辑器，各种评测都有，但是工具这种东西没有绝对的事情，所以很多还是要自己去感受。看了
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Markdown/">
-                            <span class="chip bg-color">Markdown</span>
-                        </a>
-                        
-                        <a href="/tags/Joplin/">
-                            <span class="chip bg-color">Joplin</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 </main>
@@ -1064,7 +1064,7 @@ root
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.9k</span>&nbsp;字
+                class="white-color">50.2k</span>&nbsp;字
             
             
             

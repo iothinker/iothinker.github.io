@@ -85,22 +85,18 @@
     <script>
         if (localStorage.getItem('dark') === '1') {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         } 
         else if (matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         $(function(){
-	if (navigator.userAgent.match(/mobile/i)) {
-            //alert("移动端");
-            $("#sma").css({ 'bottom': '76px'});
-        }
-    })
+            if (navigator.userAgent.match(/mobile/i)) {
+                $("#sma").css({ 'bottom': '76px'});
+            }
+        })
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
@@ -518,6 +514,64 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/toolshare220424.html">
+                        <div class="card-image">
+                            
+                            <img src="https://pic.rmb.bdstatic.com/bjh/0cde1cd4876050e4d012d0fc78636355.jpeg" class="responsive-img" alt="给博客增点功能">
+                            
+                            <span class="card-title">给博客增点功能</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+今天整了整博客，之前一直想给博客整个黑夜模式，今天终于安排上了。
+
+0.黑夜模式
+没重复造轮子，网上找了一个代码，然后自己改了改，这个是文章链接 关于给hexo博客适配全局暗夜深色模式 打击可以去看看。因为用的主题不太一样，所以自己改了些
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/hexo/">
+                            <span class="chip bg-color">hexo</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%8D%9A%E5%AE%A2/">
+                            <span class="chip bg-color">博客</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F/">
+                            <span class="chip bg-color">黑夜模式</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/dayshare220421.html">
                         <div class="card-image">
                             
@@ -531,7 +585,7 @@
                         <div class="summary block-with-text">
                             
                                 
-买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后久过去拿来了。小家伙看到了非要穿起来，来一起看看吧。
+买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。
 
 0.照片分享
 
@@ -984,60 +1038,6 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/twikooComment.html">
-                        <div class="card-image">
-                            
-                            <img src="https://pic.rmb.bdstatic.com/bjh/fff0bffc16bbfcb7f094bf0da2eb4490.jpeg" class="responsive-img" alt="Twikoo评论通知">
-                            
-                            <span class="card-title">Twikoo评论通知</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-博客上的评论系统是用的Twikoo的，它是有评论邮件提醒功能的，我尝试了但是没有成功，所以就想用之前的自己搭的Server酱来实现新评论提醒功能。
-
-0.抓包分析
-整个分析下来，主要的是请求的内容不一样，请求的URL地址都是一样的。htt
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                彤爸比
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Node-RED/">
-                            <span class="chip bg-color">Node-RED</span>
-                        </a>
-                        
-                        <a href="/tags/Twikoo/">
-                            <span class="chip bg-color">Twikoo</span>
-                        </a>
-                        
-                        <a href="/tags/%E8%AF%84%E8%AE%BA/">
-                            <span class="chip bg-color">评论</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1085,7 +1085,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.9k</span>&nbsp;字
+                class="white-color">50.2k</span>&nbsp;字
             
             
             

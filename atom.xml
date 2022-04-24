@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-04-22T02:01:30.312Z</updated>
+  <updated>2022-04-24T08:55:01.416Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -17,21 +17,54 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>给博客增点功能</title>
+    <link href="https://www.wangxingyang.com/toolshare220424.html"/>
+    <image>https://pic.rmb.bdstatic.com/bjh/0cde1cd4876050e4d012d0fc78636355.jpeg</image>
+    
+    <id>https://www.wangxingyang.com/toolshare220424.html</id>
+    <published>2022-04-24T08:13:40.000Z</published>
+    <updated>2022-04-24T08:55:01.416Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>今天整了整博客，之前一直想给博客整个黑夜模式，今天终于安排上了。</p></blockquote><h3 id="0-黑夜模式"><a href="#0-黑夜模式" class="headerlink" title="0.黑夜模式"></a>0.黑夜模式</h3><hr><p>没重复造轮子，网上找了一个代码，然后自己改了改，这个是文章链接 <a href="https://blog.csdn.net/weixin_42529972/article/details/109390699">关于给hexo博客适配全局暗夜深色模式</a> 打击可以去看看。因为用的主题不太一样，所以自己改了些地方。</p><ol><li><p>旁边导航栏不能够跟随改变。</p><p>// 修改 <code>blog/themes/hexo-theme-matery/layout/_partial/post-detail-toc.ejs</code> 文件中的</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc-widget card<span class="token punctuation">"</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 修改为 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc-widget card<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li><p>白天模式没有图标显示</p><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*增加如下样式，是个小太阳。*/</span><span class="token selector">.fa-sun-o:before</span> <span class="token punctuation">{</span>  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"\f185"</span><span class="token punctuation">;</span>  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span> 242<span class="token punctuation">,</span>141<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token important">!important</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">/*小太阳的位置*/</span><span class="token selector">#sma .fa-sun-o</span>  <span class="token punctuation">{</span>  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>  <span class="token property">right</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>  <span class="token property">bottom</span><span class="token punctuation">:</span> 13px<span class="token punctuation">;</span>  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token important">!important</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 深色模式设置</span><span class="token keyword">function</span> <span class="token function">switchNightMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">var</span> body <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify start</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#nightMode'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"fa-sun-o"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"fa-moon-o"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#sma'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span><span class="token string">"black"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify end</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify start</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#nightMode'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"fa-moon-o"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"fa-sun-o"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#sma'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span><span class="token string">"gray"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify end</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>移动端打开是未知有点错乱</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 如果是移动端，侧边栏按钮消失，所以按钮下移</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">mobile</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#sma"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'bottom'</span><span class="token operator">:</span> <span class="token string">'76px'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ol><h3 id="1-成果展示"><a href="#1-成果展示" class="headerlink" title="1.成果展示"></a>1.成果展示</h3><hr><p><img src="https://pic.rmb.bdstatic.com/bjh/32d791c3844f1bca0f24fb435ddddb9f.jpeg" alt="移动端"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/f1bbb8787fef1640ac03a4a22aadfb0c.jpeg" alt="PC端"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;今天整了整博客，之前一直想给博客整个黑夜模式，今天终于安排上了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-黑夜模式&quot;&gt;&lt;a href=&quot;#0-黑夜模式&quot; class=&quot;headerlink&quot; title=&quot;0.黑夜模式&quot;&gt;&lt;/a&gt;0</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="hexo" scheme="https://www.wangxingyang.com/tags/hexo/"/>
+    
+    <category term="博客" scheme="https://www.wangxingyang.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="黑夜模式" scheme="https://www.wangxingyang.com/tags/%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>骑车分享</title>
     <link href="https://www.wangxingyang.com/dayshare220421.html"/>
     <image>https://www.wangxingyang.com/img/20220421/cover.jpeg</image>
     <notify>true</notify>
     <id>https://www.wangxingyang.com/dayshare220421.html</id>
     <published>2022-04-21T12:22:24.000Z</published>
-    <updated>2022-04-22T02:01:30.312Z</updated>
+    <updated>2022-04-24T08:27:31.349Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后久过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p></blockquote><h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr><p><img src="/img/20220421/0.jpg" alt="比✌️"></p><p><img src="/img/20220421/1.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/2.jpg" alt="比✌️"></p><p><img src="/img/20220421/3.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/4.jpg" alt="帽子塌了"></p><p><img src="/img/20220421/5.jpg" alt="帽子塌了"></p><p>![调了个色](/img/20220421/6.jpe  g)</p><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>每次有新🆕的东西到，她都很兴奋。果然小孩子是最开心的。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p></blockquote><h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr><p><img src="/img/20220421/0.jpg" alt="比✌️"></p><p><img src="/img/20220421/1.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/2.jpg" alt="比✌️"></p><p><img src="/img/20220421/3.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/4.jpg" alt="帽子塌了"></p><p><img src="/img/20220421/5.jpg" alt="帽子塌了"></p><p>![调了个色](/img/20220421/6.jpe  g)</p><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>每次有新🆕的东西到，她都很兴奋。果然小孩子是最开心的。</p>]]></content>
     
     
       
       
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后久过去拿来了。小家伙看到了非要穿起来，来一起看看吧。&lt;/p&gt;
+&lt;p&gt;买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;0-照片分享&quot;&gt;&lt;a href=&quot;#0-照片分享&quot; class=&quot;hea</summary>
       
@@ -141,37 +174,6 @@
     <category term="苏康码" scheme="https://www.wangxingyang.com/tags/%E8%8B%8F%E5%BA%B7%E7%A0%81/"/>
     
     <category term="行程码" scheme="https://www.wangxingyang.com/tags/%E8%A1%8C%E7%A8%8B%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>佛手湖公园游玩</title>
-    <link href="https://www.wangxingyang.com/dayshare220409.html"/>
-    <image>https://pic.rmb.bdstatic.com/bjh/c62c4353202ab7d741f93d10bc1136f2.jpeg</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220409.html</id>
-    <published>2022-04-09T04:47:02.000Z</published>
-    <updated>2022-04-18T00:13:53.230Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>周末很快就到了，上次假期没有玩的尽兴，所以这次准备早点过去，不然又要堵在路上进不去了。</p></blockquote><h3 id="0-早起出发"><a href="#0-早起出发" class="headerlink" title="0.早起出发"></a>0.早起出发</h3><hr><p>有了之前的教训，早早就起床了，彤彤一直想要去公园玩。起来洗漱吃个简单的早饭就出发了。到了佛手湖发现已经有很多人到了，门外已经开始排队了。那时候才9点多钟，天气好，人真的很多。还好排的队不是很长，很快就进去了。进去之后逛逛，发现外面实在是太晒了，所以就准备收拾收拾回去了，玩了大概2个小时。下面看看咱们拍的照片哈。</p><p><img src="https://pic.rmb.bdstatic.com/bjh/c62c4353202ab7d741f93d10bc1136f2.jpeg" alt="佛手湖"></p><p><img src="/img/20220409/0.jpg" alt="和小老虎拍照"></p><p><img src="/img/20220409/1.jpg" alt="楼梯摆拍"></p><p><img src="/img/20220409/2.jpg" alt="楼梯摆拍"></p><p><img src="/img/20220409/3.jpg" alt="遮太阳"></p><p><img src="/img/20220409/4.jpg" alt="楼梯摆拍"></p><p><img src="/img/20220409/5.jpg" alt="咱们一起拍"></p><p><img src="/img/20220409/6.jpg" alt="楼梯摆拍"></p><p><img src="/img/20220409/7.jpg" alt="楼梯摆拍"></p><h3 id="1-回家做饭"><a href="#1-回家做饭" class="headerlink" title="1.回家做饭"></a>1.回家做饭</h3><hr><p>回家之后，买了点熟菜，彤宝我给他做了一个裙带菜鸡蛋汤，吃的很多，看着也很诱人，感觉自己的厨艺得到了肯定，哈哈。</p><p><img src="/img/20220409/8.jpeg" alt="裙带菜鸡蛋汤"></p><h3 id="2-写在最后"><a href="#2-写在最后" class="headerlink" title="2.写在最后"></a>2.写在最后</h3><hr><p>下午如果出去，继续记录。</p><h3 id="3-晚上做饭"><a href="#3-晚上做饭" class="headerlink" title="3.晚上做饭"></a>3.晚上做饭</h3><hr><p>晚上做了个龙虾🦞，还不错，老婆比较给力，吃的比较多，我昨天刚刚吃过，所以战斗力一般，放个图。</p><p><img src="/img/20220409/9.jpeg" alt="龙虾🦞"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;周末很快就到了，上次假期没有玩的尽兴，所以这次准备早点过去，不然又要堵在路上进不去了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-早起出发&quot;&gt;&lt;a href=&quot;#0-早起出发&quot; class=&quot;headerlink&quot; title=&quot;0.</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="佛手湖" scheme="https://www.wangxingyang.com/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/"/>
     
   </entry>
   

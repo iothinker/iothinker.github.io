@@ -4,11 +4,40 @@
   
     
     <entry>
+      <title>给博客增点功能</title>
+      <link href="toolshare220424.html"/>
+      <url>toolshare220424.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>今天整了整博客，之前一直想给博客整个黑夜模式，今天终于安排上了。</p></blockquote><h3 id="0-黑夜模式"><a href="#0-黑夜模式" class="headerlink" title="0.黑夜模式"></a>0.黑夜模式</h3><hr><p>没重复造轮子，网上找了一个代码，然后自己改了改，这个是文章链接 <a href="https://blog.csdn.net/weixin_42529972/article/details/109390699">关于给hexo博客适配全局暗夜深色模式</a> 打击可以去看看。因为用的主题不太一样，所以自己改了些地方。</p><ol><li><p>旁边导航栏不能够跟随改变。</p><p>// 修改 <code>blog/themes/hexo-theme-matery/layout/_partial/post-detail-toc.ejs</code> 文件中的</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc-widget card<span class="token punctuation">"</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- 修改为 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toc-widget card<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li><p>白天模式没有图标显示</p><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*增加如下样式，是个小太阳。*/</span><span class="token selector">.fa-sun-o:before</span> <span class="token punctuation">{</span>  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"\f185"</span><span class="token punctuation">;</span>  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span> 242<span class="token punctuation">,</span>141<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token important">!important</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">/*小太阳的位置*/</span><span class="token selector">#sma .fa-sun-o</span>  <span class="token punctuation">{</span>  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>  <span class="token property">right</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>  <span class="token property">bottom</span><span class="token punctuation">:</span> 13px<span class="token punctuation">;</span>  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token important">!important</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 深色模式设置</span><span class="token keyword">function</span> <span class="token function">switchNightMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">var</span> body <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify start</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#nightMode'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"fa-sun-o"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"fa-moon-o"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#sma'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span><span class="token string">"black"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify end</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'dark'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify start</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#nightMode'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"fa-moon-o"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"fa-sun-o"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#sma'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span><span class="token string">"gray"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// modify end</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>移动端打开是未知有点错乱</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 如果是移动端，侧边栏按钮消失，所以按钮下移</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">mobile</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#sma"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'bottom'</span><span class="token operator">:</span> <span class="token string">'76px'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ol><h3 id="1-成果展示"><a href="#1-成果展示" class="headerlink" title="1.成果展示"></a>1.成果展示</h3><hr><p><img src="https://pic.rmb.bdstatic.com/bjh/32d791c3844f1bca0f24fb435ddddb9f.jpeg" alt="移动端"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/f1bbb8787fef1640ac03a4a22aadfb0c.jpeg" alt="PC端"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 黑夜模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>骑车分享</title>
       <link href="dayshare220421.html"/>
       <url>dayshare220421.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后久过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p></blockquote><h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr><p><img src="/img/20220421/0.jpg" alt="比✌️"></p><p><img src="/img/20220421/1.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/2.jpg" alt="比✌️"></p><p><img src="/img/20220421/3.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/4.jpg" alt="帽子塌了"></p><p><img src="/img/20220421/5.jpg" alt="帽子塌了"></p><p>![调了个色](/img/20220421/6.jpe  g)</p><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>每次有新🆕的东西到，她都很兴奋。果然小孩子是最开心的。</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p></blockquote><h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr><p><img src="/img/20220421/0.jpg" alt="比✌️"></p><p><img src="/img/20220421/1.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/2.jpg" alt="比✌️"></p><p><img src="/img/20220421/3.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/4.jpg" alt="帽子塌了"></p><p><img src="/img/20220421/5.jpg" alt="帽子塌了"></p><p>![调了个色](/img/20220421/6.jpe  g)</p><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>每次有新🆕的东西到，她都很兴奋。果然小孩子是最开心的。</p>]]></content>
       
       
       <categories>
@@ -746,9 +775,9 @@
       
         <tags>
             
-            <tag> vbscript </tag>
-            
             <tag> word </tag>
+            
+            <tag> vbscript </tag>
             
         </tags>
       
@@ -854,9 +883,9 @@
       
         <tags>
             
-            <tag> word </tag>
-            
             <tag> vbs </tag>
+            
+            <tag> word </tag>
             
         </tags>
       
@@ -1018,9 +1047,9 @@
       
         <tags>
             
-            <tag> word </tag>
-            
             <tag> vbs </tag>
+            
+            <tag> word </tag>
             
             <tag> excel </tag>
             
@@ -1429,9 +1458,9 @@
       
         <tags>
             
-            <tag> 园博园 </tag>
-            
             <tag> 遛娃 </tag>
+            
+            <tag> 园博园 </tag>
             
         </tags>
       

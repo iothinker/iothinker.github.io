@@ -85,22 +85,18 @@
     <script>
         if (localStorage.getItem('dark') === '1') {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         } 
         else if (matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         $(function(){
-	if (navigator.userAgent.match(/mobile/i)) {
-            //alert("移动端");
-            $("#sma").css({ 'bottom': '76px'});
-        }
-    })
+            if (navigator.userAgent.match(/mobile/i)) {
+                $("#sma").css({ 'bottom': '76px'});
+            }
+        })
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
@@ -331,6 +327,62 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/opencv.html">
+                        <div class="card-image">
+                            
+                            <img src="/img/20210720/cover.png" class="responsive-img" alt="图片中人脸提取">
+                            
+                            <span class="card-title">图片中人脸提取</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+最近需要写一个工具，提取图片中的人脸，并且识别出相关信息，最后按照一定的规则进行存储。
+
+0.分析
+通过上述需求，需要做的是OCR文字识别和人脸识别，语言选择Python。人脸提取使用的是OpenCV，简单介绍一下，摘自百度百科。
+
+Op
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/python/">
+                            <span class="chip bg-color">python</span>
+                        </a>
+                        
+                        <a href="/tags/opencv/">
+                            <span class="chip bg-color">opencv</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/genWord.html">
                         <div class="card-image">
                             
@@ -370,12 +422,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/word/">
-                            <span class="chip bg-color">word</span>
-                        </a>
-                        
                         <a href="/tags/vbs/">
                             <span class="chip bg-color">vbs</span>
+                        </a>
+                        
+                        <a href="/tags/word/">
+                            <span class="chip bg-color">word</span>
                         </a>
                         
                         <a href="/tags/excel/">
@@ -777,66 +829,6 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/contactTool.html">
-                        <div class="card-image">
-                            
-                            <img src="/img/20210407/tools.jpg" class="responsive-img" alt="Word合并工具">
-                            
-                            <span class="card-title">Word合并工具</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-帮好兄弟的朋友写的一个小工具，就是把Word中的表格合并到Excel中去
-
-下面是相关代码
-
-Sub main()
-     ' 清空表格
-    Sheet1.Range("A5:AP20").ClearContents
-
-
-    S
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                        <a href="/tags/VBA/">
-                            <span class="chip bg-color">VBA</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -885,7 +877,7 @@ Sub main()
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.9k</span>&nbsp;字
+                class="white-color">50.2k</span>&nbsp;字
             
             
             

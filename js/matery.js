@@ -179,14 +179,12 @@ function switchNightMode() {
         localStorage.setItem('dark','0');
         $('#nightMode').removeClass("fa-sun-o").addClass("fa-moon-o");
         $('#sma').css("background","black");
-        $("#toc-aside").removeClass("dark");
         return;
     } else {
         document.body.classList.add('dark');
         localStorage.setItem('dark','1');
         $('#nightMode').removeClass("fa-moon-o").addClass("fa-sun-o");
         $('#sma').css("background","gray");
-        $("#toc-aside").addClass("dark");
         return;
     }
 }

@@ -85,22 +85,18 @@
     <script>
         if (localStorage.getItem('dark') === '1') {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         } 
         else if (matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark');
-            $("#toc-aside").addClass("dark");
         }
         $(function(){
-	if (navigator.userAgent.match(/mobile/i)) {
-            //alert("移动端");
-            $("#sma").css({ 'bottom': '76px'});
-        }
-    })
+            if (navigator.userAgent.match(/mobile/i)) {
+                $("#sma").css({ 'bottom': '76px'});
+            }
+        })
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
@@ -1309,7 +1305,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.9k</span>&nbsp;字
+                class="white-color">50.2k</span>&nbsp;字
             
             
             
