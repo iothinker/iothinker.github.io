@@ -506,6 +506,10 @@
       for (let key in data) {
         label.push(key);
         dataVal.push(data[key].installs);
+        if(label.length >30){
+          label.shift();
+          dataVal.shift();
+        }
       }
       var options =     {
         type: 'line',
