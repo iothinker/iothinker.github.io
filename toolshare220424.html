@@ -443,14 +443,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-25
+                    2022-04-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    331
+                    437
                 </div>
                 
 
@@ -538,6 +538,14 @@
 		<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#sma"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'bottom'</span><span class="token operator">:</span> <span class="token string">'76px'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>本地运行时屏蔽百度统计和评论拉取</p>
+<p>调试的时候仍会统计和拉取评论，会造成数据并不是很准确，所以增加判断。如果是本地运行，进行这些请求，保证数据准确，减少资源浪费。</p>
+<pre class="line-numbers language-none"><code class="language-none">var url = window.location.href;
+if(url.indexOf("localhost") &lt; 0 &amp;&amp; url.indexOf("127.0.0.1") &lt; 0){
+	console.log("Now Is Product Mode");  
+}else{
+	console.log("Now Is Debug Mode");
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="1-成果展示"><a href="#1-成果展示" class="headerlink" title="1.成果展示"></a>1.成果展示</h3><hr>
 <p><img src="https://pic.rmb.bdstatic.com/bjh/32d791c3844f1bca0f24fb435ddddb9f.jpeg" alt="移动端"></p>
@@ -1039,20 +1047,26 @@
 
 <script src="/libs/twikoo/twikoo.all.min.js"></script>
 <script>
-    twikoo.init({
-        envId: 'freefitter-8gx8lldy312991c5',
-        el: '#tcomments',
-        region: '',
-        path: ''
-    }).then(function () {
-        var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
-        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
-            if (tkInputs[tkInputsIndex]) {
-                tkInputs[tkInputsIndex].classList.add('browser-default');
+    var url = window.location.href;
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        twikoo.init({
+            envId: 'freefitter-8gx8lldy312991c5',
+            el: '#tcomments',
+            region: '',
+            path: ''
+        }).then(function () {
+            var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
+            for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
+                if (tkInputs[tkInputsIndex]) {
+                    tkInputs[tkInputsIndex].classList.add('browser-default');
+                }
             }
-        }
-    });
-</script>
+        });
+    }else{
+        console.log("Now Is Debug Mode");
+        document.getElementById("tcomments").innerText = "本地运行不获取评论！";
+    }
+    </script>
 
     
 
@@ -1061,17 +1075,16 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/toolshare220424.html">
+                <a href="/dayshare220426.html">
                     <div class="card-image">
                         
-                        <img src="https://pic.rmb.bdstatic.com/bjh/0cde1cd4876050e4d012d0fc78636355.jpeg" class="responsive-img" alt="给博客增点功能">
+                        <img src="https://img.alicdn.com/imgextra/i1/2956002138/O1CN01cja98a1RfFJwDaspS_!!2956002138.jpg" class="responsive-img" alt="开车喽">
                         
-                        <span class="card-title">给博客增点功能</span>
+                        <span class="card-title">开车喽</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1081,35 +1094,30 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E9%81%9B%E5%A8%83/">
+                        <span class="chip bg-color">遛娃</span>
                     </a>
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9A%97%E5%A4%9C%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">暗夜模式</span>
+                    <a href="/tags/%E5%BC%80%E8%BD%A6/">
+                        <span class="chip bg-color">开车</span>
                     </a>
                     
                 </div>
@@ -1366,7 +1374,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">50.4k</span>&nbsp;字
+                class="white-color">50.5k</span>&nbsp;字
             
             
             
@@ -1592,7 +1600,6 @@ $(function () {
     var url = window.location.href;
     //console.log("analytics url=" + url);
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("analytics url=" + url);
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -1600,6 +1607,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
@@ -1609,7 +1618,6 @@ $(function () {
     var url = window.location.href;
     //
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("push url=" + url);
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -1621,6 +1629,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 

@@ -327,20 +327,29 @@
                 
                 
                 
-                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
+                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">插件
-                        <span class="tag-length">2</span>
+                            style="background-color: #F9EBEA;">学习
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
+                <a href="/categories/%E7%94%9F%E6%B4%BB/" title="生活: 36">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">学习
-                        <span class="tag-length">7</span>
+                            style="background-color: #F5EEF8;">生活
+                        <span class="tag-length">36</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">插件
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -348,17 +357,8 @@
                 <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">工具
+                            style="background-color: #E8F8F5;">工具
                         <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%94%9F%E6%B4%BB/" title="生活: 35">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">生活
-                        <span class="tag-length">35</span>
                     </span>
                 </a>
                 
@@ -704,7 +704,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">50.4k</span>&nbsp;字
+                class="white-color">50.5k</span>&nbsp;字
             
             
             
@@ -930,7 +930,6 @@ $(function () {
     var url = window.location.href;
     //console.log("analytics url=" + url);
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("analytics url=" + url);
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -938,6 +937,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
@@ -947,7 +948,6 @@ $(function () {
     var url = window.location.href;
     //
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("push url=" + url);
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -959,6 +959,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 

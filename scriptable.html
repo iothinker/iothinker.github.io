@@ -992,20 +992,26 @@
 
 <script src="/libs/twikoo/twikoo.all.min.js"></script>
 <script>
-    twikoo.init({
-        envId: 'freefitter-8gx8lldy312991c5',
-        el: '#tcomments',
-        region: '',
-        path: ''
-    }).then(function () {
-        var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
-        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
-            if (tkInputs[tkInputsIndex]) {
-                tkInputs[tkInputsIndex].classList.add('browser-default');
+    var url = window.location.href;
+    if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
+        twikoo.init({
+            envId: 'freefitter-8gx8lldy312991c5',
+            el: '#tcomments',
+            region: '',
+            path: ''
+        }).then(function () {
+            var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
+            for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
+                if (tkInputs[tkInputsIndex]) {
+                    tkInputs[tkInputsIndex].classList.add('browser-default');
+                }
             }
-        }
-    });
-</script>
+        });
+    }else{
+        console.log("Now Is Debug Mode");
+        document.getElementById("tcomments").innerText = "本地运行不获取评论！";
+    }
+    </script>
 
     
 
@@ -1313,7 +1319,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">50.4k</span>&nbsp;字
+                class="white-color">50.5k</span>&nbsp;字
             
             
             
@@ -1539,7 +1545,6 @@ $(function () {
     var url = window.location.href;
     //console.log("analytics url=" + url);
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("analytics url=" + url);
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -1547,6 +1552,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
@@ -1556,7 +1563,6 @@ $(function () {
     var url = window.location.href;
     //
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("push url=" + url);
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -1568,6 +1574,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 

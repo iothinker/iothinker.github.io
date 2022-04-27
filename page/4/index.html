@@ -327,6 +327,60 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/dayshare210919.html">
+                        <div class="card-image">
+                            
+                            <img src="/img/20210919/cover.jpeg" class="responsive-img" alt="节假日分享">
+                            
+                            <span class="card-title">节假日分享</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+好久不见了，是不是还是有点想念。因为疫情的原因，一直到现在都没有更新博客了。现在好些了，加上现在正是中秋佳节，所以我们又回来啦。
+
+0.珍珠泉玩耍
+之前的年卡办了，好久都没用了，感觉不用就浪费了，所以今天就去了珍珠泉玩了。离家还是比较近，
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E9%81%9B%E5%A8%83/">
+                            <span class="chip bg-color">遛娃</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%8A%82%E5%81%87%E6%97%A5/">
+                            <span class="chip bg-color">节假日</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/genReport.html">
                         <div class="card-image">
                             
@@ -775,64 +829,6 @@ Function changeStyle(folderspec)
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/dayshare210725.html">
-                        <div class="card-image">
-                            
-                            <img src="/img/20210725/cover.png" class="responsive-img" alt="周末分享">
-                            
-                            <span class="card-title">周末分享</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-南京突如其来的疫情让本身平静的生活有了些波澜。彤宝的课都取消了，这个周末都是宅在家里的。
-
-0.在家干什么
-彤妈放假在家陪彤彤，周五的下午在家自己搭了个乐高，大家可以猜猜她搭的是什么
-
-
-
-然后我又给她搭了个大房子，彤宝喜欢往里面塞东西，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%81%9B%E5%A8%83/">
-                            <span class="chip bg-color">遛娃</span>
-                        </a>
-                        
-                        <a href="/tags/%E9%98%B2%E7%96%AB/">
-                            <span class="chip bg-color">防疫</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -881,7 +877,7 @@ Function changeStyle(folderspec)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">50.4k</span>&nbsp;字
+                class="white-color">50.5k</span>&nbsp;字
             
             
             
@@ -1107,7 +1103,6 @@ $(function () {
     var url = window.location.href;
     //console.log("analytics url=" + url);
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("analytics url=" + url);
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -1115,6 +1110,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
@@ -1124,7 +1121,6 @@ $(function () {
     var url = window.location.href;
     //
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("push url=" + url);
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -1136,6 +1132,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 

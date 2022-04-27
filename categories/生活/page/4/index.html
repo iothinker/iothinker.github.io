@@ -327,20 +327,29 @@
                 
                 
                 
-                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
+                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">插件
-                        <span class="tag-length">2</span>
+                            style="background-color: #F9EBEA;">学习
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习: 7">
+                <a href="/categories/%E7%94%9F%E6%B4%BB/" title="生活: 36">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #F5EEF8;">生活
+                        <span class="tag-length">36</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%8F%92%E4%BB%B6/" title="插件: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">学习
-                        <span class="tag-length">7</span>
+                            style="background-color: #D5F5E3;">插件
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -348,17 +357,8 @@
                 <a href="/categories/%E5%B7%A5%E5%85%B7/" title="工具: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">工具
+                            style="background-color: #E8F8F5;">工具
                         <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%94%9F%E6%B4%BB/" title="生活: 35">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #E8F8F5;">生活
-                        <span class="tag-length">35</span>
                     </span>
                 </a>
                 
@@ -454,6 +454,76 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/dayshare210424.html">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/img/20210424/cover.webp" class="responsive-img" alt="周末记事">
+                            
+                            <span class="card-title">周末记事</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+因为五一小长假要补班，所以这周的周末只有短短的一天。虽然只有一天，但是彤彤的行程还是很满的。
+
+0.行程简介
+
+
+上午   亲子课
+
+下午   七田真体验课
+
+
+
+1.亲子课
+本周的亲子课的两个玩具是上周的色彩分类杯和碗，勺的使用。乐器是
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%AE%9D%E5%AE%9D/">
+                            <span class="chip bg-color">宝宝</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%97%A9%E6%95%99/">
+                            <span class="chip bg-color">早教</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%91%A8%E6%9C%AB/">
+                            <span class="chip bg-color">周末</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9C%8B%E5%8F%8B/">
+                            <span class="chip bg-color">朋友</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -801,7 +871,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">50.4k</span>&nbsp;字
+                class="white-color">50.5k</span>&nbsp;字
             
             
             
@@ -1027,7 +1097,6 @@ $(function () {
     var url = window.location.href;
     //console.log("analytics url=" + url);
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("analytics url=" + url);
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
@@ -1035,6 +1104,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
@@ -1044,7 +1115,6 @@ $(function () {
     var url = window.location.href;
     //
     if(url.indexOf("localhost") < 0 && url.indexOf("127.0.0.1") < 0){
-        console.log("push url=" + url);
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -1056,6 +1126,8 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
+    }else{
+        console.log("Now Is Debug Mode");
     }
 </script>
 
