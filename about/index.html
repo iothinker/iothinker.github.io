@@ -74,7 +74,6 @@
             </div>
             
             
-
 <style>
 
   .fa-moon-o:before {
@@ -183,7 +182,7 @@
     
       
         
-        <i id="nightMode" aria-hidden="true" class="fa fa-moon-o" style="zoom: 0.8;"></i>
+        <i id="nightMode" aria-hidden="true" class="fa fa-sun-o" style="zoom: 0.8;"></i>
          
       
       <span></span>
@@ -594,7 +593,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"学习","value":7},{"name":"生活","value":38},{"name":"插件","value":2},{"name":"工具","value":13},{"name":"工作","value":1},{"name":"智能家居","value":9},{"name":"教程","value":4},{"name":"想法","value":1},{"name":"物联网","value":1},{"name":"M5Stack","value":1},{"name":"树莓派","value":2},{"name":"路由器","value":1},{"name":"备忘","value":1}],
+                data: [{"name":"生活","value":38},{"name":"学习","value":7},{"name":"插件","value":2},{"name":"工具","value":13},{"name":"工作","value":1},{"name":"智能家居","value":9},{"name":"教程","value":4},{"name":"想法","value":1},{"name":"物联网","value":1},{"name":"M5Stack","value":1},{"name":"树莓派","value":2},{"name":"路由器","value":1},{"name":"备忘","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -1007,8 +1006,22 @@ $(function () {
     })();
     </script>
     End of Tawk.to Script--><!---->
-
-
+    <script>
+        if (localStorage.getItem('dark') === '1') {
+            document.body.classList.add('dark');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+            document.body.classList.add('dark');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark');
+        }
+        if (localStorage.getItem('dark') === '1') {
+            $('#nightMode').removeClass("fa-moon-o").addClass("fa-sun-o");
+        }else{
+            $('#nightMode').removeClass("fa-sun-o").addClass("fa-moon-o");
+        }
+    </script>
 </body>
 
 </html>
