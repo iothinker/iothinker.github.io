@@ -39,7 +39,26 @@
 
 
 <body>
-    <header class="navbar-fixed">
+    <style>
+@media screen and (orientation:portrait) {
+    .modeBtn{
+        display: block;
+        position: relative;
+        top: -41px;
+        left: 145px;
+    }
+ 
+}
+@media screen and (orientation:landscape) {
+    .modeBtn{
+        display: block;
+        position: relative;
+        top: -64px;
+        left: 145px;
+    }
+}
+</style>
+<header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -49,7 +68,11 @@
                     
                     <span class="logo-span">宁静致远</span>
                 </a>
+                <a onclick="switchNightMode()" id="btn" class="modeBtn" >
+                    <i id="nightMode" aria-hidden="true" class="fa fa-moon-o"></i>
+                </a>
             </div>
+            
             
 
 <style>
@@ -160,7 +183,7 @@
     
       
         
-        <i id="nightMode" aria-hidden="true" id="sma" class="fa fa-moon-o" style="zoom: 0.8;"></i>
+        <i id="nightMode" aria-hidden="true" class="fa fa-moon-o" style="zoom: 0.8;"></i>
          
       
       <span></span>
@@ -196,10 +219,8 @@
         
         <li class="m-nav-item">
 	  
-      
-          <a href="/" class="waves-effect waves-light">
-           
-  			
+		<a href="/" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-home"></i>
 			
 			首页
@@ -209,10 +230,8 @@
         
         <li class="m-nav-item">
 	  
-      
-          <a href="/tags" class="waves-effect waves-light">
-           
-  			
+		<a href="/tags" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-tags"></i>
 			
 			标签
@@ -222,10 +241,8 @@
         
         <li class="m-nav-item">
 	  
-      
-          <a href="/categories" class="waves-effect waves-light">
-           
-  			
+		<a href="/categories" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-bookmark"></i>
 			
 			分类
@@ -235,10 +252,8 @@
         
         <li class="m-nav-item">
 	  
-      
-          <a href="/archives" class="waves-effect waves-light">
-           
-  			
+		<a href="/archives" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
@@ -248,10 +263,8 @@
         
         <li class="m-nav-item">
 	  
-      
-          <a href="/about" class="waves-effect waves-light">
-           
-  			
+		<a href="/about" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
@@ -261,10 +274,8 @@
         
         <li class="m-nav-item">
 	  
-      
-        <a onclick="switchNightMode()" class="waves-effect waves-light" id="sma">
-           
-  			
+		<a href="/" class="waves-effect waves-light">
+			
 			    <i class="fa-fw fas fa-sun-o"></i>
 			
 			Mode
@@ -278,9 +289,6 @@
 
 
         </div>
-        <a onclick="switchNightMode()" class="waves-effect waves-light" id="btn" style="top: -50px;left: 70% ;position: relative;" >
-            <i id="nightMode" aria-hidden="true" id="sma" class="fa fa-moon-o"></i>
-        </a>
         
     </nav>
 </header>
@@ -291,8 +299,12 @@
         return check;
     };
     var btn = document.getElementById("btn");
+    var sma = document.getElementById("sma");
+    
     if(!mobileAndTabletCheck()){
         btn.parentNode.removeChild(btn);
+    }else{
+        sma.parentNode.removeChild(sma);
     }
 </script>
 
