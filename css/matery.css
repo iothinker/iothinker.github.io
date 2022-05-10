@@ -2055,11 +2055,11 @@ footer .copy-right {
 }
 
 .nav-show i[aria-hidden=true] {
-    -webkit-transform: rotate(180deg) !important;
-    -moz-transform: rotate(180deg) !important;
-    -o-transform: rotate(180deg) !important;
-    -ms-transform: rotate(180deg) !important;
-    transform: rotate(180deg) !important;
+    -webkit-transform: rotate(360deg) !important;
+    -moz-transform: rotate(360deg) !important;
+    -o-transform: rotate(360deg) !important;
+    -ms-transform: rotate(360deg) !important;
+    transform: rotate(360deg) !important;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -o-transition: all .3s;
