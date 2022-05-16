@@ -3,10 +3,10 @@
 
 <head>
     
-    <div style="display:none;"><img src="https://www.wangxingyang.com/share.png" alt=""></div>
-    <meta property="og:image" content="https://www.wangxingyang.com/share.png">
+    <div style="display:none;"><img src="https://pic.rmb.bdstatic.com/bjh/bccf8fffa13097c9df6610a9a0da0d6d.png" alt=""></div>
+    <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/bccf8fffa13097c9df6610a9a0da0d6d.png">
     <meta charset="utf-8">
-    <meta name="keywords" content="HA江苏电费插件, hexo,智能家居,生活记录,技术">
+    <meta name="keywords" content="Vbs生成UUID, hexo,智能家居,生活记录,技术">
     <meta name="description" content="慢下来，整理一下工作生活的点滴">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HA江苏电费插件 | 宁静致远</title>
+    <title>Vbs生成UUID | 宁静致远</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/img/20210406/lighting.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.rmb.bdstatic.com/bjh/d0520f5232af1e327b8c80b439bb7ed3.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HA江苏电费插件</h1>
+                    <h1 class="description center-align post-title">Vbs生成UUID</h1>
                 </div>
             </div>
         </div>
@@ -445,20 +445,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/homeassistant/">
-                                <span class="chip bg-color">homeassistant</span>
+                            <a href="/tags/vbs/">
+                                <span class="chip bg-color">vbs</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                <span class="chip bg-color">插件</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%94%B5%E8%B4%B9/">
-                                <span class="chip bg-color">电费</span>
+                            <a href="/tags/uuid/">
+                                <span class="chip bg-color">uuid</span>
                             </a>
                         
                     </div>
@@ -469,8 +461,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" class="post-category">
-                                智能家居
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -482,28 +474,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-06
+                    2022-05-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-14
+                    2022-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    122
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -530,178 +522,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="0-前言介绍"><a href="#0-前言介绍" class="headerlink" title="0.前言介绍"></a>0.前言介绍</h3><hr>
-<p>之前一直想把水电燃气都接入HA，水和燃气都接入了，电费一直没有接入。一开始尝试网上抓包，有个变量没摸透它的规律，所以没办法入手。后面发现小程序也可以查电费，所以准备从小程序入手，抓包看看能不能够有什么发现。</p>
-<h3 id="1-抓包准备"><a href="#1-抓包准备" class="headerlink" title="1.抓包准备"></a>1.抓包准备</h3><hr>
-<p>搜索微信小程序 <strong>国网江苏电力营业厅</strong> 抓下包。抓包的工具可以使用 <strong>Fiddler</strong>  苹果手机上可以使用 <strong>Stream</strong> 都是挺好用的。</p>
-<h3 id="2-抓包"><a href="#2-抓包" class="headerlink" title="2.抓包"></a>2.抓包</h3><hr>
-<p>在抓包的结果中找找有没有哪个返回金额等相关数据的。找了找，找到了 <strong><a target="_blank" rel="noopener" href="https://weixin.js.sgcc.com.cn/wxapp_dlsh/wx/oauth_executeNewMini.do?openid=xxxxxxxxx&amp;timestamp=xxxxx&amp;noncestr=xxxxxxx&amp;sign=xxxxxxxx&amp;unionid=xxxxxxx&amp;userInfo=null">https://weixin.js.sgcc.com.cn/wxapp_dlsh/wx/oauth_executeNewMini.do?openid=xxxxxxxxx&amp;timestamp=xxxxx&amp;noncestr=xxxxxxx&amp;sign=xxxxxxxx&amp;unionid=xxxxxxx&amp;userInfo=null</a></strong> 这个地址。通过多次对比这个链接，发现  </p>
-<p><strong>openid=xxxxxxxxx   //固定的</strong><br><strong>timestamp=xxxxx</strong>   <strong>// 变动的</strong></p>
-<p><strong>noncestr=xxxxxxx</strong>  <strong>//变动的</strong><br><strong>sign=xxxxxxxx      // 变动的</strong><br><strong>unionid=xxxxxxx</strong>    <strong>//固定的</strong></p>
-<p><strong>timestamp</strong> <strong>noncestr</strong> <strong>sign</strong> 这三个参数是有关联关系，不能够随意改动。这个地址的返回结果中也会返回这三个字段，所以我们不必考虑他们之间的关系，再次调用是，把之前的参数替换成现在最新的即可。</p>
-<h3 id="3-编写插件"><a href="#3-编写插件" class="headerlink" title="3.编写插件"></a>3.编写插件</h3><hr>
-<p>分析到上面那步之后插件写起来就简单了，其实就是解析参数赋值的事情了。代码如下:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">"""
-Support for guojiadianwang
-# Author:
-    freefitter
-# Created:
-    2020/9/2
-"""</span>
-<span class="token keyword">import</span> logging
-<span class="token keyword">import</span> json
-<span class="token keyword">import</span> configparser
-<span class="token keyword">import</span> time<span class="token punctuation">,</span> datetime
-<span class="token keyword">from</span> dateutil<span class="token punctuation">.</span>relativedelta <span class="token keyword">import</span> relativedelta 
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>const <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    CONF_API_KEY<span class="token punctuation">,</span> CONF_NAME<span class="token punctuation">,</span> ATTR_ATTRIBUTION<span class="token punctuation">,</span> CONF_ID
-    <span class="token punctuation">)</span>
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>entity <span class="token keyword">import</span> Entity
-<span class="token keyword">import</span> homeassistant<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>config_validation <span class="token keyword">as</span> cv
-<span class="token keyword">import</span> voluptuous <span class="token keyword">as</span> vol
-<span class="token keyword">from</span> homeassistant<span class="token punctuation">.</span>components<span class="token punctuation">.</span>sensor <span class="token keyword">import</span> PLATFORM_SCHEMA
-<span class="token keyword">import</span> requests
-<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
-_Log<span class="token operator">=</span>logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
-DEFAULT_NAME <span class="token operator">=</span> <span class="token string">'gjdw'</span>
-OPENID <span class="token operator">=</span> <span class="token string">'openid'</span>
-NONCESTR <span class="token operator">=</span> <span class="token string">'noncestr'</span>
-SIGN <span class="token operator">=</span> <span class="token string">'sign'</span>
-UNIONID <span class="token operator">=</span> <span class="token string">'unionid'</span>
-TIMESTAMP1 <span class="token operator">=</span> <span class="token string">'timestamp'</span>
-PLATFORM_SCHEMA <span class="token operator">=</span> PLATFORM_SCHEMA<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">{</span>
-	vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>OPENID<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-	vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>NONCESTR<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-	vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>SIGN<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-	vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>UNIONID<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-	vol<span class="token punctuation">.</span>Required<span class="token punctuation">(</span>TIMESTAMP1<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-    vol<span class="token punctuation">.</span>Optional<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">,</span> default<span class="token operator">=</span> DEFAULT_NAME<span class="token punctuation">)</span><span class="token punctuation">:</span> cv<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-HEADERS <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'Host'</span><span class="token punctuation">:</span> <span class="token string">'weixin.js.sgcc.com.cn'</span><span class="token punctuation">,</span>
-    <span class="token string">'Connection'</span><span class="token punctuation">:</span>  <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
-    <span class="token string">'Content-Length'</span><span class="token punctuation">:</span> <span class="token string">'0'</span><span class="token punctuation">,</span>
-    <span class="token string">'content-type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span>
-    <span class="token string">'Accept-Encoding'</span><span class="token punctuation">:</span> <span class="token string">'gzip,compress,br,deflate'</span><span class="token punctuation">,</span>
-    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.0(0x18000026) NetType/WIFI Language/zh_CN'</span><span class="token punctuation">,</span>
-    <span class="token string">'Referer'</span><span class="token punctuation">:</span> <span class="token string">'https://servicewechat.com/wx203b37ad2ad5d2a6/32/page-frame.html'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-API_URL <span class="token operator">=</span> <span class="token string">"https://weixin.js.sgcc.com.cn/wxapp_dlsh/wx/oauth_executeNewMini.do"</span>
-<span class="token keyword">def</span> <span class="token function">setup_platform</span><span class="token punctuation">(</span>hass<span class="token punctuation">,</span> config<span class="token punctuation">,</span> add_devices<span class="token punctuation">,</span> discovery_info<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    sensor_name <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>CONF_NAME<span class="token punctuation">)</span>
-    openid <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>OPENID<span class="token punctuation">)</span>
-    unionid <span class="token operator">=</span> config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>UNIONID<span class="token punctuation">)</span>
-    cfg <span class="token operator">=</span> configparser<span class="token punctuation">.</span>ConfigParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    cfg<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token string">'param.ini'</span><span class="token punctuation">)</span>
-    timestamp1 <span class="token operator">=</span> cfg<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'Param'</span><span class="token punctuation">,</span> <span class="token string">'timestamp'</span><span class="token punctuation">)</span>
-    noncestr <span class="token operator">=</span> cfg<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'Param'</span><span class="token punctuation">,</span> <span class="token string">'noncestr'</span><span class="token punctuation">)</span>
-    sign <span class="token operator">=</span> cfg<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'Param'</span><span class="token punctuation">,</span> <span class="token string">'sign'</span><span class="token punctuation">)</span>
-    
-    url <span class="token operator">=</span> API_URL <span class="token operator">+</span> <span class="token string">"?openid="</span> <span class="token operator">+</span> openid <span class="token operator">+</span><span class="token string">"&amp;timestamp="</span> <span class="token operator">+</span> timestamp1 <span class="token operator">+</span> <span class="token string">"&amp;noncestr="</span> <span class="token operator">+</span> noncestr <span class="token operator">+</span> <span class="token string">"&amp;sign="</span> <span class="token operator">+</span> sign <span class="token operator">+</span> <span class="token string">"&amp;unionid="</span> <span class="token operator">+</span> unionid <span class="token operator">+</span> <span class="token string">"&amp;userInfo=null"</span>    
-    _Log<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"url:"</span> <span class="token operator">+</span> url <span class="token punctuation">)</span>
-    add_devices<span class="token punctuation">(</span><span class="token punctuation">[</span>GJDW<span class="token punctuation">(</span>sensor_name<span class="token punctuation">,</span>url<span class="token punctuation">,</span>openid<span class="token punctuation">,</span>unionid<span class="token punctuation">,</span>cfg<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <blockquote>
+<p>数据库中有<code>UUID</code>字段，想要批量生成插入语句，想通过<code>Excel</code>的宏来实现批量生成，这里记录下生成<code>UUID</code>的方法。</p>
+</blockquote>
+<h3 id="0-脚本"><a href="#0-脚本" class="headerlink" title="0.脚本"></a>0.脚本</h3><hr>
+<p>这边参考了<strong>Demon’s Blog</strong>中的<a target="_blank" rel="noopener" href="http://demon.tw/programming/generate-guid-in-vbs.html"><strong>用VBS生成GUID</strong></a>，下面是代码</p>
+<pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">Sub main()
+  For i = 1 To Sheet1.Range("A65536").End(xlUp).Row
+        Set TypeLib = CreateObject("Scriptlet.TypeLib")
+				strGUID = LCase(Mid(TypeLib.Guid, 2, 36))
+        strFlow = "insert into xxx (UUID) values (" &amp; strGUID &amp; ");"
+        Sheet1.Cells(i, 2).Value = strFlow
+    Next
+End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">class</span> <span class="token class-name">GJDW</span><span class="token punctuation">(</span>Entity<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""Representation of a guojiadianwang """</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>sensor_name<span class="token punctuation">,</span>url<span class="token punctuation">,</span>openid<span class="token punctuation">,</span>unionid<span class="token punctuation">,</span>cfg<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>attributes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        self<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token boolean">None</span>
-        self<span class="token punctuation">.</span>_name <span class="token operator">=</span> sensor_name
-        self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
-        self<span class="token punctuation">.</span>_openid <span class="token operator">=</span> openid
-        self<span class="token punctuation">.</span>_unionid <span class="token operator">=</span> unionid
-        self<span class="token punctuation">.</span>_cfg <span class="token operator">=</span> cfg
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">name</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the name of the sensor."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_name
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">state</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the state of the sensor."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_state
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">icon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""   mdi   ."""</span>
-        <span class="token keyword">return</span> <span class="token string">'mdi:flash'</span>
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">device_state_attributes</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the state attributes."""</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>attributes
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">unit_of_measurement</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""Return the unit this state is expressed in."""</span>
-        <span class="token keyword">return</span> <span class="token string">"元"</span>
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">try</span><span class="token punctuation">:</span>
-            <span class="token triple-quoted-string string">"""_Log.error("url:" + self._url)"""</span>
-            response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>self<span class="token punctuation">.</span>_url<span class="token punctuation">,</span>headers <span class="token operator">=</span> HEADERS<span class="token punctuation">)</span>
-        <span class="token keyword">except</span> ReadTimeout<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection timeout...."</span><span class="token punctuation">)</span>
-        <span class="token keyword">except</span> ConnectionError<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Connection Error...."</span><span class="token punctuation">)</span>
-        <span class="token keyword">except</span> RequestException<span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Unknown Error"</span><span class="token punctuation">)</span>
-        res <span class="token operator">=</span> response<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> res<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"html"</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"参数存在问题,请重新抓包填写"</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span>
-            <span class="token triple-quoted-string string">"""_Log.error(res)"""</span>
-        ret <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> ret<span class="token punctuation">[</span><span class="token string">"errcode"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"0000"</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token string">"owe_amt"</span> <span class="token keyword">in</span> ret<span class="token punctuation">[</span><span class="token string">"yeModel"</span><span class="token punctuation">]</span> <span class="token punctuation">:</span>
-                self<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>ret<span class="token punctuation">[</span><span class="token string">"yeModel"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"owe_amt"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'rca_flag'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"yeModel"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"rca_flag"</span><span class="token punctuation">]</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'cur_amt'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ret<span class="token punctuation">[</span><span class="token string">"yeModel"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"cur_amt"</span><span class="token punctuation">]</span>
-                curfeeMsg <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>ret<span class="token punctuation">[</span><span class="token string">"curfee"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'ymd'</span><span class="token punctuation">]</span> <span class="token operator">=</span> curfeeMsg<span class="token punctuation">[</span><span class="token string">"ymd"</span><span class="token punctuation">]</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'totalMoney'</span><span class="token punctuation">]</span> <span class="token operator">=</span> curfeeMsg<span class="token punctuation">[</span><span class="token string">"totalMoney"</span><span class="token punctuation">]</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'powerSum'</span><span class="token punctuation">]</span> <span class="token operator">=</span> curfeeMsg<span class="token punctuation">[</span><span class="token string">"powerSum"</span><span class="token punctuation">]</span>
-                dbObjMsg <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>ret<span class="token punctuation">[</span><span class="token string">"dbObj"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'stepNo'</span><span class="token punctuation">]</span> <span class="token operator">=</span> dbObjMsg<span class="token punctuation">[</span><span class="token string">"stepNo"</span><span class="token punctuation">]</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'yearAmount'</span><span class="token punctuation">]</span> <span class="token operator">=</span> dbObjMsg<span class="token punctuation">[</span><span class="token string">"yearAmount"</span><span class="token punctuation">]</span>
-                self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'isUpdated'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'yes'</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-            	self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'rca_flag'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'-1'</span>
-            	self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'cur_amt'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'-1'</span>
-            	self<span class="token punctuation">.</span>attributes<span class="token punctuation">[</span><span class="token string">'isUpdated'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'no'</span>
-            	<span class="token comment">#_Log.error("yeModel is null !")</span>
-            <span class="token comment"># 更新url参数 </span>
-            url <span class="token operator">=</span> API_URL <span class="token operator">+</span> <span class="token string">"?openid="</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_openid <span class="token operator">+</span><span class="token string">"&amp;timestamp="</span> <span class="token operator">+</span> ret<span class="token punctuation">[</span><span class="token string">"timestamp"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"&amp;noncestr="</span> <span class="token operator">+</span> ret<span class="token punctuation">[</span><span class="token string">"noncestr"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"&amp;sign="</span> <span class="token operator">+</span> ret<span class="token punctuation">[</span><span class="token string">"sign"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"&amp;unionid="</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_unionid <span class="token operator">+</span> <span class="token string">"&amp;userInfo=null"</span> 
-            self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
-            <span class="token comment"># 保存参数至文本</span>
-            self<span class="token punctuation">.</span>_cfg<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"Param"</span><span class="token punctuation">,</span> <span class="token string">"timestamp"</span><span class="token punctuation">,</span> ret<span class="token punctuation">[</span><span class="token string">"timestamp"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            self<span class="token punctuation">.</span>_cfg<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"Param"</span><span class="token punctuation">,</span> <span class="token string">"noncestr"</span><span class="token punctuation">,</span> ret<span class="token punctuation">[</span><span class="token string">"noncestr"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            self<span class="token punctuation">.</span>_cfg<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"Param"</span><span class="token punctuation">,</span> <span class="token string">"sign"</span><span class="token punctuation">,</span> ret<span class="token punctuation">[</span><span class="token string">"sign"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            self<span class="token punctuation">.</span>_cfg<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'param.ini'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            _Log<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"send request error...."</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果重启会导致参数失效，所以插件把变动的参数保存了下来，每次插件更新的时候将相关的参数更新进去，这样重启时间不长的话就不需要重新抓包了。</p>
-<h3 id="4-HA配置"><a href="#4-HA配置" class="headerlink" title="4.HA配置"></a>4.HA配置</h3><hr>
-<p>在配置文件中加上如下内容：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">platform</span><span class="token punctuation">:</span> gjdw
-	<span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'电费'</span>
-	<span class="token key atrule">openid</span><span class="token punctuation">:</span> <span class="token string">'xxxxxxxxx-xxxxxxxxx'</span>
-	<span class="token key atrule">noncestr</span><span class="token punctuation">:</span> <span class="token string">'xxxxxxxxx'</span>
-	<span class="token key atrule">sign</span><span class="token punctuation">:</span> <span class="token string">'xxxxxxxxx'</span>
-	<span class="token key atrule">unionid</span><span class="token punctuation">:</span> <span class="token string">'xxxxxxxxx'</span>
-	<span class="token key atrule">timestamp</span><span class="token punctuation">:</span> <span class="token string">'xxxxxxxxx'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>增加  <strong>param.ini</strong> 配置文件，文件内容如下</p>
-<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token selector">[Param]</span>
-<span class="token constant">timestamp</span> <span class="token attr-value"><span class="token punctuation">=</span> xxxxxxxxx</span>
-<span class="token constant">noncestr</span> <span class="token attr-value"><span class="token punctuation">=</span> xxxxxxxxx</span>
-<span class="token constant">sign</span> <span class="token attr-value"><span class="token punctuation">=</span> xxxxxxxxx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="5-成果展示"><a href="#5-成果展示" class="headerlink" title="5.成果展示"></a>5.成果展示</h3><hr>
-<p><img src="/img/20210406/dianfei.png" alt="插件展示"></p>
-<h3 id="6-附件下载"><a href="#6-附件下载" class="headerlink" title="6.附件下载"></a>6.附件下载</h3><hr>
-<p><a href="/download/%E7%94%B5%E8%B4%B9%E6%8F%92%E4%BB%B6.zip">点击下载</a> 插件</p>
-<p>或者去论坛我发的 <a target="_blank" rel="noopener" href="https://bbs.hassbian.com/thread-12037-1-1.html"><strong>电费插件-这次应该全国通用了吧</strong></a> 帖子下载。</p>
-<h3 id="7-结语"><a href="#7-结语" class="headerlink" title="7.结语"></a>7.结语</h3><hr>
-<p>自己写写插件还是挺好玩的，最近玩了玩Node-Red和MQTT，感觉这个搞插件还是快的。有几个写好的插件可以先看看，抓了美食杰和微博热搜的数据</p>
-<p><img src="/img/20210406/info.png" alt="MQTT插件展示"></p>
+<h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr>
+<p>好记性不如烂笔头，记录一下</p>
 
                 
             </div>
@@ -728,7 +564,7 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.wangxingyang.com/jsdf.html">https://www.wangxingyang.com/jsdf.html</a>
+                    <a href="https://www.wangxingyang.com/toolshare220516.html">https://www.wangxingyang.com/toolshare220516.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -766,20 +602,12 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/homeassistant/">
-                                    <span class="chip bg-color">homeassistant</span>
+                                <a href="/tags/vbs/">
+                                    <span class="chip bg-color">vbs</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                    <span class="chip bg-color">插件</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%94%B5%E8%B4%B9/">
-                                    <span class="chip bg-color">电费</span>
+                                <a href="/tags/uuid/">
+                                    <span class="chip bg-color">uuid</span>
                                 </a>
                             
                         </div>
@@ -1231,16 +1059,17 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/maketranstool.html">
+                <a href="/toolshare220516.html">
                     <div class="card-image">
                         
-                        <img src="/img/20210407/tools.jpg" class="responsive-img" alt="交易制作工具">
+                        <img src="https://pic.rmb.bdstatic.com/bjh/d0520f5232af1e327b8c80b439bb7ed3.png" class="responsive-img" alt="Vbs生成UUID">
                         
-                        <span class="card-title">交易制作工具</span>
+                        <span class="card-title">Vbs生成UUID</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1250,9 +1079,9 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1265,19 +1094,16 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
                     
                     <a href="/tags/vbs/">
                         <span class="chip bg-color">vbs</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%88%E7%8E%87/">
-                        <span class="chip bg-color">效率</span>
+                    <a href="/tags/uuid/">
+                        <span class="chip bg-color">uuid</span>
                     </a>
                     
                 </div>
@@ -1291,13 +1117,12 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/jq-2021-qm.html">
+                <a href="/dayshare220508.html">
                     <div class="card-image">
                         
+                        <img src="https://pic.rmb.bdstatic.com/bjh/72d4fefeb1805322a20ff94fe79f4d9a.png" class="responsive-img" alt="母亲节">
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="小长假游记">
-                        
-                        <span class="card-title">小长假游记</span>
+                        <span class="card-title">母亲节</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1308,7 +1133,7 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-08
                             </span>
                         <span class="publish-author">
                             
@@ -1325,12 +1150,12 @@ API_URL <span class="token operator">=</span> <span class="token string">"https:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%81%9B%E5%A8%83/">
-                        <span class="chip bg-color">遛娃</span>
+                    <a href="/tags/%E6%AF%8D%E4%BA%B2%E8%8A%82/">
+                        <span class="chip bg-color">母亲节</span>
                     </a>
                     
-                    <a href="/tags/%E6%B8%B8%E7%8E%A9/">
-                        <span class="chip bg-color">游玩</span>
+                    <a href="/tags/%E6%84%9F%E7%BB%9F%E8%AF%BE/">
+                        <span class="chip bg-color">感统课</span>
                     </a>
                     
                 </div>

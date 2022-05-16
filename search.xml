@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Vbs生成UUID</title>
+      <link href="toolshare220516.html"/>
+      <url>toolshare220516.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>数据库中有<code>UUID</code>字段，想要批量生成插入语句，想通过<code>Excel</code>的宏来实现批量生成，这里记录下生成<code>UUID</code>的方法。</p></blockquote><h3 id="0-脚本"><a href="#0-脚本" class="headerlink" title="0.脚本"></a>0.脚本</h3><hr><p>这边参考了<strong>Demon’s Blog</strong>中的<a href="http://demon.tw/programming/generate-guid-in-vbs.html"><strong>用VBS生成GUID</strong></a>，下面是代码</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">Sub main()  For i = 1 To Sheet1.Range("A65536").End(xlUp).Row        Set TypeLib = CreateObject("Scriptlet.TypeLib")strGUID = LCase(Mid(TypeLib.Guid, 2, 36))        strFlow = "insert into xxx (UUID) values (" &amp; strGUID &amp; ");"        Sheet1.Cells(i, 2).Value = strFlow    NextEnd Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>好记性不如烂笔头，记录一下</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vbs </tag>
+            
+            <tag> uuid </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>母亲节</title>
       <link href="dayshare220508.html"/>
       <url>dayshare220508.html</url>
@@ -1541,9 +1568,9 @@
       
         <tags>
             
-            <tag> 园博园 </tag>
-            
             <tag> 遛娃 </tag>
+            
+            <tag> 园博园 </tag>
             
         </tags>
       

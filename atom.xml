@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-05-08T12:08:43.920Z</updated>
+  <updated>2022-05-16T03:00:32.088Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vbs生成UUID</title>
+    <link href="https://www.wangxingyang.com/toolshare220516.html"/>
+    <image>https://pic.rmb.bdstatic.com/bjh/d0520f5232af1e327b8c80b439bb7ed3.png</image>
+    
+    <id>https://www.wangxingyang.com/toolshare220516.html</id>
+    <published>2022-05-16T02:07:20.000Z</published>
+    <updated>2022-05-16T03:00:32.088Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>数据库中有<code>UUID</code>字段，想要批量生成插入语句，想通过<code>Excel</code>的宏来实现批量生成，这里记录下生成<code>UUID</code>的方法。</p></blockquote><h3 id="0-脚本"><a href="#0-脚本" class="headerlink" title="0.脚本"></a>0.脚本</h3><hr><p>这边参考了<strong>Demon’s Blog</strong>中的<a href="http://demon.tw/programming/generate-guid-in-vbs.html"><strong>用VBS生成GUID</strong></a>，下面是代码</p><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">Sub main()  For i = 1 To Sheet1.Range("A65536").End(xlUp).Row        Set TypeLib = CreateObject("Scriptlet.TypeLib")strGUID = LCase(Mid(TypeLib.Guid, 2, 36))        strFlow = "insert into xxx (UUID) values (" &amp; strGUID &amp; ");"        Sheet1.Cells(i, 2).Value = strFlow    NextEnd Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>好记性不如烂笔头，记录一下</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;数据库中有&lt;code&gt;UUID&lt;/code&gt;字段，想要批量生成插入语句，想通过&lt;code&gt;Excel&lt;/code&gt;的宏来实现批量生成，这里记录下生成&lt;code&gt;UUID&lt;/code&gt;的方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="vbs" scheme="https://www.wangxingyang.com/tags/vbs/"/>
+    
+    <category term="uuid" scheme="https://www.wangxingyang.com/tags/uuid/"/>
+    
+  </entry>
   
   <entry>
     <title>母亲节</title>
@@ -141,37 +172,6 @@
     <category term="博客" scheme="https://www.wangxingyang.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
     <category term="暗夜模式" scheme="https://www.wangxingyang.com/tags/%E6%9A%97%E5%A4%9C%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>骑车分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220421.html"/>
-    <image>https://www.wangxingyang.com/img/20220421/cover.jpeg</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220421.html</id>
-    <published>2022-04-21T12:22:24.000Z</published>
-    <updated>2022-04-24T08:27:31.349Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。</p></blockquote><h3 id="0-照片分享"><a href="#0-照片分享" class="headerlink" title="0.照片分享"></a>0.照片分享</h3><hr><p><img src="/img/20220421/0.jpg" alt="比✌️"></p><p><img src="/img/20220421/1.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/2.jpg" alt="比✌️"></p><p><img src="/img/20220421/3.jpg" alt="放下比✌️"></p><p><img src="/img/20220421/4.jpg" alt="帽子塌了"></p><p><img src="/img/20220421/5.jpg" alt="帽子塌了"></p><p>![调了个色](/img/20220421/6.jpe  g)</p><h3 id="1-写在最后"><a href="#1-写在最后" class="headerlink" title="1.写在最后"></a>1.写在最后</h3><hr><p>每次有新🆕的东西到，她都很兴奋。果然小孩子是最开心的。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;买车的护具一直没有到，问了客服估计是忘记发了，终于在今天到了，下班之后就过去拿来了。小家伙看到了非要穿起来，来一起看看吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-照片分享&quot;&gt;&lt;a href=&quot;#0-照片分享&quot; class=&quot;hea</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="平衡车" scheme="https://www.wangxingyang.com/tags/%E5%B9%B3%E8%A1%A1%E8%BD%A6/"/>
     
   </entry>
   
