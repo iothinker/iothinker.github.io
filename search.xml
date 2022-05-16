@@ -31,6 +31,35 @@
     
     
     <entry>
+      <title>周末分享</title>
+      <link href="dayshare220515.html"/>
+      <url>dayshare220515.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>这周彤妈要加两天班，所以就没有安排活动，带彤宝出去挖沙子，这次开车去的，没有骑电动车。到了那边整整挖了一个半小时。不过还好不热，风吹的也很舒服。</p></blockquote><h3 id="0-开始挖沙子"><a href="#0-开始挖沙子" class="headerlink" title="0.开始挖沙子"></a>0.开始挖沙子</h3><hr><p>彤宝特别喜欢挖沙子，周边能挖沙子的地方基本都去过了，看她开心的样子，是不是很治愈。</p><p><img src="/img/20220515/IMG_3498.jpg" alt="看我挖的沙子"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/986db907716dea3cb65058567b2103c7.jpeg" alt="江边"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/1683e8aa4cf6e7881457b06aad76bd18.jpeg" alt="江边"></p><h3 id="1-享堂水库"><a href="#1-享堂水库" class="headerlink" title="1.享堂水库"></a>1.享堂水库</h3><hr><p>下面这几张是在享堂水库拍的，离公司不远，空闲时可以去逛逛，比较舒服的。</p><style type="text/css">    html,body{margin:0;padding:0;}    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}  #dituContent img{    max-width: none;    box-shadow: none;}  #dituContent .BMapLabel{    max-width: max-content;}</style><script type="text/javascript" src="http://api.map.baidu.com/api?key=&amp;v=1.1&amp;services=true"></script><div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div><script type="text/javascript">    //创建和初始化地图函数：    function initMap(){        createMap();//创建地图        setMapEvent();//设置地图事件        addMapControl();//向地图添加控件        addMarker();//向地图中添加marker    }    //创建地图函数：    function createMap(){        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图        var point = new BMap.Point(118.597882,32.077908);//定义一个中心点坐标        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中        window.map = map;//将map变量存储在全局    }    //地图事件设置函数：    function setMapEvent(){        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)        map.enableScrollWheelZoom();//启用地图滚轮放大缩小        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)        map.enableKeyboard();//启用键盘上下左右键移动地图    }    //地图控件添加函数：    function addMapControl(){        //向地图中添加缩放控件    var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_ZOOM});    map.addControl(ctrl_nav);        //向地图中添加缩略图控件    var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});    map.addControl(ctrl_ove);        //向地图中添加比例尺控件    var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});    map.addControl(ctrl_sca);    }    //标注点数组    var markerArr = [{title:"享堂水库",content:"享堂水库，风景很不错哦！",point:"118.596444|32.076914",isOpen:0,icon:{w:23,h:25,l:0,t:21,x:9,lb:12}}         ];    //创建marker    function addMarker(){        for(var i=0;i<markerArr.length;i++){            var json = markerArr[i];            var p0 = json.point.split("|")[0];            var p1 = json.point.split("|")[1];            var point = new BMap.Point(p0,p1);            var iconImg = createIcon(json.icon);            var marker = new BMap.Marker(point,{icon:iconImg});            var iw = createInfoWindow(i);            var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});            marker.setLabel(label);            map.addOverlay(marker);            label.setStyle({                        borderColor:"#808080",                        color:"#333",                        cursor:"pointer"            });            (function(){                var index = i;                var _iw = createInfoWindow(i);                var _marker = marker;                _marker.addEventListener("click",function(){                    this.openInfoWindow(_iw);                });                _iw.addEventListener("open",function(){                    _marker.getLabel().hide();                })                _iw.addEventListener("close",function(){                    _marker.getLabel().show();                })                label.addEventListener("click",function(){                    _marker.openInfoWindow(_iw);                })                if(!!json.isOpen){                    label.hide();                    _marker.openInfoWindow(_iw);                }            })()        }    }    //创建InfoWindow    function createInfoWindow(i){        var json = markerArr[i];        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");        return iw;    }    //创建一个Icon    function createIcon(json){        var icon = new BMap.Icon("http://map.baidu.com/image/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})        return icon;    }    initMap();</script><p><img src="https://pic.rmb.bdstatic.com/bjh/eb2940ac88a46531e719c62b2de719df.jpeg" alt="风景"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/19ab77fa094b4c91d3be00225870828e.jpeg" alt="风景"></p><h3 id="2-写在最后"><a href="#2-写在最后" class="headerlink" title="2.写在最后"></a>2.写在最后</h3><hr><p>没事出去逛，放松心情，迎接更好的明天。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 遛娃 </tag>
+            
+            <tag> 挖沙子 </tag>
+            
+            <tag> 江边 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>母亲节</title>
       <link href="dayshare220508.html"/>
       <url>dayshare220508.html</url>
@@ -1568,9 +1597,9 @@
       
         <tags>
             
-            <tag> 遛娃 </tag>
-            
             <tag> 园博园 </tag>
+            
+            <tag> 遛娃 </tag>
             
         </tags>
       
