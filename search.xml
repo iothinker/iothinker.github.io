@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>xbar/BitBar基金净值插件</title>
+      <link href="xbarfundplugin.html"/>
+      <url>xbarfundplugin.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>之前一直用的<code>BitBar</code>后面升级了，变成了<code>xbar</code>，使用方法都差不多。然后现在给她整个基金的小插件。让我们来看看咋整的。</p></blockquote><h3 id="0-简介"><a href="#0-简介" class="headerlink" title="0.简介"></a>0.简介</h3><hr><blockquote><p>Put anything in your macOS menu bar</p></blockquote><p><img src="https://pic.rmb.bdstatic.com/bjh/b205bbfd7bc61fd22270f2b7eea8c61f.png" alt="官网的图"></p><p><strong>xbar</strong>还是很好用的，正如官网上说的，将任何东西放置到你的菜单栏。之前用它显示水电燃气的状况，后面群晖总是宕机，然后就没用了。下面介绍一下<strong>xbar吧</strong>。<a href="https://github.com/matryer/xbar">xbar</a>的项目地址，这个是<strong>xbar</strong>的<a href="https://xbarapp.com/">官网地址</a>。就是通过它来自定义你的菜单栏。</p><h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h3><hr><p>最近股市不理想，很多朋友们都想关注自己的行情，因为不玩股票，买了点基金，所以就整了基金的插件。下面是完成的效果图，可以瞅瞅。<br><img src="https://pic.rmb.bdstatic.com/bjh/8ec4005f9d6fafe2134b9eb076f94c80.png" alt="完成图"></p><h3 id="2-编码"><a href="#2-编码" class="headerlink" title="2.编码"></a>2.编码</h3><hr><p>需求有了，下面就是愉快的编码时间。这边用的<code>shell</code>脚本，数据来源于<a href="https://fund.eastmoney.com/">天天基金网</a>，需要事先安装下<code>jq</code></p><blockquote><p>jq是一个灵活的轻量级命令行JSON处理器，<a href="https://github.com/stedolan/jq">项目主页</a>在这里，这是<a href="https://linux.cmsblogs.cn/c/jq.html">介绍jq</a>的，也可以参考看看哈。<br>下面是插件的代码，大家可以拿去用。</p></blockquote><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#!/usr/bin/env bash# &lt;xbar.title&gt;Fund&lt;/xbar.title&gt;# &lt;xbar.version&gt;v0.0.0&lt;/xbar.version&gt;# &lt;xbar.author&gt;freefitter&lt;/xbar.author&gt;# &lt;xbar.desc&gt;show fund info&lt;/xbar.desc&gt;export PATH="/usr/local/bin:${PATH}"getFirstInfo(){    fundcode=$(echo $fundList | cut -d " " -f1)    cur_timestamp=$((`date '+%s'`*1000+`date '+%N'`/1000000))    retStr=$(curl -s "http://fundgz.1234567.com.cn/js/"$fundcode".js?rt="$cur_timestamp)    jsonStr=$(echo $retStr |grep -o '{.*}')    if [ -z "$jsonStr" ];then        echo "💰基金估值"    else        gszzl=$(echo "$jsonStr" | jq -r '.gszzl')        if [ `awk -v num1=$gszzl 'BEGIN{print(num1&lt;=0)?"0":"1"}'` -eq 0 ];then             echo "\033[44;1m$fundcode\033[0m \033[32;1m⬇$gszzl\033[0m"        else            echo "\033[44;1m$fundcode\033[0m \033[31;1m⬆$gszzl\033[0m"        fi    fi}getFundInfo(){    fundcode=$1    cur_timestamp=$((`date '+%s'`*1000+`date '+%N'`/1000000))    retStr=$(curl -s "http://fundgz.1234567.com.cn/js/"$fundcode".js?rt="$cur_timestamp)    # get json    jsonStr=$(echo $retStr |grep -o '{.*}')    if [ -z "$jsonStr" ];then        echo "["$fundcode"]当前基金没有相关信息"    else        gszzl=$(echo "$jsonStr" | jq -r '.gszzl')        gztime=$(echo "$jsonStr" | jq -r  '.gztime')        gsz=$(echo "$jsonStr" | jq -r  '.gsz')        dwjz=$(echo "$jsonStr" | jq -r  '.dwjz')        name=$(echo "$jsonStr" | jq -r '.name')        echo "\033[44;1m$name \033[0m"        if [ `awk -v num1=$gszzl 'BEGIN{print(num1&lt;=0)?"0":"1"}'` -eq 0 ];then             echo "估算涨幅: [ \033[32;1m $gszzl \033[0m ] 净值估算: [ \033[32;1m $gsz \033[0m ] 单位净值: [ \033[32;1m $dwjz \033[0m]"        else            echo "估算涨幅: [ \033[31;1m $gszzl \033[0m ] 净值估算: [ \033[31;1m $gsz \033[0m ] 单位净值: [ \033[31;1m $dwjz \033[0m]"        fi        echo "查看基金详细信息 | href=https://fund.eastmoney.com/$fundcode.html"        echo " 更新时间: $gztime"    fi}## 修改此处  修改添加你的基金代码 startfundList="007379 202015"## 修改此处  修改添加你的基金代码 endecho $(getFirstInfo)echo "---"for i in $fundList;do    echo -e "$(getFundInfo "$i")"    echo "---"doneecho "Refresh... | refresh=true"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>命名方式记得看下文档介绍。<code>001-fund.1m.sh</code>这边是我的命名方式，每分钟刷新一次。</p><p>使用方法就是直接替换基金列表里面的基金代码即可。</p><h3 id="3-写在最后"><a href="#3-写在最后" class="headerlink" title="3.写在最后"></a>3.写在最后</h3><hr><p>祝大家股票涨涨涨📈，没事多动手，让自己的生活变简单。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 插件 </tag>
+            
+            <tag> xbar/BitBar </tag>
+            
+            <tag> 基金 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vbs生成UUID</title>
       <link href="toolshare220516.html"/>
       <url>toolshare220516.html</url>

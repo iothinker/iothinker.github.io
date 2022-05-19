@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wangxingyang.com/xbarfundplugin.html</loc>
+    <lastmod>2022-05-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/dayshare210418.html</loc>
+    <lastmod>2022-05-18</lastmod>
+  </url>
+  <url>
     <loc>https://www.wangxingyang.com/baiduwenku.html</loc>
     <lastmod>2022-05-18</lastmod>
   </url>
@@ -291,10 +299,6 @@
   <url>
     <loc>https://www.wangxingyang.com/etax.html</loc>
     <lastmod>2021-04-21</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wangxingyang.com/dayshare210418.html</loc>
-    <lastmod>2021-04-19</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/esp32cam.html</loc>
