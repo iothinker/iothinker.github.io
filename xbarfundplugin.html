@@ -485,14 +485,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-19
+                    2022-05-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    762
+                    853
                 </div>
                 
 
@@ -542,6 +542,14 @@
 <blockquote>
 <p>jq是一个灵活的轻量级命令行JSON处理器，<a target="_blank" rel="noopener" href="https://github.com/stedolan/jq">项目主页</a>在这里，这是<a target="_blank" rel="noopener" href="https://linux.cmsblogs.cn/c/jq.html">介绍jq</a>的，也可以参考看看哈。<br>下面是插件的代码，大家可以拿去用。</p>
 </blockquote>
+<hr>
+<p><img src="https://pic.rmb.bdstatic.com/bjh/93e675540c0bb09e3a9e6e32b4384e15.png" alt="增加功能后的截图"></p>
+<blockquote>
+<p>更新记录:</p>
+<p><code>20220520</code> :</p>
+<p>1、增加是否工作日判断，休市不现实涨幅信息</p>
+<p>2、详细信息增加基金代码的显示</p>
+</blockquote>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#!/usr/bin/env bash
 
 # &lt;xbar.title&gt;Fund&lt;/xbar.title&gt;
@@ -561,9 +569,9 @@ getFirstInfo(){
     else
         gszzl=$(echo "$jsonStr" | jq -r '.gszzl')
         if [ `awk -v num1=$gszzl 'BEGIN{print(num1&lt;=0)?"0":"1"}'` -eq 0 ];then 
-            echo "\033[44;1m$fundcode\033[0m \033[32;1m⬇$gszzl\033[0m"
+            echo "💰 \033[44;1m$fundcode\033[0m \033[32;1m⬇$gszzl\033[0m"
         else
-            echo "\033[44;1m$fundcode\033[0m \033[31;1m⬆$gszzl\033[0m"
+            echo "💰 \033[44;1m$fundcode\033[0m \033[31;1m⬆$gszzl\033[0m"
         fi
     fi
 }
@@ -582,7 +590,7 @@ getFundInfo(){
         gsz=$(echo "$jsonStr" | jq -r  '.gsz')
         dwjz=$(echo "$jsonStr" | jq -r  '.dwjz')
         name=$(echo "$jsonStr" | jq -r '.name')
-        echo "\033[44;1m$name \033[0m"
+        echo "\033[44;1m$fundcode-$name \033[0m"
         if [ `awk -v num1=$gszzl 'BEGIN{print(num1&lt;=0)?"0":"1"}'` -eq 0 ];then 
             echo "估算涨幅: [ \033[32;1m $gszzl \033[0m ] 净值估算: [ \033[32;1m $gsz \033[0m ] 单位净值: [ \033[32;1m $dwjz \033[0m]"
         else
@@ -592,18 +600,30 @@ getFundInfo(){
         echo " 更新时间: $gztime"
     fi
 }
-
+time=`date +%H:%M:%S`
 ## 修改此处  修改添加你的基金代码 start
 fundList="007379 202015"
 ## 修改此处  修改添加你的基金代码 end
-echo $(getFirstInfo)
-echo "---"
-for i in $fundList;
-do
-    echo -e "$(getFundInfo "$i")"
+if [[ "$time" &gt; "09:29:59" ]] &amp;&amp; [[ "$time" &lt; "11:31:00" ]] || [[ "$time" &gt; "13:00:00" ]] &amp;&amp; [[ "$time" &lt; "15:30:00" ]]
+then
+    echo $(getFirstInfo)
     echo "---"
-done
-echo "Refresh... | refresh=true"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    for i in $fundList;
+    do
+        echo -e "$(getFundInfo "$i")"
+        echo "---"
+    done
+    echo "Refresh... | refresh=true"
+else
+    echo "🍵休市"
+    echo "---"
+    for i in $fundList;
+    do
+        echo -e "$(getFundInfo "$i")"
+        echo "---"
+    done
+    echo "Refresh... | refresh=true"
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>命名方式记得看下文档介绍。<code>001-fund.1m.sh</code>这边是我的命名方式，每分钟刷新一次。</p>
 <p>使用方法就是直接替换基金列表里面的基金代码即可。</p>
 <h3 id="3-写在最后"><a href="#3-写在最后" class="headerlink" title="3.写在最后"></a>3.写在最后</h3><hr>
@@ -1303,7 +1323,7 @@ echo "Refresh... | refresh=true"<span aria-hidden="true" class="line-numbers-row
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -1315,7 +1335,7 @@ echo "Refresh... | refresh=true"<span aria-hidden="true" class="line-numbers-row
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-<!--End of Tawk.to Script-->
+End of Tawk.to Script-->
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card">
@@ -1438,7 +1458,7 @@ echo "Refresh... | refresh=true"<span aria-hidden="true" class="line-numbers-row
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">53k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             
