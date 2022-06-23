@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-06-16T04:08:38.787Z</updated>
+  <updated>2022-06-23T14:18:00.325Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -17,15 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>用群晖搭建私人图床</title>
+    <link href="https://www.wangxingyang.com/lychee.html"/>
+    <image>https://pic.rmb.bdstatic.com/bjh/d2bb8e9c4494d3297add3cb2f038b2aa.png</image>
+    
+    <id>https://www.wangxingyang.com/lychee.html</id>
+    <published>2022-06-23T13:42:13.000Z</published>
+    <updated>2022-06-23T14:18:00.325Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>上次说到不想用别人的图床，这边<a href="https://www.wangxingyang.com/blogupdate.html">博客更新记录</a>可以看到，这不现在就要给他安排上了。准备自建的图床放置一些私人的图片，无关紧要的还是放到公共的图床上。</p></blockquote><h3 id="0-图床搭建"><a href="#0-图床搭建" class="headerlink" title="0.图床搭建"></a>0.图床搭建</h3><hr><p>晚上检索下群晖图床会有很多结果，这边选择了比较简洁的<a href="https://lycheeorg.github.io/">Lychee</a>，GitHub地址<a href="https://github.com/LycheeOrg/Lychee">在这</a>照着教程搭起来就行。这次主要的任务在于https访问，这边做个记录📝。</p><h3 id="1-增加Https访问"><a href="#1-增加Https访问" class="headerlink" title="1.增加Https访问"></a>1.增加Https访问</h3><hr><p>搭建好的是不能通过https访问的，别问我怎么知道的。下面就开整，让它跑起来<br>首先需要有证书，这边使用的是<strong>Let’s Encrypt 的免费证书</strong>，华硕路由里有这个设置，会帮助自动更新的。<br><img src="https://pic.rmb.bdstatic.com/bjh/437abd16b72502b24076e15f26965dc6.png" alt="路由截图"></p><h5 id="证书到手，现在开始去整Lychee上的Nginx"><a href="#证书到手，现在开始去整Lychee上的Nginx" class="headerlink" title="证书到手，现在开始去整Lychee上的Nginx"></a>证书到手，现在开始去整<strong>Lychee</strong>上的<strong>Nginx</strong></h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 1、查出运行的容器$ sudo docker ps -aCONTAINER ID   IMAGE                                     COMMAND                  CREATED        STATUS                    PORTS                                         NAMES5bee8392f00a   lycheeorg/lychee:latest                   "/entrypoint.sh nginx"   7 days ago     Up 17 hours (healthy)     0.0.0.0:6883-&gt;80/tcp, 0.0.0.0:6884-&gt;443/tcp   lycheeorg-lychee# 2、进入容器开整$ sudo docker exec -it 5bee8392f00a /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h6 id="新开一个标签把证书拷到容器里"><a href="#新开一个标签把证书拷到容器里" class="headerlink" title="新开一个标签把证书拷到容器里"></a>新开一个标签把证书拷到容器里</h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 1、获得容器的长ID$ sudo docker inspect -f '{{.ID}}' lycheeorg-lychee5bee8392fdedeede8646334743875634563457435cb1# 先到证书存放的目录，然后执行以下命令sudo docker cp cert_key.tar 5bee8392fdedeede8646334743875634563457435cb1:/etc/nginx/cert<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h5 id="证书就位，开始整配置"><a href="#证书就位，开始整配置" class="headerlink" title="证书就位，开始整配置"></a>证书就位，开始整配置</h5><p>配置路径在 <strong>/etc/nginx/nginx.conf</strong><br>这边修改将80的配置修改成443的，然后添加80重定向到443的配置即可。配置文件完整如下：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">user www-data;worker_processes auto;daemon off;error_log /var/log/nginx/error.log;events {    worker_connections  1024;}http {    include       mime.types;    default_type  application/octet-stream;    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '                      '$status $body_bytes_sent "$http_referer" '                      '"$http_user_agent" "$http_x_forwarded_for"';    access_log  /var/log/nginx/access.log  main;    sendfile        on;    keepalive_timeout  65;    # By default, if the processing of images takes more than 60s,    # a 504 Gateway timeout occurs, so we increase the timeout here    # to allow procesing of large images or when multiple images are    # being processed at the same time. We set max_execution_time    # below to the same value.    fastcgi_read_timeout 3600;    # We also set the send timeout since this can otherwise also cause    # issues with slow connections    fastcgi_send_timeout 3600;    gzip  on;    server {listen 80;server_name your.domain.com; return 301 https://$host$request_uri;     }    server {        root /var/www/html/Lychee/public;listen 443 ssl;         server_name your.domain.com;         ssl_certificate /etc/nginx/cert/cert.pem;         ssl_certificate_key /etc/nginx/cert/key.pem;         ssl_session_timeout 5m;        ssl_protocols TLSv1.2 TLSv1.3;         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;         ssl_prefer_server_ciphers on;        client_max_body_size 100M;                # serve static files directly        location ~* \.(jpg|jpeg|gif|css|png|js|ico|html)$ {            access_log off;            expires max;            log_not_found off;        }        # removes trailing slashes (prevents SEO duplicate content issues)        if (!-d $request_filename)        {            rewrite ^/(.+)/$ /$1 permanent;        }        # If the request is not for a valid file (image, js, css, etc.), send to bootstrap        if (!-e $request_filename)        {            rewrite ^/(.*)$ /index.php?/$1 last;            break;        }        location / {            index  index.php            try_files $uri $uri/ /index.php?$query_string;        }        # Serve /index.php through PHP        location = /index.php {            fastcgi_split_path_info ^(.+?\.php)(/.*)$;            try_files $uri $document_root$fastcgi_script_name =404;            # Mitigate https://httpoxy.org/ vulnerabilities            fastcgi_param HTTP_PROXY "";            fastcgi_pass unix:/run/php/php8.1-fpm.sock;            fastcgi_index index.php;            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;            fastcgi_param PHP_VALUE "post_max_size=100M                max_execution_time=3600                upload_max_filesize=100M                memory_limit=256M";            fastcgi_param PATH /usr/local/bin:/usr/bin:/bin;            include fastcgi_params;        }        # Deny access to other .php files, rather than exposing their contents        location ~ [^/]\.php(/|$) {            return 403;        }    }    include /etc/nginx/conf.d/*.conf;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这边都整好了，群晖上也要加个443的端口映射。然后路由上也增加相关的端口映射，到此就整完了。现在访问一下试试。<br><img src="https://pic.rmb.bdstatic.com/bjh/93720316a2f7f973cbf6e88b5576ce30.png" alt="成果截图"></p><h3 id="2-写在最后"><a href="#2-写在最后" class="headerlink" title="2.写在最后"></a>2.写在最后</h3><hr><p>之前http的协议在https的博客上会被自动升级成https访问，但是图床又不支持，所以图片会挂掉，所以现在就能够愉快的玩耍了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;上次说到不想用别人的图床，这边&lt;a href=&quot;https://www.wangxingyang.com/blogupdate.html&quot;&gt;博客更新记录&lt;/a&gt;可以看到，这不现在就要给他安排上了。准备自建的图床放置一些私人的图片，无关紧要的还是放到</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="https://www.wangxingyang.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="图床" scheme="https://www.wangxingyang.com/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="Lychee" scheme="https://www.wangxingyang.com/tags/Lychee/"/>
+    
+    <category term="群晖" scheme="https://www.wangxingyang.com/tags/%E7%BE%A4%E6%99%96/"/>
+    
+    <category term="Https" scheme="https://www.wangxingyang.com/tags/Https/"/>
+    
+  </entry>
+  
+  <entry>
     <title>周末分享</title>
     <link href="https://www.wangxingyang.com/dayshare220612.html"/>
-    <image>https://pic7.58cdn.com.cn/nowater/webim/big/n_v2f146a8833d604c45b881d2fde5873d37.jpg</image>
+    <image>https://pic.rmb.bdstatic.com/bjh/e1aed3de94e4653637369f5f7b850473.jpeg</image>
     <notify>true</notify>
     <id>https://www.wangxingyang.com/dayshare220612.html</id>
     <published>2022-06-12T11:51:10.000Z</published>
-    <updated>2022-06-16T04:08:38.787Z</updated>
+    <updated>2022-06-23T14:12:49.784Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>这周末还是很充实的，下面就和我一起来看看充实的周末生活吧。</p></blockquote><h3 id="0-打羽毛球🏸️"><a href="#0-打羽毛球🏸️" class="headerlink" title="0.打羽毛球🏸️"></a>0.打羽毛球🏸️</h3><hr><p>这个周末起了了大早去打羽毛球🏸️了，6点到9点的场地，一个人🔟元，还是很划算的。就是时间有点早，不过6点半到的时候已经只剩两个场地了。大家的运动热情还是很高的。足足打了两个半小时，还被60多岁的爷爷嘲笑我们打的是老年球。不过他打的确实有点猛。下周还要继续羽毛。</p><h3 id="1-早教课"><a href="#1-早教课" class="headerlink" title="1.早教课"></a>1.早教课</h3><hr><p>打完球回去稍事休息就带彤宝去上课了，彤宝这周的表现还是十分的不错的。能够自己主动大声的做自我介绍，各个游戏也完成的很好。</p><p><img src="/img/20220612/IMG_2899.jpg" alt="自我介绍"></p><h3 id="2-下关火车主题公园"><a href="#2-下关火车主题公园" class="headerlink" title="2.下关火车主题公园"></a>2.下关火车主题公园</h3><hr><p>早上做轮渡去中山码头，然后去主题公园玩了一下，还看了玻璃栈道，风景还是不错的。下面来看看吧。</p><p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v281a029247ba04522bb65eca0fa73dc73.jpg" alt="船🚢"></p><p><img src="https://pic7.58cdn.com.cn/nowater/webim/big/n_v2f146a8833d604c45b881d2fde5873d37.jpg" alt="长江大桥🌉"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/21090be3199714ac347c3be92a896e11.jpeg" alt="长江大桥🌉"></p><p><img src="/img/20220612/IMG_3571.jpg" alt="开心"></p><p><img src="/img/20220612/4f98d896c0903c305535ec28557423.jpg" alt="彤宝"></p><p><img src="/img/20220612/default.png" alt="这是啥"></p><p><img src="/img/20220612/82096909b0a52176b70cbf19af33a4.jpg" alt="看大桥"></p><p><img src="/img/20220612/97c15ffc38e9aea53dd5e0708be487.jpg" alt="读读书"></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>这周末还是很充实的，下面就和我一起来看看充实的周末生活吧。</p></blockquote><h3 id="0-打羽毛球🏸️"><a href="#0-打羽毛球🏸️" class="headerlink" title="0.打羽毛球🏸️"></a>0.打羽毛球🏸️</h3><hr><p>这个周末起了了大早去打羽毛球🏸️了，6点到9点的场地，一个人🔟元，还是很划算的。就是时间有点早，不过6点半到的时候已经只剩两个场地了。大家的运动热情还是很高的。足足打了两个半小时，还被60多岁的爷爷嘲笑我们打的是老年球。不过他打的确实有点猛。下周还要继续羽毛。</p><h3 id="1-早教课"><a href="#1-早教课" class="headerlink" title="1.早教课"></a>1.早教课</h3><hr><p>打完球回去稍事休息就带彤宝去上课了，彤宝这周的表现还是十分的不错的。能够自己主动大声的做自我介绍，各个游戏也完成的很好。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e97ba3891ab21077203b2d9b663e308e.jpg" alt="自我介绍"></p><h3 id="2-下关火车主题公园"><a href="#2-下关火车主题公园" class="headerlink" title="2.下关火车主题公园"></a>2.下关火车主题公园</h3><hr><p>早上做轮渡去中山码头，然后去主题公园玩了一下，还看了玻璃栈道，风景还是不错的。下面来看看吧。</p><p><img src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v281a029247ba04522bb65eca0fa73dc73.jpg" alt="船🚢"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/e1aed3de94e4653637369f5f7b850473.jpeg" alt="长江大桥🌉"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/21090be3199714ac347c3be92a896e11.jpeg" alt="长江大桥🌉"></p><p><img src="/img/20220612/IMG_3571.jpg" alt="开心"></p><p><img src="/img/20220612/4f98d896c0903c305535ec28557423.jpg" alt="彤宝"></p><p><img src="/img/20220612/default.png" alt="这是啥"></p><p><img src="/img/20220612/82096909b0a52176b70cbf19af33a4.jpg" alt="看大桥"></p><p><img src="/img/20220612/97c15ffc38e9aea53dd5e0708be487.jpg" alt="读读书"></p>]]></content>
     
     
       
@@ -141,39 +174,6 @@
     <category term="桌面插件" scheme="https://www.wangxingyang.com/tags/%E6%A1%8C%E9%9D%A2%E6%8F%92%E4%BB%B6/"/>
     
     <category term="Mac美化" scheme="https://www.wangxingyang.com/tags/Mac%E7%BE%8E%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周末分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220521.html"/>
-    <image>https://pic.rmb.bdstatic.com/bjh/bea5aac7b5db920ffe035c92d609bda2.jpeg</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220521.html</id>
-    <published>2022-05-22T02:19:30.000Z</published>
-    <updated>2022-05-23T04:10:42.835Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>这周得体检了，已经过了好长时间了。一开始没有挂到早上的号，到最后时刻挂到了，但是号码十分靠后。所以只能早上早点去，以免排队排到怀疑人生。</p></blockquote><h3 id="0-早起体检"><a href="#0-早起体检" class="headerlink" title="0.早起体检"></a>0.早起体检</h3><hr><p>早上到的早，所以排队并不是很长，体检的项目也不多，各项指标也很正常。医生还说彤宝玩的不错，发育行为的分数还是很高的。下面这个图是彤宝采血的，竟然和医生在交谈，一会问这个是什么，一会问那个是什么，完全没有害怕的意思。真的很厉害。</p><p><img src="/img/20220521/WechatIMG6820.jpeg" alt="彤宝采血"></p><p>回去之后做了短暂的休整，就出发去上感统课了。</p><h3 id="1-感统课"><a href="#1-感统课" class="headerlink" title="1.感统课"></a>1.感统课</h3><hr><p>这次上的是肖恩老师的感统课，也是之前她上的，后来因为月龄差距太大了，所以调到了小月龄的。现在有适合的，所以就准备给她调整回来。就是时间是11点，有点尴尬。不过看了她上课的表现，还是可以的。以后可能都会上这个课了。</p><p><img src="/img/20220521/WechatIMG6823.jpeg" alt="排队钻体能圈"></p><p><img src="/img/20220521/WechatIMG6825.jpeg" alt="老师的小助手"></p><p><img src="/img/20220521/WechatIMG6826.jpeg" alt="和我一起运球"></p><p><img src="/img/20220521/WechatIMG6827.jpeg" alt="体能棒运球"></p><p>上完课就回家休息了，晚上商场逛了逛，买了个水果茶给她喝了[去茶底，少糖的]</p><h3 id="2-海底捞"><a href="#2-海底捞" class="headerlink" title="2.海底捞"></a>2.海底捞</h3><hr><p>上午说去吃海底捞，这不就去了嘛，小家伙只记得海底捞的美甲贴和玩具，还是玩的很开心的，吃的也不少。下午她睡觉我就出去打羽毛球了，在球场上挥洒汗水💦。</p><p><img src="/img/20220521/WechatIMG798.jpeg" alt="喝豆浆先搅拌"></p><p><img src="/img/20220521/WechatIMG799.jpeg" alt="开始喝豆浆"></p><h3 id="3-说在最后"><a href="#3-说在最后" class="headerlink" title="3.说在最后"></a>3.说在最后</h3><hr><p>假期开始的时候是5⃣️2⃣️0⃣️，由于没有及时响应，导致老婆扎心了。所以立马就给她安排起来了，虽然结婚好几年了，但是该有的仪式感还是要有的。最后放一个我们挑选的戒指吧。</p><p><img src="https://pic.rmb.bdstatic.com/bjh/d2393a5a37392388412a8bd8db5a3f5f.jpeg" alt="戒指"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;这周得体检了，已经过了好长时间了。一开始没有挂到早上的号，到最后时刻挂到了，但是号码十分靠后。所以只能早上早点去，以免排队排到怀疑人生。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-早起体检&quot;&gt;&lt;a href=&quot;#0-早起体检&quot; cla</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="感统课" scheme="https://www.wangxingyang.com/tags/%E6%84%9F%E7%BB%9F%E8%AF%BE/"/>
-    
-    <category term="体检" scheme="https://www.wangxingyang.com/tags/%E4%BD%93%E6%A3%80/"/>
-    
-    <category term="海底捞" scheme="https://www.wangxingyang.com/tags/%E6%B5%B7%E5%BA%95%E6%8D%9E/"/>
     
   </entry>
   
