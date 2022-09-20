@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>twikoo私有化部署</title>
+      <link href="twikoopd.html"/>
+      <url>twikoopd.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>腾讯云函数收费了，导致博客的评论功能不能使用了，这不就开始想办法私有化部署了，下面就和我一起来看看如何部署吧。</p></blockquote><h3 id="0-购买云开发"><a href="#0-购买云开发" class="headerlink" title="0.购买云开发"></a>0.购买云开发</h3><hr><p>续费有优惠，给了个20块的优惠券，续了3个月，一共40块，可以过渡一下。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/296147fda5c9492b45b405c5be0bcbe6.png" alt="续费记录"></p><h3 id="1-开始私有化部署"><a href="#1-开始私有化部署" class="headerlink" title="1.开始私有化部署"></a>1.开始私有化部署</h3><hr><p>我准备部署在群晖上，详细的部署步骤和之前的docker一样，可以参看这个<a href="https://registry.hub.docker.com/r/imaegoo/twikoo/">链接</a>，按照这个就能够部署完成了，完成之后咱们访问下子，结果应该如下：<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/4be08c1648a4021d0a601446599049e1.png" alt="twikoo正常返回截图"><br>现在基本上可以使用了，但是要部署到博客上就用不起来，因为不支持https，所以咱得搞下。</p><ol><li>将8881进行端口转发<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/3b3797a52565fbafde91a6ec1a130507.png" alt="端口转发"></li><li>将这个端口反向代理到部署的twikoo<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/56e702883aa0781aba6580808f7d786b.png" alt="反向代理"></li><li>到此就完成了。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/eb9a540170f1ee4521edd11408b63c6a.png" alt="https访问"><h3 id="2-数据恢复"><a href="#2-数据恢复" class="headerlink" title="2.数据恢复"></a>2.数据恢复</h3></li></ol><hr><p>a) 评论数据有相应的入口可以直接导入评论数据<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/4b96bf32234853f65bd295718a361608.png" alt="评论数据导入入口"><br>b)设置数据导入<br>之前设置的数据没有相关的导入入口，自己再设置一遍也很麻烦，下面提供一个方法供大家参考。</p><ol><li>查看之前腾讯云函数里面的数据库，找到<code>config</code>这个集合，然后把它导出来<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/abfb56bfa3387ceba68a9aac70095285.png" alt="config数据"></li><li>找到之前docker中配置的路径，将<code>db.json.1</code>里面的内容替换成刚刚导出来的内容，保险起见，还是先检查一下内容，看看是不是和你云函数上的内容相似，是的话再替换<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/6c4bd1c2a0171552ba11d75b01e335d7.png" alt="db.json.1"></li><li>重启容器<br>这样做完之后，现在的设置应该就是你之前的设置了。<h3 id="3-最后使用"><a href="#3-最后使用" class="headerlink" title="3.最后使用"></a>3.最后使用</h3></li></ol><hr><p>最后按照官网给的例子，把环境ID换成你的地址就行了。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/9a6796f66f90a0e75090531fa282f19a.png" alt="使用配置"></p><h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><hr><p>天下没有免费的午餐啊，用着用着就收费了，所以很多东西还是要自己去折腾，不想自己折腾就得付费给别人，让别人帮你折腾。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 群晖 </tag>
+            
+            <tag> twikoo </tag>
+            
+            <tag> 私有化部署 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周末分享</title>
       <link href="dayshare220918.html"/>
       <url>dayshare220918.html</url>
@@ -51,11 +80,11 @@
             
             <tag> 中秋节 </tag>
             
-            <tag> 老门东 </tag>
-            
             <tag> 南京科技馆 </tag>
             
             <tag> 中山陵 </tag>
+            
+            <tag> 老门东 </tag>
             
         </tags>
       
