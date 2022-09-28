@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Jenkins一键构建工具</title>
+      <link href="jenkinBuild.html"/>
+      <url>jenkinBuild.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近配置组不想帮忙发版了，说这个太简单了，想让我们自己搞，所以就来活了。本着能偷懒就偷懒的原则，就搞了个一键构建的工具。有了他你可以再搞个定时任务，就可以彻底解放双手了。</p></blockquote><h3 id="0-现状分析"><a href="#0-现状分析" class="headerlink" title="0.现状分析"></a>0.现状分析</h3><hr><p>目前构建和发布是在两台机器上，在版本构建完成后，会把版本包推到发布的机器上，接着发布的机器取版本放置到需要部署的机器上。</p><h3 id="1-工具编写"><a href="#1-工具编写" class="headerlink" title="1.工具编写"></a>1.工具编写</h3><hr><p>这边还是模拟POST请求来实现相关功能，主要分几个步骤，具体的步骤如下：</p><blockquote><ol><li><strong>登录</strong> Jenkins</li><li><strong>提交</strong> 构建任务</li><li><strong>跟踪</strong> 构建状态</li></ol></blockquote><p>这三个步骤搞完了，整个工具就完成了，这边使用的是<code>VBScript</code>，下面就按照这个步骤开始编码就行。<strong>Jenkins【版本是1.592】</strong>，相关接口浏览器开发人员工具，然后分析找下就行。还有一些小细节自己拿捏下子。</p><h4 id="a-模拟登录"><a href="#a-模拟登录" class="headerlink" title="a) 模拟登录"></a>a) 模拟登录</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/j_acegi_security_check"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="b-提交构建指令"><a href="#b-提交构建指令" class="headerlink" title="b) 提交构建指令"></a>b) 提交构建指令</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/build?delay-0sec"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="c-等待构建完成"><a href="#c-等待构建完成" class="headerlink" title="c) 等待构建完成"></a>c) 等待构建完成</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/buildHistory/ajax"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.setRequestHeader "n", nextBuildNumberhttp.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>等待构建完成需要一个<code>构建版本号</code>在头里，这边可以通过<code>http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/api/json?pretty=true</code>这个接口来获得相关的值。在构建之前，需要查询下今日需不需要发版，如果需要才进行，不需要就不发版。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>能用机器做的事情咱们就不自己做，节约下来的时间可以做更有意义的事情。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VBScript </tag>
+            
+            <tag> Jenkins </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>twikoo私有化部署</title>
       <link href="twikoopd.html"/>
       <url>twikoopd.html</url>

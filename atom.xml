@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-09-20T13:58:07.969Z</updated>
+  <updated>2022-09-28T13:20:21.942Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jenkins一键构建工具</title>
+    <link href="https://www.wangxingyang.com/jenkinBuild.html"/>
+    <image>https://freefitter.asuscomm.com:6884/uploads/medium/88b50921f866e111c8cbb13688345ed6.jpg</image>
+    
+    <id>https://www.wangxingyang.com/jenkinBuild.html</id>
+    <published>2022-09-28T13:12:19.000Z</published>
+    <updated>2022-09-28T13:20:21.942Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近配置组不想帮忙发版了，说这个太简单了，想让我们自己搞，所以就来活了。本着能偷懒就偷懒的原则，就搞了个一键构建的工具。有了他你可以再搞个定时任务，就可以彻底解放双手了。</p></blockquote><h3 id="0-现状分析"><a href="#0-现状分析" class="headerlink" title="0.现状分析"></a>0.现状分析</h3><hr><p>目前构建和发布是在两台机器上，在版本构建完成后，会把版本包推到发布的机器上，接着发布的机器取版本放置到需要部署的机器上。</p><h3 id="1-工具编写"><a href="#1-工具编写" class="headerlink" title="1.工具编写"></a>1.工具编写</h3><hr><p>这边还是模拟POST请求来实现相关功能，主要分几个步骤，具体的步骤如下：</p><blockquote><ol><li><strong>登录</strong> Jenkins</li><li><strong>提交</strong> 构建任务</li><li><strong>跟踪</strong> 构建状态</li></ol></blockquote><p>这三个步骤搞完了，整个工具就完成了，这边使用的是<code>VBScript</code>，下面就按照这个步骤开始编码就行。<strong>Jenkins【版本是1.592】</strong>，相关接口浏览器开发人员工具，然后分析找下就行。还有一些小细节自己拿捏下子。</p><h4 id="a-模拟登录"><a href="#a-模拟登录" class="headerlink" title="a) 模拟登录"></a>a) 模拟登录</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/j_acegi_security_check"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="b-提交构建指令"><a href="#b-提交构建指令" class="headerlink" title="b) 提交构建指令"></a>b) 提交构建指令</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/build?delay-0sec"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="c-等待构建完成"><a href="#c-等待构建完成" class="headerlink" title="c) 等待构建完成"></a>c) 等待构建完成</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/buildHistory/ajax"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.setRequestHeader "n", nextBuildNumberhttp.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>等待构建完成需要一个<code>构建版本号</code>在头里，这边可以通过<code>http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/api/json?pretty=true</code>这个接口来获得相关的值。在构建之前，需要查询下今日需不需要发版，如果需要才进行，不需要就不发版。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>能用机器做的事情咱们就不自己做，节约下来的时间可以做更有意义的事情。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近配置组不想帮忙发版了，说这个太简单了，想让我们自己搞，所以就来活了。本着能偷懒就偷懒的原则，就搞了个一键构建的工具。有了他你可以再搞个定时任务，就可以彻底解放双手了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-现状分析&quot;&gt;&lt;a h</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="VBScript" scheme="https://www.wangxingyang.com/tags/VBScript/"/>
+    
+    <category term="Jenkins" scheme="https://www.wangxingyang.com/tags/Jenkins/"/>
+    
+  </entry>
   
   <entry>
     <title>twikoo私有化部署</title>
@@ -147,37 +178,6 @@
     <category term="云幽谷" scheme="https://www.wangxingyang.com/tags/%E4%BA%91%E5%B9%BD%E8%B0%B7/"/>
     
     <category term="创意课" scheme="https://www.wangxingyang.com/tags/%E5%88%9B%E6%84%8F%E8%AF%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周末分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220731.html"/>
-    <image>https://pic.rmb.bdstatic.com/bjh/67df07e6e58959b84c3fa400b1758340.png</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220731.html</id>
-    <published>2022-07-31T14:59:54.000Z</published>
-    <updated>2022-08-01T02:40:41.667Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>好久没有出去玩了，彤妈看了海底世界，所以周末准备带她去海底世界去玩玩。买的夜场票🎫，下午早些去，晚上八九点钟回来。</p></blockquote><h3 id="0-出发去海底世界"><a href="#0-出发去海底世界" class="headerlink" title="0.出发去海底世界"></a>0.出发去海底世界</h3><hr><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/ca561729706da655d62bd360becb0e00.png" alt="走走走"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e85ed88298a09f37a978ceb71fa4f6d3.png" alt="看🐟"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/9a6743d69eabdab56aa92494cb986a17.png" alt="🐟"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/ccf681844b3eeca0f7d31c21aa9b2eb7.png" alt="小🐧"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/b7f6bf559aedccc3eee3656a90bda2b5.png" alt="海底隧道"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/1a58ecaaca58e1fc98f3390ec05e1456.png" alt="美丽彤妈"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/6ed80c23ab4ca0b675d5eaba17b10ad4.jpeg" alt="表演"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/052eb4c84cd6923b64bce9b13433fe62.jpeg" alt="小鲨鱼"></p><p><img src="https://pic.rmb.bdstatic.com/bjh/d690c7ec6214f5428a83ca5c706f7142.jpeg" alt="这是什么🐟"></p><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1.总结"></a>1.总结</h3><hr><p>没事出去遛遛，多见见世面哈。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;好久没有出去玩了，彤妈看了海底世界，所以周末准备带她去海底世界去玩玩。买的夜场票🎫，下午早些去，晚上八九点钟回来。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-出发去海底世界&quot;&gt;&lt;a href=&quot;#0-出发去海底世界&quot; class=&quot;</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="南京海底世界" scheme="https://www.wangxingyang.com/tags/%E5%8D%97%E4%BA%AC%E6%B5%B7%E5%BA%95%E4%B8%96%E7%95%8C/"/>
     
   </entry>
   
