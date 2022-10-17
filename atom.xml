@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-09-28T13:20:21.942Z</updated>
+  <updated>2022-10-17T13:11:46.456Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iPhone货源监控插件</title>
+    <link href="https://www.wangxingyang.com/appletrace.html"/>
+    <image>https://freefitter.asuscomm.com:6884/uploads/medium/c794ebeb8279b1e376a8ac19a0307ec9.png</image>
+    
+    <id>https://www.wangxingyang.com/appletrace.html</id>
+    <published>2022-10-14T22:32:30.000Z</published>
+    <updated>2022-10-17T13:11:46.456Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>上个月苹果发布了<code>iPhone 14</code>系列，一开始没抢到收发，自己的<strong>64G</strong>的<code>11 Pro</code>已经不堪重负了，所以想早点换，所以就想着自己写个监控库存的小插件。</p></blockquote><h3 id="0-开发"><a href="#0-开发" class="headerlink" title="0.开发"></a>0.开发</h3><hr><p>这边选择的是用Node-Red来做，因为这个东西简单，学起来没什么成本，如果写个老长的脚本，还不直观。所以用这个来写，也很简单，这边不多赘述。这边监控的是紫色的Pro Max。</p><h4 id="a-抓包获得的库存接口"><a href="#a-抓包获得的库存接口" class="headerlink" title="a) 抓包获得的库存接口"></a>a) 抓包获得的库存接口</h4><hr><p><a href="https://www.apple.com.cn/shop/fulfillment-messages?pl=true&amp;mts.0=regular&amp;parts.0=MQ863CH/A&amp;location=%E6%B1%9F%E8%8B%8F%20%E5%8D%97%E4%BA%AC%20%E6%B5%A6%E5%8F%A3%E5%8C%BA">https://www.apple.com.cn/shop/fulfillment-messages?pl=true&amp;mts.0=regular&amp;parts.0=MQ863CH/A&amp;location=%E6%B1%9F%E8%8B%8F%20%E5%8D%97%E4%BA%AC%20%E6%B5%A6%E5%8F%A3%E5%8C%BA</a><br>这个大家直接控制台就能够找到。返回的JSON数据，如下图：<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/23be5109d5821ef2d16dd58e8bc2cd5a.png" alt="接口数据" title="接口数据"></p><h4 id="b-简单的逻辑处理"><a href="#b-简单的逻辑处理" class="headerlink" title="b) 简单的逻辑处理"></a>b) 简单的逻辑处理</h4><hr><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> retJson <span class="token operator">=</span> msg<span class="token punctuation">.</span>payload<span class="token punctuation">;</span><span class="token keyword">let</span> status <span class="token operator">=</span> retJson<span class="token punctuation">.</span>head<span class="token punctuation">.</span>status<span class="token punctuation">;</span><span class="token keyword">var</span> notifyMsg <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>msg<span class="token punctuation">.</span>havePhone <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>status <span class="token operator">==</span> <span class="token string">"200"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    stores <span class="token operator">=</span> retJson<span class="token punctuation">.</span>body<span class="token punctuation">.</span>content<span class="token punctuation">.</span>pickupMessage<span class="token punctuation">.</span>stores<span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> store <span class="token keyword">in</span> stores<span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">let</span> city <span class="token operator">=</span> stores<span class="token punctuation">[</span>store<span class="token punctuation">]</span><span class="token punctuation">.</span>city<span class="token punctuation">;</span>        <span class="token keyword">let</span> storeName <span class="token operator">=</span> stores<span class="token punctuation">[</span>store<span class="token punctuation">]</span><span class="token punctuation">.</span>storeName<span class="token punctuation">;</span>        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"南京"</span> <span class="token operator">==</span> city<span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token keyword">let</span> pickupSearchQuote <span class="token operator">=</span> stores<span class="token punctuation">[</span>store<span class="token punctuation">]</span><span class="token punctuation">.</span>partsAvailability<span class="token punctuation">[</span><span class="token string">"MQ863CH/A"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pickupSearchQuote<span class="token punctuation">;</span>            <span class="token keyword">let</span> pickupDisplay <span class="token operator">=</span> stores<span class="token punctuation">[</span>store<span class="token punctuation">]</span><span class="token punctuation">.</span>partsAvailability<span class="token punctuation">[</span><span class="token string">"MQ863CH/A"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pickupDisplay<span class="token punctuation">;</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>pickupDisplay <span class="token operator">!=</span> <span class="token string">"unavailable"</span> <span class="token operator">&amp;&amp;</span> pickupDisplay <span class="token operator">!=</span> <span class="token string">"default"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                notifyMsg <span class="token operator">=</span> notifyMsg <span class="token operator">+</span> city <span class="token operator">+</span> storeName <span class="token operator">+</span> pickupSearchQuote <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>                msg<span class="token punctuation">.</span>havePhone  <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>havePhone<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">let</span> title <span class="token operator">=</span> <span class="token string">"iPhone 供货情况"</span><span class="token punctuation">;</span>    <span class="token keyword">let</span> link <span class="token operator">=</span> <span class="token string">"https://store.apple.com/cn/xc/product/MQ863CH/A"</span><span class="token punctuation">;</span>    <span class="token keyword">let</span> img <span class="token operator">=</span> <span class="token string">"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-14-pro-storage-select-202209-6-7inch-deeppurple?wid=5120&amp;hei=2880&amp;fmt=jpeg&amp;qlt=90&amp;.v=1660768940425"</span><span class="token punctuation">;</span>    <span class="token keyword">let</span> summary <span class="token operator">=</span> notifyMsg    <span class="token keyword">let</span> users <span class="token operator">=</span> <span class="token string">"freefitter"</span><span class="token punctuation">;</span>    msg<span class="token punctuation">.</span>payload <span class="token operator">=</span> <span class="token string">"title="</span> <span class="token operator">+</span> title <span class="token operator">+</span> <span class="token string">"&amp;link="</span> <span class="token operator">+</span> link <span class="token operator">+</span><span class="token string">"&amp;img="</span> <span class="token operator">+</span> img <span class="token operator">+</span> <span class="token string">"&amp;summary="</span><span class="token operator">+</span> summary <span class="token operator">+</span> <span class="token string">"&amp;users="</span> <span class="token operator">+</span> users<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token keyword">return</span> msg<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="c-通知接口"><a href="#c-通知接口" class="headerlink" title="c)通知接口"></a>c)通知接口</h4><hr><p>通知是用的之前这个<a href="https://www.wangxingyang.com/qywechat.html">博客发文通知</a>里面的接口，大家可以参看这个文章。</p><h3 id="1-成果展示"><a href="#1-成果展示" class="headerlink" title="1.成果展示"></a>1.成果展示</h3><hr><p>最后我也是在10月9日抢到了手机，感觉还是不错的，就是有点大。最后附上通知截图。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/af32fe273420f76d98c42c044f78054a.png" alt="提醒" title="提醒"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;上个月苹果发布了&lt;code&gt;iPhone 14&lt;/code&gt;系列，一开始没抢到收发，自己的&lt;strong&gt;64G&lt;/strong&gt;的&lt;code&gt;11 Pro&lt;/code&gt;已经不堪重负了，所以想早点换，所以就想着自己写个监控库存的小插件。&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Node-Red" scheme="https://www.wangxingyang.com/tags/Node-Red/"/>
+    
+    <category term="iPhone 14 Pro Max" scheme="https://www.wangxingyang.com/tags/iPhone-14-Pro-Max/"/>
+    
+  </entry>
   
   <entry>
     <title>Jenkins一键构建工具</title>
@@ -145,39 +175,6 @@
     <category term="中山陵" scheme="https://www.wangxingyang.com/tags/%E4%B8%AD%E5%B1%B1%E9%99%B5/"/>
     
     <category term="老门东" scheme="https://www.wangxingyang.com/tags/%E8%80%81%E9%97%A8%E4%B8%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周末分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220904.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/big/b563e3498fd71c7503ccbd3f6aaafc2b.png</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220904.html</id>
-    <published>2022-09-04T03:24:42.000Z</published>
-    <updated>2022-09-04T03:49:50.318Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>距离上次写博客已经过去一个月了，现在彤宝已经成长很多了。现在的她很棒很聪明，但是也很调皮。下面看看最近一周的她吧。</p></blockquote><h3 id="0-云幽谷游玩"><a href="#0-云幽谷游玩" class="headerlink" title="0.云幽谷游玩"></a>0.云幽谷游玩</h3><hr><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/b563e3498fd71c7503ccbd3f6aaafc2b.png" alt="游客照"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/fef548ad3af0ace8aa154a298d8c3cf7.png" alt="漂亮"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/8fced4a4171acea731073b8da248e7ea.png" alt="好看"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/2938c84a653a05d0ec3bdc5e3dd643fc.png" alt="划船🚣‍♀️"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/225c3518e4b7e126ed59e9547f301bb3.png" alt="山楂棒真好吃"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/c7cdf3ecac559d3c31cb5ac37e9e81fc.png" alt="摆拍"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e886386f3229660098790ba1e2291ba9.png" alt="心心念念的开飞机"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/300e68fc73f71271c708367a2704ca22.png" alt="碰碰车"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/ac133b2228a5fedb6c177199c0dfac84.png" alt="彤宝拍的合照"></p><h3 id="1-科学和创意课"><a href="#1-科学和创意课" class="headerlink" title="1.科学和创意课"></a>1.科学和创意课</h3><hr><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/9db417b3bd6ffdc8c312ae2e4be67306.png" alt="搭积木"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/6252c098080fe2f9c941fd972f2fa015.png" alt="搭积木"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/48de53179b79d6819d6284c66a696769.png" alt="搭积木"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/72a01d4b1b27363be651e9956073e8e2.png" alt="认真听课"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/4a283d25dd712bb00cc94ed887dbe471.png" alt="认真听课"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/92203e80d183a627fccb18edde3d49ae.png" alt="做月饼"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/92203e80d183a627fccb18edde3d49ae.png" alt="做月饼"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/140da1617737630459c58373b9db77c7.png" alt="🥮合照"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/74a7e7a47971404d9de9d78725817331.png" alt="🥮合照"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>天天开心，每天进步。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;距离上次写博客已经过去一个月了，现在彤宝已经成长很多了。现在的她很棒很聪明，但是也很调皮。下面看看最近一周的她吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-云幽谷游玩&quot;&gt;&lt;a href=&quot;#0-云幽谷游玩&quot; class=&quot;heade</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="云幽谷" scheme="https://www.wangxingyang.com/tags/%E4%BA%91%E5%B9%BD%E8%B0%B7/"/>
-    
-    <category term="创意课" scheme="https://www.wangxingyang.com/tags/%E5%88%9B%E6%84%8F%E8%AF%BE/"/>
     
   </entry>
   
