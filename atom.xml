@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-10-17T13:11:46.456Z</updated>
+  <updated>2022-10-19T01:18:03.054Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苹果邮件添加163邮箱</title>
+    <link href="https://www.wangxingyang.com/applemail.html"/>
+    <image>https://freefitter.asuscomm.com:6884/uploads/medium/a84314c1c86a5e721463811b29612f68.png</image>
+    
+    <id>https://www.wangxingyang.com/applemail.html</id>
+    <published>2022-10-19T00:49:46.000Z</published>
+    <updated>2022-10-19T01:18:03.054Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>邮箱软件不想装太多，想在iPhone上用邮件管理自己的所有邮箱。可能你总是不成功，那你就跟着这个教程走下去吧。这边以163邮箱为例。</p></blockquote><h3 id="0-开启服务"><a href="#0-开启服务" class="headerlink" title="0.开启服务"></a>0.开启服务</h3><hr><p>登录网页163邮箱，进入设置，开启服务<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/d3bde534a475c7bf99edd93966b4ef2a.png" alt="163设置"></p><h3 id="1-在手机上添加账户"><a href="#1-在手机上添加账户" class="headerlink" title="1.在手机上添加账户"></a>1.在手机上添加账户</h3><hr><p>a) 先在iPhone上添加账户，路径是：<strong>设置 -&gt; 邮件 -&gt; 账户 -&gt; 添加账户</strong>，选择需要添加的账户类型，这边选择163<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/3d89aca22c9b0292106553405d810936.png" alt="添加账户"><br>b)然后填上你的账户信息，点击下一步。<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/deb93f46ffadbd0f47060146b5e510e1.png" alt="填写账户信息"><br>c)  验证失败不用管，直接下一步，存储，然后在账户列表中找到刚刚添加的账户。<br>d) 编辑里面的信息<br>服务器的信息可以从下面的表格里找到。<br>|  服务器名称   | 地址  |<br>|  —-  | —-  |<br>| POP3服务器  | pop.163.com |<br>|SMTP服务器| smtp.163.com|<br>|IMAP服务器|imap.163.com|<br>按照提示填写信息，收件服务器使用<code>IMAP服务器</code>，发件服务器填写<code>SMTP服务器</code>，密码填写刚刚的授权码哈<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/09441733151bf373bd48959508eabad1.png" alt="编辑服务器信息"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>终于整合好了，凡事多折腾</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;邮箱软件不想装太多，想在iPhone上用邮件管理自己的所有邮箱。可能你总是不成功，那你就跟着这个教程走下去吧。这边以163邮箱为例。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-开启服务&quot;&gt;&lt;a href=&quot;#0-开启服务&quot; class</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="苹果邮件" scheme="https://www.wangxingyang.com/tags/%E8%8B%B9%E6%9E%9C%E9%82%AE%E4%BB%B6/"/>
+    
+    <category term="邮箱" scheme="https://www.wangxingyang.com/tags/%E9%82%AE%E7%AE%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>iPhone货源监控插件</title>
@@ -140,41 +171,6 @@
     <category term="佛手湖" scheme="https://www.wangxingyang.com/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/"/>
     
     <category term="搭帐篷" scheme="https://www.wangxingyang.com/tags/%E6%90%AD%E5%B8%90%E7%AF%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>假日分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220912.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/big/f1a4f34f0308d5cb0913034486954760.png</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220912.html</id>
-    <published>2022-09-12T13:03:18.000Z</published>
-    <updated>2022-09-12T14:59:38.464Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>中秋节到了，准备出去遛娃了，好久没带她出去玩了。但是疫情也不能放松警惕，所以还是在南京玩玩，去去她没有去过的地方。下面看看我们的安排吧。</p></blockquote><h3 id="0-行程安排"><a href="#0-行程安排" class="headerlink" title="0.行程安排"></a>0.行程安排</h3><hr><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/bbb80f1e3f29e0a1f6ff4c4370bb2823.png" alt="行程安排"></p><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><hr><p>今天去的是<code>南京科技馆</code>和老门东。疫情期间需要72小时核酸和提前预约。本着低碳生活的原则，都是选择公共交通出行的。科技馆还是值得一去的，里面的东西比较吸引小朋友，但是还是需要大一点的小朋友去会更好点，彤彤去了就是随便按按，原理什么的她都不想了解，去了就是这按按那踩踩的。话不多说直接上图。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/affb45f2a8e0017191a3d29ac5e84a81.png" alt="标准的游客照"></p><p>在负一楼是有一个高压放电的演示的，还是蛮不错的，时间好像是10点半。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/b7e15ba914a030598b5439e09dbf19eb.png" alt="随手拍"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/515d6c62b4ea02d8f5aab34b05f8ab82.png" alt="火箭模型"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/626d5e21ef30fb9743f9a8b5b8ce1744.png" alt="触觉感受冷热"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/d30a4050fa577079fdb796a3cc5c47bb.png" alt="一家三口"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/9eee19beaab40f19a71bce5c275c44a8.png" alt="平衡感"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/b94e6ac6efb2e1a73dbf740aab6d3aff.png" alt="沙盘"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/7c6631d6cac34baf22300759df03669b.png" alt="向日葵演示"></p><p>老门东的照片没怎么拍，主要彤宝有点折腾，她说不喜欢老门东的厕所，憋了好久。这不没折腾太久就回家了。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/f1a4f34f0308d5cb0913034486954760.png" alt="老门东"></p><h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><hr><p>南京博物院没约上，所以就没去了，直接去了中山陵，彤宝说要爬台阶，这次真的是她自己一个人爬上去的，还是很棒的。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/caf6ab494de4b0e3f3871c060f1acd7a.png" alt="一家三口"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/9f56f7e75a0ab4a2554cb97598733d14.png" alt="游客照"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/9ec61d90ecb0cfcfb7bb95af46ac66dd.png" alt="打卡起点"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/29b5aafbf8c4da1bc4d1a7a631a46862.png" alt="打卡中间"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/c213991eec9e37e7031c05d6b98ef686.png" alt="打卡登顶"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/22ae3fafcefa3934e6ce8d72b115eabe.png" alt="一览众山小"></p><p>妈妈做了个小视频</p><p><video src="https://freefitter.asuscomm.com:6884/uploads/big/d4b7a846d92c07f056657d2acb2c8af2.mp4" controls="controls" width="100%" muted="" autoplay="true" loop="loop"></video></p><h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><hr><p>今天本来准备出去玩的，但是这两天公共交通坐来坐去的还是挺折腾小孩子的，两天地铁上都睡着了，所以今天就准备商场逛逛，放松放松吧。晚上奶奶也回来了，去吃了西贝莜面，彤宝吃的还是很多的，儿童餐基本全部吃完了，他们家的大盘鸡不是很推荐，我吃的一般般，然后店员说如果不好吃可以退了，可能看出我于心不忍，最后打了对折。还是一次不错的体验吧。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><hr><p>没事还是得出去遛遛，读万卷书不如行万里路，今天彤彤又学会了一首诗。</p><center style="font-size:20px;color:green">早春呈水部张十八员外</center><center style="font-size:13px;color:red">韩愈〔唐代〕</center><center style="font-size:16px;color:gray">天街小雨润如酥，草色遥看近却无。</center><center style="font-size:16px;color:gray">最是一年春好处，绝胜烟柳满皇都。</center>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;中秋节到了，准备出去遛娃了，好久没带她出去玩了。但是疫情也不能放松警惕，所以还是在南京玩玩，去去她没有去过的地方。下面看看我们的安排吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-行程安排&quot;&gt;&lt;a href=&quot;#0-行程安排&quot; cla</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="中秋节" scheme="https://www.wangxingyang.com/tags/%E4%B8%AD%E7%A7%8B%E8%8A%82/"/>
-    
-    <category term="南京科技馆" scheme="https://www.wangxingyang.com/tags/%E5%8D%97%E4%BA%AC%E7%A7%91%E6%8A%80%E9%A6%86/"/>
-    
-    <category term="中山陵" scheme="https://www.wangxingyang.com/tags/%E4%B8%AD%E5%B1%B1%E9%99%B5/"/>
-    
-    <category term="老门东" scheme="https://www.wangxingyang.com/tags/%E8%80%81%E9%97%A8%E4%B8%9C/"/>
     
   </entry>
   
