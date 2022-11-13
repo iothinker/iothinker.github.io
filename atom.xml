@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-10-19T03:19:13.962Z</updated>
+  <updated>2022-11-13T12:45:08.459Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>比亚迪HomeKit插件</title>
+    <link href="https://www.wangxingyang.com/bydhomekit.html"/>
+    <image>https://www.leixue.com/uploads/2020/01/HomeKit.png</image>
+    
+    <id>https://www.wangxingyang.com/bydhomekit.html</id>
+    <published>2022-11-13T12:19:38.000Z</published>
+    <updated>2022-11-13T12:45:08.459Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近提了个海豚，怎么也得折腾下吧，所以就有了这个文章，准备工作</p></blockquote><h3 id="0、安装MQTT服务器"><a href="#0、安装MQTT服务器" class="headerlink" title="0、安装MQTT服务器"></a>0、安装MQTT服务器</h3><hr><p>a) 可以参看这个链接进行安装<a href="https://www.emqx.io/zh/downloads?os=Debian" title="https://www.emqx.io/zh/downloads?os=Debian">EMQX</a></p><pre class="line-numbers language-none"><code class="language-none"># 配置 EMQX Apt 源curl -s https://assets.emqx.com/scripts/install-emqx-deb.sh | sudo bash# 安装 EMQXsudo apt-get install emqx# 启动 EMQXsudo emqx start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>b) 接着登入<a href="http://127.0.0.1:18083/" title="http://127.0.0.1:18083/">控制台</a>，下面是界面：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/bcf7226f65c15a5b38d3e602de3202cb.png" alt="控制台"></p><h3 id="1、创建homebridge传感器"><a href="#1、创建homebridge传感器" class="headerlink" title="1、创建homebridge传感器"></a>1、创建homebridge传感器</h3><hr><p>需要安装<strong>Homebridge Mqtt</strong>插件，然后配置上刚刚安装的MQTT就行了。  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/72918d469f8d44be8152471d5906210a.png" alt="插件"></p><p>这是论坛上已经有大神写好的<a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA" title="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA">Node-Red流</a>，这边就不重复造轮子了，homeassistant现在已经不折腾，所以插件改了改，搞到苹果家庭上了。因为没有专门的传感器，所以用了温度和湿度的，虽然有点怪，但是还是能看的哈。最后的结果如图：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/49723fc1791c0f498383c49d3bc21d1b.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e9bb176440a4feb4b45be918b5c7a64a.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/1fbe8ab373a0e906a8462543006e443f.png"></p><p>这边就挑了几个常用的，如果需要可以自己加哈。</p><h3 id="2、创建开关"><a href="#2、创建开关" class="headerlink" title="2、创建开关"></a>2、创建开关</h3><hr><p>开关也是差不多的操作，只是监听事件的时候得改改代码了。</p><h3 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h3><hr><p>没事多折腾，还是会有收获的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近提了个海豚，怎么也得折腾下吧，所以就有了这个文章，准备工作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0、安装MQTT服务器&quot;&gt;&lt;a href=&quot;#0、安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;0、安装</summary>
+      
+    
+    
+    
+    <category term="智能家居" scheme="https://www.wangxingyang.com/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/"/>
+    
+    
+    <category term="海豚" scheme="https://www.wangxingyang.com/tags/%E6%B5%B7%E8%B1%9A/"/>
+    
+    <category term="homeKit" scheme="https://www.wangxingyang.com/tags/homeKit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>比亚迪电表报装流程</title>
+    <link href="https://www.wangxingyang.com/byddbaz.html"/>
+    <image>https://emall.bydauto.com.cn/uploads/lunBoImg/1660715910465306.png</image>
+    
+    <id>https://www.wangxingyang.com/byddbaz.html</id>
+    <published>2022-11-13T12:08:09.000Z</published>
+    <updated>2022-11-13T12:18:22.999Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>前不久买了一个比亚迪海豚给老婆代步，电车最主要的还是充电，所以下面就和大家分享下充电桩的报装流程。</p></blockquote><h3 id="0-电表的安装"><a href="#0-电表的安装" class="headerlink" title="0.电表的安装"></a>0.电表的安装</h3><hr><p>首先下载一个<strong>网上国网APP</strong>，在上面申请电表，按照下面的流程提供相关材料。主要是一个物业证明，需要你到物业去盖章的。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/b7634a90d091b22d58237bd7a95058a3.png" alt="材料">  </p><p>模板就是下面这个样子的，打印下填好给物业盖好章就行。 </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/90de1da26bbab8f0c92f0513f2fc65de.png" alt="模版"></p><p>然后会有专人过来进行勘测，最好联系上物业，给你安排电表的安装位置，位置确定后，过几天就会有人来帮你安装电表，电表安装还是很快的，他也会把合同给你。上边有你的户号，后面用它缴电费。</p><h3 id="1-充电桩安装"><a href="#1-充电桩安装" class="headerlink" title="1.充电桩安装"></a>1.充电桩安装</h3><hr><p>上面的搞好了就可以安排充电桩了，比亚迪的小程序上预约，很快就会有人上门安装的，这个没啥注意点，纯粹的布线安装了，主要是看看距离自己能不能接受，因为超过30米，之后，每米45元。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>最后安装完成总共花费了1185元，线长是超了24米，因为桥架比较高，所以收了高空费，3X35=105元。 到此电车的配套全部搞完。可以开心的开车了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;前不久买了一个比亚迪海豚给老婆代步，电车最主要的还是充电，所以下面就和大家分享下充电桩的报装流程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-电表的安装&quot;&gt;&lt;a href=&quot;#0-电表的安装&quot; class=&quot;headerlink&quot; t</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="比亚迪" scheme="https://www.wangxingyang.com/tags/%E6%AF%94%E4%BA%9A%E8%BF%AA/"/>
+    
+    <category term="电表" scheme="https://www.wangxingyang.com/tags/%E7%94%B5%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>苹果邮件添加163邮箱</title>
@@ -105,72 +167,6 @@
     <category term="VBScript" scheme="https://www.wangxingyang.com/tags/VBScript/"/>
     
     <category term="Jenkins" scheme="https://www.wangxingyang.com/tags/Jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>twikoo私有化部署</title>
-    <link href="https://www.wangxingyang.com/twikoopd.html"/>
-    <image>https://pic.rmb.bdstatic.com/bjh/fff0bffc16bbfcb7f094bf0da2eb4490.jpeg</image>
-    
-    <id>https://www.wangxingyang.com/twikoopd.html</id>
-    <published>2022-09-20T13:46:11.000Z</published>
-    <updated>2022-09-20T13:58:07.969Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>腾讯云函数收费了，导致博客的评论功能不能使用了，这不就开始想办法私有化部署了，下面就和我一起来看看如何部署吧。</p></blockquote><h3 id="0-购买云开发"><a href="#0-购买云开发" class="headerlink" title="0.购买云开发"></a>0.购买云开发</h3><hr><p>续费有优惠，给了个20块的优惠券，续了3个月，一共40块，可以过渡一下。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/296147fda5c9492b45b405c5be0bcbe6.png" alt="续费记录"></p><h3 id="1-开始私有化部署"><a href="#1-开始私有化部署" class="headerlink" title="1.开始私有化部署"></a>1.开始私有化部署</h3><hr><p>我准备部署在群晖上，详细的部署步骤和之前的docker一样，可以参看这个<a href="https://registry.hub.docker.com/r/imaegoo/twikoo/">链接</a>，按照这个就能够部署完成了，完成之后咱们访问下子，结果应该如下：<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/4be08c1648a4021d0a601446599049e1.png" alt="twikoo正常返回截图"><br>现在基本上可以使用了，但是要部署到博客上就用不起来，因为不支持https，所以咱得搞下。</p><ol><li>将8881进行端口转发<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/3b3797a52565fbafde91a6ec1a130507.png" alt="端口转发"></li><li>将这个端口反向代理到部署的twikoo<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/56e702883aa0781aba6580808f7d786b.png" alt="反向代理"></li><li>到此就完成了。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/eb9a540170f1ee4521edd11408b63c6a.png" alt="https访问"><h3 id="2-数据恢复"><a href="#2-数据恢复" class="headerlink" title="2.数据恢复"></a>2.数据恢复</h3></li></ol><hr><p>a) 评论数据有相应的入口可以直接导入评论数据<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/4b96bf32234853f65bd295718a361608.png" alt="评论数据导入入口"><br>b)设置数据导入<br>之前设置的数据没有相关的导入入口，自己再设置一遍也很麻烦，下面提供一个方法供大家参考。</p><ol><li>查看之前腾讯云函数里面的数据库，找到<code>config</code>这个集合，然后把它导出来<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/abfb56bfa3387ceba68a9aac70095285.png" alt="config数据"></li><li>找到之前docker中配置的路径，将<code>db.json.1</code>里面的内容替换成刚刚导出来的内容，保险起见，还是先检查一下内容，看看是不是和你云函数上的内容相似，是的话再替换<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/6c4bd1c2a0171552ba11d75b01e335d7.png" alt="db.json.1"></li><li>重启容器<br>这样做完之后，现在的设置应该就是你之前的设置了。<h3 id="3-最后使用"><a href="#3-最后使用" class="headerlink" title="3.最后使用"></a>3.最后使用</h3></li></ol><hr><p>最后按照官网给的例子，把环境ID换成你的地址就行了。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/9a6796f66f90a0e75090531fa282f19a.png" alt="使用配置"></p><h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><hr><p>天下没有免费的午餐啊，用着用着就收费了，所以很多东西还是要自己去折腾，不想自己折腾就得付费给别人，让别人帮你折腾。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;腾讯云函数收费了，导致博客的评论功能不能使用了，这不就开始想办法私有化部署了，下面就和我一起来看看如何部署吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-购买云开发&quot;&gt;&lt;a href=&quot;#0-购买云开发&quot; class=&quot;headerl</summary>
-      
-    
-    
-    
-    <category term="博客" scheme="https://www.wangxingyang.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="群晖" scheme="https://www.wangxingyang.com/tags/%E7%BE%A4%E6%99%96/"/>
-    
-    <category term="twikoo" scheme="https://www.wangxingyang.com/tags/twikoo/"/>
-    
-    <category term="私有化部署" scheme="https://www.wangxingyang.com/tags/%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周末分享</title>
-    <link href="https://www.wangxingyang.com/dayshare220918.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/big/f3b351daca6781a1daad852953425cba.jpg</image>
-    <notify>true</notify>
-    <id>https://www.wangxingyang.com/dayshare220918.html</id>
-    <published>2022-09-18T12:46:19.000Z</published>
-    <updated>2022-09-19T12:47:57.194Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>啦啦啦，又到周末啦，这周要陪彤宝的外公去趟医院，然后请彤宝的小丁阿姨吃个晚饭，周末准备带她去佛手湖搭帐篷。话不多说，咱么直接上图。</p></blockquote><h3 id="佛手湖美照分享"><a href="#佛手湖美照分享" class="headerlink" title="佛手湖美照分享"></a>佛手湖美照分享</h3><hr><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/1433383e368c469f8cf0437f7f8d3fb2.jpg" alt="彤妈"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/36e11565659b1453455ae874bcc9d573.jpg" alt="两个宝"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/f8d58a67183f322e3f36f6607e7d615e.jpg" alt="又是两个宝"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/f3b351daca6781a1daad852953425cba.jpg" alt="还是两个宝"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/aa15d0a34427211495f6b25217ccf8d9.jpg" alt="挑鸡蛋"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/806715a6b82cbd33805102bcd0e5b812.jpg" alt="骑车"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/40e0f7771a284ad3fa1e2d993327877e.jpg" alt="骑车"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/6c47fb7f9cb2bd83cdfc233121c30ae6.jpg" alt="骑车"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e2401d1a7ad74b6711436319a664a99a.jpg" alt="大脸"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/060ded0ca661b9b828eafe4c7863a768.jpg" alt="骑车"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/f58b769a819e226abe32a13385169746.jpg" alt="天上的白云好漂亮"></p><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1.总结"></a>1.总结</h3><hr><p>照片是彤妈朋友圈的，感谢我这个摄影师，哈哈。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;啦啦啦，又到周末啦，这周要陪彤宝的外公去趟医院，然后请彤宝的小丁阿姨吃个晚饭，周末准备带她去佛手湖搭帐篷。话不多说，咱么直接上图。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;佛手湖美照分享&quot;&gt;&lt;a href=&quot;#佛手湖美照分享&quot; clas</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="佛手湖" scheme="https://www.wangxingyang.com/tags/%E4%BD%9B%E6%89%8B%E6%B9%96/"/>
-    
-    <category term="搭帐篷" scheme="https://www.wangxingyang.com/tags/%E6%90%AD%E5%B8%90%E7%AF%B7/"/>
     
   </entry>
   

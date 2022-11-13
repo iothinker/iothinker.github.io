@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>比亚迪HomeKit插件</title>
+      <link href="bydhomekit.html"/>
+      <url>bydhomekit.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近提了个海豚，怎么也得折腾下吧，所以就有了这个文章，准备工作</p></blockquote><h3 id="0、安装MQTT服务器"><a href="#0、安装MQTT服务器" class="headerlink" title="0、安装MQTT服务器"></a>0、安装MQTT服务器</h3><hr><p>a) 可以参看这个链接进行安装<a href="https://www.emqx.io/zh/downloads?os=Debian" title="https://www.emqx.io/zh/downloads?os=Debian">EMQX</a></p><pre class="line-numbers language-none"><code class="language-none"># 配置 EMQX Apt 源curl -s https://assets.emqx.com/scripts/install-emqx-deb.sh | sudo bash# 安装 EMQXsudo apt-get install emqx# 启动 EMQXsudo emqx start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>b) 接着登入<a href="http://127.0.0.1:18083/" title="http://127.0.0.1:18083/">控制台</a>，下面是界面：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/bcf7226f65c15a5b38d3e602de3202cb.png" alt="控制台"></p><h3 id="1、创建homebridge传感器"><a href="#1、创建homebridge传感器" class="headerlink" title="1、创建homebridge传感器"></a>1、创建homebridge传感器</h3><hr><p>需要安装<strong>Homebridge Mqtt</strong>插件，然后配置上刚刚安装的MQTT就行了。  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/72918d469f8d44be8152471d5906210a.png" alt="插件"></p><p>这是论坛上已经有大神写好的<a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA" title="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA">Node-Red流</a>，这边就不重复造轮子了，homeassistant现在已经不折腾，所以插件改了改，搞到苹果家庭上了。因为没有专门的传感器，所以用了温度和湿度的，虽然有点怪，但是还是能看的哈。最后的结果如图：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/49723fc1791c0f498383c49d3bc21d1b.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e9bb176440a4feb4b45be918b5c7a64a.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/1fbe8ab373a0e906a8462543006e443f.png"></p><p>这边就挑了几个常用的，如果需要可以自己加哈。</p><h3 id="2、创建开关"><a href="#2、创建开关" class="headerlink" title="2、创建开关"></a>2、创建开关</h3><hr><p>开关也是差不多的操作，只是监听事件的时候得改改代码了。</p><h3 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h3><hr><p>没事多折腾，还是会有收获的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 智能家居 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 海豚 </tag>
+            
+            <tag> homeKit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>比亚迪电表报装流程</title>
+      <link href="byddbaz.html"/>
+      <url>byddbaz.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>前不久买了一个比亚迪海豚给老婆代步，电车最主要的还是充电，所以下面就和大家分享下充电桩的报装流程。</p></blockquote><h3 id="0-电表的安装"><a href="#0-电表的安装" class="headerlink" title="0.电表的安装"></a>0.电表的安装</h3><hr><p>首先下载一个<strong>网上国网APP</strong>，在上面申请电表，按照下面的流程提供相关材料。主要是一个物业证明，需要你到物业去盖章的。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/b7634a90d091b22d58237bd7a95058a3.png" alt="材料">  </p><p>模板就是下面这个样子的，打印下填好给物业盖好章就行。 </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/90de1da26bbab8f0c92f0513f2fc65de.png" alt="模版"></p><p>然后会有专人过来进行勘测，最好联系上物业，给你安排电表的安装位置，位置确定后，过几天就会有人来帮你安装电表，电表安装还是很快的，他也会把合同给你。上边有你的户号，后面用它缴电费。</p><h3 id="1-充电桩安装"><a href="#1-充电桩安装" class="headerlink" title="1.充电桩安装"></a>1.充电桩安装</h3><hr><p>上面的搞好了就可以安排充电桩了，比亚迪的小程序上预约，很快就会有人上门安装的，这个没啥注意点，纯粹的布线安装了，主要是看看距离自己能不能接受，因为超过30米，之后，每米45元。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>最后安装完成总共花费了1185元，线长是超了24米，因为桥架比较高，所以收了高空费，3X35=105元。 到此电车的配套全部搞完。可以开心的开车了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 比亚迪 </tag>
+            
+            <tag> 电表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>苹果邮件添加163邮箱</title>
       <link href="applemail.html"/>
       <url>applemail.html</url>
