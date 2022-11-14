@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-11-13T12:45:08.459Z</updated>
+  <updated>2022-11-14T13:39:22.785Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>江苏教师教育自动刷课脚本</title>
+    <link href="https://www.wangxingyang.com/jstescript.html"/>
+    <image>https://images.pexels.com/photos/614117/pexels-photo-614117.jpeg</image>
+    
+    <id>https://www.wangxingyang.com/jstescript.html</id>
+    <published>2022-11-14T13:07:19.000Z</published>
+    <updated>2022-11-14T13:39:22.785Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近接到一个任务，帮忙写个刷课的脚本，所以就有了这个文章。</p></blockquote><h3 id="0、实现思路"><a href="#0、实现思路" class="headerlink" title="0、实现思路"></a>0、实现思路</h3><hr><p>本着简单的功能，定时监测网页中的相应的元素，然后使用脚本来模拟点击操作，这样就能够实现相应的功能，然后只要分析下页面几个主要的元素就行。下面的就是脚本了，比较简单。功能主要是实现自动播放下一个，播放时静音，不打扰你其他事情。</p><h3 id="1、脚本"><a href="#1、脚本" class="headerlink" title="1、脚本"></a>1、脚本</h3><hr><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// ==UserScript==</span><span class="token comment">// @name         江苏教师</span><span class="token comment">// @namespace    http://tampermonkey.net/</span><span class="token comment">// @homepage     https://www.wangxingyang.com/jstescript.html</span><span class="token comment">// @version      0.1</span><span class="token comment">// @description  江苏教师教育自动刷课助手</span><span class="token comment">// @author       freefitter</span><span class="token comment">// @match        *://jste.lexiangla.com/*</span><span class="token comment">// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==</span><span class="token comment">// @grant        none</span><span class="token comment">// ==/UserScript==</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token string">'use strict'</span><span class="token punctuation">;</span>    <span class="token keyword">function</span> <span class="token function">jumpNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>      <span class="token comment">//console.log("开始执行跳过脚本");</span>      <span class="token comment">// 确定按钮</span>      <span class="token keyword">let</span> okBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"venom-btn-primary"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>      <span class="token comment">// 播放按钮</span>      <span class="token keyword">let</span> playBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"vjs-big-play-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>      <span class="token comment">// 是否正在播放</span>      <span class="token keyword">let</span> isPlay <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"vjs-playing"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>      <span class="token keyword">if</span><span class="token punctuation">(</span>okBtn <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>          document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"venom-btn-primary"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"模拟点击确定按钮"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token punctuation">}</span>      <span class="token keyword">if</span><span class="token punctuation">(</span>playBtn <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> isPlay <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>          document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"vjs-big-play-button"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"vjs-paused"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"模拟点击播放按钮"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">"vjs-mute-control"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"模拟点击静音按钮"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token punctuation">}</span>      <span class="token function">setTimeout</span><span class="token punctuation">(</span>jumpNext<span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token comment">// 每3s检查一次</span>    <span class="token function">setTimeout</span><span class="token punctuation">(</span>jumpNext<span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2、总结"><a href="#2、总结" class="headerlink" title="2、总结"></a>2、总结</h3><hr><p>偷懒使人进步，加油达到共同进步。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近接到一个任务，帮忙写个刷课的脚本，所以就有了这个文章。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0、实现思路&quot;&gt;&lt;a href=&quot;#0、实现思路&quot; class=&quot;headerlink&quot; title=&quot;0、实现思路&quot;&gt;&lt;/a&gt;0、实现</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Tampermonkey" scheme="https://www.wangxingyang.com/tags/Tampermonkey/"/>
+    
+    <category term="油猴" scheme="https://www.wangxingyang.com/tags/%E6%B2%B9%E7%8C%B4/"/>
+    
+    <category term="江苏教师教育" scheme="https://www.wangxingyang.com/tags/%E6%B1%9F%E8%8B%8F%E6%95%99%E5%B8%88%E6%95%99%E8%82%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>比亚迪HomeKit插件</title>
@@ -136,37 +169,6 @@
     <category term="Node-Red" scheme="https://www.wangxingyang.com/tags/Node-Red/"/>
     
     <category term="iPhone 14 Pro Max" scheme="https://www.wangxingyang.com/tags/iPhone-14-Pro-Max/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins一键构建工具</title>
-    <link href="https://www.wangxingyang.com/jenkinBuild.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/medium/88b50921f866e111c8cbb13688345ed6.jpg</image>
-    
-    <id>https://www.wangxingyang.com/jenkinBuild.html</id>
-    <published>2022-09-28T13:12:19.000Z</published>
-    <updated>2022-09-28T13:20:21.942Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近配置组不想帮忙发版了，说这个太简单了，想让我们自己搞，所以就来活了。本着能偷懒就偷懒的原则，就搞了个一键构建的工具。有了他你可以再搞个定时任务，就可以彻底解放双手了。</p></blockquote><h3 id="0-现状分析"><a href="#0-现状分析" class="headerlink" title="0.现状分析"></a>0.现状分析</h3><hr><p>目前构建和发布是在两台机器上，在版本构建完成后，会把版本包推到发布的机器上，接着发布的机器取版本放置到需要部署的机器上。</p><h3 id="1-工具编写"><a href="#1-工具编写" class="headerlink" title="1.工具编写"></a>1.工具编写</h3><hr><p>这边还是模拟POST请求来实现相关功能，主要分几个步骤，具体的步骤如下：</p><blockquote><ol><li><strong>登录</strong> Jenkins</li><li><strong>提交</strong> 构建任务</li><li><strong>跟踪</strong> 构建状态</li></ol></blockquote><p>这三个步骤搞完了，整个工具就完成了，这边使用的是<code>VBScript</code>，下面就按照这个步骤开始编码就行。<strong>Jenkins【版本是1.592】</strong>，相关接口浏览器开发人员工具，然后分析找下就行。还有一些小细节自己拿捏下子。</p><h4 id="a-模拟登录"><a href="#a-模拟登录" class="headerlink" title="a) 模拟登录"></a>a) 模拟登录</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/j_acegi_security_check"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="b-提交构建指令"><a href="#b-提交构建指令" class="headerlink" title="b) 提交构建指令"></a>b) 提交构建指令</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/build?delay-0sec"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h4 id="c-等待构建完成"><a href="#c-等待构建完成" class="headerlink" title="c) 等待构建完成"></a>c) 等待构建完成</h4><pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">url = "http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/buildHistory/ajax"http.Open "POST",url,Falsehttp.setRequestHeader "Content-Type","application/x-www-form-urlencoded"http.setRequestHeader "n", nextBuildNumberhttp.Send "这边是你的参数"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>等待构建完成需要一个<code>构建版本号</code>在头里，这边可以通过<code>http://159.0.0.0:9090/job/ZTHYUJ_GIT_DEV/api/json?pretty=true</code>这个接口来获得相关的值。在构建之前，需要查询下今日需不需要发版，如果需要才进行，不需要就不发版。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>能用机器做的事情咱们就不自己做，节约下来的时间可以做更有意义的事情。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近配置组不想帮忙发版了，说这个太简单了，想让我们自己搞，所以就来活了。本着能偷懒就偷懒的原则，就搞了个一键构建的工具。有了他你可以再搞个定时任务，就可以彻底解放双手了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-现状分析&quot;&gt;&lt;a h</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="VBScript" scheme="https://www.wangxingyang.com/tags/VBScript/"/>
-    
-    <category term="Jenkins" scheme="https://www.wangxingyang.com/tags/Jenkins/"/>
     
   </entry>
   
