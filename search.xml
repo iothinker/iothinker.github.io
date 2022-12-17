@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>MicroBin小工具</title>
+      <link href="microbin.html"/>
+      <url>microbin.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>刷B站无意间看到这个小工具<strong>MicroBin</strong>，是一个跨平台的粘贴站，然后就自己搭了一个用用。<a href="https://microbin.eu/">官网在这</a>。</p></blockquote><h3 id="0-怎么搭建"><a href="#0-怎么搭建" class="headerlink" title="0.怎么搭建"></a>0.怎么搭建</h3><hr><p>搭建的过程还是很简单的，直接去群晖上下载相关镜像就行。镜像名称<a href="https://registry.hub.docker.com/r/danielszabo99/microbin/">danielszabo99/microbin</a>，直接下载镜像即可。群晖设置也没什么特别的，按照官网上的配置就行，可以参考<a href="https://blog.laoda.de/archives/docker-compose-install-microbin">【好玩儿的Docker项目】10分钟搭建一个巨好用的粘贴板工具——MicroBin</a>这篇文章。讲的还是很详细的。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用比较简单，直接粘贴然后点保存就行。</p><p><img src="https://i2.100024.xyz/2022/12/17/qxkefz.webp" alt="成果图"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>我觉得这个可以再加个markdown的文件保存功能，这样可以让这个剪切板也能够变得丰富多彩起来，也可以作为一个记录的地方。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MicroBin </tag>
+            
+            <tag> 剪切板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IDEA插件开发</title>
       <link href="ideaplugin.html"/>
       <url>ideaplugin.html</url>

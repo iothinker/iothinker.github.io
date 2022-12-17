@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-11-18T15:25:29.515Z</updated>
+  <updated>2022-12-17T08:30:07.398Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MicroBin小工具</title>
+    <link href="https://www.wangxingyang.com/microbin.html"/>
+    <image>https://i2.100024.xyz/2022/12/15/h3xk7s.webp</image>
+    
+    <id>https://www.wangxingyang.com/microbin.html</id>
+    <published>2022-12-17T08:18:12.000Z</published>
+    <updated>2022-12-17T08:30:07.398Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>刷B站无意间看到这个小工具<strong>MicroBin</strong>，是一个跨平台的粘贴站，然后就自己搭了一个用用。<a href="https://microbin.eu/">官网在这</a>。</p></blockquote><h3 id="0-怎么搭建"><a href="#0-怎么搭建" class="headerlink" title="0.怎么搭建"></a>0.怎么搭建</h3><hr><p>搭建的过程还是很简单的，直接去群晖上下载相关镜像就行。镜像名称<a href="https://registry.hub.docker.com/r/danielszabo99/microbin/">danielszabo99/microbin</a>，直接下载镜像即可。群晖设置也没什么特别的，按照官网上的配置就行，可以参考<a href="https://blog.laoda.de/archives/docker-compose-install-microbin">【好玩儿的Docker项目】10分钟搭建一个巨好用的粘贴板工具——MicroBin</a>这篇文章。讲的还是很详细的。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用比较简单，直接粘贴然后点保存就行。</p><p><img src="https://i2.100024.xyz/2022/12/17/qxkefz.webp" alt="成果图"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>我觉得这个可以再加个markdown的文件保存功能，这样可以让这个剪切板也能够变得丰富多彩起来，也可以作为一个记录的地方。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;刷B站无意间看到这个小工具&lt;strong&gt;MicroBin&lt;/strong&gt;，是一个跨平台的粘贴站，然后就自己搭了一个用用。&lt;a href=&quot;https://microbin.eu/&quot;&gt;官网在这&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="MicroBin" scheme="https://www.wangxingyang.com/tags/MicroBin/"/>
+    
+    <category term="剪切板" scheme="https://www.wangxingyang.com/tags/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>IDEA插件开发</title>
@@ -139,37 +170,6 @@
     <category term="比亚迪" scheme="https://www.wangxingyang.com/tags/%E6%AF%94%E4%BA%9A%E8%BF%AA/"/>
     
     <category term="电表" scheme="https://www.wangxingyang.com/tags/%E7%94%B5%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>苹果邮件添加163邮箱</title>
-    <link href="https://www.wangxingyang.com/applemail.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/medium/a84314c1c86a5e721463811b29612f68.png</image>
-    
-    <id>https://www.wangxingyang.com/applemail.html</id>
-    <published>2022-10-19T00:49:46.000Z</published>
-    <updated>2022-10-19T03:19:13.962Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>邮箱软件不想装太多，想在iPhone上用邮件管理自己的所有邮箱。可能你总是不成功，那你就跟着这个教程走下去吧。这边以163邮箱为例。</p></blockquote><h3 id="0-开启服务"><a href="#0-开启服务" class="headerlink" title="0.开启服务"></a>0.开启服务</h3><hr><p>登录网页163邮箱，进入设置，开启服务<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/d3bde534a475c7bf99edd93966b4ef2a.png" alt="163设置"></p><h3 id="1-在手机上添加账户"><a href="#1-在手机上添加账户" class="headerlink" title="1.在手机上添加账户"></a>1.在手机上添加账户</h3><hr><p>a) 先在iPhone上添加账户，路径是：<strong>设置 -&gt; 邮件 -&gt; 账户 -&gt; 添加账户</strong>，选择需要添加的账户类型，这边选择163<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/3d89aca22c9b0292106553405d810936.png" alt="添加账户"><br>b)然后填上你的账户信息，点击下一步。<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/deb93f46ffadbd0f47060146b5e510e1.png" alt="填写账户信息"><br>c)  验证失败不用管，直接下一步，存储，然后在账户列表中找到刚刚添加的账户。<br>d) 编辑里面的信息<br>服务器的信息可以从下面的表格里找到。</p><table><thead><tr><th>服务器名称</th><th>地址</th></tr></thead><tbody><tr><td>POP3服务器</td><td>pop.163.com</td></tr><tr><td>SMTP服务器</td><td>smtp.163.com</td></tr><tr><td>IMAP服务器</td><td>imap.163.com</td></tr></tbody></table><p>按照提示填写信息，收件服务器使用<code>IMAP服务器</code>，发件服务器填写<code>SMTP服务器</code>，密码填写刚刚的授权码哈<br><img src="https://freefitter.asuscomm.com:6884/uploads/medium/09441733151bf373bd48959508eabad1.png" alt="编辑服务器信息"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>终于整合好了，凡事多折腾</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;邮箱软件不想装太多，想在iPhone上用邮件管理自己的所有邮箱。可能你总是不成功，那你就跟着这个教程走下去吧。这边以163邮箱为例。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-开启服务&quot;&gt;&lt;a href=&quot;#0-开启服务&quot; class</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="苹果邮件" scheme="https://www.wangxingyang.com/tags/%E8%8B%B9%E6%9E%9C%E9%82%AE%E4%BB%B6/"/>
-    
-    <category term="邮箱" scheme="https://www.wangxingyang.com/tags/%E9%82%AE%E7%AE%B1/"/>
     
   </entry>
   
