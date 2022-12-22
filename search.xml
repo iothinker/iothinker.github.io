@@ -209,9 +209,9 @@
       
         <tags>
             
-            <tag> Node-Red </tag>
-            
             <tag> iPhone 14 Pro Max </tag>
+            
+            <tag> Node-Red </tag>
             
         </tags>
       
@@ -236,9 +236,9 @@
       
         <tags>
             
-            <tag> VBScript </tag>
-            
             <tag> Jenkins </tag>
+            
+            <tag> VBScript </tag>
             
         </tags>
       
@@ -323,11 +323,11 @@
             
             <tag> 中秋节 </tag>
             
+            <tag> 老门东 </tag>
+            
             <tag> 南京科技馆 </tag>
             
             <tag> 中山陵 </tag>
-            
-            <tag> 老门东 </tag>
             
         </tags>
       
@@ -667,9 +667,9 @@
             
             <tag> 插件 </tag>
             
-            <tag> xbar/BitBar </tag>
-            
             <tag> 基金 </tag>
+            
+            <tag> xbar/BitBar </tag>
             
         </tags>
       
@@ -1171,11 +1171,11 @@
       
         <tags>
             
+            <tag> Node-Red </tag>
+            
             <tag> miio </tag>
             
             <tag> 米家 </tag>
-            
-            <tag> Node-Red </tag>
             
         </tags>
       
@@ -1445,7 +1445,7 @@
       <link href="toolshare211018.html"/>
       <url>toolshare211018.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>hexo搭建的静态站，分享时光秃秃的一片，想给它加个图片，所以就有了现在的文章</p></blockquote><h3 id="0-前期准备"><a href="#0-前期准备" class="headerlink" title="0.前期准备"></a>0.前期准备</h3><hr><p>在网上找了找，看看有没有现成的，网上大部分是讲接入SDK的，这个太麻烦了，还得绑定域名啥的。最后找到一个很方便的方法，亲测有效，这是<a href="https://blog.zhheo.com/p/89870d07.html">原文链接</a>，很简单的两句话。下面简要说下步骤：</p><ol><li><p>准备一张<code>300*300</code>的图片作为缩略图。</p></li><li><p>在head头部添加一个div，包含img标签。</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">display</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/img/wechat.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://*.***.***/*.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li></ol><p>到此就大功告成了。但是我想做成一个插件的形式，这个只能够指定一张图片，图片也不能变，所以接下来就开始改造了。</p><h3 id="1-实操"><a href="#1-实操" class="headerlink" title="1.实操"></a>1.实操</h3><hr><p>在<code>themes/hexo-theme-matery/_config.yml</code>中添加开关</p><pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># 分享图标设置shareIcon:  enable: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>接着修改<code>themes/hexo-theme-matery/layout/_partial/head.ejs</code> </p><pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs"> <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript">         <span class="token keyword">var</span> shareIconPath <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>shareIcon <span class="token operator">&amp;&amp;</span> theme<span class="token punctuation">.</span>shareIcon<span class="token punctuation">.</span>enable<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>shareIcon<span class="token punctuation">)</span> <span class="token punctuation">{</span>                shareIconPath <span class="token operator">=</span> <span class="token string">"https://www.wangxingyang.com"</span> <span class="token operator">+</span> page<span class="token punctuation">.</span>shareIcon<span class="token punctuation">;</span>            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>                 shareIconPath <span class="token operator">=</span> <span class="token string">"https://www.wangxingyang.com/share.png"</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span> </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">display</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%=</span><span class="token language-javascript"> shareIconPath </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%=</span><span class="token language-javascript"> shareIconPath </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果开关打开，并且配置了链接图片地址，那么就用配置的，否则用默认的图片地址。</p><p>使用的时候需要在md文件中加入<code>shareIcon</code></p><p><img src="/img/20211018/2.jpeg" alt="使用截图"></p><h3 id="2-成果展示"><a href="#2-成果展示" class="headerlink" title="2.成果展示"></a>2.成果展示</h3><hr><p><img src="/img/20211018/0.jpeg" alt="成果展示"></p><p>看起来还是不错的，默认是彤宝的照片哈。</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>hexo搭建的静态站，分享时光秃秃的一片，想给它加个图片，所以就有了现在的文章</p></blockquote><h3 id="0-前期准备"><a href="#0-前期准备" class="headerlink" title="0.前期准备"></a>0.前期准备</h3><hr><p>在网上找了找，看看有没有现成的，网上大部分是讲接入SDK的，这个太麻烦了，还得绑定域名啥的。最后找到一个很方便的方法，亲测有效，这是<a href="https://blog.zhheo.com/p/89870d07.html">原文链接</a>，很简单的两句话。下面简要说下步骤：</p><ol><li><p>准备一张<code>300*300</code>的图片作为缩略图。</p></li><li><p>在head头部添加一个div，包含img标签。</p><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">display</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/img/wechat.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://*.***.***/*.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li></ol><p>到此就大功告成了。但是我想做成一个插件的形式，这个只能够指定一张图片，图片也不能变，所以接下来就开始改造了。</p><h3 id="1-实操"><a href="#1-实操" class="headerlink" title="1.实操"></a>1.实操</h3><hr><p>在<code>themes/hexo-theme-matery/_config.yml</code>中添加开关</p><pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token comment"># 分享图标设置</span><span class="token key atrule">shareIcon</span><span class="token punctuation">:</span>  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>接着修改<code>themes/hexo-theme-matery/layout/_partial/head.ejs</code> </p><pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs"> <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript">         <span class="token keyword">var</span> shareIconPath <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>shareIcon <span class="token operator">&amp;&amp;</span> theme<span class="token punctuation">.</span>shareIcon<span class="token punctuation">.</span>enable<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>shareIcon<span class="token punctuation">)</span> <span class="token punctuation">{</span>                shareIconPath <span class="token operator">=</span> <span class="token string">"https://www.wangxingyang.com"</span> <span class="token operator">+</span> page<span class="token punctuation">.</span>shareIcon<span class="token punctuation">;</span>            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>                 shareIconPath <span class="token operator">=</span> <span class="token string">"https://www.wangxingyang.com/share.png"</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span> </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">display</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%=</span><span class="token language-javascript"> shareIconPath </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>og:image<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%=</span><span class="token language-javascript"> shareIconPath </span><span class="token delimiter punctuation">%&gt;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果开关打开，并且配置了链接图片地址，那么就用配置的，否则用默认的图片地址。</p><p>使用的时候需要在md文件中加入<code>shareIcon</code></p><p><img src="/img/20211018/2.jpeg" alt="使用截图"></p><h3 id="2-成果展示"><a href="#2-成果展示" class="headerlink" title="2.成果展示"></a>2.成果展示</h3><hr><p><img src="/img/20211018/0.jpeg" alt="成果展示"></p><p>看起来还是不错的，默认是彤宝的照片哈。</p>]]></content>
       
       
       <categories>
@@ -2304,11 +2304,11 @@
       
         <tags>
             
+            <tag> VBScript </tag>
+            
             <tag> 教师 </tag>
             
             <tag> Excel </tag>
-            
-            <tag> VBScript </tag>
             
         </tags>
       
