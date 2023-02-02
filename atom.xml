@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2022-12-22T14:28:45.643Z</updated>
+  <updated>2023-02-02T13:19:54.399Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>上海游记</title>
+    <link href="https://www.wangxingyang.com/dayshare230129.html"/>
+    <image>https://freefitter.asuscomm.com:6884/uploads/medium/bf3e47f74abe940d770fcfe31a8094c9@2x.jpg</image>
+    
+    <id>https://www.wangxingyang.com/dayshare230129.html</id>
+    <published>2023-02-02T12:59:22.000Z</published>
+    <updated>2023-02-02T13:19:54.399Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>之前出差在上海三年，也没怎么出去玩，这次正好彤妈生日，也想带彤彤出去玩玩，所以就准备去上海的迪士尼去逛逛。</p></blockquote><p><img src="https://freefitter.asuscomm.com:6884/uploads/medium/bf3e47f74abe940d770fcfe31a8094c9@2x.jpg" alt="城堡" title="城堡"></p><h3 id="0、准备工作"><a href="#0、准备工作" class="headerlink" title="0、准备工作"></a>0、准备工作</h3><hr><h4 id="高铁-酒店-天气"><a href="#高铁-酒店-天气" class="headerlink" title="高铁/酒店/天气"></a>高铁/酒店/天气</h4><table><thead><tr><th>出发站</th><th>终点站</th><th>车次</th></tr></thead><tbody><tr><td>南京站</td><td>上海站</td><td>G7011</td></tr><tr><td>上海站</td><td>南京站</td><td>G7082</td></tr></tbody></table><p>酒店订的亚朵，离迪士尼有点距离，走路比较累。天气还是不错的。</p><table><thead><tr><th>日期</th><th>天气</th><th>温度</th></tr></thead><tbody><tr><td>2023-01-27</td><td><img src="https://assets.msn.cn/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg" alt="" width="40" height="40"></td><td>-2° - 5°</td></tr><tr><td>2023-01-28</td><td><img src="https://assets.msn.cn/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg" alt="" width="40" height="40"></td><td>-1° - 5°</td></tr><tr><td>2023-01-29</td><td><img src="https://assets.msn.cn/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg" alt="" width="40" height="40"></td><td>0° - 9°</td></tr></tbody></table><h3 id="1、游玩照片"><a href="#1、游玩照片" class="headerlink" title="1、游玩照片"></a>1、游玩照片</h3><hr><p>照片拿的彤妈朋友圈的照片。</p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/c9187bfe0dadc8c73d1e5a6cc966abd2.jpg"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/2eacc729884e89ed4f45409995fb8ddf.jpg"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/110d28578c7aac441530b6bd4fad709d.jpg"></p><h3 id="2、说在最后"><a href="#2、说在最后" class="headerlink" title="2、说在最后"></a>2、说在最后</h3><hr><p>这次的旅行总的来说还是非常顺利的，迪士尼的门票因为定晚了，所以价格稍微的高些。还有就是酒店稍微有点远，来回不适很方便。彤宝还是很配合的，回老家一直在外面跑，然后就过来玩了，没有好好休息，就是最后的烟花没有好好欣赏，其他还是很完美的。下次有时间再出去遛遛。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;之前出差在上海三年，也没怎么出去玩，这次正好彤妈生日，也想带彤彤出去玩玩，所以就准备去上海的迪士尼去逛逛。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://freefitter.asuscomm.com:6884/up</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
+    
+    <category term="迪士尼" scheme="https://www.wangxingyang.com/tags/%E8%BF%AA%E5%A3%AB%E5%B0%BC/"/>
+    
+    <category term="上海" scheme="https://www.wangxingyang.com/tags/%E4%B8%8A%E6%B5%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>新冠感染历程</title>
@@ -137,37 +170,6 @@
     <category term="油猴" scheme="https://www.wangxingyang.com/tags/%E6%B2%B9%E7%8C%B4/"/>
     
     <category term="江苏教师教育" scheme="https://www.wangxingyang.com/tags/%E6%B1%9F%E8%8B%8F%E6%95%99%E5%B8%88%E6%95%99%E8%82%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>比亚迪HomeKit插件</title>
-    <link href="https://www.wangxingyang.com/bydhomekit.html"/>
-    <image>https://www.leixue.com/uploads/2020/01/HomeKit.png</image>
-    
-    <id>https://www.wangxingyang.com/bydhomekit.html</id>
-    <published>2022-11-13T12:19:38.000Z</published>
-    <updated>2022-11-13T12:45:08.459Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近提了个海豚，怎么也得折腾下吧，所以就有了这个文章，准备工作</p></blockquote><h3 id="0、安装MQTT服务器"><a href="#0、安装MQTT服务器" class="headerlink" title="0、安装MQTT服务器"></a>0、安装MQTT服务器</h3><hr><p>a) 可以参看这个链接进行安装<a href="https://www.emqx.io/zh/downloads?os=Debian" title="https://www.emqx.io/zh/downloads?os=Debian">EMQX</a></p><pre class="line-numbers language-none"><code class="language-none"># 配置 EMQX Apt 源curl -s https://assets.emqx.com/scripts/install-emqx-deb.sh | sudo bash# 安装 EMQXsudo apt-get install emqx# 启动 EMQXsudo emqx start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>b) 接着登入<a href="http://127.0.0.1:18083/" title="http://127.0.0.1:18083/">控制台</a>，下面是界面：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/bcf7226f65c15a5b38d3e602de3202cb.png" alt="控制台"></p><h3 id="1、创建homebridge传感器"><a href="#1、创建homebridge传感器" class="headerlink" title="1、创建homebridge传感器"></a>1、创建homebridge传感器</h3><hr><p>需要安装<strong>Homebridge Mqtt</strong>插件，然后配置上刚刚安装的MQTT就行了。  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/72918d469f8d44be8152471d5906210a.png" alt="插件"></p><p>这是论坛上已经有大神写好的<a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA" title="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=18154&amp;highlight=%E6%AF%94%E4%BA%9A%E8%BF%AA">Node-Red流</a>，这边就不重复造轮子了，homeassistant现在已经不折腾，所以插件改了改，搞到苹果家庭上了。因为没有专门的传感器，所以用了温度和湿度的，虽然有点怪，但是还是能看的哈。最后的结果如图：  </p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/49723fc1791c0f498383c49d3bc21d1b.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/e9bb176440a4feb4b45be918b5c7a64a.png"></p><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/1fbe8ab373a0e906a8462543006e443f.png"></p><p>这边就挑了几个常用的，如果需要可以自己加哈。</p><h3 id="2、创建开关"><a href="#2、创建开关" class="headerlink" title="2、创建开关"></a>2、创建开关</h3><hr><p>开关也是差不多的操作，只是监听事件的时候得改改代码了。</p><h3 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h3><hr><p>没事多折腾，还是会有收获的。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近提了个海豚，怎么也得折腾下吧，所以就有了这个文章，准备工作&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0、安装MQTT服务器&quot;&gt;&lt;a href=&quot;#0、安装MQTT服务器&quot; class=&quot;headerlink&quot; title=&quot;0、安装</summary>
-      
-    
-    
-    
-    <category term="智能家居" scheme="https://www.wangxingyang.com/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/"/>
-    
-    
-    <category term="海豚" scheme="https://www.wangxingyang.com/tags/%E6%B5%B7%E8%B1%9A/"/>
-    
-    <category term="homeKit" scheme="https://www.wangxingyang.com/tags/homeKit/"/>
     
   </entry>
   
