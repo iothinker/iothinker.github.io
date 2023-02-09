@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-02-05T12:49:35.599Z</updated>
+  <updated>2023-02-09T13:19:52.409Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ChatGPT的注册和使用</title>
+    <link href="https://www.wangxingyang.com/chatgpt.html"/>
+    <image>https://freefitter.asuscomm.com:6884/uploads/big/484552a52c1d1b38d471db929c218bb0.png</image>
+    
+    <id>https://www.wangxingyang.com/chatgpt.html</id>
+    <published>2023-02-09T13:14:21.000Z</published>
+    <updated>2023-02-09T13:19:52.409Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近ChatGPT很是火爆，所以也想自己注册个账号玩玩，淘宝有现成的，可以在上面直接买。我还是选择了自己折腾下子，下面就记录下我的过程。</p></blockquote><h3 id="0、注册教程"><a href="#0、注册教程" class="headerlink" title="0、注册教程"></a>0、注册教程</h3><hr><p>网上的注册教程很多，大家参看下就行，<a href="https://www.cnblogs.com/chatgpt/p/how-to-register-chatgpt-in-china.html">如何注册 ChatGPT ：最新手把手亲测可用教程</a>，大家可以参看这个教程。至于梯子，可以参看我之前的博客。<a href="https://www.wangxingyang.com/toolshare211019.html">免费的梯子</a>这篇文章。</p><h3 id="1、使用"><a href="#1、使用" class="headerlink" title="1、使用"></a>1、使用</h3><hr><p>贴几个使用的截图，<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/a29750733b04dd543aa0c57634980be5.png" alt="晚餐推荐"><br><img src="https://freefitter.asuscomm.com:6884/uploads/big/a5953f6eae725ea279f81ae75e866c4c.png" alt="java面试题"></p><h3 id="2、备忘"><a href="#2、备忘" class="headerlink" title="2、备忘"></a>2、备忘</h3><hr><p><a href="https://sms-activate.org/cn">注册短信接收</a><br><a href="https://chat.openai.com/">ChatGPT</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近ChatGPT很是火爆，所以也想自己注册个账号玩玩，淘宝有现成的，可以在上面直接买。我还是选择了自己折腾下子，下面就记录下我的过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0、注册教程&quot;&gt;&lt;a href=&quot;#0、注册教程&quot; cla</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://www.wangxingyang.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="ChatGPT" scheme="https://www.wangxingyang.com/tags/ChatGPT/"/>
+    
+    <category term="OpenAI" scheme="https://www.wangxingyang.com/tags/OpenAI/"/>
+    
+    <category term="人工智能" scheme="https://www.wangxingyang.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>周末记事</title>
@@ -137,37 +170,6 @@
     <category term="MicroBin" scheme="https://www.wangxingyang.com/tags/MicroBin/"/>
     
     <category term="剪切板" scheme="https://www.wangxingyang.com/tags/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA插件开发</title>
-    <link href="https://www.wangxingyang.com/ideaplugin.html"/>
-    <image>https://freefitter.asuscomm.com:6884/uploads/medium/c50c844be9a01b723da89a2d5259e707.jpg</image>
-    
-    <id>https://www.wangxingyang.com/ideaplugin.html</id>
-    <published>2022-11-18T15:01:27.000Z</published>
-    <updated>2022-11-18T15:25:29.515Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>研究下ntelliJ IDEA的插件开发，看看这个东西到底是怎么做出来的，这个文章旨在抛砖引玉，只做了最简单的功能，希望这个教程能帮到大家。</p></blockquote><h3 id="0、环境准备"><a href="#0、环境准备" class="headerlink" title="0、环境准备"></a>0、环境准备</h3><hr><h4 id="a-SDK安装："><a href="#a-SDK安装：" class="headerlink" title="a)SDK安装："></a>a)SDK安装：</h4><p>参看<a href="https://plugins.jetbrains.com/docs/intellij/setting-up-theme-environment.html">官方文档</a>的步骤进行操作，插件的SDK包含在<strong>IntelliJ IDEA Community Edition</strong>和<strong>IntelliJ IDEA Ultimate</strong>。这边用的是最新的社区版本。<a href="https://www.jetbrains.com/idea/download/#section=windows">下载地址</a></p><h4 id="b-gradle-的安装"><a href="#b-gradle-的安装" class="headerlink" title="b) gradle 的安装"></a>b) gradle 的安装</h4><p>参看<a href="https://gradle.org/install/">官方文档</a>进行安装，安装比较简单。下载下来，配置下环境变量就行了。</p><h4 id="c-启用Plugin-DevKit"><a href="#c-启用Plugin-DevKit" class="headerlink" title="c)  启用Plugin DevKit"></a>c)  启用Plugin DevKit</h4><p>后面通过这个插件来创建插件，这个默认是启用的。</p><h3 id="1、开发准备"><a href="#1、开发准备" class="headerlink" title="1、开发准备"></a>1、开发准备</h3><hr><h4 id="0、创建工程："><a href="#0、创建工程：" class="headerlink" title="0、创建工程："></a>0、创建工程：</h4><p>左边选择<strong>IDE Plugin</strong>，填写相关信息，创建好工程。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/7834e4838cee394f8754b79fc52f87f8.png" alt="创建工程"></p><h4 id="1、确认-Plugin-DevKit-是启用的"><a href="#1、确认-Plugin-DevKit-是启用的" class="headerlink" title="1、确认 Plugin DevKit 是启用的"></a>1、确认 <strong>Plugin DevKit</strong> 是启用的</h4><p><img src="https://freefitter.asuscomm.com:6884/uploads/big/255bba668089ddbbe5382bfdca9df415.png" alt="Plugin DevKit"></p><h4 id="2、设置插件SDK"><a href="#2、设置插件SDK" class="headerlink" title="2、设置插件SDK"></a>2、设置插件SDK</h4><p>点击添加，选择社区版的安装路径，应该默认就是。将工程的SDK也设置成刚刚添加的。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/76ce7879a80270a7c8727d5bcab286df.png" alt="SDK设置"><br><img src="https://freefitter.asuscomm.com:6884/uploads/big/a8a0a265212195187f9c7b247adf9dc1.png" alt="SDK设置"><br><img src="https://freefitter.asuscomm.com:6884/uploads/big/1e02d92b17905c0f53524f0113a9039f.png" alt="SDK设置"></p><h4 id="3、设置插件gradle"><a href="#3、设置插件gradle" class="headerlink" title="3、设置插件gradle"></a>3、设置插件gradle</h4><p>这边需要注意的是，最好是JDK8以后的，11和17都行。<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/dc68c52446dca2e93de483880fc896a8.png" alt="gradle"></p><h3 id="2、插件开发"><a href="#2、插件开发" class="headerlink" title="2、插件开发"></a>2、插件开发</h3><hr><blockquote><p>目标：在菜单栏中创建一个菜单，然后在这个菜单下创建一个子菜单，点击子菜单打开自己的博客。</p></blockquote><p>下面是编码步骤：<br>1、配置 <strong>plugin.xml</strong> 文件，在文件中添加如下内容</p><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>actions</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>group</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>menuPD<span class="token punctuation">"</span></span> <span class="token attr-name">text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>辅助工具<span class="token punctuation">"</span></span> <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>常用工具合集<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>add-to-group</span> <span class="token attr-name">group-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MainMenu<span class="token punctuation">"</span></span> <span class="token attr-name">anchor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>last<span class="token punctuation">"</span></span>  <span class="token punctuation">/&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textPD<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.freefitter.testplug.actions.BlogPage<span class="token punctuation">"</span></span> <span class="token attr-name">text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>打开博客<span class="token punctuation">"</span></span> <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Blog<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>group</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>actions</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>2、编写点击事件</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>freefitter<span class="token punctuation">.</span>testplug<span class="token punctuation">.</span>actions</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>intellij<span class="token punctuation">.</span>openapi<span class="token punctuation">.</span>actionSystem<span class="token punctuation">.</span></span><span class="token class-name">AnAction</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>intellij<span class="token punctuation">.</span>openapi<span class="token punctuation">.</span>actionSystem<span class="token punctuation">.</span></span><span class="token class-name">AnActionEvent</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>intellij<span class="token punctuation">.</span>ide<span class="token punctuation">.</span></span><span class="token class-name">BrowserUtil</span><span class="token punctuation">;</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BlogPage</span> <span class="token keyword">extends</span> <span class="token class-name">AnAction</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span><span class="token class-name">AnActionEvent</span> event<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment">// 打开个人博客</span>        <span class="token class-name">BrowserUtil</span><span class="token punctuation">.</span><span class="token function">browse</span><span class="token punctuation">(</span><span class="token string">"https://www.wangxingyang.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>效果如图所示：<br><img src="https://freefitter.asuscomm.com:6884/uploads/big/e826f7c1c764bcbf903cf0217d7cb1f0.png" alt="成果图"></p><h3 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h3><p>这个只是最简单的插件编写，插件这个东西还是得有好的想法，能够极大的辅助我们的开发，化繁为简，我觉得这样才是开发插件的终极要义。</p><h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>1、<a href="https://cloud.tencent.com/developer/article/1348741">你们要的Intellij IDEA 插件开发秘籍，来了！</a><br>2、<a href="https://bugstack.cn/md/assembly/idea-plugin/2021-08-27-%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94%EF%BC%8CIDEA%20%E6%8F%92%E4%BB%B6%E6%80%8E%E4%B9%88%E5%BC%80%E5%8F%91%EF%BC%9F.html">IDEA 插件怎么开发</a><br>3、<a href="https://github.com/search?p=1&amp;q=idea%E6%8F%92%E4%BB%B6&amp;type=Repositories">GitHub上的插件</a></p><h3 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h3><p>第二个参考文档有阅读全文的限制，可以使用我写的油猴插件<a href="https://greasyfork.org/zh-CN/scripts/455014-%E8%99%AB%E6%B4%9E%E6%A0%88%E9%98%85%E8%AF%BB%E7%A0%B4%E8%A7%A3">虫洞栈阅读破解</a>来实现全文阅读。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;研究下ntelliJ IDEA的插件开发，看看这个东西到底是怎么做出来的，这个文章旨在抛砖引玉，只做了最简单的功能，希望这个教程能帮到大家。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0、环境准备&quot;&gt;&lt;a href=&quot;#0、环境准备&quot; c</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="插件" scheme="https://www.wangxingyang.com/tags/%E6%8F%92%E4%BB%B6/"/>
-    
-    <category term="IntelliJ IDEA" scheme="https://www.wangxingyang.com/tags/IntelliJ-IDEA/"/>
     
   </entry>
   
