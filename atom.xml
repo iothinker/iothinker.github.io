@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-05-16T13:55:17.922Z</updated>
+  <updated>2023-08-15T14:17:50.481Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>香橙派</title>
+    <link href="https://www.wangxingyang.com/orangepi.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/512e78f14d8db780dca635dd7a2472c2.png</image>
+    
+    <id>https://www.wangxingyang.com/orangepi.html</id>
+    <published>2023-08-15T13:59:00.000Z</published>
+    <updated>2023-08-15T14:17:50.481Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近入手了一个香橙派，收到了就给他烧了<code>Ubuntu</code>的系统，装上了<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a> 和 <a href="https://pi-hole.net/">Pi-hole</a>，这样可以直观的看到派的状态和进行广告拦截，下面是折腾的历程。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p><strong>硬件：</strong> <code>香橙派</code>，<code>TF内存卡</code>，<code>读卡器</code>，<code>5V3A/5V2A C口的电源和数据线</code>，<code>外壳</code><br><strong>软件：</strong>  <em><a href="http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-3.html">Orange Pi Zero3相关软件</a>  ， <a href="https://etcher.balena.io/">balenaEtcher</a></em><br>软件在官网都是有的，可以直接下载</p><p><em><strong>购物清单：</strong></em></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cdbdf89e28897269626dac5bad8a0979.png" alt="购物清单" title="购物清单"></p><h3 id="1-烧录系统"><a href="#1-烧录系统" class="headerlink" title="1.烧录系统"></a>1.烧录系统</h3><hr><p>下载完成之后，用<code>balenaEtcher</code>把镜像烧进去，烧完之后给派插上<strong>内存卡</strong>和<strong>网线</strong>，加电启动。查看路由器的控制台，找到派的IP地址，通过 <em><strong>Xshell</strong></em> 连接到派。派的默认用户名密码可以在官网的用户手册中查到。</p><table><thead><tr><th align="center">账号</th><th align="center">密码</th></tr></thead><tbody><tr><td align="center">root</td><td align="center">orangepi</td></tr><tr><td align="center">orangepi</td><td align="center">orangepi</td></tr></tbody></table><p>查到之后就可以登录到<code>派</code>进行操作了。连接<code>WIFI</code>使用下面命令bash</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 扫描wifi</span>nmcli dev wifi<span class="token comment"># 连接wifi</span><span class="token function">sudo</span> nmcli dev wifi connect WIFI_NAME password WIFI_PW<span class="token comment"># 查看连接地址</span><span class="token function">ip</span> addr show wlan0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h3><hr><h4 id="①-Pi-Dashboard-Pi-仪表盘"><a href="#①-Pi-Dashboard-Pi-仪表盘" class="headerlink" title="①. Pi Dashboard - Pi 仪表盘"></a>①. Pi Dashboard - Pi 仪表盘</h4><p>安装<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a>的教程在这，参看这个就可以安装成功。如果php找不到包，可以执行以下命令：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果php找不到相关包，执行以下命令</span><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> software-properties-common<span class="token function">sudo</span> add-apt-repository ppa:ondrej/php<span class="token function">sudo</span> <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装成功后如图：<br><img src="https://freefitter.synology.me:6884/uploads/big/8694b239745db43a45f641d5712a5962.png" title="安装完成"><br>树莓派的图：<br><img src="https://freefitter.synology.me:6884/uploads/big/2db2490951d000bab082d648c38ace97.png" title="树莓派"></p><h4 id="②-Pi-hole-广告屏蔽助手"><a href="#②-Pi-hole-广告屏蔽助手" class="headerlink" title="②. Pi-hole - 广告屏蔽助手"></a>②. Pi-hole - 广告屏蔽助手</h4><p>安装<a href="https://pi-hole.net/">Pi-hole</a>广告拦截，这个安装比较慢，需要科学上网，配置好梯子之后使用下面的命令进行代理：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装完成需要配置下路由器，华硕的路由可以参看<a href="https://www.asus.com.cn/support/FAQ/1046062/">[无线路由器] 在华硕无线路由器中如何设置Pi-Hole?</a><br>配置完成后就能够看到如下的界面了：<br><img src="https://freefitter.synology.me:6884/uploads/big/3bf34851e830380151aff1a3c427d4bd.png" alt="完成截图" title="完成截图"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>之前这两个软件都安装过，现在的树莓派上运行着<code>Pi dashboard</code> 、<code>v2rayA</code> 、<code>Node-Red</code> 和 <code>Homebridge</code>，这么多的软件运行相当的稳定，占用也不多。后续加东西可以再香橙派上折腾，看看它稳不稳。</p><h3 id="4-相关Blocklists"><a href="#4-相关Blocklists" class="headerlink" title="4.相关Blocklists"></a>4.相关Blocklists</h3><hr><p><a href="https://firebog.net/">The Big Blocklist Collection</a><br><a href="https://avoidthehack.com/best-pihole-blocklists">Avoid The Hack: The Best Pi-Hole Blocklists (2023)</a><br><a href="https://github.com/topics/pihole-ads-list">pihole-ads-list</a><br><a href="https://filterlists.com/">filterlists</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近入手了一个香橙派，收到了就给他烧了&lt;code&gt;Ubuntu&lt;/code&gt;的系统，装上了&lt;a href=&quot;https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html&quot;&gt;Pi D</summary>
+      
+    
+    
+    
+    <category term="香橙派" scheme="https://www.wangxingyang.com/categories/%E9%A6%99%E6%A9%99%E6%B4%BE/"/>
+    
+    
+    <category term="Pi-hole" scheme="https://www.wangxingyang.com/tags/Pi-hole/"/>
+    
+    <category term="pi-dashboard" scheme="https://www.wangxingyang.com/tags/pi-dashboard/"/>
+    
+    <category term="香橙派" scheme="https://www.wangxingyang.com/tags/%E9%A6%99%E6%A9%99%E6%B4%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>M5Core-Ink初体验</title>
@@ -142,39 +173,6 @@
     <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
     
     <category term="露营" scheme="https://www.wangxingyang.com/tags/%E9%9C%B2%E8%90%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>南京个人账户提交直系亲属医保</title>
-    <link href="https://www.wangxingyang.com/njgrzhyb.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/medium/92eb89eaaa6e001d7cdd8644955106d5.png</image>
-    
-    <id>https://www.wangxingyang.com/njgrzhyb.html</id>
-    <published>2023-02-24T09:45:45.000Z</published>
-    <updated>2023-04-07T11:08:14.636Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>今天刷朋友圈看到一个可以用自己个人账户的钱给直系亲属缴医保，这样就相当于可以把医保卡里的钱变现了。下面看看过程</p></blockquote><h3 id="0、过程"><a href="#0、过程" class="headerlink" title="0、过程"></a>0、过程</h3><hr><h4 id="1、打开我的南京，点击医保服务"><a href="#1、打开我的南京，点击医保服务" class="headerlink" title="1、打开我的南京，点击医保服务"></a>1、打开<strong>我的南京</strong>，点击<code>医保服务</code></h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/1b0eba96410fa4f65c70493a2ac54cd4.jpg" alt="医保服务"></p><h4 id="2、拉到最下面，选择个人账户提交直系亲属居民医保"><a href="#2、拉到最下面，选择个人账户提交直系亲属居民医保" class="headerlink" title="2、拉到最下面，选择个人账户提交直系亲属居民医保"></a>2、拉到最下面，选择<code>个人账户提交直系亲属居民医保</code></h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/a8ce7f5cf7ef9ca9976ca48a874906f8.jpg" alt="个人账户提交直系亲属居民医保"></p><h4 id="3、点击申请退费按钮"><a href="#3、点击申请退费按钮" class="headerlink" title="3、点击申请退费按钮"></a>3、点击<code>申请退费</code>按钮</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/95004251829c817f78211271f5901b6d.jpg" alt="申请退费"></p><h4 id="4、填写亲属信息"><a href="#4、填写亲属信息" class="headerlink" title="4、填写亲属信息"></a>4、填写<code>亲属信息</code></h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/50b2c99e89f9eae894855ac91e641c06.jpg" alt="亲属信息"></p><h4 id="5、填写完成后，如果有相关信息，就会让你输入你的银行卡号了。接着提交就行了。-注意：-拷贝卡号的时候会有空格，注意删除"><a href="#5、填写完成后，如果有相关信息，就会让你输入你的银行卡号了。接着提交就行了。-注意：-拷贝卡号的时候会有空格，注意删除" class="headerlink" title="5、填写完成后，如果有相关信息，就会让你输入你的银行卡号了。接着提交就行了。 [注意：] 拷贝卡号的时候会有空格，注意删除"></a>5、填写完成后，如果有相关信息，就会让你输入你的银行卡号了。接着提交就行了。 <em><strong>[注意：] 拷贝卡号的时候会有<code>空格</code>，注意删除</strong></em></h4><h4 id="6、到款会有延时的，耐心等待。"><a href="#6、到款会有延时的，耐心等待。" class="headerlink" title="6、到款会有延时的，耐心等待。"></a>6、到款会有延时的，耐心等待。</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="1、总结"><a href="#1、总结" class="headerlink" title="1、总结"></a>1、总结</h3><hr><p>这个到款速度确实很慢，4天之后才到的帐，一度怀疑自己是不是填错了信息。所以大家耐心等待。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;今天刷朋友圈看到一个可以用自己个人账户的钱给直系亲属缴医保，这样就相当于可以把医保卡里的钱变现了。下面看看过程&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0、过程&quot;&gt;&lt;a href=&quot;#0、过程&quot; class=&quot;headerlink&quot; t</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="医保" scheme="https://www.wangxingyang.com/tags/%E5%8C%BB%E4%BF%9D/"/>
-    
-    <category term="我的南京" scheme="https://www.wangxingyang.com/tags/%E6%88%91%E7%9A%84%E5%8D%97%E4%BA%AC/"/>
-    
-    <category term="个人账户" scheme="https://www.wangxingyang.com/tags/%E4%B8%AA%E4%BA%BA%E8%B4%A6%E6%88%B7/"/>
     
   </entry>
   

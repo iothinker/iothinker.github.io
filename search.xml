@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>香橙派</title>
+      <link href="orangepi.html"/>
+      <url>orangepi.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近入手了一个香橙派，收到了就给他烧了<code>Ubuntu</code>的系统，装上了<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a> 和 <a href="https://pi-hole.net/">Pi-hole</a>，这样可以直观的看到派的状态和进行广告拦截，下面是折腾的历程。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p><strong>硬件：</strong> <code>香橙派</code>，<code>TF内存卡</code>，<code>读卡器</code>，<code>5V3A/5V2A C口的电源和数据线</code>，<code>外壳</code><br><strong>软件：</strong>  <em><a href="http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-3.html">Orange Pi Zero3相关软件</a>  ， <a href="https://etcher.balena.io/">balenaEtcher</a></em><br>软件在官网都是有的，可以直接下载</p><p><em><strong>购物清单：</strong></em></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cdbdf89e28897269626dac5bad8a0979.png" alt="购物清单" title="购物清单"></p><h3 id="1-烧录系统"><a href="#1-烧录系统" class="headerlink" title="1.烧录系统"></a>1.烧录系统</h3><hr><p>下载完成之后，用<code>balenaEtcher</code>把镜像烧进去，烧完之后给派插上<strong>内存卡</strong>和<strong>网线</strong>，加电启动。查看路由器的控制台，找到派的IP地址，通过 <em><strong>Xshell</strong></em> 连接到派。派的默认用户名密码可以在官网的用户手册中查到。</p><table><thead><tr><th align="center">账号</th><th align="center">密码</th></tr></thead><tbody><tr><td align="center">root</td><td align="center">orangepi</td></tr><tr><td align="center">orangepi</td><td align="center">orangepi</td></tr></tbody></table><p>查到之后就可以登录到<code>派</code>进行操作了。连接<code>WIFI</code>使用下面命令bash</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 扫描wifi</span>nmcli dev wifi<span class="token comment"># 连接wifi</span><span class="token function">sudo</span> nmcli dev wifi connect WIFI_NAME password WIFI_PW<span class="token comment"># 查看连接地址</span><span class="token function">ip</span> addr show wlan0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h3><hr><h4 id="①-Pi-Dashboard-Pi-仪表盘"><a href="#①-Pi-Dashboard-Pi-仪表盘" class="headerlink" title="①. Pi Dashboard - Pi 仪表盘"></a>①. Pi Dashboard - Pi 仪表盘</h4><p>安装<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a>的教程在这，参看这个就可以安装成功。如果php找不到包，可以执行以下命令：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果php找不到相关包，执行以下命令</span><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> software-properties-common<span class="token function">sudo</span> add-apt-repository ppa:ondrej/php<span class="token function">sudo</span> <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装成功后如图：<br><img src="https://freefitter.synology.me:6884/uploads/big/8694b239745db43a45f641d5712a5962.png" title="安装完成"><br>树莓派的图：<br><img src="https://freefitter.synology.me:6884/uploads/big/2db2490951d000bab082d648c38ace97.png" title="树莓派"></p><h4 id="②-Pi-hole-广告屏蔽助手"><a href="#②-Pi-hole-广告屏蔽助手" class="headerlink" title="②. Pi-hole - 广告屏蔽助手"></a>②. Pi-hole - 广告屏蔽助手</h4><p>安装<a href="https://pi-hole.net/">Pi-hole</a>广告拦截，这个安装比较慢，需要科学上网，配置好梯子之后使用下面的命令进行代理：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装完成需要配置下路由器，华硕的路由可以参看<a href="https://www.asus.com.cn/support/FAQ/1046062/">[无线路由器] 在华硕无线路由器中如何设置Pi-Hole?</a><br>配置完成后就能够看到如下的界面了：<br><img src="https://freefitter.synology.me:6884/uploads/big/3bf34851e830380151aff1a3c427d4bd.png" alt="完成截图" title="完成截图"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>之前这两个软件都安装过，现在的树莓派上运行着<code>Pi dashboard</code> 、<code>v2rayA</code> 、<code>Node-Red</code> 和 <code>Homebridge</code>，这么多的软件运行相当的稳定，占用也不多。后续加东西可以再香橙派上折腾，看看它稳不稳。</p><h3 id="4-相关Blocklists"><a href="#4-相关Blocklists" class="headerlink" title="4.相关Blocklists"></a>4.相关Blocklists</h3><hr><p><a href="https://firebog.net/">The Big Blocklist Collection</a><br><a href="https://avoidthehack.com/best-pihole-blocklists">Avoid The Hack: The Best Pi-Hole Blocklists (2023)</a><br><a href="https://github.com/topics/pihole-ads-list">pihole-ads-list</a><br><a href="https://filterlists.com/">filterlists</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 香橙派 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Pi-hole </tag>
+            
+            <tag> pi-dashboard </tag>
+            
+            <tag> 香橙派 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>M5Core-Ink初体验</title>
       <link href="m5stack-coreink.html"/>
       <url>m5stack-coreink.html</url>
