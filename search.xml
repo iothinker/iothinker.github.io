@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>小米AX6S刷openwrt</title>
+      <link href="ax6sopenwrt.html"/>
+      <url>ax6sopenwrt.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p> 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>刷机包和网线，需要提前配置好，相关软件可以在 <a href="https://github.com/YangWang92/AX6S-unlock/tree/master">AX6S-unlock</a> ，里面有刷机包、解码工具和教程。</p><h3 id="1-开始刷机"><a href="#1-开始刷机" class="headerlink" title="1.开始刷机"></a>1.开始刷机</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/big/c0dfd3253a9439d1462ef71fd8b7fd4f.png"></p><ol><li>首先需要刷入 <code>miwifi_rb03_firmware_stable_1.2.7.bin</code> 这个固件</li><li>根据 <em><strong>S/N</strong></em> 通过 <em><strong>unlock_pwd.py</strong></em> 这个程序解密出root密码</li><li>使用<em><strong>telnet</strong></em> 命令进入系统， 并输入一下命令<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">nvram set ssh_en=1 &amp;&amp; nvram set uart_en=1 &amp;&amp; nvram set boot_wait=on &amp;&amp; nvram set bootdelay=3 &amp;&amp; nvram set flag_try_sys1_failed=0 &amp;&amp; nvram set flag_try_sys2_failed=1nvram set flag_boot_rootfs=0 &amp;&amp; nvram set "boot_fw1=run boot_rd_img;bootm"nvram set flag_boot_success=1 &amp;&amp; nvram commit &amp;&amp; /etc/init.d/dropbear enable &amp;&amp; /etc/init.d/dropbear start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/8b9d56843750874741c75d7ba165f789.png" title="进入系统"></li><li>上传刷机包<br>使用python来获得刷机包，刷机包放在执行的路径下面，执行如下命令：该命令在自己的电脑上执行<pre class="line-numbers language-py" data-language="py"><code class="language-py">python -m http.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/610476c98c17dc40fb52cc1efbf0c20d.png" alt="6ac7f9e94395e0d92dcc4290a763fb17.png" title="获得底包"><br>通过ssh连接到路由器，执行以下命令,IP需要更改成自己电脑的IP:<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd /tmpwget http://192.168.31.123:8000/factory.binmtd -r write factory.bin firmware<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/7b93880bdc26eb6287e8e0fdbd1c2ecc.png" title="刷入底包"><br>等路由器重启结束就可以刷入升级包了。刷机成功后的界面。<br><img src="https://freefitter.synology.me:6884/uploads/big/d45a5ac1fd7ff1e66bbb1a24f7e1fb4d.png" alt="b9e12d453a9c9635e6bf3dd957b7ef01.png"></li></ol><h3 id="2-相关连接"><a href="#2-相关连接" class="headerlink" title="2.相关连接"></a>2.相关连接</h3><p><a href="https://github.com/YangWang92/AX6S-unlock/">AX6S-unlock</a><br><a href="https://forum.openwrt.org/t/adding-openwrt-support-for-xiaomi-redmi-router-ax6s-xiaomi-router-ax3200/111085">Adding OpenWrt support for Xiaomi “Redmi Router AX6S”/”Xiaomi Router AX3200”</a><br><a href="https://www.right.com.cn/forum/thread-8214026-1-1.html">[AX6S] [更新][220423]红米AX6S OpenWrt官方master分支自用养老固件 </a><br><a href="https://www.right.com.cn/forum/thread-8187405-1-1.html">[AX6S] [2-2]AX6S 闭源无线驱动Openwrt 刷机教程/固件下载</a><br><a href="https://openwrt.org/toh/xiaomi/ax3200">Xiaomi AX3200 / Redmi AX6S</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AX6S </tag>
+            
+            <tag> openwrt </tag>
+            
+            <tag> 小米 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>香橙派</title>
       <link href="orangepi.html"/>
       <url>orangepi.html</url>

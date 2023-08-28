@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-08-15T14:23:22.769Z</updated>
+  <updated>2023-08-28T15:30:13.646Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小米AX6S刷openwrt</title>
+    <link href="https://www.wangxingyang.com/ax6sopenwrt.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/bc105250750286782284f53ec6d05ccd.png</image>
+    
+    <id>https://www.wangxingyang.com/ax6sopenwrt.html</id>
+    <published>2023-08-28T15:10:50.000Z</published>
+    <updated>2023-08-28T15:30:13.646Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p> 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>刷机包和网线，需要提前配置好，相关软件可以在 <a href="https://github.com/YangWang92/AX6S-unlock/tree/master">AX6S-unlock</a> ，里面有刷机包、解码工具和教程。</p><h3 id="1-开始刷机"><a href="#1-开始刷机" class="headerlink" title="1.开始刷机"></a>1.开始刷机</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/big/c0dfd3253a9439d1462ef71fd8b7fd4f.png"></p><ol><li>首先需要刷入 <code>miwifi_rb03_firmware_stable_1.2.7.bin</code> 这个固件</li><li>根据 <em><strong>S/N</strong></em> 通过 <em><strong>unlock_pwd.py</strong></em> 这个程序解密出root密码</li><li>使用<em><strong>telnet</strong></em> 命令进入系统， 并输入一下命令<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">nvram set ssh_en=1 &amp;&amp; nvram set uart_en=1 &amp;&amp; nvram set boot_wait=on &amp;&amp; nvram set bootdelay=3 &amp;&amp; nvram set flag_try_sys1_failed=0 &amp;&amp; nvram set flag_try_sys2_failed=1nvram set flag_boot_rootfs=0 &amp;&amp; nvram set "boot_fw1=run boot_rd_img;bootm"nvram set flag_boot_success=1 &amp;&amp; nvram commit &amp;&amp; /etc/init.d/dropbear enable &amp;&amp; /etc/init.d/dropbear start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/8b9d56843750874741c75d7ba165f789.png" title="进入系统"></li><li>上传刷机包<br>使用python来获得刷机包，刷机包放在执行的路径下面，执行如下命令：该命令在自己的电脑上执行<pre class="line-numbers language-py" data-language="py"><code class="language-py">python -m http.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/610476c98c17dc40fb52cc1efbf0c20d.png" alt="6ac7f9e94395e0d92dcc4290a763fb17.png" title="获得底包"><br>通过ssh连接到路由器，执行以下命令,IP需要更改成自己电脑的IP:<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd /tmpwget http://192.168.31.123:8000/factory.binmtd -r write factory.bin firmware<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/7b93880bdc26eb6287e8e0fdbd1c2ecc.png" title="刷入底包"><br>等路由器重启结束就可以刷入升级包了。刷机成功后的界面。<br><img src="https://freefitter.synology.me:6884/uploads/big/d45a5ac1fd7ff1e66bbb1a24f7e1fb4d.png" alt="b9e12d453a9c9635e6bf3dd957b7ef01.png"></li></ol><h3 id="2-相关连接"><a href="#2-相关连接" class="headerlink" title="2.相关连接"></a>2.相关连接</h3><p><a href="https://github.com/YangWang92/AX6S-unlock/">AX6S-unlock</a><br><a href="https://forum.openwrt.org/t/adding-openwrt-support-for-xiaomi-redmi-router-ax6s-xiaomi-router-ax3200/111085">Adding OpenWrt support for Xiaomi “Redmi Router AX6S”/”Xiaomi Router AX3200”</a><br><a href="https://www.right.com.cn/forum/thread-8214026-1-1.html">[AX6S] [更新][220423]红米AX6S OpenWrt官方master分支自用养老固件 </a><br><a href="https://www.right.com.cn/forum/thread-8187405-1-1.html">[AX6S] [2-2]AX6S 闭源无线驱动Openwrt 刷机教程/固件下载</a><br><a href="https://openwrt.org/toh/xiaomi/ax3200">Xiaomi AX3200 / Redmi AX6S</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt; 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-准备工作&quot;&gt;&lt;a href=&quot;#0-准备工作&quot; class=&quot;headerlink&quot; title</summary>
+      
+    
+    
+    
+    
+    <category term="AX6S" scheme="https://www.wangxingyang.com/tags/AX6S/"/>
+    
+    <category term="openwrt" scheme="https://www.wangxingyang.com/tags/openwrt/"/>
+    
+    <category term="小米" scheme="https://www.wangxingyang.com/tags/%E5%B0%8F%E7%B1%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>香橙派</title>
@@ -142,37 +173,6 @@
     <category term="露营" scheme="https://www.wangxingyang.com/tags/%E9%9C%B2%E8%90%A5/"/>
     
     <category term="烧烤" scheme="https://www.wangxingyang.com/tags/%E7%83%A7%E7%83%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周末分享</title>
-    <link href="https://www.wangxingyang.com/dayshare230409.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/medium/77cb45a99ae2c1131f8bfe0036acec15.png</image>
-    
-    <id>https://www.wangxingyang.com/dayshare230409.html</id>
-    <published>2023-04-09T11:28:29.000Z</published>
-    <updated>2023-04-09T11:45:50.292Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>又到了周末了，上周回了老家没出去玩，这不这周出去露营⛺️。之前买了桌子、吊床还有露营车，这次想着实战一下。感觉不错，也拍了点照片，欣赏一下吧。</p></blockquote><h3 id="0、美图欣赏"><a href="#0、美图欣赏" class="headerlink" title="0、美图欣赏"></a>0、美图欣赏</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/77cb45a99ae2c1131f8bfe0036acec15.png"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d3d3863411c2992592062d509b6f6b48.png"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/5d6e6036363f8ccad7ad357f226b0d57.png"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/e1854f9283fcc7063bb5532308bdebdc.png"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/a1b66065b2ef92a36a7bdb6a38ac27c8.png"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/ba92a2b319cc7ebfce5af422d6fd0129.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;又到了周末了，上周回了老家没出去玩，这不这周出去露营⛺️。之前买了桌子、吊床还有露营车，这次想着实战一下。感觉不错，也拍了点照片，欣赏一下吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0、美图欣赏&quot;&gt;&lt;a href=&quot;#0、美图欣赏&quot; </summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="露营" scheme="https://www.wangxingyang.com/tags/%E9%9C%B2%E8%90%A5/"/>
     
   </entry>
   
