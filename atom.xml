@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-08-28T15:30:13.646Z</updated>
+  <updated>2023-09-02T06:57:59.503Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -17,15 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>openwrt编译</title>
+    <link href="https://www.wangxingyang.com/openwrt.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/cff71c0472468acabb21343b3c59d453.png</image>
+    
+    <id>https://www.wangxingyang.com/openwrt.html</id>
+    <published>2023-09-02T06:44:09.000Z</published>
+    <updated>2023-09-02T06:57:59.503Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>今天想来折腾下怎么制作openwrt的固件，想自己做一个然后刷到AX6S上去，下面就来说说我的过程。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>要有一个能科学上网的环境，然后是liunx系统，这里用的是虚拟机</p><h3 id="1-开始编译"><a href="#1-开始编译" class="headerlink" title="1. 开始编译"></a>1. 开始编译</h3><hr><p>按照教程开始编译，虚机的内存和磁盘空间一定要给够，不然会失败的。别问我怎么知道的。教程在相关链接中。整个过程会非常的漫长，建议适时做好备份，这样不用从头再来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 安装依赖sudo apt update -ysudo apt full-upgrade -ysudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \vim wget xmlto xxd zlib1g-dev python3-setuptools# 下载源码git clone https://github.com/coolsnowwolf/ledecd lede./scripts/feeds update -a./scripts/feeds install -a# 设置编译的配置make menuconfig# 下载 dl 库，编译固件make download -j8make V=s -j1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>编译时发现空间不够，使用<code>gparted</code>工具扩容遇到只读系统问题，解决方案如下:</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sudo -imount -o remount -rw /mount -o remount -rw /var/snap/firefox/common/host-hunspell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>下面是空间使用情况，除了系统外就是他了，没装别的，最好超过30G<br><img src="https://freefitter.synology.me:6884/uploads/big/955ef978c168f781c519b89953250c9b.png" alt="空间大小"><br>编译好的文件如下，也尝试刷了一下，没成功，最后有恢复了<br><img src="https://freefitter.synology.me:6884/uploads/big/b21494a1660151c2546b9bbaa7d38deb.png" alt="编译结果"><br>如果变砖了，用<a href="http://www1.miwifi.com/miwifi_download.html">小米路由器修复工具</a>恢复。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>网络设备还是稳定的好，没事别折腾。后面想折腾，单独搞个路由器折腾，在用的还是稳定为好。不过好在最后也编译出了固件，知道了大概的流程，之后搞就会快很多。</p><h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><hr><ol><li><a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">Ubuntu 软件仓库镜像使用帮助</a></li><li><a href="https://zhuanlan.zhihu.com/p/633718128">教你如何编译OpenWrt，定制属于自己的固件</a></li><li><a href="https://github.com/coolsnowwolf/lede">欢迎来到 Lean 的 LEDE 源码仓库</a></li><li><a href="https://blog.csdn.net/weixin_45730522/article/details/128661183">VMware Ubuntu使用gparted工具扩容，显示Unable to resize read-only file system</a></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;今天想来折腾下怎么制作openwrt的固件，想自己做一个然后刷到AX6S上去，下面就来说说我的过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-准备工作&quot;&gt;&lt;a href=&quot;#0-准备工作&quot; class=&quot;headerlink&quot; ti</summary>
+      
+    
+    
+    
+    <category term="路由器" scheme="https://www.wangxingyang.com/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    
+    <category term="openwrt" scheme="https://www.wangxingyang.com/tags/openwrt/"/>
+    
+    <category term="固件制作" scheme="https://www.wangxingyang.com/tags/%E5%9B%BA%E4%BB%B6%E5%88%B6%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>小米AX6S刷openwrt</title>
     <link href="https://www.wangxingyang.com/ax6sopenwrt.html"/>
     <image>https://freefitter.synology.me:6884/uploads/big/bc105250750286782284f53ec6d05ccd.png</image>
     
     <id>https://www.wangxingyang.com/ax6sopenwrt.html</id>
     <published>2023-08-28T15:10:50.000Z</published>
-    <updated>2023-08-28T15:30:13.646Z</updated>
+    <updated>2023-09-02T06:53:40.442Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p> 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>刷机包和网线，需要提前配置好，相关软件可以在 <a href="https://github.com/YangWang92/AX6S-unlock/tree/master">AX6S-unlock</a> ，里面有刷机包、解码工具和教程。</p><h3 id="1-开始刷机"><a href="#1-开始刷机" class="headerlink" title="1.开始刷机"></a>1.开始刷机</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/big/c0dfd3253a9439d1462ef71fd8b7fd4f.png"></p><ol><li>首先需要刷入 <code>miwifi_rb03_firmware_stable_1.2.7.bin</code> 这个固件</li><li>根据 <em><strong>S/N</strong></em> 通过 <em><strong>unlock_pwd.py</strong></em> 这个程序解密出root密码</li><li>使用<em><strong>telnet</strong></em> 命令进入系统， 并输入一下命令<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">nvram set ssh_en=1 &amp;&amp; nvram set uart_en=1 &amp;&amp; nvram set boot_wait=on &amp;&amp; nvram set bootdelay=3 &amp;&amp; nvram set flag_try_sys1_failed=0 &amp;&amp; nvram set flag_try_sys2_failed=1nvram set flag_boot_rootfs=0 &amp;&amp; nvram set "boot_fw1=run boot_rd_img;bootm"nvram set flag_boot_success=1 &amp;&amp; nvram commit &amp;&amp; /etc/init.d/dropbear enable &amp;&amp; /etc/init.d/dropbear start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/8b9d56843750874741c75d7ba165f789.png" title="进入系统"></li><li>上传刷机包<br>使用python来获得刷机包，刷机包放在执行的路径下面，执行如下命令：该命令在自己的电脑上执行<pre class="line-numbers language-py" data-language="py"><code class="language-py">python -m http.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/610476c98c17dc40fb52cc1efbf0c20d.png" alt="6ac7f9e94395e0d92dcc4290a763fb17.png" title="获得底包"><br>通过ssh连接到路由器，执行以下命令,IP需要更改成自己电脑的IP:<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd /tmpwget http://192.168.31.123:8000/factory.binmtd -r write factory.bin firmware<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="https://freefitter.synology.me:6884/uploads/big/7b93880bdc26eb6287e8e0fdbd1c2ecc.png" title="刷入底包"><br>等路由器重启结束就可以刷入升级包了。刷机成功后的界面。<br><img src="https://freefitter.synology.me:6884/uploads/big/d45a5ac1fd7ff1e66bbb1a24f7e1fb4d.png" alt="b9e12d453a9c9635e6bf3dd957b7ef01.png"></li></ol><h3 id="2-相关连接"><a href="#2-相关连接" class="headerlink" title="2.相关连接"></a>2.相关连接</h3><p><a href="https://github.com/YangWang92/AX6S-unlock/">AX6S-unlock</a><br><a href="https://forum.openwrt.org/t/adding-openwrt-support-for-xiaomi-redmi-router-ax6s-xiaomi-router-ax3200/111085">Adding OpenWrt support for Xiaomi “Redmi Router AX6S”/”Xiaomi Router AX3200”</a><br><a href="https://www.right.com.cn/forum/thread-8214026-1-1.html">[AX6S] [更新][220423]红米AX6S OpenWrt官方master分支自用养老固件 </a><br><a href="https://www.right.com.cn/forum/thread-8187405-1-1.html">[AX6S] [2-2]AX6S 闭源无线驱动Openwrt 刷机教程/固件下载</a><br><a href="https://openwrt.org/toh/xiaomi/ax3200">Xiaomi AX3200 / Redmi AX6S</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p> 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>刷机包和网线，需要提前配置好，相关软件可以在 <a href="https://github.com/YangWang92/AX6S-unlock/tree/master">AX6S-unlock</a> ，里面有刷机包、解码工具和教程。</p><h3 id="1-开始刷机"><a href="#1-开始刷机" class="headerlink" title="1.开始刷机"></a>1.开始刷机</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/big/c0dfd3253a9439d1462ef71fd8b7fd4f.png"></p><ol><li><p>首先需要刷入 <code>miwifi_rb03_firmware_stable_1.2.7.bin</code> 这个固件</p></li><li><p>根据 <em><strong>S/N</strong></em> 通过 <em><strong>unlock_pwd.py</strong></em> 这个程序解密出root密码</p></li><li><p>使用<em><strong>telnet</strong></em> 命令进入系统， 并输入一下命令</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">nvram set ssh_en=1 &amp;&amp; nvram set uart_en=1 &amp;&amp; nvram set boot_wait=on &amp;&amp; nvram set bootdelay=3 &amp;&amp; nvram set flag_try_sys1_failed=0 &amp;&amp; nvram set flag_try_sys2_failed=1nvram set flag_boot_rootfs=0 &amp;&amp; nvram set "boot_fw1=run boot_rd_img;bootm"nvram set flag_boot_success=1 &amp;&amp; nvram commit &amp;&amp; /etc/init.d/dropbear enable &amp;&amp; /etc/init.d/dropbear start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/8b9d56843750874741c75d7ba165f789.png" title="进入系统"></p></li><li><p>上传刷机包<br>使用python来获得刷机包，刷机包放在执行的路径下面，执行如下命令：该命令在自己的电脑上执行</p><pre class="line-numbers language-py" data-language="py"><code class="language-py">python -m http.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/610476c98c17dc40fb52cc1efbf0c20d.png" alt="6ac7f9e94395e0d92dcc4290a763fb17.png" title="获得底包"><br>通过ssh连接到路由器，执行以下命令,IP需要更改成自己电脑的IP:</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd /tmpwget http://192.168.31.123:8000/factory.binmtd -r write factory.bin firmware<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/7b93880bdc26eb6287e8e0fdbd1c2ecc.png" title="刷入底包"><br>等路由器重启结束就可以刷入升级包了。刷机成功后的界面。<br><img src="https://freefitter.synology.me:6884/uploads/big/d45a5ac1fd7ff1e66bbb1a24f7e1fb4d.png" alt="b9e12d453a9c9635e6bf3dd957b7ef01.png"></p></li></ol><h3 id="2-相关连接"><a href="#2-相关连接" class="headerlink" title="2.相关连接"></a>2.相关连接</h3><p><a href="https://github.com/YangWang92/AX6S-unlock/">AX6S-unlock</a><br><a href="https://forum.openwrt.org/t/adding-openwrt-support-for-xiaomi-redmi-router-ax6s-xiaomi-router-ax3200/111085">Adding OpenWrt support for Xiaomi “Redmi Router AX6S”/”Xiaomi Router AX3200”</a><br><a href="https://www.right.com.cn/forum/thread-8214026-1-1.html">[AX6S] [更新][220423]红米AX6S OpenWrt官方master分支自用养老固件 </a><br><a href="https://www.right.com.cn/forum/thread-8187405-1-1.html">[AX6S] [2-2]AX6S 闭源无线驱动Openwrt 刷机教程/固件下载</a><br><a href="https://openwrt.org/toh/xiaomi/ax3200">Xiaomi AX3200 / Redmi AX6S</a></p>]]></content>
     
     
       
@@ -37,6 +68,8 @@
       
     
     
+    
+    <category term="路由器" scheme="https://www.wangxingyang.com/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
     
     
     <category term="AX6S" scheme="https://www.wangxingyang.com/tags/AX6S/"/>
@@ -140,39 +173,6 @@
     <category term="琅琊山" scheme="https://www.wangxingyang.com/tags/%E7%90%85%E7%90%8A%E5%B1%B1/"/>
     
     <category term="自驾游" scheme="https://www.wangxingyang.com/tags/%E8%87%AA%E9%A9%BE%E6%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次露营</title>
-    <link href="https://www.wangxingyang.com/dayshare230416.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/medium/669416d05ed3061b7bb8ab0cb37d6c2f.png</image>
-    
-    <id>https://www.wangxingyang.com/dayshare230416.html</id>
-    <published>2023-04-16T12:53:56.000Z</published>
-    <updated>2023-04-16T13:46:27.409Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>今天是大肚男团以及家属的第一次露营⛺️烧烤，之前一直想组织但是一直没有成功。不过还好今天终于完成了这个目标，为了这次露营烧烤，准备了很多，总的来说非常成功。希望下面还有第二次和第N次。</p></blockquote><h3 id="0、图片集锦"><a href="#0、图片集锦" class="headerlink" title="0、图片集锦"></a>0、图片集锦</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/669416d05ed3061b7bb8ab0cb37d6c2f.png" alt="封面"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/9d85e5f01e55a413e93dac9cc0673617.png" alt="卡式炉"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/7808848ac00a6e737622adf2ccd7f9b9.png" alt="两个小宝"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d585f7c2f70db49866993b33a6394963.png" alt="帅哥与生蚝"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d137b4a833ecab9595bb32b96becd972.png" alt="帅哥与生蚝"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0ae8f127c7d9dd9dbf01b557d5bff678.png" alt="王总的韭菜"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/172e37cd39eebfca9dc048b51aabc3e3.png" alt="王总的韭菜"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/f289f1d326819267f56e3a476d75ae86.png" alt="王总的韭菜"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1f8d8f2e57a1ea8c318f9250a505a882.png" alt="清洗中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/7e3bdabae06e32c7789b49fe37e3ab89.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1e38ff9ecba3075ff11d7d9fa13c4a35.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0cef6e69d3c4e8075296836edaf38894.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/21a71f508ad339b78de359c963929dcb.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d4fd5b7e53991004403ef99e2d87c0f1.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/9faf1ce1e67b00684b054003598e199f.png" alt="烤肉中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/12dac7f0e79d6736cac94b05604f554f.png" alt="烤串中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cdb4758ab34debd10ae8832d46434aec.png" alt="烤串中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cb17454062ce8ad04137a320a7a36d45.png" alt="等待中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/5813688bee426864cb52bd28240518e0.png" alt="进食中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/85ddc5fd1e007b79454a46a7112f2ef0.png" alt="进食中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/052f519654154b45d71be244a395e092.png" alt="进食中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/dcb3e28ab7d21a4e98a8c72da17e0570.png" alt="进食中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1f3d43b5aca2112ceebbd21b6bab8607.png" alt="进食中"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/780a2c7cc90abf24c6e63d9499af4b2b.png" alt="娱乐中"></p><h3 id="1、总结"><a href="#1、总结" class="headerlink" title="1、总结"></a>1、总结</h3><hr><p>非常愉快的露营，期待下一次相约。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;今天是大肚男团以及家属的第一次露营⛺️烧烤，之前一直想组织但是一直没有成功。不过还好今天终于完成了这个目标，为了这次露营烧烤，准备了很多，总的来说非常成功。希望下面还有第二次和第N次。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0、图片集</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
-    
-    <category term="露营" scheme="https://www.wangxingyang.com/tags/%E9%9C%B2%E8%90%A5/"/>
-    
-    <category term="烧烤" scheme="https://www.wangxingyang.com/tags/%E7%83%A7%E7%83%A4/"/>
     
   </entry>
   
