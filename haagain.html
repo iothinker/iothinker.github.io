@@ -510,7 +510,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    635
+                    651
                 </div>
                 
 
@@ -550,22 +550,20 @@
 <h3 id="0-1Pane安装"><a href="#0-1Pane安装" class="headerlink" title="0.1Pane安装"></a>0.1Pane安装</h3><hr>
 <p><a target="_blank" rel="noopener" href="https://www.1panel.cn/">1Panel</a>是新一代的 Linux 服务器运维管理面板，在香橙派中安装它，主要是感觉有个工具管理起来会更方便些。安装方法可以去官网中查看，安装完成如下：<br><img src="https://freefitter.synology.me:6884/uploads/big/c60bd6063ff3e6b74661e95b62f269b7.png" alt="1Panel"></p>
 <h3 id="1-安装Home-Assistant"><a href="#1-安装Home-Assistant" class="headerlink" title="1.安装Home Assistant"></a>1.安装Home Assistant</h3><hr>
-<p>在应用商店中找到它，然后点击安装即可。安装完成后可在应用商店中管理。完成后会在容器中显示你安装的应用。<br><img src="https://freefitter.synology.me:6884/uploads/big/69b68bdfbe1556b9e70a81fa026b7328.png" alt="HA安装"><br><img src="https://freefitter.synology.me:6884/uploads/big/36056a46f5ce67aa09c678bf1354da02.png" alt="HA容器"><br>应用中心下载的不是最新的，可以自己升级一下，拉取最新的镜像。这边又个注意的地方，如果需要用到蓝牙的话，需要添加<code>/run/dbus</code>这个目录。<br><img src="https://freefitter.synology.me:6884/uploads/big/853ca520b6260fea8cc29e1168fb1a06.png" alt="挂载目录"><br>不然蓝牙用不了</p>
+<p>在应用商店中找到它，然后点击安装即可。安装完成后可在应用商店中管理。完成后会在容器中显示你安装的应用。<br><img src="https://freefitter.synology.me:6884/uploads/big/69b68bdfbe1556b9e70a81fa026b7328.png" alt="HA安装"><br><img src="https://freefitter.synology.me:6884/uploads/big/36056a46f5ce67aa09c678bf1354da02.png" alt="HA容器"><br>应用中心下载的不是最新的，可以自己升级一下，拉取最新的镜像。这边有个注意的地方，如果需要用到蓝牙的话，需要挂载<code>/run/dbus</code>这个目录，不然蓝牙用不了。<br><img src="https://freefitter.synology.me:6884/uploads/big/853ca520b6260fea8cc29e1168fb1a06.png" alt="挂载目录"></p>
 <h3 id="2-配置Home-Assistant"><a href="#2-配置Home-Assistant" class="headerlink" title="2.配置Home Assistant"></a>2.配置Home Assistant</h3><hr>
-<p>现在很多都已经集成在里面了，所以很多事情都不需要去做了，直接按照引导去做就行了。没有写什么配置，就可以集成下面这么多。小米获得Token可以使用 <a target="_blank" rel="noopener" href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor#xiaomi-cloud-tokens-extractor">Xiaomi Cloud Tokens Extractor</a> 这个项目，方便快捷。<br><img src="https://freefitter.synology.me:6884/uploads/big/996bf4284ab85e4568fb3960a25e45f8.png" alt="所有集成"><br>在配置<code>HTTPS</code>访问的时候需要增加如下配置，主要是指定证书的路径：<br><img src="https://freefitter.synology.me:6884/uploads/medium/b6bbc9041f8acf79e8e5e2a8315eff41.png" alt="HA配置"><br>到此你的<code>Home Assistant</code>已经安装的差不多了，下面就是自己谢谢自动化，然后美化美化了。这边还有一个问题，就是添加<code>Private BLE Device</code>这个集成的时候， 有一个手机找不到相应的<strong>IRK</strong>，通过<a target="_blank" rel="noopener" href="https://github.com/dansonskywalker/esp_ble_tracker">esp_ble_tracker</a>这个项目中的 <em><strong>get_irk</strong></em> 来拿到对应的<code>IRK</code>，这边需要<code>ESP32</code>烧录这个程序，接着在串口中的日志打印的如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">IRK:,0x2X,0x5D,0x45,0xFD,0x42,0x68,0x4F,0x57,0xF4,0x9F,0x8D,0xB4,0xA9,0x25,0x4E,0xC4
-# 接着去掉,0x并转成小写
-2x5d45fd42684f57f49f8db4a9254ec4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>现在很多都已经集成在里面了，所以很多事情都不需要去做了，直接按照引导去做就行了。不用敲代码和复杂的操作，就可以集成下面这么多。添加小米设备主要是Token的获取，可以使用 <a target="_blank" rel="noopener" href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor#xiaomi-cloud-tokens-extractor">Xiaomi Cloud Tokens Extractor</a> 这个项目，方便快捷。<br><img src="https://freefitter.synology.me:6884/uploads/big/996bf4284ab85e4568fb3960a25e45f8.png" alt="所有集成"><br>在配置<code>HTTPS</code>访问的时候需要增加如下配置，主要是指定证书的路径：<br><img src="https://freefitter.synology.me:6884/uploads/medium/b6bbc9041f8acf79e8e5e2a8315eff41.png" alt="HA配置"><br>到此你的<code>Home Assistant</code>已经安装的差不多了，下面就是自己写自动化，然后美化美化了。这边还有一个问题，就是添加<code>Private BLE Device</code>这个集成的时候， 如果手机找不到相应的<strong>IRK</strong>，可以通过<a target="_blank" rel="noopener" href="https://github.com/dansonskywalker/esp_ble_tracker">esp_ble_tracker</a>这个项目中的 <em><strong>get_irk</strong></em> 来拿到对应的<code>IRK</code>，这边需要<code>ESP32</code>烧录这个程序，我用的是<code>M5stack</code>，接着在串口中的日志打印的如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">IRK:,0x2X,0x5D,0x45,0xFD,0x42,0x68,0x4F,0x57,0xF4,0x9F,0x8D,0xB4,0xA9,0x25,0x4E,0xC4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 使用如下Python代码转成base64</span>
-<span class="token keyword">import</span> codecs
+<p>接着去掉,0x并转成小写，使用如下Python代码转成base64。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"> <span class="token keyword">import</span> codecs
 hex_str<span class="token operator">=</span><span class="token string">"2x5d45fd42684f57f49f8db4a9254ec4"</span>
 b64_str <span class="token operator">=</span> codecs<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>codecs<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>hex_str<span class="token punctuation">,</span> <span class="token string">'hex'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>b64_str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b64_str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>文档中说是支持hex encoding的，但是格式我没试出来，一直添加失败，所以只能转成base64 添加了。</p>
 <h3 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h3><hr>
-<p>现在家里两个派了，也做了个两个派的系统状态的显示，用的<code>M5Stack BASIC</code>来显示。现在两个派允许的挺稳定的。后面看看要不要再弄点别的折腾下。<br><img src="https://freefitter.synology.me:6884/uploads/big/d55d05d61439e523989d5196467055c4.png" alt="M5Stack BASIC"><br>显示情况如图:<br><img src="https://freefitter.synology.me:6884/uploads/big/0f5d8758524a97401a7be8ca2b462515.jpg" alt="两个Pi运行状态对比"></p>
+<p>现在家里两个派了，也做了个两个派的运行状态的显示，用的<code>M5Stack BASIC</code>来显示。现在两个派运行的挺稳定的。后面看看要不要再弄点别的折腾下。<br><img src="https://freefitter.synology.me:6884/uploads/big/d55d05d61439e523989d5196467055c4.png" alt="M5Stack BASIC"><br>运行情况如图:<br><img src="https://freefitter.synology.me:6884/uploads/big/0f5d8758524a97401a7be8ca2b462515.jpg" alt="两个Pi运行状态对比"></p>
 
                 
             </div>
