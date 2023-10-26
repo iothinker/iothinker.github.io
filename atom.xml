@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-10-16T11:21:55.882Z</updated>
+  <updated>2023-10-26T15:44:18.134Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HA遇上LiteSpeedTest</title>
+    <link href="https://www.wangxingyang.com/haandlite.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/medium/3f3c2e63c159e8e69004b5b7c3a6a599.png</image>
+    
+    <id>https://www.wangxingyang.com/haandlite.html</id>
+    <published>2023-10-26T14:45:37.000Z</published>
+    <updated>2023-10-26T15:44:18.134Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>在之前的博客中有提到<a href="https://github.com/xxf098/LiteSpeedTest/#litespeedtest">LiteSpeedTest</a> 这个项目，之前一直用的<code>v2rayA</code>还是不错的，但是内存占用还是稍微高那么一点，<code>LiteSpeedTest</code> 占用还是很小的，但是使用没有<code>v2rayA</code>那么方便，之前不是在搞<strong>Home Assistant</strong>，这不想在上面再整点活。</p></blockquote><h3 id="0-设计思路"><a href="#0-设计思路" class="headerlink" title="0.设计思路"></a>0.设计思路</h3><hr><p>目前<code>LiteSpeedTest</code>有命令行，手边<code>Node-RED</code>也可以加入战斗，用<code>RESTful Command</code>集成请求<code>Node-RED</code>中的接口，通过<code>Node-RED</code> 中的<strong>exec</strong> 执行<code>shell</code>脚本来控制<strong>LiteSpeedTest</strong>，然后把可用的节点通过 <strong>RESTful</strong> 这个集成保存到<strong>Home Assistant</strong>中。相关的状态更新通过调用<strong>Home Assistant</strong>的<strong>API</strong>实现。</p><h3 id="1-动手开整"><a href="#1-动手开整" class="headerlink" title="1.动手开整"></a>1.动手开整</h3><hr><h4 id="a-首先需要这几个辅助元素"><a href="#a-首先需要这几个辅助元素" class="headerlink" title="a)首先需要这几个辅助元素"></a>a)首先需要这几个<strong>辅助元素</strong></h4><p>添加下面这些辅助元素，页面编辑的时候会用到 </p><p><img src="https://freefitter.synology.me:6884/uploads/medium/18f00ece10639091597425c3f9cd082c.png" alt="辅助元素"></p><h4 id="b-测速自动化"><a href="#b-测速自动化" class="headerlink" title="b)测速自动化"></a>b)测速自动化</h4><p>该自动化在测速按钮按下时触发。没有其实也可以，在实体的动作时添加。</p><h4 id="c-配置集成"><a href="#c-配置集成" class="headerlink" title="c) 配置集成"></a>c) 配置集成</h4><h4 id="d-写流"><a href="#d-写流" class="headerlink" title="d) 写流"></a>d) 写流</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/866f9a24c38e970ee0accf88a87d7be4.png" alt="l流"></p><h4 id="f-画界面"><a href="#f-画界面" class="headerlink" title="f) 画界面"></a>f) 画界面</h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/663980992cef1983d5ff6ce5dd9a38bb.png" alt="界面"></p><p>到这里就打工告成了，里面的的细节就不写了，有需要了解的可以留言，后面整理整理发出来。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在之前的博客中有提到&lt;a href=&quot;https://github.com/xxf098/LiteSpeedTest/#litespeedtest&quot;&gt;LiteSpeedTest&lt;/a&gt; 这个项目，之前一直用的&lt;code&gt;v2rayA&lt;/code&gt;还</summary>
+      
+    
+    
+    
+    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Home Assistant" scheme="https://www.wangxingyang.com/tags/Home-Assistant/"/>
+    
+    <category term="LiteSpeedTest" scheme="https://www.wangxingyang.com/tags/LiteSpeedTest/"/>
+    
+    <category term="魔法" scheme="https://www.wangxingyang.com/tags/%E9%AD%94%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Home Assistant再次起航</title>
@@ -142,37 +173,6 @@
     <category term="openwrt" scheme="https://www.wangxingyang.com/tags/openwrt/"/>
     
     <category term="小米" scheme="https://www.wangxingyang.com/tags/%E5%B0%8F%E7%B1%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>香橙派</title>
-    <link href="https://www.wangxingyang.com/orangepi.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/512e78f14d8db780dca635dd7a2472c2.png</image>
-    
-    <id>https://www.wangxingyang.com/orangepi.html</id>
-    <published>2023-08-15T13:59:00.000Z</published>
-    <updated>2023-08-15T14:23:22.769Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近入手了一个香橙派，收到了就给他烧了<code>Ubuntu</code>的系统，装上了<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a> 和 <a href="https://pi-hole.net/">Pi-hole</a>，这样可以直观的看到派的状态和进行广告拦截，下面是折腾的历程。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p><strong>硬件：</strong> <code>香橙派</code>，<code>TF内存卡</code>，<code>读卡器</code>，<code>5V3A/5V2A C口的电源和数据线</code>，<code>外壳</code><br><strong>软件：</strong>  <em><a href="http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-3.html">Orange Pi Zero3相关软件</a>  ， <a href="https://etcher.balena.io/">balenaEtcher</a></em><br>软件在官网都是有的，可以直接下载</p><p><em><strong>购物清单：</strong></em></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cdbdf89e28897269626dac5bad8a0979.png" alt="购物清单" title="购物清单"></p><h3 id="1-烧录系统"><a href="#1-烧录系统" class="headerlink" title="1.烧录系统"></a>1.烧录系统</h3><hr><p>下载完成之后，用<code>balenaEtcher</code>把镜像烧进去，烧完之后给派插上<strong>内存卡</strong>和<strong>网线</strong>，加电启动。查看路由器的控制台，找到派的IP地址，通过 <em><strong>Xshell</strong></em> 连接到派。派的默认用户名密码可以在官网的用户手册中查到。</p><table><thead><tr><th align="center">账号</th><th align="center">密码</th></tr></thead><tbody><tr><td align="center">root</td><td align="center">orangepi</td></tr><tr><td align="center">orangepi</td><td align="center">orangepi</td></tr></tbody></table><p>查到之后就可以登录到<code>派</code>进行操作了。连接<code>WIFI</code>使用下面命令bash</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 扫描wifi</span>nmcli dev wifi<span class="token comment"># 连接wifi</span><span class="token function">sudo</span> nmcli dev wifi connect WIFI_NAME password WIFI_PW<span class="token comment"># 查看连接地址</span><span class="token function">ip</span> addr show wlan0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h3><hr><h4 id="①-Pi-Dashboard-Pi-仪表盘"><a href="#①-Pi-Dashboard-Pi-仪表盘" class="headerlink" title="①. Pi Dashboard - Pi 仪表盘"></a>①. Pi Dashboard - Pi 仪表盘</h4><p>安装<a href="https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html">Pi Dashboard</a>的教程在这，参看这个就可以安装成功。如果php找不到包，可以执行以下命令：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果php找不到相关包，执行以下命令</span><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> software-properties-common<span class="token function">sudo</span> add-apt-repository ppa:ondrej/php<span class="token function">sudo</span> <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装成功后如图：<br><img src="https://freefitter.synology.me:6884/uploads/big/8694b239745db43a45f641d5712a5962.png" title="安装完成"><br>树莓派的图：<br><img src="https://freefitter.synology.me:6884/uploads/big/2db2490951d000bab082d648c38ace97.png" title="树莓派"></p><h4 id="②-Pi-hole-广告屏蔽助手"><a href="#②-Pi-hole-广告屏蔽助手" class="headerlink" title="②. Pi-hole - 广告屏蔽助手"></a>②. Pi-hole - 广告屏蔽助手</h4><p>安装<a href="https://pi-hole.net/">Pi-hole</a>广告拦截，这个安装比较慢，需要科学上网，配置好梯子之后使用下面的命令进行代理：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span class="token string">"http://192.2.33.22:10987"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装完成需要配置下路由器，华硕的路由可以参看<a href="https://www.asus.com.cn/support/FAQ/1046062/">[无线路由器] 在华硕无线路由器中如何设置Pi-Hole?</a><br>配置完成后就能够看到如下的界面了：<br><img src="https://freefitter.synology.me:6884/uploads/big/3bf34851e830380151aff1a3c427d4bd.png" alt="完成截图" title="完成截图"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>之前这两个软件都安装过，现在的树莓派上运行着<code>Pi dashboard</code> 、<code>v2rayA</code> 、<code>Node-Red</code> 和 <code>Homebridge</code>，这么多的软件运行相当的稳定，占用也不多。后续加东西可以再香橙派上折腾，看看它稳不稳。</p><h3 id="4-相关Blocklists"><a href="#4-相关Blocklists" class="headerlink" title="4.相关Blocklists"></a>4.相关Blocklists</h3><hr><p><a href="https://firebog.net/">The Big Blocklist Collection</a><br><a href="https://avoidthehack.com/best-pihole-blocklists">Avoid The Hack: The Best Pi-Hole Blocklists (2023)</a><br><a href="https://github.com/topics/pihole-ads-list">pihole-ads-list</a><br><a href="https://filterlists.com/">filterlists</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近入手了一个香橙派，收到了就给他烧了&lt;code&gt;Ubuntu&lt;/code&gt;的系统，装上了&lt;a href=&quot;https://shumeipai.nxez.com/2017/08/31/pi-dashboard-released.html&quot;&gt;Pi D</summary>
-      
-    
-    
-    
-    <category term="香橙派" scheme="https://www.wangxingyang.com/categories/%E9%A6%99%E6%A9%99%E6%B4%BE/"/>
-    
-    
-    <category term="Pi-hole" scheme="https://www.wangxingyang.com/tags/Pi-hole/"/>
-    
-    <category term="pi-dashboard" scheme="https://www.wangxingyang.com/tags/pi-dashboard/"/>
-    
-    <category term="香橙派" scheme="https://www.wangxingyang.com/tags/%E9%A6%99%E6%A9%99%E6%B4%BE/"/>
     
   </entry>
   

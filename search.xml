@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>HA遇上LiteSpeedTest</title>
+      <link href="haandlite.html"/>
+      <url>haandlite.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>在之前的博客中有提到<a href="https://github.com/xxf098/LiteSpeedTest/#litespeedtest">LiteSpeedTest</a> 这个项目，之前一直用的<code>v2rayA</code>还是不错的，但是内存占用还是稍微高那么一点，<code>LiteSpeedTest</code> 占用还是很小的，但是使用没有<code>v2rayA</code>那么方便，之前不是在搞<strong>Home Assistant</strong>，这不想在上面再整点活。</p></blockquote><h3 id="0-设计思路"><a href="#0-设计思路" class="headerlink" title="0.设计思路"></a>0.设计思路</h3><hr><p>目前<code>LiteSpeedTest</code>有命令行，手边<code>Node-RED</code>也可以加入战斗，用<code>RESTful Command</code>集成请求<code>Node-RED</code>中的接口，通过<code>Node-RED</code> 中的<strong>exec</strong> 执行<code>shell</code>脚本来控制<strong>LiteSpeedTest</strong>，然后把可用的节点通过 <strong>RESTful</strong> 这个集成保存到<strong>Home Assistant</strong>中。相关的状态更新通过调用<strong>Home Assistant</strong>的<strong>API</strong>实现。</p><h3 id="1-动手开整"><a href="#1-动手开整" class="headerlink" title="1.动手开整"></a>1.动手开整</h3><hr><h4 id="a-首先需要这几个辅助元素"><a href="#a-首先需要这几个辅助元素" class="headerlink" title="a)首先需要这几个辅助元素"></a>a)首先需要这几个<strong>辅助元素</strong></h4><p>添加下面这些辅助元素，页面编辑的时候会用到 </p><p><img src="https://freefitter.synology.me:6884/uploads/medium/18f00ece10639091597425c3f9cd082c.png" alt="辅助元素"></p><h4 id="b-测速自动化"><a href="#b-测速自动化" class="headerlink" title="b)测速自动化"></a>b)测速自动化</h4><p>该自动化在测速按钮按下时触发。没有其实也可以，在实体的动作时添加。</p><h4 id="c-配置集成"><a href="#c-配置集成" class="headerlink" title="c) 配置集成"></a>c) 配置集成</h4><h4 id="d-写流"><a href="#d-写流" class="headerlink" title="d) 写流"></a>d) 写流</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/866f9a24c38e970ee0accf88a87d7be4.png" alt="l流"></p><h4 id="f-画界面"><a href="#f-画界面" class="headerlink" title="f) 画界面"></a>f) 画界面</h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/663980992cef1983d5ff6ce5dd9a38bb.png" alt="界面"></p><p>到这里就打工告成了，里面的的细节就不写了，有需要了解的可以留言，后面整理整理发出来。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Home Assistant </tag>
+            
+            <tag> LiteSpeedTest </tag>
+            
+            <tag> 魔法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Home Assistant再次起航</title>
       <link href="haagain.html"/>
       <url>haagain.html</url>
