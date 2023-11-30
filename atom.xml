@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-10-26T15:44:18.134Z</updated>
+  <updated>2023-11-30T00:32:46.828Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>umami的搭建与HA接入</title>
+    <link href="https://www.wangxingyang.com/umami.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png</image>
+    
+    <id>https://www.wangxingyang.com/umami.html</id>
+    <published>2023-11-30T00:24:34.000Z</published>
+    <updated>2023-11-30T00:32:46.828Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png" alt="cover"></p><blockquote><p>百度统计又报错了，统计都不顶用了，这不只能自己想办法了，别人还是靠不住。网上找了找类似的。好像<strong>umami</strong>可以，所以就自己搭了一下。</p></blockquote><blockquote><p>umami是一个简单、快速、注重隐私的开源分析解决方案，它与Google Analytics相比有很多优势。它让用户对自己的数据有更多的控制权，并且不会侵犯用户的隐私。使用umami，您可以更好地了解您的网站或应用程序的使用情况，从而优化您的产品和服务。</p></blockquote><h3 id="0-搭建"><a href="#0-搭建" class="headerlink" title="0.搭建"></a>0.搭建</h3><hr><p>搭建很简单，项目在<a href="https://github.com/umami-software/umami">这里</a>，使用的<strong>docker</strong>，之前HA用的 <strong>PostgreSQL</strong>，所以就拉取了 <strong>umami:postgresql-latest</strong> 镜像，这边使用了 <strong>m.daocloud.io</strong> 加速。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull m.daocloud.io/ghcr.io/umami-software/umami:postgresql-latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>搭建的时候注意需要增加三个环境变量，然后直接启动即可。</p><pre class="line-numbers language-none"><code class="language-none">DATABASE_URL=postgresql://user:passwd@db:5432/dbnameDATABASE_TYPE=postgresqlHASH_SALT=changeme<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>这边要用到我的博客上，所以做了个反代，直接访问部署机器的3000端口，就能看到界面了。<br>添加一个网站，在跟踪代码页签获得你的跟踪脚本，把它放到页面上就行了。<br><img src="https://freefitter.synology.me:6884/uploads/big/297058198833b22c9c75b5feeaf56a71.png" alt="完成图"></p><h3 id="2-接入HA"><a href="#2-接入HA" class="headerlink" title="2.接入HA"></a>2.接入HA</h3><hr><p>把这个数据接入HA，写了个 <strong>Node-Red</strong> 流，本质上就是调用它提供的 <em><strong>API</strong></em>，<a href="https://umami.is/docs">官方文档</a>在这里。<br>大致流程是先调用 <strong>POST /api/auth/login</strong>  换 token ，然后再用这个token 去调用其他的接口，现在调的是 <strong>GET /api/websites/{websiteId}/stats</strong>，有别的需求可以自己去修改。<br>最后接入的样子是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/4bac9f7d31498d70c40a8027f8876765.png" alt="HA接入"><br>流是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/1271693e4b2a11fecfe41fec3af7d0d2.png" alt="Node-red流"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>没事多折腾，很多东西可以多换换多了解了解，不仅可以拓宽自己的知识面，说不定还能发现比现在更有趣的东西。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png&quot; alt=&quot;cover&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;百度统计又报错了</summary>
+      
+    
+    
+    
+    
+    <category term="HA" scheme="https://www.wangxingyang.com/tags/HA/"/>
+    
+    <category term="umami" scheme="https://www.wangxingyang.com/tags/umami/"/>
+    
+    <category term="网站分析统计" scheme="https://www.wangxingyang.com/tags/%E7%BD%91%E7%AB%99%E5%88%86%E6%9E%90%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>周末分享</title>
+    <link href="https://www.wangxingyang.com/dayshare231115.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/medium/54ad5cd9a9f321dff7c508ce07c1d468.jpg</image>
+    
+    <id>https://www.wangxingyang.com/dayshare231115.html</id>
+    <published>2023-11-26T00:20:19.000Z</published>
+    <updated>2023-11-30T00:30:40.692Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>好久没有写周末分享了，天气渐渐冷了，可能出去的机会也会慢慢的变少，这周去了珍珠泉，走了一圈，享受生活。</p></blockquote><h3 id="0-照片"><a href="#0-照片" class="headerlink" title="0.照片"></a>0.照片</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/54ad5cd9a9f321dff7c508ce07c1d468.jpg" alt="捡银杏叶"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0615555b62fc2a38b7c85b2bf67380a1.jpg" alt="若有所思"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1fd60626ee0250e0e1ebd0bffa778d08.jpg" alt="抓枫叶"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/87a783fc5646ac3f1fe8c647935b38b9.jpg" alt="湖光山色"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/820aee1874ddb4e35c139c5005015b9d.jpg" alt="背影"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;好久没有写周末分享了，天气渐渐冷了，可能出去的机会也会慢慢的变少，这周去了珍珠泉，走了一圈，享受生活。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-照片&quot;&gt;&lt;a href=&quot;#0-照片&quot; class=&quot;headerlink&quot; title</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="遛娃" scheme="https://www.wangxingyang.com/tags/%E9%81%9B%E5%A8%83/"/>
+    
+    <category term="珍珠泉" scheme="https://www.wangxingyang.com/tags/%E7%8F%8D%E7%8F%A0%E6%B3%89/"/>
+    
+    <category term="拾秋" scheme="https://www.wangxingyang.com/tags/%E6%8B%BE%E7%A7%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>HA遇上LiteSpeedTest</title>
@@ -86,7 +149,7 @@
     
     <id>https://www.wangxingyang.com/dayshare230903.html</id>
     <published>2023-09-03T11:29:52.000Z</published>
-    <updated>2023-09-03T12:31:04.521Z</updated>
+    <updated>2023-11-30T00:30:38.674Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>彤彤今天去幼儿园体验了，感觉现在的幼儿园真的太棒了，有小菜园，有鸡鸭鹅，有游乐场，有小桥流水等等，话不多说，直接上图。还有很多教室没有图，户外的地方还是比较吸引我的。</p></blockquote><h3 id="0-带你上幼儿园"><a href="#0-带你上幼儿园" class="headerlink" title="0.带你上幼儿园"></a>0.带你上幼儿园</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/7acb52d6728fa2f9648a732d826f63e1.png" alt="小红花"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/758ef74d120e26a9cc969d903e51610e.png" alt="运动"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/6fde7065f7efd62d44a7ef3d555b5bb8.png" alt="就是玩"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c9cec6e71ac831cfe33c5d63ebfcc020.png" alt="还是玩"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d98785d3e44d43c17af6d89d55c428c0.png" alt="爱劳动的"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cf5199dacc5f6f7196a018af4644a9ea.png" alt="老师教做小绵羊"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/40f190b149f5887cb50d1ef1fc8baba6.png" alt="看看我的作品"></p><p><img src="https://freefitter.synology.me:6884/uploads/big/4ada2aea6dcd0baeb01cdac63144df1a.png" alt="签到台"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0a02c33482724c52214a7bdcb935c97b.png" alt="山洞探索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c0cf1efb5e563a90a6d106b7d3501ac0.png" alt="准备滑索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0fe64161fcc357120cac681c6855ca20.png" alt="滑索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/42f8d6c8d6d04ffd0ad627bc33f4e648.png" alt="菜地"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/76ced99b95f8dc9b7c2a20c3e58e9280.png" alt="鸡鸭鹅"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c364fc8e2baf10fc3808cddacc98daa4.png" alt="玩水"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/dff6a34b68faf2a692706e926e2a9556.png" alt="骑车"></p><h3 id="1-感受"><a href="#1-感受" class="headerlink" title="1.感受"></a>1.感受</h3><hr><p>希望彤宝的幼儿园生活丰富多彩，开心快乐每一天。</p>]]></content>
     
@@ -109,70 +172,6 @@
     <category term="上学" scheme="https://www.wangxingyang.com/tags/%E4%B8%8A%E5%AD%A6/"/>
     
     <category term="小红花" scheme="https://www.wangxingyang.com/tags/%E5%B0%8F%E7%BA%A2%E8%8A%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>openwrt编译</title>
-    <link href="https://www.wangxingyang.com/openwrt.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/cff71c0472468acabb21343b3c59d453.png</image>
-    
-    <id>https://www.wangxingyang.com/openwrt.html</id>
-    <published>2023-09-02T06:44:09.000Z</published>
-    <updated>2023-09-02T06:57:59.503Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>今天想来折腾下怎么制作openwrt的固件，想自己做一个然后刷到AX6S上去，下面就来说说我的过程。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>要有一个能科学上网的环境，然后是liunx系统，这里用的是虚拟机</p><h3 id="1-开始编译"><a href="#1-开始编译" class="headerlink" title="1. 开始编译"></a>1. 开始编译</h3><hr><p>按照教程开始编译，虚机的内存和磁盘空间一定要给够，不然会失败的。别问我怎么知道的。教程在相关链接中。整个过程会非常的漫长，建议适时做好备份，这样不用从头再来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 安装依赖sudo apt update -ysudo apt full-upgrade -ysudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \vim wget xmlto xxd zlib1g-dev python3-setuptools# 下载源码git clone https://github.com/coolsnowwolf/ledecd lede./scripts/feeds update -a./scripts/feeds install -a# 设置编译的配置make menuconfig# 下载 dl 库，编译固件make download -j8make V=s -j1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>编译时发现空间不够，使用<code>gparted</code>工具扩容遇到只读系统问题，解决方案如下:</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sudo -imount -o remount -rw /mount -o remount -rw /var/snap/firefox/common/host-hunspell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>下面是空间使用情况，除了系统外就是他了，没装别的，最好超过30G<br><img src="https://freefitter.synology.me:6884/uploads/big/955ef978c168f781c519b89953250c9b.png" alt="空间大小"><br>编译好的文件如下，也尝试刷了一下，没成功，最后有恢复了<br><img src="https://freefitter.synology.me:6884/uploads/big/b21494a1660151c2546b9bbaa7d38deb.png" alt="编译结果"><br>如果变砖了，用<a href="http://www1.miwifi.com/miwifi_download.html">小米路由器修复工具</a>恢复。</p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>网络设备还是稳定的好，没事别折腾。后面想折腾，单独搞个路由器折腾，在用的还是稳定为好。不过好在最后也编译出了固件，知道了大概的流程，之后搞就会快很多。</p><h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><hr><ol><li><a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">Ubuntu 软件仓库镜像使用帮助</a></li><li><a href="https://zhuanlan.zhihu.com/p/633718128">教你如何编译OpenWrt，定制属于自己的固件</a></li><li><a href="https://github.com/coolsnowwolf/lede">欢迎来到 Lean 的 LEDE 源码仓库</a></li><li><a href="https://blog.csdn.net/weixin_45730522/article/details/128661183">VMware Ubuntu使用gparted工具扩容，显示Unable to resize read-only file system</a></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;今天想来折腾下怎么制作openwrt的固件，想自己做一个然后刷到AX6S上去，下面就来说说我的过程。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-准备工作&quot;&gt;&lt;a href=&quot;#0-准备工作&quot; class=&quot;headerlink&quot; ti</summary>
-      
-    
-    
-    
-    <category term="路由器" scheme="https://www.wangxingyang.com/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
-    
-    
-    <category term="openwrt" scheme="https://www.wangxingyang.com/tags/openwrt/"/>
-    
-    <category term="固件制作" scheme="https://www.wangxingyang.com/tags/%E5%9B%BA%E4%BB%B6%E5%88%B6%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小米AX6S刷openwrt</title>
-    <link href="https://www.wangxingyang.com/ax6sopenwrt.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/bc105250750286782284f53ec6d05ccd.png</image>
-    
-    <id>https://www.wangxingyang.com/ax6sopenwrt.html</id>
-    <published>2023-08-28T15:10:50.000Z</published>
-    <updated>2023-09-02T06:53:40.442Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p> 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。</p></blockquote><h3 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0.准备工作"></a>0.准备工作</h3><hr><p>刷机包和网线，需要提前配置好，相关软件可以在 <a href="https://github.com/YangWang92/AX6S-unlock/tree/master">AX6S-unlock</a> ，里面有刷机包、解码工具和教程。</p><h3 id="1-开始刷机"><a href="#1-开始刷机" class="headerlink" title="1.开始刷机"></a>1.开始刷机</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/big/c0dfd3253a9439d1462ef71fd8b7fd4f.png"></p><ol><li><p>首先需要刷入 <code>miwifi_rb03_firmware_stable_1.2.7.bin</code> 这个固件</p></li><li><p>根据 <em><strong>S/N</strong></em> 通过 <em><strong>unlock_pwd.py</strong></em> 这个程序解密出root密码</p></li><li><p>使用<em><strong>telnet</strong></em> 命令进入系统， 并输入一下命令</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">nvram set ssh_en=1 &amp;&amp; nvram set uart_en=1 &amp;&amp; nvram set boot_wait=on &amp;&amp; nvram set bootdelay=3 &amp;&amp; nvram set flag_try_sys1_failed=0 &amp;&amp; nvram set flag_try_sys2_failed=1nvram set flag_boot_rootfs=0 &amp;&amp; nvram set "boot_fw1=run boot_rd_img;bootm"nvram set flag_boot_success=1 &amp;&amp; nvram commit &amp;&amp; /etc/init.d/dropbear enable &amp;&amp; /etc/init.d/dropbear start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/8b9d56843750874741c75d7ba165f789.png" title="进入系统"></p></li><li><p>上传刷机包<br>使用python来获得刷机包，刷机包放在执行的路径下面，执行如下命令：该命令在自己的电脑上执行</p><pre class="line-numbers language-py" data-language="py"><code class="language-py">python -m http.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/610476c98c17dc40fb52cc1efbf0c20d.png" alt="6ac7f9e94395e0d92dcc4290a763fb17.png" title="获得底包"><br>通过ssh连接到路由器，执行以下命令,IP需要更改成自己电脑的IP:</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd /tmpwget http://192.168.31.123:8000/factory.binmtd -r write factory.bin firmware<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/7b93880bdc26eb6287e8e0fdbd1c2ecc.png" title="刷入底包"><br>等路由器重启结束就可以刷入升级包了。刷机成功后的界面。<br><img src="https://freefitter.synology.me:6884/uploads/big/d45a5ac1fd7ff1e66bbb1a24f7e1fb4d.png" alt="b9e12d453a9c9635e6bf3dd957b7ef01.png"></p></li></ol><h3 id="2-相关连接"><a href="#2-相关连接" class="headerlink" title="2.相关连接"></a>2.相关连接</h3><p><a href="https://github.com/YangWang92/AX6S-unlock/">AX6S-unlock</a><br><a href="https://forum.openwrt.org/t/adding-openwrt-support-for-xiaomi-redmi-router-ax6s-xiaomi-router-ax3200/111085">Adding OpenWrt support for Xiaomi “Redmi Router AX6S”/”Xiaomi Router AX3200”</a><br><a href="https://www.right.com.cn/forum/thread-8214026-1-1.html">[AX6S] [更新][220423]红米AX6S OpenWrt官方master分支自用养老固件 </a><br><a href="https://www.right.com.cn/forum/thread-8187405-1-1.html">[AX6S] [2-2]AX6S 闭源无线驱动Openwrt 刷机教程/固件下载</a><br><a href="https://openwrt.org/toh/xiaomi/ax3200">Xiaomi AX3200 / Redmi AX6S</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt; 前不久折腾了下香橙派，家里的小米AX6S我也想折腾一下，之前华硕刷了不稳定，看看这个行不行。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-准备工作&quot;&gt;&lt;a href=&quot;#0-准备工作&quot; class=&quot;headerlink&quot; title</summary>
-      
-    
-    
-    
-    <category term="路由器" scheme="https://www.wangxingyang.com/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
-    
-    
-    <category term="AX6S" scheme="https://www.wangxingyang.com/tags/AX6S/"/>
-    
-    <category term="openwrt" scheme="https://www.wangxingyang.com/tags/openwrt/"/>
-    
-    <category term="小米" scheme="https://www.wangxingyang.com/tags/%E5%B0%8F%E7%B1%B3/"/>
     
   </entry>
   

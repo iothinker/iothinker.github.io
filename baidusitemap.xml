@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wangxingyang.com/umami.html</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/dayshare231115.html</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangxingyang.com/dayshare230903.html</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
     <loc>https://www.wangxingyang.com/haandlite.html</loc>
     <lastmod>2023-10-26</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/haagain.html</loc>
     <lastmod>2023-10-16</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wangxingyang.com/dayshare230903.html</loc>
-    <lastmod>2023-09-03</lastmod>
   </url>
   <url>
     <loc>https://www.wangxingyang.com/openwrt.html</loc>

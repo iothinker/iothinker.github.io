@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>umami的搭建与HA接入</title>
+      <link href="umami.html"/>
+      <url>umami.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png" alt="cover"></p><blockquote><p>百度统计又报错了，统计都不顶用了，这不只能自己想办法了，别人还是靠不住。网上找了找类似的。好像<strong>umami</strong>可以，所以就自己搭了一下。</p></blockquote><blockquote><p>umami是一个简单、快速、注重隐私的开源分析解决方案，它与Google Analytics相比有很多优势。它让用户对自己的数据有更多的控制权，并且不会侵犯用户的隐私。使用umami，您可以更好地了解您的网站或应用程序的使用情况，从而优化您的产品和服务。</p></blockquote><h3 id="0-搭建"><a href="#0-搭建" class="headerlink" title="0.搭建"></a>0.搭建</h3><hr><p>搭建很简单，项目在<a href="https://github.com/umami-software/umami">这里</a>，使用的<strong>docker</strong>，之前HA用的 <strong>PostgreSQL</strong>，所以就拉取了 <strong>umami:postgresql-latest</strong> 镜像，这边使用了 <strong>m.daocloud.io</strong> 加速。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull m.daocloud.io/ghcr.io/umami-software/umami:postgresql-latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>搭建的时候注意需要增加三个环境变量，然后直接启动即可。</p><pre class="line-numbers language-none"><code class="language-none">DATABASE_URL=postgresql://user:passwd@db:5432/dbnameDATABASE_TYPE=postgresqlHASH_SALT=changeme<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>这边要用到我的博客上，所以做了个反代，直接访问部署机器的3000端口，就能看到界面了。<br>添加一个网站，在跟踪代码页签获得你的跟踪脚本，把它放到页面上就行了。<br><img src="https://freefitter.synology.me:6884/uploads/big/297058198833b22c9c75b5feeaf56a71.png" alt="完成图"></p><h3 id="2-接入HA"><a href="#2-接入HA" class="headerlink" title="2.接入HA"></a>2.接入HA</h3><hr><p>把这个数据接入HA，写了个 <strong>Node-Red</strong> 流，本质上就是调用它提供的 <em><strong>API</strong></em>，<a href="https://umami.is/docs">官方文档</a>在这里。<br>大致流程是先调用 <strong>POST /api/auth/login</strong>  换 token ，然后再用这个token 去调用其他的接口，现在调的是 <strong>GET /api/websites/{websiteId}/stats</strong>，有别的需求可以自己去修改。<br>最后接入的样子是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/4bac9f7d31498d70c40a8027f8876765.png" alt="HA接入"><br>流是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/1271693e4b2a11fecfe41fec3af7d0d2.png" alt="Node-red流"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>没事多折腾，很多东西可以多换换多了解了解，不仅可以拓宽自己的知识面，说不定还能发现比现在更有趣的东西。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> HA </tag>
+            
+            <tag> umami </tag>
+            
+            <tag> 网站分析统计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>周末分享</title>
+      <link href="dayshare231115.html"/>
+      <url>dayshare231115.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>好久没有写周末分享了，天气渐渐冷了，可能出去的机会也会慢慢的变少，这周去了珍珠泉，走了一圈，享受生活。</p></blockquote><h3 id="0-照片"><a href="#0-照片" class="headerlink" title="0.照片"></a>0.照片</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/54ad5cd9a9f321dff7c508ce07c1d468.jpg" alt="捡银杏叶"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0615555b62fc2a38b7c85b2bf67380a1.jpg" alt="若有所思"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1fd60626ee0250e0e1ebd0bffa778d08.jpg" alt="抓枫叶"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/87a783fc5646ac3f1fe8c647935b38b9.jpg" alt="湖光山色"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/820aee1874ddb4e35c139c5005015b9d.jpg" alt="背影"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 遛娃 </tag>
+            
+            <tag> 珍珠泉 </tag>
+            
+            <tag> 拾秋 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HA遇上LiteSpeedTest</title>
       <link href="haandlite.html"/>
       <url>haandlite.html</url>
