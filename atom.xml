@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2023-11-30T00:32:46.828Z</updated>
+  <updated>2023-12-05T15:06:01.719Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iPhone越狱与远程控制</title>
+    <link href="https://www.wangxingyang.com/jailbreak.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/medium/053cb6a032d4f1ce722b73761834bfed.jpg</image>
+    <notify>true</notify>
+    <id>https://www.wangxingyang.com/jailbreak.html</id>
+    <published>2023-12-05T14:45:50.000Z</published>
+    <updated>2023-12-05T15:06:01.719Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://freefitter.synology.me:6884/uploads/medium/053cb6a032d4f1ce722b73761834bfed.jpg" alt="cover"></p><blockquote><p>手头有个苹果的旧手机，之前想卖掉的，但是回收价格太低了，就没有卖了。既然没卖，那就发挥它的余热，就准备折腾一下了。</p></blockquote><blockquote><p><strong>手机基本信息</strong><br><em><strong>系统</strong></em> :  IOS 15.4.1<br><em><strong>型号</strong></em>: iPhone 11 Pro</p></blockquote><h3 id="0-越狱"><a href="#0-越狱" class="headerlink" title="0.越狱"></a>0.越狱</h3><hr><p>之前没有整过越狱，所以网上找了些教程，首先需要安装<strong>TrollStore</strong>，接着安装<strong>Dopamine</strong>。安装可以查看参考链接，安装完成后就能够在界面上看到了。这边要注意设置一下命令行密码，并不是默认的。这个搞了半天，所以要仔细阅读教程。搞完了就可通过SSH连接了，记得要安装下<strong>openssh</strong>。</p><h4 id="a-安装的软件"><a href="#a-安装的软件" class="headerlink" title="a.安装的软件"></a>a.安装的软件</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/86a6234de70d9aade34495954745c452.png" alt="软件截图"></p><h4 id="b-SSH登录手机"><a href="#b-SSH登录手机" class="headerlink" title="b.SSH登录手机"></a>b.SSH登录手机</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/29ffd0f4a1dc82a0ddab10add6dd54ce.png" alt="SSH登陆"></p><h3 id="1-远程控制"><a href="#1-远程控制" class="headerlink" title="1.远程控制"></a>1.远程控制</h3><hr><p>在<strong>Sileo</strong>中添加 <a href="https://alias20.gitlab.io/apt">https://alias20.gitlab.io/apt</a>  软件源，里面有 <em><strong>screendump</strong></em> ，安装完成后打开，里面的宽高要设置，不然连接会报错。使用<a href="https://tigervnc.org/">TigerVNC</a>来连接的。</p><h4 id="a-添加软件源"><a href="#a-添加软件源" class="headerlink" title="a. 添加软件源"></a>a. 添加软件源</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/c5d9dbd99160a50ab270e9ac7d9e2649.png" alt="添加软件源"></p><h4 id="b-安装screendump"><a href="#b-安装screendump" class="headerlink" title="b. 安装screendump"></a>b. 安装screendump</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/d72e85cbe1a85533301d493dfd2c2625.png" alt="安装"></p><h4 id="c-在设置中找到它"><a href="#c-在设置中找到它" class="headerlink" title="c. 在设置中找到它"></a>c. 在设置中找到它</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/56e5ce562cd812a1d004f80ed7acea1c.png" alt="设置中找到screendump"></p><h4 id="d-启用并配置宽高"><a href="#d-启用并配置宽高" class="headerlink" title="d. 启用并配置宽高"></a>d. 启用并配置宽高</h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/ef4ab399ce27e7821cfaa4e9ad375c4f.png" alt="打开并配置"></p><h4 id="e-使用VNC-Viewer连接"><a href="#e-使用VNC-Viewer连接" class="headerlink" title="e. 使用VNC Viewer连接"></a>e. 使用VNC Viewer连接</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/0cad5c99e9c0b17bd93088c035851354.png" alt="VNC连接"></p><h3 id="2-公网访问"><a href="#2-公网访问" class="headerlink" title="2.公网访问"></a>2.公网访问</h3><hr><p>使用的是<strong>ZeroTier</strong>，使用方法大家可以参看参考链接<strong>6</strong>。<br>到此这边就搞完了，除了比较卡顿，其他都没啥问题。</p><blockquote><p>ZeroTier lets you build modern, secure multi-point virtualized networks of almost any type. From robust peer-to-peer networking to multi-cloud mesh infrastructure, we enable global connectivity with the simplicity of a local network.</p></blockquote><p> <img src="https://freefitter.synology.me:6884/uploads/big/c3a8469feaca7c96d087d9f391192277.png" alt="ZeroTier"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>越狱倒是没什么难点，跟着教程做就行，主要是要看仔细。远程控制着部分比较难搞，很多教程或者源都比较老旧，花了很多时间找能用的源，也尝试直接安装，但是包都比较老，不能装。总之凡事不要轻易放弃，念念不忘，必有回响。</p><h3 id="4-参考链接"><a href="#4-参考链接" class="headerlink" title="4.参考链接"></a>4.参考链接</h3><hr><ol><li><a href="https://www.idownloadblog.com/2023/04/25/how-to-trollstore-trollhelperota/">How to install TrollStore on non-jailbroken iOS 14.0-15.6.1 devices with TrollHelperOTA</a></li><li><a href="https://www.idownloadblog.com/2023/05/02/how-to-jailbreak-with-dopamine/">How to jailbreak A12-A15 devices on iOS 15.0-15.4.1 with Dopamine</a></li><li><a href="https://tigervnc.org/">TigerVNC</a></li><li><a href="https://alias20.gitlab.io/apt">https://alias20.gitlab.io/apt</a> </li><li><a href="https://www.zerotier.com/">ZeroTier</a></li><li><a href="https://zhuanlan.zhihu.com/p/507274316">Zerotier - 分分钟组网工具最全食用方案</a></li><li><a href="https://trollstore.app/">TrollStore</a></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://freefitter.synology.me:6884/uploads/medium/053cb6a032d4f1ce722b73761834bfed.jpg&quot; alt=&quot;cover&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;手头有个苹</summary>
+      
+    
+    
+    
+    <category term="手机" scheme="https://www.wangxingyang.com/categories/%E6%89%8B%E6%9C%BA/"/>
+    
+    
+    <category term="iPhone越狱" scheme="https://www.wangxingyang.com/tags/iPhone%E8%B6%8A%E7%8B%B1/"/>
+    
+    <category term="TrollStore" scheme="https://www.wangxingyang.com/tags/TrollStore/"/>
+    
+    <category term="Dopamine" scheme="https://www.wangxingyang.com/tags/Dopamine/"/>
+    
+    <category term="ZeroTier" scheme="https://www.wangxingyang.com/tags/ZeroTier/"/>
+    
+  </entry>
   
   <entry>
     <title>umami的搭建与HA接入</title>
@@ -139,39 +173,6 @@
     <category term="ESP32" scheme="https://www.wangxingyang.com/tags/ESP32/"/>
     
     <category term="Home Assistant" scheme="https://www.wangxingyang.com/tags/Home-Assistant/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我上幼儿园了</title>
-    <link href="https://www.wangxingyang.com/dayshare230903.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/eacc792fbdebc29751df2696a42248c9.png</image>
-    
-    <id>https://www.wangxingyang.com/dayshare230903.html</id>
-    <published>2023-09-03T11:29:52.000Z</published>
-    <updated>2023-11-30T00:30:38.674Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>彤彤今天去幼儿园体验了，感觉现在的幼儿园真的太棒了，有小菜园，有鸡鸭鹅，有游乐场，有小桥流水等等，话不多说，直接上图。还有很多教室没有图，户外的地方还是比较吸引我的。</p></blockquote><h3 id="0-带你上幼儿园"><a href="#0-带你上幼儿园" class="headerlink" title="0.带你上幼儿园"></a>0.带你上幼儿园</h3><hr><p><img src="https://freefitter.synology.me:6884/uploads/medium/7acb52d6728fa2f9648a732d826f63e1.png" alt="小红花"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/758ef74d120e26a9cc969d903e51610e.png" alt="运动"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/6fde7065f7efd62d44a7ef3d555b5bb8.png" alt="就是玩"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c9cec6e71ac831cfe33c5d63ebfcc020.png" alt="还是玩"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/d98785d3e44d43c17af6d89d55c428c0.png" alt="爱劳动的"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/cf5199dacc5f6f7196a018af4644a9ea.png" alt="老师教做小绵羊"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/40f190b149f5887cb50d1ef1fc8baba6.png" alt="看看我的作品"></p><p><img src="https://freefitter.synology.me:6884/uploads/big/4ada2aea6dcd0baeb01cdac63144df1a.png" alt="签到台"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0a02c33482724c52214a7bdcb935c97b.png" alt="山洞探索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c0cf1efb5e563a90a6d106b7d3501ac0.png" alt="准备滑索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/0fe64161fcc357120cac681c6855ca20.png" alt="滑索"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/42f8d6c8d6d04ffd0ad627bc33f4e648.png" alt="菜地"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/76ced99b95f8dc9b7c2a20c3e58e9280.png" alt="鸡鸭鹅"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/c364fc8e2baf10fc3808cddacc98daa4.png" alt="玩水"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/dff6a34b68faf2a692706e926e2a9556.png" alt="骑车"></p><h3 id="1-感受"><a href="#1-感受" class="headerlink" title="1.感受"></a>1.感受</h3><hr><p>希望彤宝的幼儿园生活丰富多彩，开心快乐每一天。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;彤彤今天去幼儿园体验了，感觉现在的幼儿园真的太棒了，有小菜园，有鸡鸭鹅，有游乐场，有小桥流水等等，话不多说，直接上图。还有很多教室没有图，户外的地方还是比较吸引我的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-带你上幼儿园&quot;&gt;&lt;a h</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="幼儿园" scheme="https://www.wangxingyang.com/tags/%E5%B9%BC%E5%84%BF%E5%9B%AD/"/>
-    
-    <category term="上学" scheme="https://www.wangxingyang.com/tags/%E4%B8%8A%E5%AD%A6/"/>
-    
-    <category term="小红花" scheme="https://www.wangxingyang.com/tags/%E5%B0%8F%E7%BA%A2%E8%8A%B1/"/>
     
   </entry>
   
