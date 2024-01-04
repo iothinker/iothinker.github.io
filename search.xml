@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>sing-box的使用</title>
+      <link href="sing-box.html"/>
+      <url>sing-box.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>之前手机上使用的魔法工具是<strong>OneClick</strong>，但是他并不是那么的好用，虽然连接上了，但是访问不了网页。所以就有换了他的想法。无意中看到了 <em><strong>sing-box</strong></em>，就想着试试了。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>在这里<a href="https://sing-box.sagernet.org/clients/">下载</a>你的客户端，目前支持安卓和苹果，大家自行下载就行了。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用的话需要一个<strong>Profile</strong>，这边可以是本地的，也可以是远程的还可以是你<strong>iCloud</strong>上的文件。本地的你可以根据这里的<a href="https://sing-box.sagernet.org/configuration/">配置</a>介绍完成你的本地配置。当然你也可以用你用你之前的订阅转成现在 <em><strong>sing-box</strong></em> 使用的配置。<em><strong>sing-box-subscribe</strong></em> 项目可以帮助你根据机场订阅生成相关配置。</p><h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2.优化"></a>2.优化</h3><hr><p>生成配置最后是以文件的形式存在的，如果想脱离电脑就不太好用，所以用<strong>Node-Red</strong>给它整了个接口，这样就就能够随时随地访问了。还做了定时，每隔一段时间获取最新订阅并生成相关配置。<br><img src="https://freefitter.synology.me:6884/uploads/big/5af42840e48d85f8339b3263e87910a0.png" alt="Node-Red流"><br>上面的订阅会包含国内的节点，修改了下代码把国内的节点剔除了，这样就不会出现国内节点测速正常，但是访问其他网页的时候不能访问的问题。下面是修改的内容。<br>修改的是根据协议类型来的，这边就修改了这三个协议，需要的可以自己修改。<br><em><strong>parsers/vmess.py</strong></em> ， <em><strong>parsers/trojan.py</strong></em>，<em><strong>parsers/ss.py</strong></em></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">pattern <span class="token operator">=</span> tool<span class="token punctuation">.</span>regex_patterns<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"🇨🇳"</span><span class="token punctuation">)</span><span class="token keyword">if</span> pattern<span class="token punctuation">.</span>search<span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" | 节点[ "</span> <span class="token operator">+</span> node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" ]被忽略"</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h3><hr><p>订阅更新需要魔法，之前使用<strong>lite</strong>的时候都是全局代理，有点粗暴，这次在前面加上了<strong>Privoxy</strong>，使用<strong>PAC</strong>来实现自动分发。安装配置啥的可以参看网上的教程。使用这个之后就不会全局魔法了，不会影响到其他的功能。</p><h3 id="4-软件推荐"><a href="#4-软件推荐" class="headerlink" title="4.软件推荐"></a>4.软件推荐</h3><hr><blockquote><p>VidHub - iOS/Mac/tvOS网盘视频播放器<br>iOS/Mac/tvOS视频播放器，自动刮削视频文件信息，获取整理电影剧集封面和详细信息，打造私人影视库</p></blockquote><p>之前看 <em><strong>NAS</strong></em> 里面的都是使用的官方的<strong>DS video</strong>，在没碰到问题之前，觉得它挺好的，除了不能倍速，不能锁定的时候横屏等等。最近用它看电视发现不支持了，只能够另找软件了。这不发现了 <em><strong>VidHub</strong></em> ，用下来感觉还不错，测评大家可以看看网上的。</p><h3 id="5-相关连接"><a href="#5-相关连接" class="headerlink" title="5.相关连接"></a>5.相关连接</h3><p><a href="https://sing-box.sagernet.org/zh/">sing-box</a><br><a href="https://github.com/SagerNet/sing-box">github/sing-box</a><br><a href="https://github.com/Toperlock/sing-box-subscribe">sing-box-subscribe</a><br><a href="https://github.com/Toperlock/sing-box-geosite">sing-box-geosite</a><br><a href="https://www.jianshu.com/p/05ac5d0911cc">Privoxy 安装配置</a><br><a href="https://zh.okaapps.com/product/1659622164">VidHub - iOS/Mac/tvOS网盘视频播放器</a><br><a href="https://www.appinn.com/vidhub/">免费的 Infuse？快来试试新鲜的私人影视库 VidHub</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sing-box </tag>
+            
+            <tag> Privoxy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>iPhone越狱与远程控制</title>
       <link href="jailbreak.html"/>
       <url>jailbreak.html</url>
