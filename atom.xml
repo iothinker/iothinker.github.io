@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-01-04T15:48:39.928Z</updated>
+  <updated>2024-02-18T13:58:34.699Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -17,15 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>jellyfin安装与使用</title>
+    <link href="https://www.wangxingyang.com/jellyfin.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/cd7d7826763c48f535c87c496018f0b6.png</image>
+    
+    <id>https://www.wangxingyang.com/jellyfin.html</id>
+    <published>2024-02-15T13:49:44.000Z</published>
+    <updated>2024-02-18T13:58:34.699Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Jellyfin 是一个免费的媒体系统，可以安装并运行您自己的媒体服务器</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>直接拉镜像安装就行，没有什么特别的技术含量。按照步骤配置好相关参数，启动即可。启动后使用的时候发现看视频非常的卡顿，CPU直接跑满了。所以下一步进行直通。</p><h3 id="1-直通"><a href="#1-直通" class="headerlink" title="1.直通"></a>1.直通</h3><hr><p>使用如下命令启动容器，主要是把<em><strong>renderD128</strong></em>，<em><strong>card0</strong></em> 给到群晖。接着看视频发现还是卡，不过比之前好些了，CPU也没有超过***100%***。群晖的显卡应该本来就不行，所以就不纠结了，知道怎么做就行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> docker run -d --volume /XXX/M/jellyfin/config:/config --volume /XXX/M/jellyfin/cache:/cache --volume /XXX/M/jellyfin/video:/video --volume /XXX/M/jellyfin/tv:/tv --net<span class="token operator">=</span>host --restart<span class="token operator">=</span>always --device /dev/dri/renderD128:/dev/dri/renderD128 --device /dev/dri/card0:/dev/dri/card0 --name <span class="token string">"jellyfin-direct"</span> jellyfin/jellyfin:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="2-折腾IPTV"><a href="#2-折腾IPTV" class="headerlink" title="2.折腾IPTV"></a>2.折腾IPTV</h3><hr><p>之前有添加过IPTV，但是最后并没有播放起来，很大一部分原因是源不行，这次又找了一个源，但是死活放不出来，看了日志发现这些都是<strong>IPV6</strong>的，发现路由器并没有打开<strong>IPV6</strong>，打开它之后就可以愉快的播放了。<br><img src="https://freefitter.synology.me:6884/uploads/medium/77ff0dc460bc010ddc811cefeb8a66e0.jpg" alt="电视指南"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1112f0e8bd8056838e70668db79d69d7.jpg" alt="CCTV5"></p><h3 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h3><hr><p><a href="https://github.com/Meroser/IPTV?tab=readme-ov-file">Meroser的IPTV直播源仓库</a><br><a href="https://github.com/iptv-org/iptv">IPTV</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Jellyfin 是一个免费的媒体系统，可以安装并运行您自己的媒体服务器&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-安装&quot;&gt;&lt;a href=&quot;#0-安装&quot; class=&quot;headerlink&quot; title=&quot;0.安装&quot;&gt;&lt;/a&gt;0.安</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="jellyfin" scheme="https://www.wangxingyang.com/tags/jellyfin/"/>
+    
+    <category term="IPTV" scheme="https://www.wangxingyang.com/tags/IPTV/"/>
+    
+  </entry>
+  
+  <entry>
     <title>sing-box的使用</title>
     <link href="https://www.wangxingyang.com/sing-box.html"/>
     <image>https://freefitter.synology.me:6884/uploads/big/78cc3aa6b6315fae67567d2115319e64.png</image>
     
     <id>https://www.wangxingyang.com/sing-box.html</id>
     <published>2024-01-04T15:33:00.000Z</published>
-    <updated>2024-01-04T15:48:39.928Z</updated>
+    <updated>2024-01-05T12:42:51.276Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>之前手机上使用的魔法工具是<strong>OneClick</strong>，但是他并不是那么的好用，虽然连接上了，但是访问不了网页。所以就有换了他的想法。无意中看到了 <em><strong>sing-box</strong></em>，就想着试试了。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>在这里<a href="https://sing-box.sagernet.org/clients/">下载</a>你的客户端，目前支持安卓和苹果，大家自行下载就行了。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用的话需要一个<strong>Profile</strong>，这边可以是本地的，也可以是远程的还可以是你<strong>iCloud</strong>上的文件。本地的你可以根据这里的<a href="https://sing-box.sagernet.org/configuration/">配置</a>介绍完成你的本地配置。当然你也可以用你用你之前的订阅转成现在 <em><strong>sing-box</strong></em> 使用的配置。<em><strong>sing-box-subscribe</strong></em> 项目可以帮助你根据机场订阅生成相关配置。</p><h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2.优化"></a>2.优化</h3><hr><p>生成配置最后是以文件的形式存在的，如果想脱离电脑就不太好用，所以用<strong>Node-Red</strong>给它整了个接口，这样就就能够随时随地访问了。还做了定时，每隔一段时间获取最新订阅并生成相关配置。<br><img src="https://freefitter.synology.me:6884/uploads/big/5af42840e48d85f8339b3263e87910a0.png" alt="Node-Red流"><br>上面的订阅会包含国内的节点，修改了下代码把国内的节点剔除了，这样就不会出现国内节点测速正常，但是访问其他网页的时候不能访问的问题。下面是修改的内容。<br>修改的是根据协议类型来的，这边就修改了这三个协议，需要的可以自己修改。<br><em><strong>parsers/vmess.py</strong></em> ， <em><strong>parsers/trojan.py</strong></em>，<em><strong>parsers/ss.py</strong></em></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">pattern <span class="token operator">=</span> tool<span class="token punctuation">.</span>regex_patterns<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"🇨🇳"</span><span class="token punctuation">)</span><span class="token keyword">if</span> pattern<span class="token punctuation">.</span>search<span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" | 节点[ "</span> <span class="token operator">+</span> node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" ]被忽略"</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h3><hr><p>订阅更新需要魔法，之前使用<strong>lite</strong>的时候都是全局代理，有点粗暴，这次在前面加上了<strong>Privoxy</strong>，使用<strong>PAC</strong>来实现自动分发。安装配置啥的可以参看网上的教程。使用这个之后就不会全局魔法了，不会影响到其他的功能。</p><h3 id="4-软件推荐"><a href="#4-软件推荐" class="headerlink" title="4.软件推荐"></a>4.软件推荐</h3><hr><blockquote><p>VidHub - iOS/Mac/tvOS网盘视频播放器<br>iOS/Mac/tvOS视频播放器，自动刮削视频文件信息，获取整理电影剧集封面和详细信息，打造私人影视库</p></blockquote><p>之前看 <em><strong>NAS</strong></em> 里面的都是使用的官方的<strong>DS video</strong>，在没碰到问题之前，觉得它挺好的，除了不能倍速，不能锁定的时候横屏等等。最近用它看电视发现不支持了，只能够另找软件了。这不发现了 <em><strong>VidHub</strong></em> ，用下来感觉还不错，测评大家可以看看网上的。</p><h3 id="5-相关连接"><a href="#5-相关连接" class="headerlink" title="5.相关连接"></a>5.相关连接</h3><p><a href="https://sing-box.sagernet.org/zh/">sing-box</a><br><a href="https://github.com/SagerNet/sing-box">github/sing-box</a><br><a href="https://github.com/Toperlock/sing-box-subscribe">sing-box-subscribe</a><br><a href="https://github.com/Toperlock/sing-box-geosite">sing-box-geosite</a><br><a href="https://www.jianshu.com/p/05ac5d0911cc">Privoxy 安装配置</a><br><a href="https://zh.okaapps.com/product/1659622164">VidHub - iOS/Mac/tvOS网盘视频播放器</a><br><a href="https://www.appinn.com/vidhub/">免费的 Infuse？快来试试新鲜的私人影视库 VidHub</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>之前手机上使用的魔法工具是<strong>OneClick</strong>，但是他并不是那么的好用，虽然连接上了，但是访问不了网页。所以就有换了他的想法。无意中看到了 <em><strong>sing-box</strong></em>，就想着试试了。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>在这里<a href="https://sing-box.sagernet.org/clients/">下载</a>你的客户端，目前支持安卓和苹果，大家自行下载就行了。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用的话需要一个<strong>Profile</strong>，这边可以是本地的，也可以是远程的还可以是你<strong>iCloud</strong>上的文件。本地的你可以根据这里的<a href="https://sing-box.sagernet.org/configuration/">配置</a>介绍完成你的本地配置。当然你也可以用你用你之前的订阅转成现在 <em><strong>sing-box</strong></em> 使用的配置。<em><strong>sing-box-subscribe</strong></em> 项目可以帮助你根据机场订阅生成相关配置。</p><h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2.优化"></a>2.优化</h3><hr><p>生成配置最后是以文件的形式存在的，如果想脱离电脑就不太好用，所以用<strong>Node-Red</strong>给它整了个接口，这样就就能够随时随地访问了。还做了定时，每隔一段时间获取最新订阅并生成相关配置。<br><img src="https://freefitter.synology.me:6884/uploads/big/5af42840e48d85f8339b3263e87910a0.png" alt="Node-Red流"><br>上面的订阅会包含国内的节点，修改了下代码把国内的节点剔除了，这样就不会出现国内节点测速正常，但是访问其他网页的时候不能访问的问题。下面是修改的内容。<br>修改的是根据协议类型来的，这边就修改了这三个协议，需要的可以自己修改。<br><em><strong>parsers/vmess.py</strong></em> ， <em><strong>parsers/trojan.py</strong></em>，<em><strong>parsers/ss.py</strong></em></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">pattern <span class="token operator">=</span> tool<span class="token punctuation">.</span>regex_patterns<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"🇨🇳"</span><span class="token punctuation">)</span><span class="token keyword">if</span> pattern<span class="token punctuation">.</span>search<span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" | 节点[ "</span> <span class="token operator">+</span> node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" ]被忽略"</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/4735b13bbc3d7eb317cdf2f3fe2eac3a.png" alt="运行截图"></p><h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h3><hr><p>订阅更新需要魔法，之前使用<strong>lite</strong>的时候都是全局代理，有点粗暴，这次在前面加上了<strong>Privoxy</strong>，使用<strong>PAC</strong>来实现自动分发。安装配置啥的可以参看网上的教程。使用这个之后就不会全局魔法了，不会影响到其他的功能。</p><h3 id="4-软件推荐"><a href="#4-软件推荐" class="headerlink" title="4.软件推荐"></a>4.软件推荐</h3><hr><blockquote><p>VidHub - iOS/Mac/tvOS网盘视频播放器<br>iOS/Mac/tvOS视频播放器，自动刮削视频文件信息，获取整理电影剧集封面和详细信息，打造私人影视库</p></blockquote><p>之前看 <em><strong>NAS</strong></em> 里面的都是使用的官方的<strong>DS video</strong>，在没碰到问题之前，觉得它挺好的，除了不能倍速，不能锁定的时候横屏等等。最近用它看电视发现不支持了，只能够另找软件了。这不发现了 <em><strong>VidHub</strong></em> ，用下来感觉还不错，测评大家可以看看网上的。</p><h3 id="5-相关连接"><a href="#5-相关连接" class="headerlink" title="5.相关连接"></a>5.相关连接</h3><p><a href="https://sing-box.sagernet.org/zh/">sing-box</a><br><a href="https://github.com/SagerNet/sing-box">github/sing-box</a><br><a href="https://github.com/Toperlock/sing-box-subscribe">sing-box-subscribe</a><br><a href="https://github.com/Toperlock/sing-box-geosite">sing-box-geosite</a><br><a href="https://www.jianshu.com/p/05ac5d0911cc">Privoxy 安装配置</a><br><a href="https://zh.okaapps.com/product/1659622164">VidHub - iOS/Mac/tvOS网盘视频播放器</a><br><a href="https://www.appinn.com/vidhub/">免费的 Infuse？快来试试新鲜的私人影视库 VidHub</a></p>]]></content>
     
     
       
@@ -139,37 +170,6 @@
     <category term="珍珠泉" scheme="https://www.wangxingyang.com/tags/%E7%8F%8D%E7%8F%A0%E6%B3%89/"/>
     
     <category term="拾秋" scheme="https://www.wangxingyang.com/tags/%E6%8B%BE%E7%A7%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HA遇上LiteSpeedTest</title>
-    <link href="https://www.wangxingyang.com/haandlite.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/medium/3f3c2e63c159e8e69004b5b7c3a6a599.png</image>
-    
-    <id>https://www.wangxingyang.com/haandlite.html</id>
-    <published>2023-10-26T14:45:37.000Z</published>
-    <updated>2023-10-26T15:44:18.134Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>在之前的博客中有提到<a href="https://github.com/xxf098/LiteSpeedTest/#litespeedtest">LiteSpeedTest</a> 这个项目，之前一直用的<code>v2rayA</code>还是不错的，但是内存占用还是稍微高那么一点，<code>LiteSpeedTest</code> 占用还是很小的，但是使用没有<code>v2rayA</code>那么方便，之前不是在搞<strong>Home Assistant</strong>，这不想在上面再整点活。</p></blockquote><h3 id="0-设计思路"><a href="#0-设计思路" class="headerlink" title="0.设计思路"></a>0.设计思路</h3><hr><p>目前<code>LiteSpeedTest</code>有命令行，手边<code>Node-RED</code>也可以加入战斗，用<code>RESTful Command</code>集成请求<code>Node-RED</code>中的接口，通过<code>Node-RED</code> 中的<strong>exec</strong> 执行<code>shell</code>脚本来控制<strong>LiteSpeedTest</strong>，然后把可用的节点通过 <strong>RESTful</strong> 这个集成保存到<strong>Home Assistant</strong>中。相关的状态更新通过调用<strong>Home Assistant</strong>的<strong>API</strong>实现。</p><h3 id="1-动手开整"><a href="#1-动手开整" class="headerlink" title="1.动手开整"></a>1.动手开整</h3><hr><h4 id="a-首先需要这几个辅助元素"><a href="#a-首先需要这几个辅助元素" class="headerlink" title="a)首先需要这几个辅助元素"></a>a)首先需要这几个<strong>辅助元素</strong></h4><p>添加下面这些辅助元素，页面编辑的时候会用到 </p><p><img src="https://freefitter.synology.me:6884/uploads/medium/18f00ece10639091597425c3f9cd082c.png" alt="辅助元素"></p><h4 id="b-测速自动化"><a href="#b-测速自动化" class="headerlink" title="b)测速自动化"></a>b)测速自动化</h4><p>该自动化在测速按钮按下时触发。没有其实也可以，在实体的动作时添加。</p><h4 id="c-配置集成"><a href="#c-配置集成" class="headerlink" title="c) 配置集成"></a>c) 配置集成</h4><h4 id="d-写流"><a href="#d-写流" class="headerlink" title="d) 写流"></a>d) 写流</h4><p><img src="https://freefitter.synology.me:6884/uploads/big/866f9a24c38e970ee0accf88a87d7be4.png" alt="l流"></p><h4 id="f-画界面"><a href="#f-画界面" class="headerlink" title="f) 画界面"></a>f) 画界面</h4><p><img src="https://freefitter.synology.me:6884/uploads/medium/663980992cef1983d5ff6ce5dd9a38bb.png" alt="界面"></p><p>到这里就打工告成了，里面的的细节就不写了，有需要了解的可以留言，后面整理整理发出来。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在之前的博客中有提到&lt;a href=&quot;https://github.com/xxf098/LiteSpeedTest/#litespeedtest&quot;&gt;LiteSpeedTest&lt;/a&gt; 这个项目，之前一直用的&lt;code&gt;v2rayA&lt;/code&gt;还</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="Home Assistant" scheme="https://www.wangxingyang.com/tags/Home-Assistant/"/>
-    
-    <category term="LiteSpeedTest" scheme="https://www.wangxingyang.com/tags/LiteSpeedTest/"/>
-    
-    <category term="魔法" scheme="https://www.wangxingyang.com/tags/%E9%AD%94%E6%B3%95/"/>
     
   </entry>
   
