@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-07-06T04:10:45.253Z</updated>
+  <updated>2024-07-10T14:29:31.362Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>提升效率的艺术：如何用 Dashy 优化你的日常流程</title>
+    <link href="https://www.wangxingyang.com/dashy.html"/>
+    <image>https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png</image>
+    
+    <id>https://www.wangxingyang.com/dashy.html</id>
+    <published>2024-07-10T14:26:49.000Z</published>
+    <updated>2024-07-10T14:29:31.362Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近逛GitHub发现了一个好玩的仪表盘<em><strong>Dashy</strong></em>，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><blockquote><p>Dashy 是一个开源项目，由 Lissy93 在 GitHub 上维护，它是一个美观的、可定制的启动板或仪表板应用，旨在帮助用户组织各种快捷方式、小工具和信息卡片。它可以用作日常任务的中心枢纽，整合了如天气预报、待办事项列表、笔记、应用程序快捷方式等功能。<a href="https://dashy.to/">Dashy官网</a>，<a href="https://github.com/Lissy93/dashy">Dashy项目地址</a></p></blockquote><p>准备把常用的链接放到里面，这样就不用每次都去找了。还有好多在群晖和两个派上装的东西，这样就不用去记去找了。</p><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><hr><p>安装比较简单，使用了1Panel，里面的应用商店就有现成的，直接点击安装即可。不过现在国内不能访问了，自己去增加下镜像加速，如下图<br><img src="https://freefitter.synology.me:6884/uploads/big/b99bf80357e382cb0f5ec8fb2fa8dc8a.png" alt="镜像加速"><br>下面是一些加速的站点</p><pre class="line-numbers language-none"><code class="language-none">https://docker.1panel.livehttps://docker.mirrors.ustc.edu.cnhttps://hub-mirror.c.163.comhttps://docker.m.daocloud.iohttps://ghcr.iohttps://mirror.baidubce.comhttps://docker.nju.edu.cn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在应用商店就能找到它了<br><img src="https://freefitter.synology.me:6884/uploads/big/16a338e9e94455eb35066e38577e83d4.png" alt="应用商店"><br>下面是Demo界面<br><img src="https://freefitter.synology.me:6884/uploads/big/554d728894ac6a5734e124f397919a26.png" alt="Demo"></p><h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><hr><p>把它当作浏览器的导航页，里面集成了在群晖和派中安装的各种应用，能够极速到达，还有一些常用的网页，也一并放入其中了。操作十分简单，可以直接页面操作，也可以直接修改配置文件。话不多说，看看最后的成果吧。<br><img src="https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png" alt="我的Dashy"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近逛GitHub发现了一个好玩的仪表盘&lt;em&gt;&lt;strong&gt;Dashy&lt;/strong&gt;&lt;/em&gt;，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-介绍&quot;&gt;&lt;a href=&quot;#0</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Dashy" scheme="https://www.wangxingyang.com/tags/Dashy/"/>
+    
+    <category term="导航页" scheme="https://www.wangxingyang.com/tags/%E5%AF%BC%E8%88%AA%E9%A1%B5/"/>
+    
+    <category term="开源项目" scheme="https://www.wangxingyang.com/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>AList+阿里云盘+NOVA搭建自己的影视中心</title>
@@ -138,36 +171,6 @@
     <category term="Dopamine" scheme="https://www.wangxingyang.com/tags/Dopamine/"/>
     
     <category term="ZeroTier" scheme="https://www.wangxingyang.com/tags/ZeroTier/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>umami的搭建与HA接入</title>
-    <link href="https://www.wangxingyang.com/umami.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png</image>
-    
-    <id>https://www.wangxingyang.com/umami.html</id>
-    <published>2023-11-30T00:24:34.000Z</published>
-    <updated>2023-11-30T00:32:46.828Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png" alt="cover"></p><blockquote><p>百度统计又报错了，统计都不顶用了，这不只能自己想办法了，别人还是靠不住。网上找了找类似的。好像<strong>umami</strong>可以，所以就自己搭了一下。</p></blockquote><blockquote><p>umami是一个简单、快速、注重隐私的开源分析解决方案，它与Google Analytics相比有很多优势。它让用户对自己的数据有更多的控制权，并且不会侵犯用户的隐私。使用umami，您可以更好地了解您的网站或应用程序的使用情况，从而优化您的产品和服务。</p></blockquote><h3 id="0-搭建"><a href="#0-搭建" class="headerlink" title="0.搭建"></a>0.搭建</h3><hr><p>搭建很简单，项目在<a href="https://github.com/umami-software/umami">这里</a>，使用的<strong>docker</strong>，之前HA用的 <strong>PostgreSQL</strong>，所以就拉取了 <strong>umami:postgresql-latest</strong> 镜像，这边使用了 <strong>m.daocloud.io</strong> 加速。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull m.daocloud.io/ghcr.io/umami-software/umami:postgresql-latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>搭建的时候注意需要增加三个环境变量，然后直接启动即可。</p><pre class="line-numbers language-none"><code class="language-none">DATABASE_URL=postgresql://user:passwd@db:5432/dbnameDATABASE_TYPE=postgresqlHASH_SALT=changeme<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>这边要用到我的博客上，所以做了个反代，直接访问部署机器的3000端口，就能看到界面了。<br>添加一个网站，在跟踪代码页签获得你的跟踪脚本，把它放到页面上就行了。<br><img src="https://freefitter.synology.me:6884/uploads/big/297058198833b22c9c75b5feeaf56a71.png" alt="完成图"></p><h3 id="2-接入HA"><a href="#2-接入HA" class="headerlink" title="2.接入HA"></a>2.接入HA</h3><hr><p>把这个数据接入HA，写了个 <strong>Node-Red</strong> 流，本质上就是调用它提供的 <em><strong>API</strong></em>，<a href="https://umami.is/docs">官方文档</a>在这里。<br>大致流程是先调用 <strong>POST /api/auth/login</strong>  换 token ，然后再用这个token 去调用其他的接口，现在调的是 <strong>GET /api/websites/{websiteId}/stats</strong>，有别的需求可以自己去修改。<br>最后接入的样子是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/4bac9f7d31498d70c40a8027f8876765.png" alt="HA接入"><br>流是这样的<br><img src="https://freefitter.synology.me:6884/uploads/big/1271693e4b2a11fecfe41fec3af7d0d2.png" alt="Node-red流"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>没事多折腾，很多东西可以多换换多了解了解，不仅可以拓宽自己的知识面，说不定还能发现比现在更有趣的东西。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://freefitter.synology.me:6884/uploads/big/36b1f0ef8394236452af2a72e719cd60.png&quot; alt=&quot;cover&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;百度统计又报错了</summary>
-      
-    
-    
-    
-    
-    <category term="HA" scheme="https://www.wangxingyang.com/tags/HA/"/>
-    
-    <category term="umami" scheme="https://www.wangxingyang.com/tags/umami/"/>
-    
-    <category term="网站分析统计" scheme="https://www.wangxingyang.com/tags/%E7%BD%91%E7%AB%99%E5%88%86%E6%9E%90%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   

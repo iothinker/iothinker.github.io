@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>提升效率的艺术：如何用 Dashy 优化你的日常流程</title>
+      <link href="dashy.html"/>
+      <url>dashy.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近逛GitHub发现了一个好玩的仪表盘<em><strong>Dashy</strong></em>，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><blockquote><p>Dashy 是一个开源项目，由 Lissy93 在 GitHub 上维护，它是一个美观的、可定制的启动板或仪表板应用，旨在帮助用户组织各种快捷方式、小工具和信息卡片。它可以用作日常任务的中心枢纽，整合了如天气预报、待办事项列表、笔记、应用程序快捷方式等功能。<a href="https://dashy.to/">Dashy官网</a>，<a href="https://github.com/Lissy93/dashy">Dashy项目地址</a></p></blockquote><p>准备把常用的链接放到里面，这样就不用每次都去找了。还有好多在群晖和两个派上装的东西，这样就不用去记去找了。</p><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><hr><p>安装比较简单，使用了1Panel，里面的应用商店就有现成的，直接点击安装即可。不过现在国内不能访问了，自己去增加下镜像加速，如下图<br><img src="https://freefitter.synology.me:6884/uploads/big/b99bf80357e382cb0f5ec8fb2fa8dc8a.png" alt="镜像加速"><br>下面是一些加速的站点</p><pre class="line-numbers language-none"><code class="language-none">https://docker.1panel.livehttps://docker.mirrors.ustc.edu.cnhttps://hub-mirror.c.163.comhttps://docker.m.daocloud.iohttps://ghcr.iohttps://mirror.baidubce.comhttps://docker.nju.edu.cn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在应用商店就能找到它了<br><img src="https://freefitter.synology.me:6884/uploads/big/16a338e9e94455eb35066e38577e83d4.png" alt="应用商店"><br>下面是Demo界面<br><img src="https://freefitter.synology.me:6884/uploads/big/554d728894ac6a5734e124f397919a26.png" alt="Demo"></p><h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><hr><p>把它当作浏览器的导航页，里面集成了在群晖和派中安装的各种应用，能够极速到达，还有一些常用的网页，也一并放入其中了。操作十分简单，可以直接页面操作，也可以直接修改配置文件。话不多说，看看最后的成果吧。<br><img src="https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png" alt="我的Dashy"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dashy </tag>
+            
+            <tag> 导航页 </tag>
+            
+            <tag> 开源项目 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AList+阿里云盘+NOVA搭建自己的影视中心</title>
       <link href="novaplayer.html"/>
       <url>novaplayer.html</url>
