@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-08-04T13:31:15.959Z</updated>
+  <updated>2024-09-08T13:58:59.429Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -17,15 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Obsidian初探</title>
+    <title>解锁iOS捷径：用大模型优化“看谁听的准”的游戏体验</title>
+    <link href="https://www.wangxingyang.com/gameof20240908.html"/>
+    <image>https://freefitter.synology.me:9012/blog/202409082157024.png</image>
+    
+    <id>https://www.wangxingyang.com/gameof20240908.html</id>
+    <published>2024-09-08T12:43:54.000Z</published>
+    <updated>2024-09-08T13:58:59.429Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>看谁听的准游戏介绍：<br>给孩子读一组词，规定某一标准让他认真听(如听出类别、用途、生活习性等)，当听到属于这一标准的词时，就拍手或者蹲下等。</p></blockquote><h3 id="0-想法"><a href="#0-想法" class="headerlink" title="0.想法"></a>0.想法</h3><hr><p>如果让家长自己说出一组词，那么可能时不时有卡顿，但是如果有程序或者捷径能帮助实现这个功能，那家长不仅能和孩子一起游戏，还解放了自己，何乐而不为呢。所以就用了手机里自带的捷径写了一个，能够朗读一组词语。但是词语还是要自己想，这边就借助了大模型，让他去生成这些词语就行了。 <a href="https://www.icloud.com/shortcuts/dae6f093552941a1890ee556d57d78d5">看谁听的准链接</a>是捷径的下载地址。如果不好复制，识别下方二维码获取。</p><p><img src="https://freefitter.synology.me:9012/blog/httpswww.icloud.comshortcutsdae6f093552941a1890ee556d57d78d5.png" alt="捷径二维码"></p><p><img src="https://freefitter.synology.me:9012/blog/202409082101108.png" alt="捷径截图"></p><p>接下来是这些词怎么来，这些文字可以通过大模型来生成，可以参照我的提示词。</p><p><img src="https://freefitter.synology.me:9012/blog/202409082116783.png" alt="对话截图"></p><pre class="line-numbers language-none"><code class="language-none">现在有一个叫看谁听的准的游戏，给出一系列的词语，然后规定一个规则，比如听到动物就拍手，现在需要你帮我生成一些词语，这些词语包含水果，蔬菜，动物，植物，家具，家电这些方面的。每个种类必须涵盖，并且每个种类需要穿插随机，每个种类的词语数量要差不多，输出的结果不需要换行和数字序号，用逗号隔开，总数不得低于50个，不能重复。生成后再按照上面的分类输出一份答案。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这样只要把上面生成的词语复制到捷径中即可。</p><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1.总结"></a>1.总结</h3><hr><p>在与孩子游戏的过程中，利用自己的优势解放自己，给孩子另一种游戏体验也未尝不是一件有意思的事情。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;看谁听的准游戏介绍：&lt;br&gt;给孩子读一组词，规定某一标准让他认真听(如听出类别、用途、生活习性等)，当听到属于这一标准的词时，就拍手或者蹲下等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-想法&quot;&gt;&lt;a href=&quot;#0-想法&quot; cla</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="捷径" scheme="https://www.wangxingyang.com/tags/%E6%8D%B7%E5%BE%84/"/>
+    
+    <category term="大模型" scheme="https://www.wangxingyang.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="亲子游戏" scheme="https://www.wangxingyang.com/tags/%E4%BA%B2%E5%AD%90%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无缝同步，高效创作：Obsidian + Minio + PicGo 打造完美笔记工作流</title>
     <link href="https://www.wangxingyang.com/obsidian.html"/>
     <image>https://freefitter.synology.me:9012/blog/20240802154807.png</image>
     
     <id>https://www.wangxingyang.com/obsidian.html</id>
     <published>2024-08-03T01:03:12.000Z</published>
-    <updated>2024-08-04T13:31:15.959Z</updated>
+    <updated>2024-08-04T13:35:47.534Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>之前一直用的<strong>Joplin</strong>，但是总能刷到<strong>Obsidian</strong>的身影，所以就试试这个软件好用不好用。之前图片都是自己先上传到自己搭建<strong>Lychee</strong>然后再拷贝直链过来的，好像PicGo也有它的插件，但是想折腾下<strong>Minio</strong>，所以就一起又搞了个这个。</p></blockquote><h3 id="0-安装Minio"><a href="#0-安装Minio" class="headerlink" title="0.安装Minio"></a>0.安装Minio</h3><hr><blockquote><p>MinIO是一个对象存储解决方案，它提供了与Amazon Web Services S3兼容的API，并支持所有核心S3功能。 MinIO有能力在任何地方部署 - 公有云或私有云，裸金属基础设施，编排环境，以及边缘基础设施。</p></blockquote><p>群晖上下载minio的镜像进行安装，安装过程参看参考链接<strong>2</strong> ，这边就不赘述。有个地方需要注意，在执行命令处需要添加如下代码，端口需要和你之前配置的保持一致，不然起不来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">server /data --console-address ":9001"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:9012/blog/20240802124527.png" alt="相关信息"></p><h3 id="1-安装PicGo"><a href="#1-安装PicGo" class="headerlink" title="1.安装PicGo"></a>1.安装PicGo</h3><hr><blockquote><p><strong>PicGo: 一个用于快速上传图片并获取图片 URL 链接的工具</strong></p></blockquote><p>访问官方网站，下载安装即可，<a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a> 。安装完成后，安装一下Minio的插件。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124458.png" alt="插件安装"></p><p>如果总是安装中或者安装不成功，那就可以用如下方法手动安装：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 换源npm config set registry https://registry.npmmirror.com# 到picgo目录cd C:\Users\XXXXX\AppData\Roaming\picgo# 安装npm install picgo-plugin-minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装完成后，按照要求填写好信息，<em><strong>注意</strong></em>  这边 <strong>端口</strong> 要使用<strong>数据传输的端口</strong>而不是控制台访问端口，不然上传会失败的。<strong>Minio</strong>可以发布到外网，这样哪里都能使用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124226.png" alt="Minio设置"></p><h3 id="2-安装自动上传插件"><a href="#2-安装自动上传插件" class="headerlink" title="2.安装自动上传插件"></a>2.安装自动上传插件</h3><hr><p>下载安装<strong>obsidian-image-auto-upload-plugin</strong>插件，如果插件市场不好用，可以下载下来直接放到<br><em><strong>plugins</strong></em> 目录下面，放完了记得重新加载下。下图是插件的设置项，可以不动。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802141949.png" alt="插件设置"></p><h3 id="3-使用感受"><a href="#3-使用感受" class="headerlink" title="3.使用感受"></a>3.使用感受</h3><hr><p>平常写这种教程类的文章，需要不断地截图粘贴，之前是需要粘贴后再上传图床的，现在直接粘贴完事，十分的丝滑。简化文件上传，拷贝直链再加链接的整个流程。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170740.png" alt="粘贴上传"><br><img src="https://freefitter.synology.me:9012/blog/20240802171002.png" alt="上传成功"></p><p>下图是上传成功后Minio的列表。这样写完之后就不用回头再去调整上传了，一气呵成。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802142203.png" alt="文件列表"></p><h3 id="4-笔记备份"><a href="#4-笔记备份" class="headerlink" title="4.笔记备份"></a>4.笔记备份</h3><hr><p>笔记的同步和备份是不能少的，可以使用是 <strong>Remotely Save</strong> 这个插件，他可以使用<strong>OneDrive</strong>来同步，之前的<strong>Joplin</strong>也是用的她，专门给笔记用免费的5G够用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170638.png" alt="配置项"></p><h3 id="5-总结一下"><a href="#5-总结一下" class="headerlink" title="5.总结一下"></a>5.总结一下</h3><hr><p>没事折腾下，让自己的变得更效率。</p><p>[[搭建自己的图床]]</p><h3 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6.参考链接"></a>6.参考链接</h3><ol><li><a href="https://github.com/minio/minio">minio</a></li><li><a href="https://minio.org.cn/docs/minio/container/index.html">使用容器技术快速入门MinIO</a></li><li><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a></li><li><a href="https://blog.csdn.net/sugela8/article/details/116205887">picgo一直安装插件中，使用离线安装解决办法-附安装问题解决</a></li><li><a href="https://blog.csdn.net/sinat_34365157/article/details/136202885">【已解决】npm ERR! request to https://registry.npm.taobao.org failed, reason: certificate has expired</a></li><li><a href="https://github.com/Herbertzz/picgo-plugin-minio">picgo-plugin-minio</a></li><li><a href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">obsidian-image-auto-upload-plugin</a></li></ol>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>之前一直用的<strong>Joplin</strong>，但是总能刷到<strong>Obsidian</strong>的身影，所以就试试这个软件好用不好用。之前图片都是自己先上传到自己搭建<strong>Lychee</strong>然后再拷贝直链过来的，好像PicGo也有它的插件，但是想折腾下<strong>Minio</strong>，所以就一起又搞了个这个。</p></blockquote><h3 id="0-安装Minio"><a href="#0-安装Minio" class="headerlink" title="0.安装Minio"></a>0.安装Minio</h3><hr><blockquote><p>MinIO是一个对象存储解决方案，它提供了与Amazon Web Services S3兼容的API，并支持所有核心S3功能。 MinIO有能力在任何地方部署 - 公有云或私有云，裸金属基础设施，编排环境，以及边缘基础设施。</p></blockquote><p>群晖上下载minio的镜像进行安装，安装过程参看参考链接<strong>2</strong> ，这边就不赘述。有个地方需要注意，在执行命令处需要添加如下代码，端口需要和你之前配置的保持一致，不然起不来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">server /data --console-address ":9001"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:9012/blog/20240802124527.png" alt="相关信息"></p><h3 id="1-安装PicGo"><a href="#1-安装PicGo" class="headerlink" title="1.安装PicGo"></a>1.安装PicGo</h3><hr><blockquote><p><strong>PicGo: 一个用于快速上传图片并获取图片 URL 链接的工具</strong></p></blockquote><p>访问官方网站，下载安装即可，<a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a> 。安装完成后，安装一下Minio的插件。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124458.png" alt="插件安装"></p><p>如果总是安装中或者安装不成功，那就可以用如下方法手动安装：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 换源</span><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npmmirror.com<span class="token comment"># 到picgo目录</span><span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>XXXXX<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Roaming<span class="token punctuation">\</span>picgo<span class="token comment"># 安装</span><span class="token function">npm</span> <span class="token function">install</span> picgo-plugin-minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装完成后，按照要求填写好信息，<em><strong>注意</strong></em>  这边 <strong>端口</strong> 要使用<strong>数据传输的端口</strong>而不是控制台访问端口，不然上传会失败的。<strong>Minio</strong>可以发布到外网，这样哪里都能使用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124226.png" alt="Minio设置"></p><h3 id="2-安装自动上传插件"><a href="#2-安装自动上传插件" class="headerlink" title="2.安装自动上传插件"></a>2.安装自动上传插件</h3><hr><p>下载安装<strong>obsidian-image-auto-upload-plugin</strong>插件，如果插件市场不好用，可以下载下来直接放到<br><em><strong>plugins</strong></em> 目录下面，放完了记得重新加载下。下图是插件的设置项，可以不动。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802141949.png" alt="插件设置"></p><h3 id="3-使用感受"><a href="#3-使用感受" class="headerlink" title="3.使用感受"></a>3.使用感受</h3><hr><p>平常写这种教程类的文章，需要不断地截图粘贴，之前是需要粘贴后再上传图床的，现在直接粘贴完事，十分的丝滑。简化文件上传，拷贝直链再加链接的整个流程。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170740.png" alt="粘贴上传"><br><img src="https://freefitter.synology.me:9012/blog/20240802171002.png" alt="上传成功"></p><p>下图是上传成功后Minio的列表。这样写完之后就不用回头再去调整上传了，一气呵成。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802142203.png" alt="文件列表"></p><h3 id="4-笔记备份"><a href="#4-笔记备份" class="headerlink" title="4.笔记备份"></a>4.笔记备份</h3><hr><p>笔记的同步和备份是不能少的，可以使用是 <strong>Remotely Save</strong> 这个插件，他可以使用<strong>OneDrive</strong>来同步，之前的<strong>Joplin</strong>也是用的她，专门给笔记用免费的5G够用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170638.png" alt="配置项"></p><h3 id="5-总结一下"><a href="#5-总结一下" class="headerlink" title="5.总结一下"></a>5.总结一下</h3><hr><p>没事折腾下，让自己的变得更效率。</p><p>[[搭建自己的图床]]</p><h3 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6.参考链接"></a>6.参考链接</h3><ol><li><a href="https://github.com/minio/minio">minio</a></li><li><a href="https://minio.org.cn/docs/minio/container/index.html">使用容器技术快速入门MinIO</a></li><li><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a></li><li><a href="https://blog.csdn.net/sugela8/article/details/116205887">picgo一直安装插件中，使用离线安装解决办法-附安装问题解决</a></li><li><a href="https://blog.csdn.net/sinat_34365157/article/details/136202885">【已解决】npm ERR! request to https://registry.npm.taobao.org failed, reason: certificate has expired</a></li><li><a href="https://github.com/Herbertzz/picgo-plugin-minio">picgo-plugin-minio</a></li><li><a href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">obsidian-image-auto-upload-plugin</a></li></ol>]]></content>
     
     
       
@@ -54,7 +87,7 @@
     
     <id>https://www.wangxingyang.com/dashy.html</id>
     <published>2024-07-10T14:26:49.000Z</published>
-    <updated>2024-07-10T14:29:31.362Z</updated>
+    <updated>2024-07-10T14:29:55.546Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>最近逛GitHub发现了一个好玩的仪表盘<em><strong>Dashy</strong></em>，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><blockquote><p>Dashy 是一个开源项目，由 Lissy93 在 GitHub 上维护，它是一个美观的、可定制的启动板或仪表板应用，旨在帮助用户组织各种快捷方式、小工具和信息卡片。它可以用作日常任务的中心枢纽，整合了如天气预报、待办事项列表、笔记、应用程序快捷方式等功能。<a href="https://dashy.to/">Dashy官网</a>，<a href="https://github.com/Lissy93/dashy">Dashy项目地址</a></p></blockquote><p>准备把常用的链接放到里面，这样就不用每次都去找了。还有好多在群晖和两个派上装的东西，这样就不用去记去找了。</p><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><hr><p>安装比较简单，使用了1Panel，里面的应用商店就有现成的，直接点击安装即可。不过现在国内不能访问了，自己去增加下镜像加速，如下图<br><img src="https://freefitter.synology.me:6884/uploads/big/b99bf80357e382cb0f5ec8fb2fa8dc8a.png" alt="镜像加速"><br>下面是一些加速的站点</p><pre class="line-numbers language-none"><code class="language-none">https://docker.1panel.livehttps://docker.mirrors.ustc.edu.cnhttps://hub-mirror.c.163.comhttps://docker.m.daocloud.iohttps://ghcr.iohttps://mirror.baidubce.comhttps://docker.nju.edu.cn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在应用商店就能找到它了<br><img src="https://freefitter.synology.me:6884/uploads/big/16a338e9e94455eb35066e38577e83d4.png" alt="应用商店"><br>下面是Demo界面<br><img src="https://freefitter.synology.me:6884/uploads/big/554d728894ac6a5734e124f397919a26.png" alt="Demo"></p><h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><hr><p>把它当作浏览器的导航页，里面集成了在群晖和派中安装的各种应用，能够极速到达，还有一些常用的网页，也一并放入其中了。操作十分简单，可以直接页面操作，也可以直接修改配置文件。话不多说，看看最后的成果吧。<br><img src="https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png" alt="我的Dashy"></p>]]></content>
     
@@ -139,35 +172,6 @@
     <category term="jellyfin" scheme="https://www.wangxingyang.com/tags/jellyfin/"/>
     
     <category term="IPTV" scheme="https://www.wangxingyang.com/tags/IPTV/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sing-box的使用</title>
-    <link href="https://www.wangxingyang.com/sing-box.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/78cc3aa6b6315fae67567d2115319e64.png</image>
-    
-    <id>https://www.wangxingyang.com/sing-box.html</id>
-    <published>2024-01-04T15:33:00.000Z</published>
-    <updated>2024-01-05T12:42:51.276Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>之前手机上使用的魔法工具是<strong>OneClick</strong>，但是他并不是那么的好用，虽然连接上了，但是访问不了网页。所以就有换了他的想法。无意中看到了 <em><strong>sing-box</strong></em>，就想着试试了。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>在这里<a href="https://sing-box.sagernet.org/clients/">下载</a>你的客户端，目前支持安卓和苹果，大家自行下载就行了。</p><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><hr><p>使用的话需要一个<strong>Profile</strong>，这边可以是本地的，也可以是远程的还可以是你<strong>iCloud</strong>上的文件。本地的你可以根据这里的<a href="https://sing-box.sagernet.org/configuration/">配置</a>介绍完成你的本地配置。当然你也可以用你用你之前的订阅转成现在 <em><strong>sing-box</strong></em> 使用的配置。<em><strong>sing-box-subscribe</strong></em> 项目可以帮助你根据机场订阅生成相关配置。</p><h3 id="2-优化"><a href="#2-优化" class="headerlink" title="2.优化"></a>2.优化</h3><hr><p>生成配置最后是以文件的形式存在的，如果想脱离电脑就不太好用，所以用<strong>Node-Red</strong>给它整了个接口，这样就就能够随时随地访问了。还做了定时，每隔一段时间获取最新订阅并生成相关配置。<br><img src="https://freefitter.synology.me:6884/uploads/big/5af42840e48d85f8339b3263e87910a0.png" alt="Node-Red流"><br>上面的订阅会包含国内的节点，修改了下代码把国内的节点剔除了，这样就不会出现国内节点测速正常，但是访问其他网页的时候不能访问的问题。下面是修改的内容。<br>修改的是根据协议类型来的，这边就修改了这三个协议，需要的可以自己修改。<br><em><strong>parsers/vmess.py</strong></em> ， <em><strong>parsers/trojan.py</strong></em>，<em><strong>parsers/ss.py</strong></em></p><pre class="line-numbers language-python" data-language="python"><code class="language-python">pattern <span class="token operator">=</span> tool<span class="token punctuation">.</span>regex_patterns<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"🇨🇳"</span><span class="token punctuation">)</span><span class="token keyword">if</span> pattern<span class="token punctuation">.</span>search<span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" | 节点[ "</span> <span class="token operator">+</span> node<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"tag"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" ]被忽略"</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://freefitter.synology.me:6884/uploads/big/4735b13bbc3d7eb317cdf2f3fe2eac3a.png" alt="运行截图"></p><h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h3><hr><p>订阅更新需要魔法，之前使用<strong>lite</strong>的时候都是全局代理，有点粗暴，这次在前面加上了<strong>Privoxy</strong>，使用<strong>PAC</strong>来实现自动分发。安装配置啥的可以参看网上的教程。使用这个之后就不会全局魔法了，不会影响到其他的功能。</p><h3 id="4-软件推荐"><a href="#4-软件推荐" class="headerlink" title="4.软件推荐"></a>4.软件推荐</h3><hr><blockquote><p>VidHub - iOS/Mac/tvOS网盘视频播放器<br>iOS/Mac/tvOS视频播放器，自动刮削视频文件信息，获取整理电影剧集封面和详细信息，打造私人影视库</p></blockquote><p>之前看 <em><strong>NAS</strong></em> 里面的都是使用的官方的<strong>DS video</strong>，在没碰到问题之前，觉得它挺好的，除了不能倍速，不能锁定的时候横屏等等。最近用它看电视发现不支持了，只能够另找软件了。这不发现了 <em><strong>VidHub</strong></em> ，用下来感觉还不错，测评大家可以看看网上的。</p><h3 id="5-相关连接"><a href="#5-相关连接" class="headerlink" title="5.相关连接"></a>5.相关连接</h3><p><a href="https://sing-box.sagernet.org/zh/">sing-box</a><br><a href="https://github.com/SagerNet/sing-box">github/sing-box</a><br><a href="https://github.com/Toperlock/sing-box-subscribe">sing-box-subscribe</a><br><a href="https://github.com/Toperlock/sing-box-geosite">sing-box-geosite</a><br><a href="https://www.jianshu.com/p/05ac5d0911cc">Privoxy 安装配置</a><br><a href="https://zh.okaapps.com/product/1659622164">VidHub - iOS/Mac/tvOS网盘视频播放器</a><br><a href="https://www.appinn.com/vidhub/">免费的 Infuse？快来试试新鲜的私人影视库 VidHub</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;之前手机上使用的魔法工具是&lt;strong&gt;OneClick&lt;/strong&gt;，但是他并不是那么的好用，虽然连接上了，但是访问不了网页。所以就有换了他的想法。无意中看到了 &lt;em&gt;&lt;strong&gt;sing-box&lt;/strong&gt;&lt;/em&gt;，就想着试</summary>
-      
-    
-    
-    
-    <category term="工具" scheme="https://www.wangxingyang.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="sing-box" scheme="https://www.wangxingyang.com/tags/sing-box/"/>
-    
-    <category term="Privoxy" scheme="https://www.wangxingyang.com/tags/Privoxy/"/>
     
   </entry>
   

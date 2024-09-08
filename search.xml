@@ -4,11 +4,40 @@
   
     
     <entry>
-      <title>Obsidian初探</title>
+      <title>解锁iOS捷径：用大模型优化“看谁听的准”的游戏体验</title>
+      <link href="gameof20240908.html"/>
+      <url>gameof20240908.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>看谁听的准游戏介绍：<br>给孩子读一组词，规定某一标准让他认真听(如听出类别、用途、生活习性等)，当听到属于这一标准的词时，就拍手或者蹲下等。</p></blockquote><h3 id="0-想法"><a href="#0-想法" class="headerlink" title="0.想法"></a>0.想法</h3><hr><p>如果让家长自己说出一组词，那么可能时不时有卡顿，但是如果有程序或者捷径能帮助实现这个功能，那家长不仅能和孩子一起游戏，还解放了自己，何乐而不为呢。所以就用了手机里自带的捷径写了一个，能够朗读一组词语。但是词语还是要自己想，这边就借助了大模型，让他去生成这些词语就行了。 <a href="https://www.icloud.com/shortcuts/dae6f093552941a1890ee556d57d78d5">看谁听的准链接</a>是捷径的下载地址。如果不好复制，识别下方二维码获取。</p><p><img src="https://freefitter.synology.me:9012/blog/httpswww.icloud.comshortcutsdae6f093552941a1890ee556d57d78d5.png" alt="捷径二维码"></p><p><img src="https://freefitter.synology.me:9012/blog/202409082101108.png" alt="捷径截图"></p><p>接下来是这些词怎么来，这些文字可以通过大模型来生成，可以参照我的提示词。</p><p><img src="https://freefitter.synology.me:9012/blog/202409082116783.png" alt="对话截图"></p><pre class="line-numbers language-none"><code class="language-none">现在有一个叫看谁听的准的游戏，给出一系列的词语，然后规定一个规则，比如听到动物就拍手，现在需要你帮我生成一些词语，这些词语包含水果，蔬菜，动物，植物，家具，家电这些方面的。每个种类必须涵盖，并且每个种类需要穿插随机，每个种类的词语数量要差不多，输出的结果不需要换行和数字序号，用逗号隔开，总数不得低于50个，不能重复。生成后再按照上面的分类输出一份答案。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这样只要把上面生成的词语复制到捷径中即可。</p><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1.总结"></a>1.总结</h3><hr><p>在与孩子游戏的过程中，利用自己的优势解放自己，给孩子另一种游戏体验也未尝不是一件有意思的事情。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 捷径 </tag>
+            
+            <tag> 大模型 </tag>
+            
+            <tag> 亲子游戏 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>无缝同步，高效创作：Obsidian + Minio + PicGo 打造完美笔记工作流</title>
       <link href="obsidian.html"/>
       <url>obsidian.html</url>
       
-        <content type="html"><![CDATA[<blockquote><p>之前一直用的<strong>Joplin</strong>，但是总能刷到<strong>Obsidian</strong>的身影，所以就试试这个软件好用不好用。之前图片都是自己先上传到自己搭建<strong>Lychee</strong>然后再拷贝直链过来的，好像PicGo也有它的插件，但是想折腾下<strong>Minio</strong>，所以就一起又搞了个这个。</p></blockquote><h3 id="0-安装Minio"><a href="#0-安装Minio" class="headerlink" title="0.安装Minio"></a>0.安装Minio</h3><hr><blockquote><p>MinIO是一个对象存储解决方案，它提供了与Amazon Web Services S3兼容的API，并支持所有核心S3功能。 MinIO有能力在任何地方部署 - 公有云或私有云，裸金属基础设施，编排环境，以及边缘基础设施。</p></blockquote><p>群晖上下载minio的镜像进行安装，安装过程参看参考链接<strong>2</strong> ，这边就不赘述。有个地方需要注意，在执行命令处需要添加如下代码，端口需要和你之前配置的保持一致，不然起不来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">server /data --console-address ":9001"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:9012/blog/20240802124527.png" alt="相关信息"></p><h3 id="1-安装PicGo"><a href="#1-安装PicGo" class="headerlink" title="1.安装PicGo"></a>1.安装PicGo</h3><hr><blockquote><p><strong>PicGo: 一个用于快速上传图片并获取图片 URL 链接的工具</strong></p></blockquote><p>访问官方网站，下载安装即可，<a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a> 。安装完成后，安装一下Minio的插件。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124458.png" alt="插件安装"></p><p>如果总是安装中或者安装不成功，那就可以用如下方法手动安装：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 换源npm config set registry https://registry.npmmirror.com# 到picgo目录cd C:\Users\XXXXX\AppData\Roaming\picgo# 安装npm install picgo-plugin-minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装完成后，按照要求填写好信息，<em><strong>注意</strong></em>  这边 <strong>端口</strong> 要使用<strong>数据传输的端口</strong>而不是控制台访问端口，不然上传会失败的。<strong>Minio</strong>可以发布到外网，这样哪里都能使用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124226.png" alt="Minio设置"></p><h3 id="2-安装自动上传插件"><a href="#2-安装自动上传插件" class="headerlink" title="2.安装自动上传插件"></a>2.安装自动上传插件</h3><hr><p>下载安装<strong>obsidian-image-auto-upload-plugin</strong>插件，如果插件市场不好用，可以下载下来直接放到<br><em><strong>plugins</strong></em> 目录下面，放完了记得重新加载下。下图是插件的设置项，可以不动。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802141949.png" alt="插件设置"></p><h3 id="3-使用感受"><a href="#3-使用感受" class="headerlink" title="3.使用感受"></a>3.使用感受</h3><hr><p>平常写这种教程类的文章，需要不断地截图粘贴，之前是需要粘贴后再上传图床的，现在直接粘贴完事，十分的丝滑。简化文件上传，拷贝直链再加链接的整个流程。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170740.png" alt="粘贴上传"><br><img src="https://freefitter.synology.me:9012/blog/20240802171002.png" alt="上传成功"></p><p>下图是上传成功后Minio的列表。这样写完之后就不用回头再去调整上传了，一气呵成。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802142203.png" alt="文件列表"></p><h3 id="4-笔记备份"><a href="#4-笔记备份" class="headerlink" title="4.笔记备份"></a>4.笔记备份</h3><hr><p>笔记的同步和备份是不能少的，可以使用是 <strong>Remotely Save</strong> 这个插件，他可以使用<strong>OneDrive</strong>来同步，之前的<strong>Joplin</strong>也是用的她，专门给笔记用免费的5G够用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170638.png" alt="配置项"></p><h3 id="5-总结一下"><a href="#5-总结一下" class="headerlink" title="5.总结一下"></a>5.总结一下</h3><hr><p>没事折腾下，让自己的变得更效率。</p><p>[[搭建自己的图床]]</p><h3 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6.参考链接"></a>6.参考链接</h3><ol><li><a href="https://github.com/minio/minio">minio</a></li><li><a href="https://minio.org.cn/docs/minio/container/index.html">使用容器技术快速入门MinIO</a></li><li><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a></li><li><a href="https://blog.csdn.net/sugela8/article/details/116205887">picgo一直安装插件中，使用离线安装解决办法-附安装问题解决</a></li><li><a href="https://blog.csdn.net/sinat_34365157/article/details/136202885">【已解决】npm ERR! request to https://registry.npm.taobao.org failed, reason: certificate has expired</a></li><li><a href="https://github.com/Herbertzz/picgo-plugin-minio">picgo-plugin-minio</a></li><li><a href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">obsidian-image-auto-upload-plugin</a></li></ol>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>之前一直用的<strong>Joplin</strong>，但是总能刷到<strong>Obsidian</strong>的身影，所以就试试这个软件好用不好用。之前图片都是自己先上传到自己搭建<strong>Lychee</strong>然后再拷贝直链过来的，好像PicGo也有它的插件，但是想折腾下<strong>Minio</strong>，所以就一起又搞了个这个。</p></blockquote><h3 id="0-安装Minio"><a href="#0-安装Minio" class="headerlink" title="0.安装Minio"></a>0.安装Minio</h3><hr><blockquote><p>MinIO是一个对象存储解决方案，它提供了与Amazon Web Services S3兼容的API，并支持所有核心S3功能。 MinIO有能力在任何地方部署 - 公有云或私有云，裸金属基础设施，编排环境，以及边缘基础设施。</p></blockquote><p>群晖上下载minio的镜像进行安装，安装过程参看参考链接<strong>2</strong> ，这边就不赘述。有个地方需要注意，在执行命令处需要添加如下代码，端口需要和你之前配置的保持一致，不然起不来。</p><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">server /data --console-address ":9001"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://freefitter.synology.me:9012/blog/20240802124527.png" alt="相关信息"></p><h3 id="1-安装PicGo"><a href="#1-安装PicGo" class="headerlink" title="1.安装PicGo"></a>1.安装PicGo</h3><hr><blockquote><p><strong>PicGo: 一个用于快速上传图片并获取图片 URL 链接的工具</strong></p></blockquote><p>访问官方网站，下载安装即可，<a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a> 。安装完成后，安装一下Minio的插件。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124458.png" alt="插件安装"></p><p>如果总是安装中或者安装不成功，那就可以用如下方法手动安装：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 换源</span><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npmmirror.com<span class="token comment"># 到picgo目录</span><span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>XXXXX<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Roaming<span class="token punctuation">\</span>picgo<span class="token comment"># 安装</span><span class="token function">npm</span> <span class="token function">install</span> picgo-plugin-minio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装完成后，按照要求填写好信息，<em><strong>注意</strong></em>  这边 <strong>端口</strong> 要使用<strong>数据传输的端口</strong>而不是控制台访问端口，不然上传会失败的。<strong>Minio</strong>可以发布到外网，这样哪里都能使用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802124226.png" alt="Minio设置"></p><h3 id="2-安装自动上传插件"><a href="#2-安装自动上传插件" class="headerlink" title="2.安装自动上传插件"></a>2.安装自动上传插件</h3><hr><p>下载安装<strong>obsidian-image-auto-upload-plugin</strong>插件，如果插件市场不好用，可以下载下来直接放到<br><em><strong>plugins</strong></em> 目录下面，放完了记得重新加载下。下图是插件的设置项，可以不动。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802141949.png" alt="插件设置"></p><h3 id="3-使用感受"><a href="#3-使用感受" class="headerlink" title="3.使用感受"></a>3.使用感受</h3><hr><p>平常写这种教程类的文章，需要不断地截图粘贴，之前是需要粘贴后再上传图床的，现在直接粘贴完事，十分的丝滑。简化文件上传，拷贝直链再加链接的整个流程。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170740.png" alt="粘贴上传"><br><img src="https://freefitter.synology.me:9012/blog/20240802171002.png" alt="上传成功"></p><p>下图是上传成功后Minio的列表。这样写完之后就不用回头再去调整上传了，一气呵成。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802142203.png" alt="文件列表"></p><h3 id="4-笔记备份"><a href="#4-笔记备份" class="headerlink" title="4.笔记备份"></a>4.笔记备份</h3><hr><p>笔记的同步和备份是不能少的，可以使用是 <strong>Remotely Save</strong> 这个插件，他可以使用<strong>OneDrive</strong>来同步，之前的<strong>Joplin</strong>也是用的她，专门给笔记用免费的5G够用了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240802170638.png" alt="配置项"></p><h3 id="5-总结一下"><a href="#5-总结一下" class="headerlink" title="5.总结一下"></a>5.总结一下</h3><hr><p>没事折腾下，让自己的变得更效率。</p><p>[[搭建自己的图床]]</p><h3 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6.参考链接"></a>6.参考链接</h3><ol><li><a href="https://github.com/minio/minio">minio</a></li><li><a href="https://minio.org.cn/docs/minio/container/index.html">使用容器技术快速入门MinIO</a></li><li><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#picgo-is-here">PicGo is Here</a></li><li><a href="https://blog.csdn.net/sugela8/article/details/116205887">picgo一直安装插件中，使用离线安装解决办法-附安装问题解决</a></li><li><a href="https://blog.csdn.net/sinat_34365157/article/details/136202885">【已解决】npm ERR! request to https://registry.npm.taobao.org failed, reason: certificate has expired</a></li><li><a href="https://github.com/Herbertzz/picgo-plugin-minio">picgo-plugin-minio</a></li><li><a href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">obsidian-image-auto-upload-plugin</a></li></ol>]]></content>
       
       
       <categories>
@@ -2903,9 +2932,9 @@
       
         <tags>
             
-            <tag> 遛娃 </tag>
-            
             <tag> 园博园 </tag>
+            
+            <tag> 遛娃 </tag>
             
         </tags>
       
