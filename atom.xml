@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-09-08T13:58:59.429Z</updated>
+  <updated>2024-09-23T13:21:21.666Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>schoolwork240922</title>
+    <link href="https://www.wangxingyang.com/schoolwork240922.html"/>
+    <image>https://www.wangxingyang.com/img/2022/cover.jpg</image>
+    <notify>true</notify>
+    <id>https://www.wangxingyang.com/schoolwork240922.html</id>
+    <published>2024-09-23T13:21:21.000Z</published>
+    <updated>2024-09-23T13:21:21.666Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>解锁iOS捷径：用大模型优化“看谁听的准”的游戏体验</title>
@@ -141,37 +156,6 @@
     <category term="阿里云盘" scheme="https://www.wangxingyang.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/"/>
     
     <category term="NOVA" scheme="https://www.wangxingyang.com/tags/NOVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jellyfin安装与使用</title>
-    <link href="https://www.wangxingyang.com/jellyfin.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/cd7d7826763c48f535c87c496018f0b6.png</image>
-    
-    <id>https://www.wangxingyang.com/jellyfin.html</id>
-    <published>2024-02-15T13:49:44.000Z</published>
-    <updated>2024-02-18T13:58:34.699Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Jellyfin 是一个免费的媒体系统，可以安装并运行您自己的媒体服务器</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><p>直接拉镜像安装就行，没有什么特别的技术含量。按照步骤配置好相关参数，启动即可。启动后使用的时候发现看视频非常的卡顿，CPU直接跑满了。所以下一步进行直通。</p><h3 id="1-直通"><a href="#1-直通" class="headerlink" title="1.直通"></a>1.直通</h3><hr><p>使用如下命令启动容器，主要是把<em><strong>renderD128</strong></em>，<em><strong>card0</strong></em> 给到群晖。接着看视频发现还是卡，不过比之前好些了，CPU也没有超过***100%***。群晖的显卡应该本来就不行，所以就不纠结了，知道怎么做就行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> docker run -d --volume /XXX/M/jellyfin/config:/config --volume /XXX/M/jellyfin/cache:/cache --volume /XXX/M/jellyfin/video:/video --volume /XXX/M/jellyfin/tv:/tv --net<span class="token operator">=</span>host --restart<span class="token operator">=</span>always --device /dev/dri/renderD128:/dev/dri/renderD128 --device /dev/dri/card0:/dev/dri/card0 --name <span class="token string">"jellyfin-direct"</span> jellyfin/jellyfin:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="2-折腾IPTV"><a href="#2-折腾IPTV" class="headerlink" title="2.折腾IPTV"></a>2.折腾IPTV</h3><hr><p>之前有添加过IPTV，但是最后并没有播放起来，很大一部分原因是源不行，这次又找了一个源，但是死活放不出来，看了日志发现这些都是<strong>IPV6</strong>的，发现路由器并没有打开<strong>IPV6</strong>，打开它之后就可以愉快的播放了。<br><img src="https://freefitter.synology.me:6884/uploads/medium/77ff0dc460bc010ddc811cefeb8a66e0.jpg" alt="电视指南"></p><p><img src="https://freefitter.synology.me:6884/uploads/medium/1112f0e8bd8056838e70668db79d69d7.jpg" alt="CCTV5"></p><h3 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h3><hr><p><a href="https://github.com/Meroser/IPTV?tab=readme-ov-file">Meroser的IPTV直播源仓库</a><br><a href="https://github.com/iptv-org/iptv">IPTV</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Jellyfin 是一个免费的媒体系统，可以安装并运行您自己的媒体服务器&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-安装&quot;&gt;&lt;a href=&quot;#0-安装&quot; class=&quot;headerlink&quot; title=&quot;0.安装&quot;&gt;&lt;/a&gt;0.安</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="jellyfin" scheme="https://www.wangxingyang.com/tags/jellyfin/"/>
-    
-    <category term="IPTV" scheme="https://www.wangxingyang.com/tags/IPTV/"/>
     
   </entry>
   
