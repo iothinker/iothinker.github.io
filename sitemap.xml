@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wangxingyang.com/applewatch.html</loc>
+    
+    <lastmod>2024-09-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wangxingyang.com/schoolwork240922.html</loc>
     
     <lastmod>2024-09-23</lastmod>
@@ -2532,6 +2539,13 @@
   
   <url>
     <loc>https://www.wangxingyang.com/tags/%E6%89%8B%E5%B7%A5/</loc>
+    <lastmod>2024-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/apple-watch/</loc>
     <lastmod>2024-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-09-23T13:26:58.878Z</updated>
+  <updated>2024-09-23T14:38:35.288Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>applewatch</title>
+    <link href="https://www.wangxingyang.com/applewatch.html"/>
+    <image>https://freefitter.synology.me:9012/blog/20240923213145.png</image>
+    
+    <id>https://www.wangxingyang.com/applewatch.html</id>
+    <published>2024-09-23T14:37:17.000Z</published>
+    <updated>2024-09-23T14:38:35.288Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>之前带的5代手表电池已经不行了，即使这样还预估折抵了300块，这次出了新款就准备买来尝尝鲜，第一时间就预定了一个铝合金的亮黑色，已经带了几天了，来分享一下自己的拆箱和使用感受。</p></blockquote><p><img src="https://freefitter.synology.me:9012/blog/20240923213145.png" alt="封面"></p><h3 id="0-拆箱-amp-上手"><a href="#0-拆箱-amp-上手" class="headerlink" title="0.拆箱&amp;上手"></a>0.拆箱&amp;上手</h3><hr><p>能接受预订的第一时间就预约了，20号拿到的手表，拆完之后第一感觉就是大而亮，比之前的那个大太多了，外观上没有啥明显的变化，主要的变化是扬声器的部分变成网状的了，而且可以独立播放下载的音乐了，试了一下，可以听。厚度的话确实薄了，肉眼可见。</p><p><img src="https://freefitter.synology.me:9012/blog/20240923215339.png" alt="订单"><br>外包装<br><img src="https://freefitter.synology.me:9012/blog/20240923220052.png" alt="包装盒"><br>拆开后盒子里是表带和手表本体<br><img src="https://freefitter.synology.me:9012/blog/20240923220121.png" alt="拆开后"><br>拿出本体自动点亮开机。亮黑色和之前买的iPhone 7 是一样的。<br><img src="https://freefitter.synology.me:9012/blog/20240923220202.png" alt="本体"><br>上手的样子，表盘是之前手表的表盘，显示家里水电燃气的欠费金额，用电数据之前的不好使了，所以每显示，不过最近搞好了，后面再说，下面是油价，最后是博客的浏览量。<br><img src="https://freefitter.synology.me:9012/blog/20240923220222.png" alt="上手效果"></p><h3 id="1-使用感受"><a href="#1-使用感受" class="headerlink" title="1.使用感受"></a>1.使用感受</h3><hr><p>最最最直观的感受是电池比以前续航长了，之前每天一充，早上带的晚上回家就要没电了，很难受，现在带一天回家还有80的电，还是记录了活动的前提下。也带他睡着它测了一下睡眠，一晚上下来也没损耗多少，但是我还是喜欢把它充的满满的。当然这些是在我关闭了一些功能的前提下。关闭了噪声监测，洗手监测，Siri唤醒还有全天候显示。使用下来还是不错的。<br><img src="https://freefitter.synology.me:9012/blog/20240923221431.png" alt="睡眠数据"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>总的来说使用还是不错的，还有其他的功能等后续使用再补充。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;之前带的5代手表电池已经不行了，即使这样还预估折抵了300块，这次出了新款就准备买来尝尝鲜，第一时间就预定了一个铝合金的亮黑色，已经带了几天了，来分享一下自己的拆箱和使用感受。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="apple watch" scheme="https://www.wangxingyang.com/tags/apple-watch/"/>
+    
+  </entry>
   
   <entry>
     <title>迎接祖国华诞：打造独一无二的国庆蛋糕</title>
@@ -141,37 +170,6 @@
     <category term="导航页" scheme="https://www.wangxingyang.com/tags/%E5%AF%BC%E8%88%AA%E9%A1%B5/"/>
     
     <category term="开源项目" scheme="https://www.wangxingyang.com/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AList+阿里云盘+NOVA搭建自己的影视中心</title>
-    <link href="https://www.wangxingyang.com/novaplayer.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/medium/7f2bca170945eac92392cb9ae0f45f42.png</image>
-    
-    <id>https://www.wangxingyang.com/novaplayer.html</id>
-    <published>2024-07-06T03:58:19.000Z</published>
-    <updated>2024-07-06T04:10:45.253Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近想用投影追剧，不想使用投屏这种方式，家里的投影是极米的，属于安卓阵营，所以就得找一个安卓使用的软件，找到了一个开源的安卓播放器<strong>NOVA</strong>，这不上手试试，看看效果。主要他和我之前用的<strong>VidHub</strong>很像，但是现在它收费了。</p></blockquote><h3 id="0-安装"><a href="#0-安装" class="headerlink" title="0.安装"></a>0.安装</h3><hr><h4 id="a-安装NOVA"><a href="#a-安装NOVA" class="headerlink" title="a) 安装NOVA"></a>a) 安装NOVA</h4><blockquote><p>NOVA（NOVA是opeN sOurce Video plAyer的缩写） 是一个专为平板、手机和安卓电视设计的开源视频播放器。</p><ul><li>从您的电脑、服务器(FTP、SFTP、WebDAV)、NAS(SMB、UPnP)上播放视频</li><li>从外置USB存储器上播放视频</li><li>可以将来自全部媒体源的视频整合进一个单独的多媒体收藏库</li><li>自动在线获取电影和连续剧的剧情说明以及海报和背景墙</li><li>内置字幕下载功能</li></ul></blockquote><p>先去<strong>GitHub</strong>上下载安装包，下载链接在相关链接中，链接已经加速可下载。链接是通用安装包，下载后安装就行。安装过程买机器的时候厂家应该有介绍。就是包的后缀名改掉，发到U盘中，然后安装就行。<a href="https://github.com/nova-video-player/aos-AVP">aos-AVP仓库地址</a>，<a href="https://kkgithub.com/nova-video-player/aos-AVP/releases/download/v6.2.88/org.courville.nova-2600180-6.2.88-20240629.1132-universal-release.apk">通用安装包</a></p><h4 id="b-安装AList"><a href="#b-安装AList" class="headerlink" title="b) 安装AList"></a>b) 安装AList</h4><blockquote><p><a href="https://alist.nn.ci/zh/">AList</a> 一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动。</p></blockquote><p>安装教程网上有很多的，可以查看<a href="https://alist.nn.ci/zh/guide/">使用指南</a>，跟着指南进行安装。我用的Docker，装到NAS上了，安装完成后自己添加下自己的云盘。<br><img src="https://freefitter.synology.me:6884/uploads/big/ec3c8745f5a0941523591500db842f84.png" alt="添加的存储"><br>到此安装完毕。</p><h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h3><hr><p>安装完成之后就需要配置了，这边截了安卓手机上的图，投影没拍，都一样的。只是投影的好看些。这边主要要注意的文件的命名，需要是 [ <strong>剧名.S01E01</strong> ] 这样的。S01表示第几季，E01表示第几集，不然刮削不到。如下图<br><img src="https://freefitter.synology.me:6884/uploads/big/79184f0d2c3dd009a2ee2737917b90be.png" alt="命名格式"></p><p>先选择 <strong><code>网络快捷方式</code></strong><br><img src="https://freefitter.synology.me:6884/uploads/medium/5b8f5d892545bd124f21503ea6f2d3a6.jpg" alt="选择网络快捷方式"><br>填写相关信息，这边注意路径需要填上<strong>dav</strong>，不然连不上。<br><img src="https://freefitter.synology.me:6884/uploads/medium/a69c90ec82acc7fa04254968e3a85aa2.jpg" alt="填写相关信息"><br>配置完成之后就显示出来了<br><img src="https://freefitter.synology.me:6884/uploads/medium/f0fd0103ef9f93d317b09a15b39dd40c.jpg" alt="完成"></p><h3 id="2-展示"><a href="#2-展示" class="headerlink" title="2.展示"></a>2.展示</h3><hr><p>下面看看结果如何，先看看海报墙，只有电视，没有电影。看看电视的海报墙，还是可以的。</p><blockquote><p>电视节目页签，展示你盘下的电视</p></blockquote><p><img src="https://freefitter.synology.me:6884/uploads/medium/2f91d0a87ddcaf17214add2f571a76eb.jpg" alt="电视节目"></p><blockquote><p>详细信息页，可以看到介绍和每集的简介</p></blockquote><p><img src="https://freefitter.synology.me:6884/uploads/medium/4f309c3e8d42fb4ee13ce5cd62ad9bc1.jpg" alt="详细信息"></p><blockquote><p>播放界面</p></blockquote><p><img src="https://freefitter.synology.me:6884/uploads/medium/57c8777287349c6d8e4370423a9d5fc1.jpg" alt="播放界面"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>现在好多的播放器已经不纯粹了，里面的东西很杂，也有很多的广告。所以想还自己一片清净，这个方案还是不错的。当然需要一定的动手能力和时间成本。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近想用投影追剧，不想使用投屏这种方式，家里的投影是极米的，属于安卓阵营，所以就得找一个安卓使用的软件，找到了一个开源的安卓播放器&lt;strong&gt;NOVA&lt;/strong&gt;，这不上手试试，看看效果。主要他和我之前用的&lt;strong&gt;VidHub&lt;/</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="AList" scheme="https://www.wangxingyang.com/tags/AList/"/>
-    
-    <category term="阿里云盘" scheme="https://www.wangxingyang.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/"/>
-    
-    <category term="NOVA" scheme="https://www.wangxingyang.com/tags/NOVA/"/>
     
   </entry>
   
