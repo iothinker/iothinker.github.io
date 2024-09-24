@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wangxingyang.com/phonefee.html</loc>
+    
+    <lastmod>2024-09-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wangxingyang.com/sgcc-electricity-ha.html</loc>
     
     <lastmod>2024-09-24</lastmod>
@@ -2567,6 +2574,13 @@
   
   <url>
     <loc>https://www.wangxingyang.com/tags/%E5%9B%BD%E5%AE%B6%E7%94%B5%E7%BD%91/</loc>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wangxingyang.com/tags/%E8%AF%9D%E8%B4%B9/</loc>
     <lastmod>2024-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
