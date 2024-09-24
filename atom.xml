@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-09-23T14:38:35.288Z</updated>
+  <updated>2024-09-24T13:41:07.792Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>智能家庭能耗管理：Home Assistant国网电费数据集成与展示指南</title>
+    <link href="https://www.wangxingyang.com/sgcc-electricity-ha.html"/>
+    <image>https://freefitter.synology.me:9012/blog/20240924213945.png</image>
+    
+    <id>https://www.wangxingyang.com/sgcc-electricity-ha.html</id>
+    <published>2024-09-24T13:28:28.000Z</published>
+    <updated>2024-09-24T13:41:07.792Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>之前电费是通过<strong>国网江苏电力营业厅</strong>获取的，但是现在这个小程序已经停止服务了，导致现在不能够正常抓取了。之后就闲置了很久，后来看到有个<strong>网上国网</strong>的集成，但是十分卡，而且动不动就失败，之后在Github上找了找，发现了一个好用的项目。</p></blockquote><h3 id="0-搭建"><a href="#0-搭建" class="headerlink" title="0.搭建"></a>0.搭建</h3><hr><p><a href="https://github.com/ARC-MX/sgcc_electricity_new">sgcc_electricity_new</a>的项目的文档中已经描述的很清楚了，按照流程走很轻松的就能够搭起来。搭建完成后就能在1Panel中看到这个容器了。运行时间比较久，等他运行完成你就能在HA中看到它生成的实体了。</p><p><img src="https://freefitter.synology.me:9012/blog/20240924085011.png" alt="容器"></p><p>homeassistant实体名称如下</p><table><thead><tr><th>实体entity_id</th><th>说明</th></tr></thead><tbody><tr><td>sensor.last_electricity_usage</td><td>最近一天用电量，单位KWH、度。属性含present_date（查询电量代表的日期）</td></tr><tr><td>sensor.electricity_charge_balance</td><td>预付费显示电费余额，反之显示上月应交电费，单位元</td></tr><tr><td>sensor.yearly_electricity_usage</td><td>今年总用电量，单位KWH、度。</td></tr><tr><td>sensor.yearly_electricity_charge</td><td>今年总用电费用，单位元</td></tr><tr><td>sensor.month_electricity_usage</td><td>最近一天用电量，单位KWH、度。属性含present_date（查询电量代表的日期）</td></tr><tr><td>sensor.month_electricity_charge</td><td>上月总用电费用，单位元 属性含present_date（查询电量代表的日期）</td></tr></tbody></table><h3 id="1-修改"><a href="#1-修改" class="headerlink" title="1.修改"></a>1.修改</h3><hr><p>目前项目中没有结清的标识，光靠余额是不能判断出费用是否结清，所以改了一下代码，加了一个结清的标识。需要修改 <strong>data_fetcher.py</strong> ，增加一个结清的标志，获取的代码如下，其他的地方也要相应增加，照着原来的写即可。</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">_get_eletric_state</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> driver<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">try</span><span class="token punctuation">:</span>        text <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">".amt.light .amttxt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>text        flag <span class="token operator">=</span> <span class="token number">0</span> <span class="token keyword">if</span> text <span class="token operator">==</span> <span class="token string">"当期已结清"</span> <span class="token keyword">else</span> <span class="token number">1</span>        <span class="token keyword">return</span> flag    <span class="token keyword">except</span><span class="token punctuation">:</span>        <span class="token keyword">return</span> <span class="token boolean">None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2-展示"><a href="#2-展示" class="headerlink" title="2.展示"></a>2.展示</h3><hr><p>最后集成的结果如下图：<br>这是首页展示的简要信息汇总，能够看出是否结清，如果没结清会显示欠费金额。</p><p><img src="https://freefitter.synology.me:9012/blog/20240924090610.png" alt="简要信息"></p><p>这是总的电费详细信息，可以查看家里的和电车的电费使用情况。</p><p><img src="https://freefitter.synology.me:9012/blog/20240924090709.png" alt="详细信息"></p><p>下图是每日的用电量，这个不能看到当天的，最新更新的是两天前的数据。</p><p><img src="https://freefitter.synology.me:9012/blog/20240924090935.png" alt="用电曲线"></p><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><hr><p>安装这个后香橙派的内存占用有些许提升，当他跑起来是会冲到70多，但是还在能接受的范围。有些事情只要决定去做了，不管多久，多么困难，只要坚持了，总会有结果的。</p><p><img src="https://freefitter.synology.me:9012/blog/20240924093032.png" alt="资源使用"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;之前电费是通过&lt;strong&gt;国网江苏电力营业厅&lt;/strong&gt;获取的，但是现在这个小程序已经停止服务了，导致现在不能够正常抓取了。之后就闲置了很久，后来看到有个&lt;strong&gt;网上国网&lt;/strong&gt;的集成，但是十分卡，而且动不动就失败，之后</summary>
+      
+    
+    
+    
+    <category term="智能家居" scheme="https://www.wangxingyang.com/categories/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/"/>
+    
+    
+    <category term="ha" scheme="https://www.wangxingyang.com/tags/ha/"/>
+    
+    <category term="国家电网" scheme="https://www.wangxingyang.com/tags/%E5%9B%BD%E5%AE%B6%E7%94%B5%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>applewatch</title>
@@ -137,39 +166,6 @@
     <category term="#Minio" scheme="https://www.wangxingyang.com/tags/Minio/"/>
     
     <category term="#PicGo" scheme="https://www.wangxingyang.com/tags/PicGo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提升效率的艺术：如何用 Dashy 优化你的日常流程</title>
-    <link href="https://www.wangxingyang.com/dashy.html"/>
-    <image>https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png</image>
-    
-    <id>https://www.wangxingyang.com/dashy.html</id>
-    <published>2024-07-10T14:26:49.000Z</published>
-    <updated>2024-07-10T14:29:55.546Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>最近逛GitHub发现了一个好玩的仪表盘<em><strong>Dashy</strong></em>，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><blockquote><p>Dashy 是一个开源项目，由 Lissy93 在 GitHub 上维护，它是一个美观的、可定制的启动板或仪表板应用，旨在帮助用户组织各种快捷方式、小工具和信息卡片。它可以用作日常任务的中心枢纽，整合了如天气预报、待办事项列表、笔记、应用程序快捷方式等功能。<a href="https://dashy.to/">Dashy官网</a>，<a href="https://github.com/Lissy93/dashy">Dashy项目地址</a></p></blockquote><p>准备把常用的链接放到里面，这样就不用每次都去找了。还有好多在群晖和两个派上装的东西，这样就不用去记去找了。</p><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><hr><p>安装比较简单，使用了1Panel，里面的应用商店就有现成的，直接点击安装即可。不过现在国内不能访问了，自己去增加下镜像加速，如下图<br><img src="https://freefitter.synology.me:6884/uploads/big/b99bf80357e382cb0f5ec8fb2fa8dc8a.png" alt="镜像加速"><br>下面是一些加速的站点</p><pre class="line-numbers language-none"><code class="language-none">https://docker.1panel.livehttps://docker.mirrors.ustc.edu.cnhttps://hub-mirror.c.163.comhttps://docker.m.daocloud.iohttps://ghcr.iohttps://mirror.baidubce.comhttps://docker.nju.edu.cn<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在应用商店就能找到它了<br><img src="https://freefitter.synology.me:6884/uploads/big/16a338e9e94455eb35066e38577e83d4.png" alt="应用商店"><br>下面是Demo界面<br><img src="https://freefitter.synology.me:6884/uploads/big/554d728894ac6a5734e124f397919a26.png" alt="Demo"></p><h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><hr><p>把它当作浏览器的导航页，里面集成了在群晖和派中安装的各种应用，能够极速到达，还有一些常用的网页，也一并放入其中了。操作十分简单，可以直接页面操作，也可以直接修改配置文件。话不多说，看看最后的成果吧。<br><img src="https://freefitter.synology.me:6884/uploads/big/2be20de3fed4fe583857a131dda8372b.png" alt="我的Dashy"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近逛GitHub发现了一个好玩的仪表盘&lt;em&gt;&lt;strong&gt;Dashy&lt;/strong&gt;&lt;/em&gt;，下面来一起看看是怎么个回事。从安装到使用，咱们一起探索。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-介绍&quot;&gt;&lt;a href=&quot;#0</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="Dashy" scheme="https://www.wangxingyang.com/tags/Dashy/"/>
-    
-    <category term="导航页" scheme="https://www.wangxingyang.com/tags/%E5%AF%BC%E8%88%AA%E9%A1%B5/"/>
-    
-    <category term="开源项目" scheme="https://www.wangxingyang.com/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
