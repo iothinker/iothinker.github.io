@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>解锁苹果影音新方式：探索HamHub私人云影专家</title>
+      <link href="hamhub.html"/>
+      <url>hamhub.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>之前写过一个使用<a href="https://mp.weixin.qq.com/s/TgNcVw3aeZ93-zh-FHrw5g">AList+阿里云盘+NOVA搭建自己的影视中心</a>，投影可以愉快的使用了，但是手机上由于<strong>VidHub</strong>收费了，所以就弃了。没它之后就一直用<strong>SenPlayer</strong>替代，它啥啥都好，就是没有刮削，没有海报墙，总之就是不美观。一直在找免费且好看好用的，最近重拾了<strong>HamHub</strong>感觉还不错。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><p>这个播放器在<strong>VidHub</strong>快收费时试过，功能差不多，但是之前的版本，功能还不是很完善。比如不能设置某个文件夹扫描，只能全局扫描，而且刮削不准且慢。这次重拾它，发现这些功能都有改善，所以推荐给大家。这是官网<a href="https://www.hamhub.app/">HamHub</a><br><img src="https://freefitter.synology.me:9012/blog/20240925224702.png" alt="image.png"><br>另外还有一个阿里云盘限速了，看4K的话会很卡的。现在的解决方案是通过阿里云盘找资源，有了资源后同步到家里的群晖，然后家里使用<strong>HamHub</strong>连接家里的群晖，这样就能畅快的看视频了。</p><h3 id="1-设置"><a href="#1-设置" class="headerlink" title="1.设置"></a>1.设置</h3><hr><h4 id="a-添加文件库"><a href="#a-添加文件库" class="headerlink" title="a) 添加文件库"></a>a) 添加文件库</h4><p>添加一下新的文件库，通过SMB方式连接到群晖，可以新建一个用户，只开放某个目录，权限再放小点，这样会安全些。下面是配置信息，填上就好了。<br><img src="https://freefitter.synology.me:9012/blog/20240925230704.png" alt="image.png"></p><h4 id="b-标记影视夹"><a href="#b-标记影视夹" class="headerlink" title="b) 标记影视夹"></a>b) 标记影视夹</h4><p>添加完了文件库，找到你放视频的文件夹，长按后选择<strong>标记为影视夹</strong>即可<br><img src="https://freefitter.synology.me:9012/blog/20240925231027.png" alt="image.png"></p><h3 id="2-展示"><a href="#2-展示" class="headerlink" title="2.展示"></a>2.展示</h3><hr><p>设置完成之后，等他刮削完成就能看到海报墙了。<br>这是盘里电视剧的资源<br><img src="https://freefitter.synology.me:9012/blog/20240925231144.png" alt="image.png"><br>这是电视剧的海报页面，还是很好看的。<br><img src="https://freefitter.synology.me:9012/blog/20240925231239.png" alt="image.png"><br>最后是播放页面，可以愉快的看电视了。<br><img src="https://freefitter.synology.me:9012/blog/20240925231327.png" alt="image.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 群晖 </tag>
+            
+            <tag> hamhub </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>智能家居小贴士：如何将电信和移动余额集成到Home Assistant</title>
       <link href="phonefee.html"/>
       <url>phonefee.html</url>

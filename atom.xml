@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-09-24T15:03:08.190Z</updated>
+  <updated>2024-09-25T15:21:14.148Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解锁苹果影音新方式：探索HamHub私人云影专家</title>
+    <link href="https://www.wangxingyang.com/hamhub.html"/>
+    <image>https://freefitter.synology.me:9012/blog/20240925224702.png</image>
+    
+    <id>https://www.wangxingyang.com/hamhub.html</id>
+    <published>2024-09-25T15:19:52.000Z</published>
+    <updated>2024-09-25T15:21:14.148Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>之前写过一个使用<a href="https://mp.weixin.qq.com/s/TgNcVw3aeZ93-zh-FHrw5g">AList+阿里云盘+NOVA搭建自己的影视中心</a>，投影可以愉快的使用了，但是手机上由于<strong>VidHub</strong>收费了，所以就弃了。没它之后就一直用<strong>SenPlayer</strong>替代，它啥啥都好，就是没有刮削，没有海报墙，总之就是不美观。一直在找免费且好看好用的，最近重拾了<strong>HamHub</strong>感觉还不错。</p></blockquote><h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><hr><p>这个播放器在<strong>VidHub</strong>快收费时试过，功能差不多，但是之前的版本，功能还不是很完善。比如不能设置某个文件夹扫描，只能全局扫描，而且刮削不准且慢。这次重拾它，发现这些功能都有改善，所以推荐给大家。这是官网<a href="https://www.hamhub.app/">HamHub</a><br><img src="https://freefitter.synology.me:9012/blog/20240925224702.png" alt="image.png"><br>另外还有一个阿里云盘限速了，看4K的话会很卡的。现在的解决方案是通过阿里云盘找资源，有了资源后同步到家里的群晖，然后家里使用<strong>HamHub</strong>连接家里的群晖，这样就能畅快的看视频了。</p><h3 id="1-设置"><a href="#1-设置" class="headerlink" title="1.设置"></a>1.设置</h3><hr><h4 id="a-添加文件库"><a href="#a-添加文件库" class="headerlink" title="a) 添加文件库"></a>a) 添加文件库</h4><p>添加一下新的文件库，通过SMB方式连接到群晖，可以新建一个用户，只开放某个目录，权限再放小点，这样会安全些。下面是配置信息，填上就好了。<br><img src="https://freefitter.synology.me:9012/blog/20240925230704.png" alt="image.png"></p><h4 id="b-标记影视夹"><a href="#b-标记影视夹" class="headerlink" title="b) 标记影视夹"></a>b) 标记影视夹</h4><p>添加完了文件库，找到你放视频的文件夹，长按后选择<strong>标记为影视夹</strong>即可<br><img src="https://freefitter.synology.me:9012/blog/20240925231027.png" alt="image.png"></p><h3 id="2-展示"><a href="#2-展示" class="headerlink" title="2.展示"></a>2.展示</h3><hr><p>设置完成之后，等他刮削完成就能看到海报墙了。<br>这是盘里电视剧的资源<br><img src="https://freefitter.synology.me:9012/blog/20240925231144.png" alt="image.png"><br>这是电视剧的海报页面，还是很好看的。<br><img src="https://freefitter.synology.me:9012/blog/20240925231239.png" alt="image.png"><br>最后是播放页面，可以愉快的看电视了。<br><img src="https://freefitter.synology.me:9012/blog/20240925231327.png" alt="image.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;之前写过一个使用&lt;a href=&quot;https://mp.weixin.qq.com/s/TgNcVw3aeZ93-zh-FHrw5g&quot;&gt;AList+阿里云盘+NOVA搭建自己的影视中心&lt;/a&gt;，投影可以愉快的使用了，但是手机上由于&lt;strong&gt;V</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="群晖" scheme="https://www.wangxingyang.com/tags/%E7%BE%A4%E6%99%96/"/>
+    
+    <category term="hamhub" scheme="https://www.wangxingyang.com/tags/hamhub/"/>
+    
+  </entry>
   
   <entry>
     <title>智能家居小贴士：如何将电信和移动余额集成到Home Assistant</title>
@@ -134,39 +163,6 @@
     <category term="幼儿园" scheme="https://www.wangxingyang.com/tags/%E5%B9%BC%E5%84%BF%E5%9B%AD/"/>
     
     <category term="手工" scheme="https://www.wangxingyang.com/tags/%E6%89%8B%E5%B7%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解锁iOS捷径：用大模型优化“看谁听的准”的游戏体验</title>
-    <link href="https://www.wangxingyang.com/gameof20240908.html"/>
-    <image>https://freefitter.synology.me:9012/blog/202409082157024.png</image>
-    
-    <id>https://www.wangxingyang.com/gameof20240908.html</id>
-    <published>2024-09-08T12:43:54.000Z</published>
-    <updated>2024-09-08T13:58:59.429Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>看谁听的准游戏介绍：<br>给孩子读一组词，规定某一标准让他认真听(如听出类别、用途、生活习性等)，当听到属于这一标准的词时，就拍手或者蹲下等。</p></blockquote><h3 id="0-想法"><a href="#0-想法" class="headerlink" title="0.想法"></a>0.想法</h3><hr><p>如果让家长自己说出一组词，那么可能时不时有卡顿，但是如果有程序或者捷径能帮助实现这个功能，那家长不仅能和孩子一起游戏，还解放了自己，何乐而不为呢。所以就用了手机里自带的捷径写了一个，能够朗读一组词语。但是词语还是要自己想，这边就借助了大模型，让他去生成这些词语就行了。 <a href="https://www.icloud.com/shortcuts/dae6f093552941a1890ee556d57d78d5">看谁听的准链接</a>是捷径的下载地址。如果不好复制，识别下方二维码获取。</p><p><img src="https://freefitter.synology.me:9012/blog/httpswww.icloud.comshortcutsdae6f093552941a1890ee556d57d78d5.png" alt="捷径二维码"></p><p><img src="https://freefitter.synology.me:9012/blog/202409082101108.png" alt="捷径截图"></p><p>接下来是这些词怎么来，这些文字可以通过大模型来生成，可以参照我的提示词。</p><p><img src="https://freefitter.synology.me:9012/blog/202409082116783.png" alt="对话截图"></p><pre class="line-numbers language-none"><code class="language-none">现在有一个叫看谁听的准的游戏，给出一系列的词语，然后规定一个规则，比如听到动物就拍手，现在需要你帮我生成一些词语，这些词语包含水果，蔬菜，动物，植物，家具，家电这些方面的。每个种类必须涵盖，并且每个种类需要穿插随机，每个种类的词语数量要差不多，输出的结果不需要换行和数字序号，用逗号隔开，总数不得低于50个，不能重复。生成后再按照上面的分类输出一份答案。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这样只要把上面生成的词语复制到捷径中即可。</p><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1.总结"></a>1.总结</h3><hr><p>在与孩子游戏的过程中，利用自己的优势解放自己，给孩子另一种游戏体验也未尝不是一件有意思的事情。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;看谁听的准游戏介绍：&lt;br&gt;给孩子读一组词，规定某一标准让他认真听(如听出类别、用途、生活习性等)，当听到属于这一标准的词时，就拍手或者蹲下等。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;0-想法&quot;&gt;&lt;a href=&quot;#0-想法&quot; cla</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="捷径" scheme="https://www.wangxingyang.com/tags/%E6%8D%B7%E5%BE%84/"/>
-    
-    <category term="大模型" scheme="https://www.wangxingyang.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
-    
-    <category term="亲子游戏" scheme="https://www.wangxingyang.com/tags/%E4%BA%B2%E5%AD%90%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
