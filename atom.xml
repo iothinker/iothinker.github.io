@@ -6,7 +6,7 @@
   <link href="https://www.wangxingyang.com/atom.xml" rel="self"/>
   
   <link href="https://www.wangxingyang.com/"/>
-  <updated>2024-09-25T15:21:14.148Z</updated>
+  <updated>2024-10-11T12:55:16.382Z</updated>
   <id>https://www.wangxingyang.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HA薅羊毛助力：简化步骤，让Microsoft Rewards积分赚取更简单</title>
+    <link href="https://www.wangxingyang.com/microsoft-rewards.html"/>
+    <image>https://freefitter.synology.me:9012/blog/ff4293b834cc279ff03cd50302f14d9.png</image>
+    
+    <id>https://www.wangxingyang.com/microsoft-rewards.html</id>
+    <published>2024-10-11T12:50:53.000Z</published>
+    <updated>2024-10-11T12:55:16.382Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>搜索一直用必应，有账号但是没有登陆，最近看到必应上可以各种礼品卡，只要每天做好任务，日积月累总能达到你的目标的。</p></blockquote><h3 id="0-Microsoft-Rewards"><a href="#0-Microsoft-Rewards" class="headerlink" title="0.Microsoft Rewards"></a>0.Microsoft Rewards</h3><hr><p><strong>Microsoft Rewards</strong>移动端和电脑端加起来一天至少能够获得<strong>210</strong>积分，以盒马的100元礼品卡为例，100的礼品卡需要<strong>17915</strong>个积分，这样算下来的话，一张卡需要<strong>86</strong>天就能够拿到了，实际肯定是比这个天数少的。用这个速度划下来一天一块多钱。<br><img src="https://freefitter.synology.me:9012/blog/232386bad63951ef19aa0767d2c1f1a.png" alt="可以兑换的礼品卡"></p><h3 id="1-HomeAssistant"><a href="#1-HomeAssistant" class="headerlink" title="1.HomeAssistant"></a>1.HomeAssistant</h3><hr><p>现在目标和方法都知道了，现在开看看怎样让这个羊毛薅的更轻松方便吧。每日活动的阅读获得积分获得的比较容易，就直接阅读文章就行了。搜索赚积分的比较麻烦，通过这几天的观察，每次搜索最多12个积分，达到了之后需要等15分钟后搜索才能获得积分。每日活动的话，上午是点不了的，等到下午的时候再做就行。所以针对这些问题来解决。<br><img src="https://freefitter.synology.me:9012/blog/4a80acd0ed60156248ed74d12383901.jpg" alt="每日任务"></p><p>利用HA的上次更新时间可以知道积分距离上次更新的时间，超过15分钟就可以操作了。还将没完成的任务列了出来，还有距离目标的百分比和天数都展示出来了。跟踪了一段时间，使用<strong>iPad也能够获得电脑搜索的积分，而且还没有时间限制</strong>。所以有Pad的同学可以尝试下这个方案。<br>HA中任务未完成的展示如下：<br><img src="https://freefitter.synology.me:9012/blog/0aa7d466267adad8872bde67307182f.jpg" alt="HA中信息展示"><br>HA中任务完成后的展示如下：<br><img src="https://freefitter.synology.me:9012/blog/3f1c0c0134ea55ebf64dc912e520619.jpg" alt="任务完成的展示"><br>这些数据来源都是通过<strong>Node-Red</strong>来实现的，主要还是自己去抓包分析一下，实现的方式多种多样，只要你觉得好用就行。下面是流的图<br><img src="https://freefitter.synology.me:9012/blog/20241011143853.png" alt="Node_Red流"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>手机和电脑端都是有油猴脚本的，可以一键帮你做任务，有需要的可以搜搜。但是我还是自己去做的，因为每天本来就有很多搜索，不知不觉就已经做完了，其他的任务很快就能够完成的。所以也没必要去使用脚本，关键脚本貌似可能会被封号。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;搜索一直用必应，有账号但是没有登陆，最近看到必应上可以各种礼品卡，只要每天做好任务，日积月累总能达到你的目标的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;0-Microsoft-Rewards&quot;&gt;&lt;a href=&quot;#0-Microsof</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://www.wangxingyang.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="HA" scheme="https://www.wangxingyang.com/tags/HA/"/>
+    
+    <category term="Microsoft Rewards" scheme="https://www.wangxingyang.com/tags/Microsoft-Rewards/"/>
+    
+  </entry>
   
   <entry>
     <title>解锁苹果影音新方式：探索HamHub私人云影专家</title>
@@ -132,37 +163,6 @@
     
     
     <category term="apple watch" scheme="https://www.wangxingyang.com/tags/apple-watch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>迎接祖国华诞：打造独一无二的国庆蛋糕</title>
-    <link href="https://www.wangxingyang.com/schoolwork240922.html"/>
-    <image>https://freefitter.synology.me:9012/blog/f04dc85ecf0887e6ae25c7c40b5cac90.jpg</image>
-    
-    <id>https://www.wangxingyang.com/schoolwork240922.html</id>
-    <published>2024-09-23T13:21:21.000Z</published>
-    <updated>2024-09-23T13:26:58.878Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>马上国庆节了，幼儿园开展了 <strong><code>童心向党，喜迎二十大</code></strong> 的活动，向小朋友们征集创意作品。在参看了网上思路，最终决定做个蛋糕，老师提到的<code>坦克</code>、<code>火箭</code>、<code>国旗</code>等元素都有包含。</p></blockquote><h3 id="0-材料准备"><a href="#0-材料准备" class="headerlink" title="0.材料准备"></a>0.材料准备</h3><hr><ol><li>瓦楞纸</li><li>肥叔锅贴打包盒</li><li>肯德基小吃拼盘打包盒</li><li>热熔胶枪</li><li>超轻黏土</li><li>8寸蛋糕托盘<h3 id="1-开始制作"><a href="#1-开始制作" class="headerlink" title="1.开始制作"></a>1.开始制作</h3></li></ol><hr><p>把两个盒子叠起来，然后用瓦楞纸给他们包裹好，接着再搞一些装饰就行了。</p><h5 id="这是初始的样子"><a href="#这是初始的样子" class="headerlink" title="这是初始的样子"></a>这是初始的样子</h5><p><img src="https://freefitter.synology.me:9012/blog/4f15ab19f141d119eb584176a94ad514.jpg" alt="初始样子"></p><h5 id="这是包裹之后的样子"><a href="#这是包裹之后的样子" class="headerlink" title="这是包裹之后的样子"></a>这是包裹之后的样子</h5><p><img src="https://freefitter.synology.me:9012/blog/d287b41b85fd150c366a7c643a876b41.jpg" alt="包裹之后的"></p><h5 id="这是完成之后的样子"><a href="#这是完成之后的样子" class="headerlink" title="这是完成之后的样子"></a>这是完成之后的样子</h5><p><img src="https://freefitter.synology.me:9012/blog/f04dc85ecf0887e6ae25c7c40b5cac90.jpg" alt="成品"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>构思材料和找材料是比较耗时的，等确定好了之后就是制作了，虽然有些繁琐，但是还是乐在其中的，期间宝宝也在旁边帮忙，加油打气。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;马上国庆节了，幼儿园开展了 &lt;strong&gt;&lt;code&gt;童心向党，喜迎二十大&lt;/code&gt;&lt;/strong&gt; 的活动，向小朋友们征集创意作品。在参看了网上思路，最终决定做个蛋糕，老师提到的&lt;code&gt;坦克&lt;/code&gt;、&lt;code&gt;火箭&lt;/code</summary>
-      
-    
-    
-    
-    <category term="生活" scheme="https://www.wangxingyang.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="国庆" scheme="https://www.wangxingyang.com/tags/%E5%9B%BD%E5%BA%86/"/>
-    
-    <category term="幼儿园" scheme="https://www.wangxingyang.com/tags/%E5%B9%BC%E5%84%BF%E5%9B%AD/"/>
-    
-    <category term="手工" scheme="https://www.wangxingyang.com/tags/%E6%89%8B%E5%B7%A5/"/>
     
   </entry>
   

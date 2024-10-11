@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>HA薅羊毛助力：简化步骤，让Microsoft Rewards积分赚取更简单</title>
+      <link href="microsoft-rewards.html"/>
+      <url>microsoft-rewards.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>搜索一直用必应，有账号但是没有登陆，最近看到必应上可以各种礼品卡，只要每天做好任务，日积月累总能达到你的目标的。</p></blockquote><h3 id="0-Microsoft-Rewards"><a href="#0-Microsoft-Rewards" class="headerlink" title="0.Microsoft Rewards"></a>0.Microsoft Rewards</h3><hr><p><strong>Microsoft Rewards</strong>移动端和电脑端加起来一天至少能够获得<strong>210</strong>积分，以盒马的100元礼品卡为例，100的礼品卡需要<strong>17915</strong>个积分，这样算下来的话，一张卡需要<strong>86</strong>天就能够拿到了，实际肯定是比这个天数少的。用这个速度划下来一天一块多钱。<br><img src="https://freefitter.synology.me:9012/blog/232386bad63951ef19aa0767d2c1f1a.png" alt="可以兑换的礼品卡"></p><h3 id="1-HomeAssistant"><a href="#1-HomeAssistant" class="headerlink" title="1.HomeAssistant"></a>1.HomeAssistant</h3><hr><p>现在目标和方法都知道了，现在开看看怎样让这个羊毛薅的更轻松方便吧。每日活动的阅读获得积分获得的比较容易，就直接阅读文章就行了。搜索赚积分的比较麻烦，通过这几天的观察，每次搜索最多12个积分，达到了之后需要等15分钟后搜索才能获得积分。每日活动的话，上午是点不了的，等到下午的时候再做就行。所以针对这些问题来解决。<br><img src="https://freefitter.synology.me:9012/blog/4a80acd0ed60156248ed74d12383901.jpg" alt="每日任务"></p><p>利用HA的上次更新时间可以知道积分距离上次更新的时间，超过15分钟就可以操作了。还将没完成的任务列了出来，还有距离目标的百分比和天数都展示出来了。跟踪了一段时间，使用<strong>iPad也能够获得电脑搜索的积分，而且还没有时间限制</strong>。所以有Pad的同学可以尝试下这个方案。<br>HA中任务未完成的展示如下：<br><img src="https://freefitter.synology.me:9012/blog/0aa7d466267adad8872bde67307182f.jpg" alt="HA中信息展示"><br>HA中任务完成后的展示如下：<br><img src="https://freefitter.synology.me:9012/blog/3f1c0c0134ea55ebf64dc912e520619.jpg" alt="任务完成的展示"><br>这些数据来源都是通过<strong>Node-Red</strong>来实现的，主要还是自己去抓包分析一下，实现的方式多种多样，只要你觉得好用就行。下面是流的图<br><img src="https://freefitter.synology.me:9012/blog/20241011143853.png" alt="Node_Red流"></p><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3><hr><p>手机和电脑端都是有油猴脚本的，可以一键帮你做任务，有需要的可以搜搜。但是我还是自己去做的，因为每天本来就有很多搜索，不知不觉就已经做完了，其他的任务很快就能够完成的。所以也没必要去使用脚本，关键脚本貌似可能会被封号。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HA </tag>
+            
+            <tag> Microsoft Rewards </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解锁苹果影音新方式：探索HamHub私人云影专家</title>
       <link href="hamhub.html"/>
       <url>hamhub.html</url>
