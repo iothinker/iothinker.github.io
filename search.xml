@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>智能家庭新技能：Home Assistant中的快递取件码接入方法</title>
+      <link href="ddkdha.html"/>
+      <url>ddkdha.html</url>
+      
+        <content type="html"><![CDATA[<hr><h3 id="0-起因"><a href="#0-起因" class="headerlink" title="0.起因"></a>0.起因</h3><hr><p>之前一直用的<strong>菜鸟裹裹</strong>去查快递信息，但是最近它不好使了，取件码都不显示了，直接卸载。然后驿站的人让关注<strong>多多买菜代收点</strong>这个公众号，关注了之后发现取件码显示正常了。之前有把快递接入HA的案例，故现在也想把它接进去。</p><h3 id="1-过程"><a href="#1-过程" class="headerlink" title="1.过程"></a>1.过程</h3><hr><ol><li>按照国际惯例，上来先抓包。首先关注一下这个公众号，然后打开<strong>Stream</strong>开始抓包，分析一下抓的包，找到相关接口即可<br><img src="https://freefitter.synology.me:9012/blog/20241109182129.png" alt="image.png"></li><li>找到相关接口，直接使用<strong>Node-Red</strong>模拟请求即可，接着把相关的数据再处理下，最后生成传感器至HA就完工了。下面是流的结构，模拟请求，这边两个，一个是老婆的一个是自己，接着把未取的快递信息解析出来，组合排序后生成传感器。<br><img src="https://freefitter.synology.me:9012/blog/20241109182828.png" alt="image.png"></li><li>最后的结果如下：<br><img src="https://freefitter.synology.me:9012/blog/20241109183045.png" alt="image.png"><h3 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h3></li></ol><hr><p>虽然这个不是必须的，微信也有推送，但是这种公众号一般都是屏蔽的，但是<strong>Home Assistant</strong>是经常看的，把想知道的信息都放在这边，这样省去查找的麻烦。下面的图就是我想知道的所有信息和操作了。<br><img src="https://freefitter.synology.me:9012/blog/20241109183426.png" alt="image.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 智能家居 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HA </tag>
+            
+            <tag> 快递 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>秋收节手工制作</title>
       <link href="dayshare241108.html"/>
       <url>dayshare241108.html</url>
